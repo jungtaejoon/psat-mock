@@ -9162,7 +9162,7 @@
      1
     ]
    ],
-   "answersFinal": false
+   "answersFinal": true
   },
   "2023-상황판단-ce5d0cfcfa49c57b": {
    "id": "2023-상황판단-ce5d0cfcfa49c57b",
@@ -9692,7 +9692,7 @@
      3
     ]
    ],
-   "answersFinal": false
+   "answersFinal": true
   },
   "2023-언어논리-ccfbde853b9997f1": {
    "id": "2023-언어논리-ccfbde853b9997f1",
@@ -10222,7 +10222,7 @@
      5
     ]
    ],
-   "answersFinal": false
+   "answersFinal": true
   },
   "2023-자료해석-45dc461081e76a39": {
    "id": "2023-자료해석-45dc461081e76a39",
@@ -10575,7 +10575,7 @@
      3
     ]
    ],
-   "answersFinal": false
+   "answersFinal": true
   },
   "2020-상황판단-6a70d0a4e755017e": {
    "id": "2020-상황판단-6a70d0a4e755017e",
@@ -11539,7 +11539,7 @@
      4
     ]
    ],
-   "answersFinal": false
+   "answersFinal": true
   },
   "2020-언어논리-6c6f91069eb9ce1d": {
    "id": "2020-언어논리-6c6f91069eb9ce1d",
@@ -12503,7 +12503,7 @@
      3
     ]
    ],
-   "answersFinal": false
+   "answersFinal": true
   },
   "2020-자료해석-4688aaedd9fe4df2": {
    "id": "2020-자료해석-4688aaedd9fe4df2",
@@ -14089,27 +14089,27 @@
   },
   "2014-15-993": {
    "paper": "2014-상황판단-88c28bc16592320e",
-   "final": false
+   "final": true
   },
   "2013-15-993": {
    "paper": "2013-상황판단-3b65748dae8d2620",
-   "final": false
+   "final": true
   },
   "2012-15-993": {
    "paper": "2012-상황판단-4e7f8525a3b60ae3",
-   "final": false
+   "final": true
   },
   "2011-15-993": {
    "paper": "2011-상황판단-489dbe87af5f7178",
-   "final": false
+   "final": true
   },
   "2010-15-993": {
    "paper": "2010-상황판단-f482dd1c6e5f0b88",
-   "final": false
+   "final": true
   },
   "2009-15-993": {
    "paper": "2009-상황판단-e6192252fe0f66d5",
-   "final": false
+   "final": true
   },
   "2008-15-993": {
    "paper": "2008-상황판단-78661da28ea6c3b4",
@@ -14165,31 +14165,31 @@
   },
   "2014-15-991": {
    "paper": "2014-언어논리-21128ac082fa9164",
-   "final": false
+   "final": true
   },
   "2013-15-991": {
    "paper": "2013-언어논리-6133f5ea4cd27a20",
-   "final": false
+   "final": true
   },
   "2012-15-991": {
    "paper": "2012-언어논리-d81b06ebda41ca71",
-   "final": false
+   "final": true
   },
   "2011-15-991": {
    "paper": "2011-언어논리-2c46e6c620ceb221",
-   "final": false
+   "final": true
   },
   "2010-15-991": {
    "paper": "2010-언어논리-84fb73c861ddf7e8",
-   "final": false
+   "final": true
   },
   "2009-15-991": {
    "paper": "2009-언어논리-1ed4ecd653eeb250",
-   "final": false
+   "final": true
   },
   "2008-15-991": {
    "paper": "2008-언어논리-07349122c274af09",
-   "final": false
+   "final": true
   },
   "2026-15-992": {
    "paper": "2026-자료해석-e1401ad652d972a6",
@@ -14241,31 +14241,31 @@
   },
   "2014-15-992": {
    "paper": "2014-자료해석-03223a3012b84275",
-   "final": false
+   "final": true
   },
   "2013-15-992": {
    "paper": "2013-자료해석-00ea9da26739d155",
-   "final": false
+   "final": true
   },
   "2012-15-992": {
    "paper": "2012-자료해석-cf3959cc22255856",
-   "final": false
+   "final": true
   },
   "2011-15-992": {
    "paper": "2011-자료해석-49b7c532fe9d6400",
-   "final": false
+   "final": true
   },
   "2010-15-992": {
    "paper": "2010-자료해석-f034ec20ec759d1a",
-   "final": false
+   "final": true
   },
   "2009-15-992": {
    "paper": "2009-자료해석-8919ca7cf50bcd46",
-   "final": false
+   "final": true
   },
   "2008-15-992": {
    "paper": "2008-자료해석-224e65dcc2188ab0",
-   "final": false
+   "final": true
   },
   "2026-06-006": {
    "paper": "2026-상황판단-67519d45a3947774",
@@ -14345,7 +14345,7 @@
   },
   "2024-28-093": {
    "paper": "2024-상황판단-9d061316eb5b8aa1",
-   "final": false
+   "final": true
   },
   "2023-28-093": {
    "paper": "2023-상황판단-ce5d0cfcfa49c57b",
@@ -14357,7 +14357,7 @@
   },
   "2021-28-093": {
    "paper": "2021-상황판단-9e9b7342d958cde3",
-   "final": false
+   "final": true
   },
   "2020-28-093": {
    "paper": "2020-상황판단-6a70d0a4e755017e",
@@ -14405,7 +14405,7 @@
   },
   "2024-28-091": {
    "paper": "2024-언어논리-6be84522396769fc",
-   "final": false
+   "final": true
   },
   "2023-28-091": {
    "paper": "2023-언어논리-ccfbde853b9997f1",
@@ -14417,7 +14417,7 @@
   },
   "2021-28-091": {
    "paper": "2021-언어논리-34c14e8fce94cce4",
-   "final": false
+   "final": true
   },
   "2020-28-091": {
    "paper": "2020-언어논리-6c6f91069eb9ce1d",
@@ -14465,7 +14465,7 @@
   },
   "2024-28-092": {
    "paper": "2024-자료해석-febb3d8e89412075",
-   "final": false
+   "final": true
   },
   "2023-28-092": {
    "paper": "2023-자료해석-45dc461081e76a39",
@@ -14477,7 +14477,7 @@
   },
   "2021-28-092": {
    "paper": "2021-자료해석-688bffa63faa8a65",
-   "final": false
+   "final": true
   },
   "2020-28-092": {
    "paper": "2020-자료해석-4688aaedd9fe4df2",
@@ -14525,7 +14525,7 @@
   },
   "2024-38-093": {
    "paper": "2024-상황판단-9d061316eb5b8aa1",
-   "final": false
+   "final": true
   },
   "2023-38-093": {
    "paper": "2023-상황판단-ce5d0cfcfa49c57b",
@@ -14537,7 +14537,7 @@
   },
   "2021-38-093": {
    "paper": "2021-상황판단-9e9b7342d958cde3",
-   "final": false
+   "final": true
   },
   "2020-38-093": {
    "paper": "2020-상황판단-6a70d0a4e755017e",
@@ -14569,7 +14569,7 @@
   },
   "2024-38-091": {
    "paper": "2024-언어논리-6be84522396769fc",
-   "final": false
+   "final": true
   },
   "2023-38-091": {
    "paper": "2023-언어논리-ccfbde853b9997f1",
@@ -14581,7 +14581,7 @@
   },
   "2021-38-091": {
    "paper": "2021-언어논리-34c14e8fce94cce4",
-   "final": false
+   "final": true
   },
   "2020-38-091": {
    "paper": "2020-언어논리-6c6f91069eb9ce1d",
@@ -14613,7 +14613,7 @@
   },
   "2024-38-092": {
    "paper": "2024-자료해석-febb3d8e89412075",
-   "final": false
+   "final": true
   },
   "2023-38-092": {
    "paper": "2023-자료해석-45dc461081e76a39",
@@ -14625,7 +14625,7 @@
   },
   "2021-38-092": {
    "paper": "2021-자료해석-688bffa63faa8a65",
-   "final": false
+   "final": true
   },
   "2020-38-092": {
    "paper": "2020-자료해석-4688aaedd9fe4df2",

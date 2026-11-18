@@ -250,7 +250,10 @@ def main() -> None:
             simu = post("/oprut/EvmArSimuTestSbjctPstIdOne.do", {"enfcYr": r["enfcYr"], "testCd": test_cd, "sbjctCd": r["sbjctCd"]}).json()
             answers = decode_answers(simu.get("wholAnswVl1") or "")
             pdf_id = simu.get("pdfPstFileId") or r.get("pdfPstFileId")
-            final = bool(answers) and r.get("cransSeCd") in ("2", "4")
+            # 확정정답 게시글이 있거나 지난 연도면 모의고사용 정답은 확정 정답이다
+            final = bool(answers) and (
+                r.get("cransSeCd") in ("2", "4") or bool(r.get("cfmtnAnswRlsPstId")) or int(r["enfcYr"]) < time.localtime().tm_year
+            )
             if not answers and r.get("cransSeCd") in ("1", "2"):
                 answers = answers_from_popup(r) or []
                 final = bool(answers) and r["cransSeCd"] == "2"
