@@ -295,6 +295,8 @@ export default function Home() {
         </p>
       </header>
 
+      <SlopAd />
+
       <nav className="tabs" role="tablist">
         {(
           [
@@ -319,7 +321,6 @@ export default function Home() {
           {tab === "history" && <HistoryTab papers={papers} />}
         </section>
       )}
-      <SlopAd />
       <AdSlot slot="home-bottom" />
     </div>
   );
