@@ -56,6 +56,8 @@ jobs:
           [ -n "$ANTHROPIC_WORKSPACE_ID" ] || unset ANTHROPIC_WORKSPACE_ID
           curl -sSf -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" | jq -r .value > "$ANTHROPIC_IDENTITY_TOKEN_FILE"
+          # 인증·Batches 권한 확인 (토큰 비용 없음)
+          python -c "import anthropic; c = anthropic.Anthropic(); c.models.retrieve('claude-opus-5-5'); list(c.messages.batches.list(limit=1)); print('Claude API 인증 OK')"
           python pipeline/explain.py collect
           python pipeline/explain.py submit ${{ inputs.explain_limit && format('--limit {0}', inputs.explain_limit) || '' }}
 
