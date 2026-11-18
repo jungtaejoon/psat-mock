@@ -7,7 +7,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
 
 const docs = new Map<string, Promise<PDFDocumentProxy>>();
 
-function getDoc(url: string) {
+export function getDoc(url: string) {
   let d = docs.get(url);
   if (!d) {
     d = pdfjs.getDocument({

@@ -95,8 +95,12 @@ def segment(pdf_path: Path, n_questions: int):
         if len(spans_mid) > len(body) * 0.5:  # 1단 편집 페이지
             cols.append(dict(page=pno, x0=0, x1=W, top=top, bottom=bottom, lines=body))
         else:
-            cols.append(dict(page=pno, x0=0, x1=mid, top=top, bottom=bottom, lines=[x for x in body if x[0].x0 < mid - 5]))
-            cols.append(dict(page=pno, x0=mid, x1=W, top=top, bottom=bottom, lines=[x for x in body if x[0].x0 >= mid - 5]))
+            L = [x for x in body if x[0].x0 < mid - 5]
+            R = [x for x in body if x[0].x0 >= mid - 5]
+            # 가운데 세로 구분선이 잘려 들어오지 않도록 오른쪽 단은 글자 시작점 조금 앞에서 자른다
+            rx0 = max(mid + 1, min((r.x0 for r, _ in R), default=mid) - 8)
+            cols.append(dict(page=pno, x0=0, x1=mid - 2, top=top, bottom=bottom, lines=L))
+            cols.append(dict(page=pno, x0=rx0, x1=W, top=top, bottom=bottom, lines=R))
 
     # 2) 문항 시작 줄과 공통 지문 시작 줄을 순서대로 찾는다
     marks = []  # (col_idx, y, kind, num/range)
