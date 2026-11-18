@@ -4,7 +4,7 @@ PSAT 문제지는 2단 편집이다. 각 단에서 'N.' 으로 시작하는 줄�
 다음 문항 시작 전까지를 그 문항 영역으로 잡는다. 단·쪽을 넘어가는 문항과
 '※ 다음 글을 읽고 물음에 답하시오. [문 25～문 26]' 같은 공통 지문도 처리한다.
 
-결과: web/public/data/papers/{id}.json, web/public/data/pdf/{id}.pdf, web/public/data/index.json
+결과: web/public/data/papers/{id}.json, web/public/data/pdf/{id}.pdf (index.json 은 build_index.py)
 웹에서는 pdf.js 로 해당 좌표만 잘라 그린다(벡터 그대로라 선명하고 용량이 작다).
 """
 from __future__ import annotations
@@ -22,9 +22,9 @@ RAW = ROOT / "data" / "raw"
 CATALOG = ROOT / "data" / "catalog.json"
 OUT = ROOT / "web" / "public" / "data"
 
-Q_RE = re.compile(r"^\s*(?:문\s*)?(\d{1,2})\s*\.(?!\d)")
+Q_RE = re.compile(r"^\s*(?:문\s*)?(\d{1,3})\s*\.(?!\d)")
 SHARED_RE = re.compile(r"^\s*(?:※|\[\s*(?:문\s*)?\d)")
-RANGE_RE = re.compile(r"(\d{1,2})\s*\.?\s*[～~∼\-–]\s*(?:문\s*)?(\d{1,2})")
+RANGE_RE = re.compile(r"(\d{1,3})\s*\.?\s*[～~∼\-–]\s*(?:문\s*)?(\d{1,3})")
 PAD = 3
 
 
@@ -103,8 +103,8 @@ def circled_chars(page) -> list[tuple[str, fitz.Rect]]:
     return _char_cache[key]
 
 
-def choice_boxes(doc, regions: list[dict]) -> list[dict] | None:
-    """문항 영역 안에서 선택지 ①~⑤ 각각의 클릭 영역을 찾는다. 다섯 개가 순서대로 없으면 None.
+def choice_boxes(doc, regions: list[dict], n_choices: int = 5) -> list[dict] | None:
+    """문항 영역 안에서 선택지 ①~⑤(4지선다면 ①~④) 각각의 클릭 영역을 찾는다. 순서대로 다 없으면 None.
 
     같은 줄에 여러 선택지가 있으면 다음 선택지 시작 전까지, 아니면 단 폭 전체.
     세로로는 그 줄 위에서 다음 선택지 줄 직전까지(마지막은 영역 끝까지).
@@ -116,10 +116,11 @@ def choice_boxes(doc, regions: list[dict]) -> list[dict] | None:
         found.sort(key=lambda x: (round(x[1].y0 / 4), x[1].x0))
         marks += [(ri, c, b) for c, b in found]
     seq = "".join(c for _, c, _ in marks)
-    start = seq.rfind(CIRC)
+    want = CIRC[:n_choices]
+    start = seq.rfind(want)
     if start < 0:
         return None
-    marks = marks[start : start + 5]
+    marks = marks[start : start + n_choices]
     # 줄(행) 묶기: 같은 영역, 세로 위치가 거의 같은 선택지들
     rows: list[list[int]] = []
     for i, (ri, _, b) in enumerate(marks):
@@ -127,7 +128,7 @@ def choice_boxes(doc, regions: list[dict]) -> list[dict] | None:
             rows[-1].append(i)
         else:
             rows.append([i])
-    boxes: list[dict] = [{}] * 5
+    boxes: list[dict] = [{}] * n_choices
     for k, row in enumerate(rows):
         ri = marks[row[0]][0]
         r = regions[ri]
@@ -145,7 +146,7 @@ def choice_boxes(doc, regions: list[dict]) -> list[dict] | None:
     return boxes
 
 
-def segment(pdf_path: Path, n_questions: int):
+def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1):
     doc = fitz.open(pdf_path)
     _ink_cache.clear()
     _char_cache.clear()
@@ -170,7 +171,7 @@ def segment(pdf_path: Path, n_questions: int):
 
     # 2) 문항 시작 줄과 공통 지문 시작 줄을 순서대로 찾는다
     marks = []  # (col_idx, y, kind, num/range)
-    expect = 1
+    expect = first
     for ci, c in enumerate(cols):
         if not c["lines"]:
             continue
@@ -200,7 +201,7 @@ def segment(pdf_path: Path, n_questions: int):
                     if a == expect and expect < b <= expect + 5:
                         marks.append((ci, r.y0, "s", (a, b)))
                         break
-    found = expect - 1
+    found = expect - first
     if found != n_questions:
         raise ValueError(f"문항 {found}/{n_questions}개만 찾음")
 
@@ -238,7 +239,7 @@ def segment(pdf_path: Path, n_questions: int):
             q = dict(no=key, regions=regions, text=text)
             if key in shared:
                 q["shared"] = shared[key]
-            ch = choice_boxes(doc, regions)
+            ch = choice_boxes(doc, regions, n_choices)
             if ch:
                 q["choices"] = ch
             questions.append(q)
@@ -307,9 +308,10 @@ def main(only: str | None = None) -> None:
         explained = sum(1 for k in json.loads(expl.read_text()) if k.isdigit()) if expl.exists() else 0
         index.append(dict(id=pid, year=p["year"], subject=p["subject"], exams=p["exams"], count=len(qs),
                           answersFinal=p.get("answersFinal", True), explained=explained, **common))
-    if not only:
-        index.sort(key=lambda x: (x["exam"], -x["year"], x["exams"][0], x["subject"]))
-        (OUT / "index.json").write_text(json.dumps(dict(papers=index), ensure_ascii=False))
+    # index.json 은 모든 시험의 문제지를 모아 build_index.py 가 만든다
+    import build_index
+
+    build_index.main()
     print(f"ok {len(index)}, failed {len(failed)}")
     for pid, why in failed:
         print("  FAIL", pid, why)

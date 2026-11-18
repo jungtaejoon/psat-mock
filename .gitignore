@@ -7,3 +7,4 @@ web/public/pdfjs/
 .DS_Store
 # data/raw 의 원본 PDF 는 web/public/data/pdf 에 같은 파일이 있으므로 저장소에서 제외
 data/raw/
+data/qnet/
