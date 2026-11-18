@@ -960,3 +960,92 @@ li.no .mark {
     display: none;
   }
 }
+
+/* 문제 위에서 보기를 직접 고르기 */
+.q-regions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+.region-wrap {
+  position: relative;
+  max-width: 100%;
+}
+.choice-hit {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  cursor: default;
+}
+button.choice-hit {
+  cursor: pointer;
+}
+.pickable button.choice-hit:hover {
+  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+.choice-hit.sel {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 13%, transparent);
+}
+.choice-hit.sel::after {
+  content: "✓";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: var(--brand-ink);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 22px;
+  text-align: center;
+}
+.choice-hit.correct {
+  border-color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 14%, transparent);
+}
+.choice-hit.wrong {
+  border-color: var(--no);
+  background: color-mix(in srgb, var(--no) 12%, transparent);
+}
+.choice-hit.correct::after,
+.choice-hit.wrong::after {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 22px;
+  text-align: center;
+}
+.choice-hit.correct::after {
+  content: "✓";
+  background: var(--ok);
+}
+.choice-hit.wrong::after {
+  content: "✕";
+  background: var(--no);
+}
+.answer-row.compact {
+  display: none;
+}
+.pick-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 10px 0 4px;
+}

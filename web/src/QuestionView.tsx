@@ -2,9 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import { CIRCLED, loadExplanations, loadQuestion, pdfUrl } from "./data";
 import { renderRegion } from "./pdf";
 import { canViewExplanation } from "./monetization";
-import type { Explanation, ItemRef, Paper, Question, Region } from "./types";
+import type {
+  ChoiceBox,
+  Explanation,
+  ItemRef,
+  Paper,
+  Question,
+  Region,
+} from "./types";
 
-function RegionCanvas({ url, region, width }: { url: string; region: Region; width: number }) {
+function RegionCanvas({
+  url,
+  region,
+  width,
+  children,
+}: {
+  url: string;
+  region: Region;
+  width: number;
+  children?: React.ReactNode;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [err, setErr] = useState(false);
   useEffect(() => {
@@ -23,12 +40,83 @@ function RegionCanvas({ url, region, width }: { url: string; region: Region; wid
       alive = false;
     };
   }, [url, region, width]);
-  if (err) return <div className="render-error">문제 이미지를 불러오지 못했습니다.</div>;
-  return <div ref={ref} className="region-box" />;
+  if (err)
+    return (
+      <div className="render-error">문제 이미지를 불러오지 못했습니다.</div>
+    );
+  return (
+    <div className="region-wrap">
+      <div ref={ref} className="region-box" />
+      {children}
+    </div>
+  );
 }
 
-/** 문항 영역들을 화면 폭에 맞춰 그린다 */
-export function QuestionImage({ item }: { item: ItemRef }) {
+/** 선택지 표시 상태: 고른 것, 채점 후 정답/오답 */
+export interface ChoiceState {
+  selected?: number;
+  correct?: number[];
+  onChoose?: (n: number) => void;
+}
+
+function ChoiceLayer({
+  boxes,
+  region,
+  ri,
+  state,
+}: {
+  boxes: ChoiceBox[];
+  region: Region;
+  ri: number;
+  state: ChoiceState;
+}) {
+  const w = region.x1 - region.x0;
+  const h = region.y1 - region.y0;
+  const graded = !!state.correct;
+  return (
+    <>
+      {boxes.map((b, i) => {
+        if (b.r !== ri) return null;
+        const n = i + 1;
+        const sel = state.selected === n;
+        let cls = "choice-hit";
+        if (sel) cls += " sel";
+        if (graded && state.correct!.includes(n)) cls += " correct";
+        if (graded && sel && !state.correct!.includes(n)) cls += " wrong";
+        const style = {
+          left: `${((b.x0 - region.x0) / w) * 100}%`,
+          top: `${((b.y0 - region.y0) / h) * 100}%`,
+          width: `${((b.x1 - b.x0) / w) * 100}%`,
+          height: `${((b.y1 - b.y0) / h) * 100}%`,
+        };
+        return state.onChoose && !graded ? (
+          <button
+            key={n}
+            className={cls}
+            style={style}
+            role="radio"
+            aria-checked={sel}
+            aria-label={`${CIRCLED[i]} 선택`}
+            onClick={() => state.onChoose!(n)}
+          />
+        ) : (
+          <div key={n} className={cls} style={style} aria-hidden="true" />
+        );
+      })}
+    </>
+  );
+}
+
+/** 문항 영역들을 화면 폭에 맞춰 그린다. choice 를 주면 선택지를 문제 위에서 직접 고를 수 있다 */
+export function QuestionImage({
+  item,
+  choice,
+  onChoicesKnown,
+}: {
+  item: ItemRef;
+  choice?: ChoiceState;
+  onChoicesKnown?: (has: boolean) => void;
+}) {
   const box = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   const [data, setData] = useState<{ paper: Paper; q: Question } | null>(null);
@@ -37,13 +125,21 @@ export function QuestionImage({ item }: { item: ItemRef }) {
   useEffect(() => {
     setData(null);
     setError(null);
-    loadQuestion(item).then(setData, (e) => setError(String(e)));
-  }, [item.paperId, item.no]);
+    loadQuestion(item).then(
+      (d) => {
+        setData(d);
+        onChoicesKnown?.(!!d.q.choices);
+      },
+      (e) => setError(String(e)),
+    );
+  }, [item.paperId, item.no]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const ro = new ResizeObserver(() => setWidth(Math.min(el.clientWidth, 640)));
+    const ro = new ResizeObserver(() =>
+      setWidth(Math.min(el.clientWidth, 640)),
+    );
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
@@ -58,13 +154,42 @@ export function QuestionImage({ item }: { item: ItemRef }) {
           {data.q.shared && (
             <div className="shared">
               {data.q.shared.regions.map((r, i) => (
-                <RegionCanvas key={`s${i}`} url={url} region={r} width={width * Math.min(1, (r.x1 - r.x0) / (data.paper.width / 2))} />
+                <RegionCanvas
+                  key={`s${i}`}
+                  url={url}
+                  region={r}
+                  width={
+                    width * Math.min(1, (r.x1 - r.x0) / (data.paper.width / 2))
+                  }
+                />
               ))}
             </div>
           )}
-          {data.q.regions.map((r, i) => (
-            <RegionCanvas key={i} url={url} region={r} width={width * Math.min(1, (r.x1 - r.x0) / (data.paper.width / 2))} />
-          ))}
+          <div
+            className={`q-regions ${choice?.onChoose && !choice.correct ? "pickable" : ""}`}
+            role={choice?.onChoose ? "radiogroup" : undefined}
+            aria-label={choice?.onChoose ? "답 선택" : undefined}
+          >
+            {data.q.regions.map((r, i) => (
+              <RegionCanvas
+                key={i}
+                url={url}
+                region={r}
+                width={
+                  width * Math.min(1, (r.x1 - r.x0) / (data.paper.width / 2))
+                }
+              >
+                {choice && data.q.choices && (
+                  <ChoiceLayer
+                    boxes={data.q.choices}
+                    region={r}
+                    ri={i}
+                    state={choice}
+                  />
+                )}
+              </RegionCanvas>
+            ))}
+          </div>
         </>
       )}
     </div>
@@ -77,16 +202,28 @@ function Rich({ text }: { text: string }) {
     <>
       {text.split("\n").map((line, i) => (
         <p key={i}>
-          {line.split(/(\*\*[^*]+\*\*)/g).map((seg, j) =>
-            seg.startsWith("**") && seg.endsWith("**") ? <strong key={j}>{seg.slice(2, -2)}</strong> : seg,
-          )}
+          {line
+            .split(/(\*\*[^*]+\*\*)/g)
+            .map((seg, j) =>
+              seg.startsWith("**") && seg.endsWith("**") ? (
+                <strong key={j}>{seg.slice(2, -2)}</strong>
+              ) : (
+                seg
+              ),
+            )}
         </p>
       ))}
     </>
   );
 }
 
-export function ExplanationPanel({ item, answer }: { item: ItemRef; answer: number[] }) {
+export function ExplanationPanel({
+  item,
+  answer,
+}: {
+  item: ItemRef;
+  answer: number[];
+}) {
   const [open, setOpen] = useState(false);
   const [ex, setEx] = useState<Explanation | null | undefined>(undefined);
 
@@ -97,20 +234,31 @@ export function ExplanationPanel({ item, answer }: { item: ItemRef; answer: numb
 
   useEffect(() => {
     if (!open || ex !== undefined) return;
-    loadExplanations(item.paperId).then((m) => setEx(m[String(item.no)] ?? null));
+    loadExplanations(item.paperId).then((m) =>
+      setEx(m[String(item.no)] ?? null),
+    );
   }, [open, ex, item.paperId, item.no]);
 
-  if (!canViewExplanation(item)) return <div className="expl locked">해설은 이용권 회원에게 제공됩니다.</div>;
+  if (!canViewExplanation(item))
+    return (
+      <div className="expl locked">해설은 이용권 회원에게 제공됩니다.</div>
+    );
 
   return (
     <div className="expl">
-      <button className="btn ghost" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
+      <button
+        className="btn ghost"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+      >
         {open ? "해설 닫기" : "해설 보기"}
       </button>
       {open && (
         <div className="expl-body">
           {ex === undefined && <div className="muted">불러오는 중…</div>}
-          {ex === null && <div className="muted">이 문항의 해설은 준비 중입니다.</div>}
+          {ex === null && (
+            <div className="muted">이 문항의 해설은 준비 중입니다.</div>
+          )}
           {ex && (
             <>
               <div className="kp">💡 {ex.key_point}</div>
@@ -126,7 +274,9 @@ export function ExplanationPanel({ item, answer }: { item: ItemRef; answer: numb
                 </ol>
               )}
               {ex.tip && <div className="tip">⏱ {ex.tip}</div>}
-              <div className="ai-note">AI가 작성한 해설입니다. 공식 정답은 인사혁신처 발표 기준입니다.</div>
+              <div className="ai-note">
+                AI가 작성한 해설입니다. 공식 정답은 인사혁신처 발표 기준입니다.
+              </div>
             </>
           )}
         </div>

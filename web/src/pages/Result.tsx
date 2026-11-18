@@ -20,7 +20,9 @@ export default function Result({ id }: { id: string }) {
 
   useEffect(() => {
     if (!s) return;
-    Promise.all([...new Set(s.items.map((r) => r.paperId))].map(loadPaper)).then((ps) => setPapers(new Map(ps.map((p) => [p.id, p]))));
+    Promise.all(
+      [...new Set(s.items.map((r) => r.paperId))].map(loadPaper),
+    ).then((ps) => setPapers(new Map(ps.map((p) => [p.id, p]))));
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const rows = useMemo(() => {
@@ -29,7 +31,14 @@ export default function Result({ id }: { id: string }) {
       const p = papers.get(r.paperId)!;
       const q = p.questions.find((x) => x.no === r.no)!;
       const mine = s.answers[i];
-      return { i, ref: r, paper: p, q, mine, ok: mine !== undefined && q.answer.includes(mine) };
+      return {
+        i,
+        ref: r,
+        paper: p,
+        q,
+        mine,
+        ok: mine !== undefined && q.answer.includes(mine),
+      };
     });
   }, [s, papers]);
 
@@ -81,7 +90,12 @@ export default function Result({ id }: { id: string }) {
           <button
             className="btn primary"
             onClick={() => {
-              const ns = newSession({ title: `${s.title} 오답 다시 풀기`, mode: "practice", items: wrong.map((r) => r.ref), timeLimitSec: 0 });
+              const ns = newSession({
+                title: `${s.title} 오답 다시 풀기`,
+                mode: "practice",
+                items: wrong.map((r) => r.ref),
+                timeLimitSec: 0,
+              });
               navigate(`/exam/${ns.id}`);
             }}
           >
@@ -96,7 +110,12 @@ export default function Result({ id }: { id: string }) {
       <div className="row between list-head">
         <strong>문항별 결과</strong>
         <label className="check">
-          <input type="checkbox" checked={onlyWrong} onChange={(e) => setOnlyWrong(e.target.checked)} /> 틀린 문제만
+          <input
+            type="checkbox"
+            checked={onlyWrong}
+            onChange={(e) => setOnlyWrong(e.target.checked)}
+          />{" "}
+          틀린 문제만
         </label>
       </div>
 
@@ -105,19 +124,30 @@ export default function Result({ id }: { id: string }) {
           .filter((r) => !onlyWrong || !r.ok)
           .map((r) => (
             <li key={r.i} className={r.ok ? "ok" : "no"}>
-              <button className="result-row" onClick={() => setOpen(open === r.i ? null : r.i)} aria-expanded={open === r.i}>
+              <button
+                className="result-row"
+                onClick={() => setOpen(open === r.i ? null : r.i)}
+                aria-expanded={open === r.i}
+              >
                 <span className="mark">{r.ok ? "○" : "✕"}</span>
                 <span className="rn">문 {r.i + 1}</span>
                 <span className="muted src">
-                  {r.paper.year} {examGroup(r.paper.exams)} {r.paper.subject} {r.q.no}번
+                  {r.paper.year} {examGroup(r.paper.exams)} {r.paper.subject}{" "}
+                  {r.q.no}번
                 </span>
                 <span className="ans">
-                  내 답 {r.mine ? CIRCLED[r.mine - 1] : "–"} · 정답 {r.q.answer.length === 5 ? "전원" : r.q.answer.map((a) => CIRCLED[a - 1]).join(",")}
+                  내 답 {r.mine ? CIRCLED[r.mine - 1] : "–"} · 정답{" "}
+                  {r.q.answer.length === 5
+                    ? "전원"
+                    : r.q.answer.map((a) => CIRCLED[a - 1]).join(",")}
                 </span>
               </button>
               {open === r.i && (
                 <div className="result-detail">
-                  <QuestionImage item={r.ref} />
+                  <QuestionImage
+                    item={r.ref}
+                    choice={{ selected: r.mine, correct: r.q.answer }}
+                  />
                   <ExplanationPanel item={r.ref} answer={r.q.answer} />
                 </div>
               )}

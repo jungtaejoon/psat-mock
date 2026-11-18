@@ -25,6 +25,16 @@ export interface Question {
   /** 정답 선택지 번호(1~5). 복수 정답이면 여러 개, 전원 정답이면 [1,2,3,4,5] */
   answer: number[];
   shared?: { regions: Region[]; text: string };
+  /** 선택지 ①~⑤ 의 클릭 영역 (r: regions 의 몇 번째 영역인지, 좌표는 PDF 페이지 기준). 못 찾은 문항은 없음 */
+  choices?: ChoiceBox[];
+}
+
+export interface ChoiceBox {
+  r: number;
+  x0: number;
+  y0: number;
+  x1: number;
+  y1: number;
 }
 
 export interface Paper extends Omit<PaperMeta, "count"> {

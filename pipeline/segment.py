@@ -84,9 +84,69 @@ def ink_bottom(page, rect: fitz.Rect, lines) -> float:
     return max(ys) if ys else rect.y0
 
 
+CIRC = "①②③④⑤"
+_char_cache: dict[int, list[tuple[str, fitz.Rect]]] = {}
+
+
+def circled_chars(page) -> list[tuple[str, fitz.Rect]]:
+    """페이지의 ①~⑤ 글자 위치 (문서별로 한 번만 계산)."""
+    key = id(page.parent) * 1000 + page.number
+    if key not in _char_cache:
+        out = []
+        for b in page.get_text("rawdict")["blocks"]:
+            for l in b.get("lines", []):
+                for sp in l["spans"]:
+                    for ch in sp["chars"]:
+                        if ch["c"] in CIRC:
+                            out.append((ch["c"], fitz.Rect(ch["bbox"])))
+        _char_cache[key] = out
+    return _char_cache[key]
+
+
+def choice_boxes(doc, regions: list[dict]) -> list[dict] | None:
+    """문항 영역 안에서 선택지 ①~⑤ 각각의 클릭 영역을 찾는다. 다섯 개가 순서대로 없으면 None.
+
+    같은 줄에 여러 선택지가 있으면 다음 선택지 시작 전까지, 아니면 단 폭 전체.
+    세로로는 그 줄 위에서 다음 선택지 줄 직전까지(마지막은 영역 끝까지).
+    """
+    marks = []  # (region index, char, rect)
+    for ri, r in enumerate(regions):
+        rect = fitz.Rect(r["x0"], r["y0"], r["x1"], r["y1"])
+        found = [(c, b) for c, b in circled_chars(doc[r["page"]]) if rect.contains(fitz.Point((b.x0 + b.x1) / 2, (b.y0 + b.y1) / 2))]
+        found.sort(key=lambda x: (round(x[1].y0 / 4), x[1].x0))
+        marks += [(ri, c, b) for c, b in found]
+    seq = "".join(c for _, c, _ in marks)
+    start = seq.rfind(CIRC)
+    if start < 0:
+        return None
+    marks = marks[start : start + 5]
+    # 줄(행) 묶기: 같은 영역, 세로 위치가 거의 같은 선택지들
+    rows: list[list[int]] = []
+    for i, (ri, _, b) in enumerate(marks):
+        if rows and marks[rows[-1][0]][0] == ri and abs(marks[rows[-1][0]][2].y0 - b.y0) < 4:
+            rows[-1].append(i)
+        else:
+            rows.append([i])
+    boxes: list[dict] = [{}] * 5
+    for k, row in enumerate(rows):
+        ri = marks[row[0]][0]
+        r = regions[ri]
+        top = min(marks[i][2].y0 for i in row) - 3
+        nxt = rows[k + 1] if k + 1 < len(rows) else None
+        bottom = marks[nxt[0]][2].y0 - 3 if nxt and marks[nxt[0]][0] == ri else r["y1"]
+        for j, i in enumerate(row):
+            x0 = r["x0"] if j == 0 else marks[i][2].x0 - 4
+            x1 = marks[row[j + 1]][2].x0 - 4 if j + 1 < len(row) else r["x1"]
+            boxes[i] = dict(r=ri, x0=round(x0, 1), y0=round(max(top, r["y0"]), 1), x1=round(x1, 1), y1=round(min(bottom, r["y1"]), 1))
+    if any(b["y1"] - b["y0"] < 6 or b["x1"] - b["x0"] < 10 for b in boxes):
+        return None
+    return boxes
+
+
 def segment(pdf_path: Path, n_questions: int):
     doc = fitz.open(pdf_path)
     _ink_cache.clear()
+    _char_cache.clear()
     W = doc[0].rect.width
     mid = W / 2
     # 1) 읽는 순서대로 '단' 목록을 만든다
@@ -176,6 +236,9 @@ def segment(pdf_path: Path, n_questions: int):
             q = dict(no=key, regions=regions, text=text)
             if key in shared:
                 q["shared"] = shared[key]
+            ch = choice_boxes(doc, regions)
+            if ch:
+                q["choices"] = ch
             questions.append(q)
     return dict(width=round(W, 1), height=round(doc[0].rect.height, 1), pages=len(doc)), questions
 

@@ -24,7 +24,9 @@ export default function Exam({ id }: { id: string }) {
     if (!s) return;
     if (s.finishedAt) navigate(`/result/${s.id}`);
     const ids = [...new Set(s.items.map((r) => r.paperId))];
-    Promise.all(ids.map(loadPaper)).then((ps) => setPapers(new Map(ps.map((p) => [p.id, p]))));
+    Promise.all(ids.map(loadPaper)).then((ps) =>
+      setPapers(new Map(ps.map((p) => [p.id, p]))),
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -41,7 +43,15 @@ export default function Exam({ id }: { id: string }) {
     (auto = false) => {
       if (!s) return;
       const left = s.items.length - Object.keys(s.answers).length;
-      if (!auto && !confirm(left ? `아직 ${left}문항을 풀지 않았습니다. 제출할까요?` : "답안을 제출하고 채점할까요?")) return;
+      if (
+        !auto &&
+        !confirm(
+          left
+            ? `아직 ${left}문항을 풀지 않았습니다. 제출할까요?`
+            : "답안을 제출하고 채점할까요?",
+        )
+      )
+        return;
       update((x) => ({ ...x, finishedAt: Date.now() }));
       navigate(`/result/${s.id}`);
     },
@@ -66,7 +76,11 @@ export default function Exam({ id }: { id: string }) {
     return () => window.clearInterval(tick.current);
   }, [s?.id, s?.finishedAt]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const timeUp = !!s && s.mode === "exam" && s.timeLimitSec > 0 && s.elapsedSec >= s.timeLimitSec;
+  const timeUp =
+    !!s &&
+    s.mode === "exam" &&
+    s.timeLimitSec > 0 &&
+    s.elapsedSec >= s.timeLimitSec;
   useEffect(() => {
     if (timeUp) {
       alert("시험 시간이 끝났습니다. 답안을 자동 제출합니다.");
@@ -82,16 +96,42 @@ export default function Exam({ id }: { id: string }) {
   const chosen = s?.answers[cur];
 
   const choose = useCallback(
-    (n: number) => update((x) => (x.mode === "practice" && x.revealed.includes(x.current) ? x : { ...x, answers: { ...x.answers, [x.current]: n } })),
+    (n: number) =>
+      update((x) =>
+        x.mode === "practice" && x.revealed.includes(x.current)
+          ? x
+          : { ...x, answers: { ...x.answers, [x.current]: n } },
+      ),
     [update],
   );
-  const go = useCallback((i: number) => update((x) => ({ ...x, current: Math.max(0, Math.min(x.items.length - 1, i)) })), [update]);
-  const reveal = () => update((x) => ({ ...x, revealed: [...new Set([...x.revealed, x.current])] }));
-  const toggleFlag = () => update((x) => ({ ...x, flags: x.flags.includes(x.current) ? x.flags.filter((f) => f !== x.current) : [...x.flags, x.current] }));
+  const go = useCallback(
+    (i: number) =>
+      update((x) => ({
+        ...x,
+        current: Math.max(0, Math.min(x.items.length - 1, i)),
+      })),
+    [update],
+  );
+  const reveal = () =>
+    update((x) => ({
+      ...x,
+      revealed: [...new Set([...x.revealed, x.current])],
+    }));
+  const toggleFlag = () =>
+    update((x) => ({
+      ...x,
+      flags: x.flags.includes(x.current)
+        ? x.flags.filter((f) => f !== x.current)
+        : [...x.flags, x.current],
+    }));
 
   useEffect(() => {
     const on = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLSelectElement
+      )
+        return;
       if (/^[1-5]$/.test(e.key)) choose(Number(e.key));
       else if (e.key === "ArrowRight") go(cur + 1);
       else if (e.key === "ArrowLeft") go(cur - 1);
@@ -109,7 +149,13 @@ export default function Exam({ id }: { id: string }) {
   const sectionBreaks = useMemo(() => {
     if (!s) return new Set<number>();
     const set = new Set<number>();
-    s.items.forEach((r, i) => i > 0 && papers.get(r.paperId)?.subject !== papers.get(s.items[i - 1].paperId)?.subject && set.add(i));
+    s.items.forEach(
+      (r, i) =>
+        i > 0 &&
+        papers.get(r.paperId)?.subject !==
+          papers.get(s.items[i - 1].paperId)?.subject &&
+        set.add(i),
+    );
     return set;
   }, [s, papers]);
 
@@ -124,18 +170,28 @@ export default function Exam({ id }: { id: string }) {
     );
   }
 
-  const remain = s.mode === "exam" ? s.timeLimitSec - s.elapsedSec : s.elapsedSec;
+  const remain =
+    s.mode === "exam" ? s.timeLimitSec - s.elapsedSec : s.elapsedSec;
   const low = s.mode === "exam" && remain < 300;
-  const isCorrect = q && chosen !== undefined ? q.answer.includes(chosen) : false;
+  const isCorrect =
+    q && chosen !== undefined ? q.answer.includes(chosen) : false;
 
   return (
     <div className="exam">
       <div className="exam-bar">
-        <button className="btn ghost sm" onClick={() => navigate("/")} aria-label="나가기 (진행 상황은 저장됩니다)">
+        <button
+          className="btn ghost sm"
+          onClick={() => navigate("/")}
+          aria-label="나가기 (진행 상황은 저장됩니다)"
+        >
           ← 나가기
         </button>
         <div className="exam-title">{s.title}</div>
-        <div className={`timer ${low ? "low" : ""}`} aria-live="off" title={s.mode === "exam" ? "남은 시간" : "경과 시간"}>
+        <div
+          className={`timer ${low ? "low" : ""}`}
+          aria-live="off"
+          title={s.mode === "exam" ? "남은 시간" : "경과 시간"}
+        >
           {s.mode === "exam" ? "남은 " : "경과 "}
           {fmt(remain)}
         </div>
@@ -153,25 +209,60 @@ export default function Exam({ id }: { id: string }) {
             </span>
             {paper && (
               <span className="q-src">
-                {paper.year} {examGroup(paper.exams)} {paper.subject} {item!.no}번{!paper.answersFinal && " (가답안)"}
+                {paper.year} {examGroup(paper.exams)} {paper.subject} {item!.no}
+                번{!paper.answersFinal && " (가답안)"}
               </span>
             )}
-            <button className={`flag ${s.flags.includes(cur) ? "on" : ""}`} onClick={toggleFlag} aria-pressed={s.flags.includes(cur)}>
+            <button
+              className={`flag ${s.flags.includes(cur) ? "on" : ""}`}
+              onClick={toggleFlag}
+              aria-pressed={s.flags.includes(cur)}
+            >
               ⚑ 다시 보기
             </button>
           </div>
 
-          {item && <QuestionImage key={`${item.paperId}-${item.no}`} item={item} />}
+          {item && (
+            <QuestionImage
+              key={`${item.paperId}-${item.no}`}
+              item={item}
+              choice={{
+                selected: chosen,
+                onChoose: choose,
+                correct: revealed ? q?.answer : undefined,
+              }}
+            />
+          )}
 
-          <div className="answer-row" role="radiogroup" aria-label="답 선택">
+          {q?.choices && !revealed && (
+            <p className="pick-hint">
+              {chosen === undefined
+                ? "문제의 보기를 눌러 답을 고르세요 (키보드 1~5도 돼요)"
+                : `${CIRCLED[chosen - 1]}을 골랐어요 · 다른 보기를 누르면 바뀌어요`}
+            </p>
+          )}
+
+          <div
+            className={`answer-row ${q?.choices ? "compact" : ""}`}
+            role="radiogroup"
+            aria-label="답 선택"
+          >
             {CIRCLED.map((c, i) => {
               const n = i + 1;
               let cls = "bubble";
               if (chosen === n) cls += " chosen";
               if (revealed && q?.answer.includes(n)) cls += " correct";
-              if (revealed && chosen === n && !q?.answer.includes(n)) cls += " wrong";
+              if (revealed && chosen === n && !q?.answer.includes(n))
+                cls += " wrong";
               return (
-                <button key={n} className={cls} role="radio" aria-checked={chosen === n} onClick={() => choose(n)} disabled={revealed}>
+                <button
+                  key={n}
+                  className={cls}
+                  role="radio"
+                  aria-checked={chosen === n}
+                  onClick={() => choose(n)}
+                  disabled={revealed}
+                >
                   {c}
                 </button>
               );
@@ -181,12 +272,18 @@ export default function Exam({ id }: { id: string }) {
           {s.mode === "practice" && q && (
             <div className="practice">
               {!revealed ? (
-                <button className="btn" disabled={chosen === undefined} onClick={reveal}>
+                <button
+                  className="btn"
+                  disabled={chosen === undefined}
+                  onClick={reveal}
+                >
                   정답 확인
                 </button>
               ) : (
                 <div className={`verdict ${isCorrect ? "ok" : "no"}`}>
-                  {isCorrect ? "정답입니다" : `오답 · 정답 ${q.answer.length === 5 ? "전원 정답" : q.answer.map((a) => CIRCLED[a - 1]).join(", ")}`}
+                  {isCorrect
+                    ? "정답입니다"
+                    : `오답 · 정답 ${q.answer.length === 5 ? "전원 정답" : q.answer.map((a) => CIRCLED[a - 1]).join(", ")}`}
                 </div>
               )}
               {revealed && <ExplanationPanel item={item!} answer={q.answer} />}
@@ -194,10 +291,17 @@ export default function Exam({ id }: { id: string }) {
           )}
 
           <div className="nav-row">
-            <button className="btn" onClick={() => go(cur - 1)} disabled={cur === 0}>
+            <button
+              className="btn"
+              onClick={() => go(cur - 1)}
+              disabled={cur === 0}
+            >
               ← 이전
             </button>
-            <button className="btn ghost omr-toggle" onClick={() => setOmrOpen(true)}>
+            <button
+              className="btn ghost omr-toggle"
+              onClick={() => setOmrOpen(true)}
+            >
               답안지 {answeredCount}/{s.items.length}
             </button>
             {cur < s.items.length - 1 ? (
@@ -218,7 +322,11 @@ export default function Exam({ id }: { id: string }) {
             <span className="muted">
               {answeredCount}/{s.items.length}
             </span>
-            <button className="icon omr-close" onClick={() => setOmrOpen(false)} aria-label="답안지 닫기">
+            <button
+              className="icon omr-close"
+              onClick={() => setOmrOpen(false)}
+              aria-label="답안지 닫기"
+            >
               ×
             </button>
           </div>
@@ -228,9 +336,17 @@ export default function Exam({ id }: { id: string }) {
               const qq = p?.questions.find((x) => x.no === r.no);
               const rev = s.mode === "practice" && s.revealed.includes(i);
               return (
-                <li key={i} className={`${i === cur ? "cur" : ""} ${sectionBreaks.has(i) ? "brk" : ""}`}>
-                  {sectionBreaks.has(i) || i === 0 ? <div className="omr-sec">{p?.subject}</div> : null}
-                  <button className="omr-n" onClick={() => (go(i), setOmrOpen(false))}>
+                <li
+                  key={i}
+                  className={`${i === cur ? "cur" : ""} ${sectionBreaks.has(i) ? "brk" : ""}`}
+                >
+                  {sectionBreaks.has(i) || i === 0 ? (
+                    <div className="omr-sec">{p?.subject}</div>
+                  ) : null}
+                  <button
+                    className="omr-n"
+                    onClick={() => (go(i), setOmrOpen(false))}
+                  >
                     {i + 1}
                     {s.flags.includes(i) && <span className="fl">⚑</span>}
                   </button>
@@ -240,7 +356,11 @@ export default function Exam({ id }: { id: string }) {
                       className={`dot ${s.answers[i] === n ? "on" : ""} ${rev && qq?.answer.includes(n) ? "ans" : ""}`}
                       onClick={() => {
                         if (rev) return;
-                        update((x) => ({ ...x, current: i, answers: { ...x.answers, [i]: n } }));
+                        update((x) => ({
+                          ...x,
+                          current: i,
+                          answers: { ...x.answers, [i]: n },
+                        }));
                       }}
                       aria-label={`${i + 1}번 ${n}번 선택`}
                     >
