@@ -1,13 +1,23 @@
-export type Subject = "언어논리" | "자료해석" | "상황판단";
-export const SUBJECTS: Subject[] = ["언어논리", "자료해석", "상황판단"];
+/** 과목(영역) 이름. 시험마다 다르다 (PSAT: 언어논리·자료해석·상황판단) */
+export type Subject = string;
 
 export interface PaperMeta {
   id: string;
+  /** 시험 카탈로그 id (exams.ts). 없으면 "psat" */
+  exam?: string;
+  /** 시험 안의 계열(예: "5급 공채·외교관", "1차"). 없으면 시험별 규칙으로 계산 */
+  group?: string;
   year: number;
   subject: Subject;
   exams: string[];
   count: number;
   answersFinal: boolean;
+  /** 선택지 수. 없으면 시험 기본값 */
+  choices?: number;
+  /** 해설이 있는 문항 수 */
+  explained?: number;
+  /** 공공누리 유형 (1~4). 모르면 없음 */
+  kogl?: number;
 }
 
 export interface Region {
@@ -63,6 +73,8 @@ export type Mode = "exam" | "practice";
 
 export interface Session {
   id: string;
+  /** 시험 카탈로그 id. 예전 기록에는 없음(=psat) */
+  exam?: string;
   title: string;
   mode: Mode;
   items: ItemRef[];

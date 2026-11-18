@@ -1,0 +1,204 @@
+{
+ "categories": [
+  "공무원",
+  "법률·행정·경영",
+  "부동산·안전",
+  "보건·복지·교육",
+  "문화·관광·물류"
+ ],
+ "exams": [
+  {
+   "id": "psat",
+   "name": "PSAT",
+   "desc": "5급 공채·외교관, 7급 공채·민경채, 지역인재 7급 공직적격성평가",
+   "category": "공무원",
+   "choices": 5,
+   "subjects": [
+    "언어논리",
+    "자료해석",
+    "상황판단"
+   ],
+   "groups": [
+    "5급 공채·외교관",
+    "7급 공채·민경채",
+    "지역인재 7급"
+   ],
+   "timeRule": "psat",
+   "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
+   "seo": "psat",
+   "status": "live",
+   "slugs": {
+    "groups": {
+     "5급 공채·외교관": "g5",
+     "7급 공채·민경채": "g7",
+     "지역인재 7급": "r7"
+    },
+    "subjects": {
+     "언어논리": "verbal",
+     "자료해석": "data",
+     "상황판단": "situation"
+    }
+   }
+  },
+  {
+   "id": "gong9",
+   "name": "9급 공무원",
+   "desc": "국가직 9급 공채 국어·영어·한국사·전공",
+   "category": "공무원",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
+   "status": "soon"
+  },
+  {
+   "id": "gong7",
+   "name": "7급 공무원",
+   "desc": "국가직 7급 공채 전공과목",
+   "category": "공무원",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
+   "status": "soon"
+  },
+  {
+   "id": "local",
+   "name": "지방직 공무원",
+   "desc": "지방직 7·9급",
+   "category": "공무원",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
+   "status": "soon"
+  },
+  {
+   "id": "realtor",
+   "name": "공인중개사",
+   "desc": "1차·2차 객관식",
+   "category": "부동산·안전",
+   "choices": 5,
+   "secPerQuestion": 75,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "housing",
+   "name": "주택관리사보",
+   "desc": "1차 객관식",
+   "category": "부동산·안전",
+   "choices": 5,
+   "secPerQuestion": 75,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "security",
+   "name": "경비지도사",
+   "desc": "1차·2차 객관식",
+   "category": "부동산·안전",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "firemgr",
+   "name": "소방시설관리사",
+   "desc": "1차 객관식",
+   "category": "부동산·안전",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "labor",
+   "name": "공인노무사",
+   "desc": "1차 객관식",
+   "category": "법률·행정·경영",
+   "choices": 5,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "appraiser",
+   "name": "감정평가사",
+   "desc": "1차 객관식",
+   "category": "법률·행정·경영",
+   "choices": 5,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "tax",
+   "name": "세무사",
+   "desc": "1차 객관식",
+   "category": "법률·행정·경영",
+   "choices": 5,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "customs",
+   "name": "관세사",
+   "desc": "1차 객관식",
+   "category": "법률·행정·경영",
+   "choices": 5,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "patent",
+   "name": "변리사",
+   "desc": "1차 객관식",
+   "category": "법률·행정·경영",
+   "choices": 5,
+   "secPerQuestion": 100,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "social1",
+   "name": "사회복지사 1급",
+   "desc": "필기 8과목",
+   "category": "보건·복지·교육",
+   "choices": 5,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "youthcounsel",
+   "name": "청소년상담사",
+   "desc": "1·2·3급 필기",
+   "category": "보건·복지·교육",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "logistics",
+   "name": "물류관리사",
+   "desc": "필기 5과목",
+   "category": "문화·관광·물류",
+   "choices": 5,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  },
+  {
+   "id": "tourguide",
+   "name": "관광통역안내사",
+   "desc": "1차 필기",
+   "category": "문화·관광·물류",
+   "choices": 4,
+   "secPerQuestion": 60,
+   "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
+   "status": "soon"
+  }
+ ]
+}

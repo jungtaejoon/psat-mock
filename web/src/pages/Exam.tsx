@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CIRCLED, examGroup, loadPaper, pdfUrl } from "../data";
+import { CIRCLED, answerLabel, loadPaper, pdfUrl } from "../data";
+import { choicesOf, groupOf } from "../exams";
 import { prefetchPdf } from "../pdf";
 import { getSession, saveSession } from "../store";
 import { navigate } from "../router";
@@ -94,6 +95,7 @@ export default function Exam({ id }: { id: string }) {
   const q = paper?.questions.find((x) => x.no === item!.no);
   const revealed = !!s && s.mode === "practice" && s.revealed.includes(cur);
   const chosen = s?.answers[cur];
+  const nChoices = paper ? choicesOf(paper) : 5;
 
   const choose = useCallback(
     (n: number) =>
@@ -132,13 +134,13 @@ export default function Exam({ id }: { id: string }) {
         e.target instanceof HTMLSelectElement
       )
         return;
-      if (/^[1-5]$/.test(e.key)) choose(Number(e.key));
+      if (/^[1-9]$/.test(e.key) && Number(e.key) <= nChoices) choose(Number(e.key));
       else if (e.key === "ArrowRight") go(cur + 1);
       else if (e.key === "ArrowLeft") go(cur - 1);
     };
     window.addEventListener("keydown", on);
     return () => window.removeEventListener("keydown", on);
-  }, [choose, go, cur]);
+  }, [choose, go, cur, nChoices]);
 
   useEffect(() => {
     const next = s?.items[cur + 1];
@@ -181,7 +183,7 @@ export default function Exam({ id }: { id: string }) {
       <div className="exam-bar">
         <button
           className="btn ghost sm"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(`/x/${s.exam ?? "psat"}`)}
           aria-label="나가기 (진행 상황은 저장됩니다)"
         >
           ← 나가기
@@ -209,7 +211,7 @@ export default function Exam({ id }: { id: string }) {
             </span>
             {paper && (
               <span className="q-src">
-                {paper.year} {examGroup(paper.exams)} {paper.subject} {item!.no}
+                {paper.year} {groupOf(paper)} {paper.subject} {item!.no}
                 번{!paper.answersFinal && " (가답안)"}
               </span>
             )}
@@ -237,7 +239,7 @@ export default function Exam({ id }: { id: string }) {
           {q?.choices && !revealed && (
             <p className="pick-hint">
               {chosen === undefined
-                ? "문제의 보기를 눌러 답을 고르세요 (키보드 1~5도 돼요)"
+                ? `문제의 보기를 눌러 답을 고르세요 (키보드 1~${nChoices}도 돼요)`
                 : `${CIRCLED[chosen - 1]}을 골랐어요 · 다른 보기를 누르면 바뀌어요`}
             </p>
           )}
@@ -247,7 +249,7 @@ export default function Exam({ id }: { id: string }) {
             role="radiogroup"
             aria-label="답 선택"
           >
-            {CIRCLED.map((c, i) => {
+            {CIRCLED.slice(0, nChoices).map((c, i) => {
               const n = i + 1;
               let cls = "bubble";
               if (chosen === n) cls += " chosen";
@@ -283,7 +285,7 @@ export default function Exam({ id }: { id: string }) {
                 <div className={`verdict ${isCorrect ? "ok" : "no"}`}>
                   {isCorrect
                     ? "정답입니다"
-                    : `오답 · 정답 ${q.answer.length === 5 ? "전원 정답" : q.answer.map((a) => CIRCLED[a - 1]).join(", ")}`}
+                    : `오답 · 정답 ${answerLabel(q.answer, nChoices)}`}
                 </div>
               )}
               {revealed && <ExplanationPanel item={item!} answer={q.answer} />}
@@ -350,7 +352,7 @@ export default function Exam({ id }: { id: string }) {
                     {i + 1}
                     {s.flags.includes(i) && <span className="fl">⚑</span>}
                   </button>
-                  {[1, 2, 3, 4, 5].map((n) => (
+                  {Array.from({ length: p ? choicesOf(p) : 5 }, (_, k) => k + 1).map((n) => (
                     <button
                       key={n}
                       className={`dot ${s.answers[i] === n ? "on" : ""} ${rev && qq?.answer.includes(n) ? "ans" : ""}`}

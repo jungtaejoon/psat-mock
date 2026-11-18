@@ -307,7 +307,7 @@ export function ExplanationPanel({
             <>
               <div className="kp">💡 {ex.key_point}</div>
               <Rich text={ex.explanation} />
-              {ex.choices?.length === 5 && answer.length < 5 && (
+              {ex.choices?.length > 0 && answer.length < ex.choices.length && (
                 <ol className="choices">
                   {ex.choices.map((c, i) => (
                     <li key={i} className={answer.includes(i + 1) ? "ok" : ""}>

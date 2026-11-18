@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { CIRCLED, examGroup, loadPaper } from "../data";
+import { CIRCLED, answerLabel, loadPaper } from "../data";
+import { choicesOf, groupOf } from "../exams";
 import { getSession, newSession } from "../store";
 import { navigate } from "../router";
 import { ExplanationPanel, QuestionImage } from "../QuestionView";
 import { AdSlot } from "../monetization";
 import SlopAd from "../SlopAd";
-import { SUBJECTS, type Paper } from "../types";
+import type { Paper } from "../types";
 
 function fmtMin(sec: number) {
   const m = Math.floor(sec / 60);
@@ -47,7 +48,7 @@ export default function Result({ id }: { id: string }) {
 
   const correct = rows.filter((r) => r.ok).length;
   const score = Math.round((correct / rows.length) * 1000) / 10;
-  const bySubj = SUBJECTS.map((sub) => {
+  const bySubj = [...new Set(rows.map((r) => r.paper.subject))].map((sub) => {
     const rs = rows.filter((r) => r.paper.subject === sub);
     return { sub, n: rs.length, c: rs.filter((r) => r.ok).length };
   }).filter((x) => x.n);
@@ -56,7 +57,7 @@ export default function Result({ id }: { id: string }) {
   return (
     <div className="result">
       <div className="exam-bar">
-        <button className="btn ghost sm" onClick={() => navigate("/")}>
+        <button className="btn ghost sm" onClick={() => navigate(`/x/${s.exam ?? "psat"}`)}>
           ← 처음으로
         </button>
         <div className="exam-title">{s.title} · 채점 결과</div>
@@ -132,14 +133,12 @@ export default function Result({ id }: { id: string }) {
                 <span className="mark">{r.ok ? "○" : "✕"}</span>
                 <span className="rn">문 {r.i + 1}</span>
                 <span className="muted src">
-                  {r.paper.year} {examGroup(r.paper.exams)} {r.paper.subject}{" "}
+                  {r.paper.year} {groupOf(r.paper)} {r.paper.subject}{" "}
                   {r.q.no}번
                 </span>
                 <span className="ans">
                   내 답 {r.mine ? CIRCLED[r.mine - 1] : "–"} · 정답{" "}
-                  {r.q.answer.length === 5
-                    ? "전원"
-                    : r.q.answer.map((a) => CIRCLED[a - 1]).join(",")}
+                  {answerLabel(r.q.answer, choicesOf(r.paper))}
                 </span>
               </button>
               {open === r.i && (

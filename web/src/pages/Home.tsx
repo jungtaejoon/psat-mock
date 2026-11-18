@@ -1,11 +1,6 @@
+/** 시험 하나의 첫 화면: 연도별 기출 / 랜덤 모의고사 / 기록·오답노트 */
 import { useEffect, useMemo, useState } from "react";
-import {
-  EXAM_GROUPS,
-  examGroup,
-  loadIndex,
-  loadPaper,
-  timeLimitFor,
-} from "../data";
+import { loadIndex, loadPaper } from "../data";
 import {
   deleteSession,
   listSessions,
@@ -16,13 +11,8 @@ import {
 import { navigate } from "../router";
 import { AdSlot } from "../monetization";
 import SlopAd from "../SlopAd";
-import {
-  SUBJECTS,
-  type ItemRef,
-  type Mode,
-  type PaperMeta,
-  type Subject,
-} from "../types";
+import { examOf, groupOf, ordered, timeLimitOf, type ExamDef } from "../exams";
+import type { ItemRef, Mode, PaperMeta, Session } from "../types";
 
 type Tab = "year" | "random" | "history";
 
@@ -55,72 +45,104 @@ function ModeToggle({
   );
 }
 
-function start(title: string, mode: Mode, items: ItemRef[]) {
+function start(exam: ExamDef, title: string, mode: Mode, items: ItemRef[]) {
   const s = newSession({
+    exam: exam.id,
     title,
     mode,
     items,
-    timeLimitSec: mode === "exam" ? timeLimitFor(items.length) : 0,
+    timeLimitSec: mode === "exam" ? timeLimitOf(exam, items.length) : 0,
   });
   navigate(`/exam/${s.id}`);
 }
 
-function YearTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
-  const [group, setGroup] = useState(EXAM_GROUPS[0]);
+function YearTab({
+  exam,
+  papers,
+  mode,
+}: {
+  exam: ExamDef;
+  papers: PaperMeta[];
+  mode: Mode;
+}) {
+  const groups = useMemo(
+    () => ordered(exam.groups, papers.map(groupOf)),
+    [exam, papers],
+  );
+  const subjects = useMemo(
+    () =>
+      ordered(
+        exam.subjects,
+        papers.map((p) => p.subject),
+      ),
+    [exam, papers],
+  );
+  const [group, setGroup] = useState(groups[0]);
   const rows = useMemo(() => {
-    const byYear = new Map<number, Partial<Record<Subject, PaperMeta>>>();
+    const byYear = new Map<number, Record<string, PaperMeta>>();
     for (const p of papers) {
-      if (examGroup(p.exams) !== group) continue;
+      if (groupOf(p) !== group) continue;
       const row = byYear.get(p.year) ?? {};
-      row[p.subject] = p;
+      row[p.subject] ??= p;
       byYear.set(p.year, row);
     }
     return [...byYear.entries()].sort((a, b) => b[0] - a[0]);
   }, [papers, group]);
+  // 이 계열에 실제로 나오는 과목만 열로 쓴다
+  const cols = subjects.filter((s) => rows.some(([, r]) => r[s]));
 
   const startPaper = (p: PaperMeta) =>
     start(
+      exam,
       `${p.year} ${group} ${p.subject}`,
       mode,
       Array.from({ length: p.count }, (_, i) => ({ paperId: p.id, no: i + 1 })),
     );
-
-  const startAll = (year: number, row: Partial<Record<Subject, PaperMeta>>) => {
-    const items = SUBJECTS.flatMap((s) => {
-      const p = row[s];
-      return p
-        ? Array.from({ length: p.count }, (_, i) => ({
-            paperId: p.id,
+  const startAll = (year: number, row: Record<string, PaperMeta>) => {
+    const items = cols.flatMap((s) =>
+      row[s]
+        ? Array.from({ length: row[s].count }, (_, i) => ({
+            paperId: row[s].id,
             no: i + 1,
           }))
-        : [];
-    });
-    start(`${year} ${group} 전 영역`, mode, items);
+        : [],
+    );
+    start(exam, `${year} ${group} 전 과목`, mode, items);
   };
 
   return (
     <>
-      <div className="chips" role="tablist">
-        {EXAM_GROUPS.filter((g) =>
-          papers.some((p) => examGroup(p.exams) === g),
-        ).map((g) => (
-          <button
-            key={g}
-            role="tab"
-            aria-selected={g === group}
-            className={g === group ? "chip on" : "chip"}
-            onClick={() => setGroup(g)}
-          >
-            {g}
-          </button>
-        ))}
-      </div>
+      {groups.length > 1 && (
+        <div className="chips" role="tablist">
+          {groups.map((g) => (
+            <button
+              key={g}
+              role="tab"
+              aria-selected={g === group}
+              className={g === group ? "chip on" : "chip"}
+              onClick={() => setGroup(g)}
+            >
+              {g}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="year-list">
         {rows.map(([year, row]) => (
           <div key={year} className="year-row">
             <div className="year">{year}</div>
-            <div className="subj-btns">
-              {SUBJECTS.map((s) => {
+            <div
+              className="subj-btns"
+              style={
+                {
+                  "--cols": Math.min(
+                    cols.length + (cols.length > 1 ? 1 : 0),
+                    6,
+                  ),
+                } as React.CSSProperties
+              }
+            >
+              {cols.map((s) => {
                 const p = row[s];
                 return p ? (
                   <button
@@ -141,12 +163,12 @@ function YearTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
                   </span>
                 );
               })}
-              {SUBJECTS.filter((s) => row[s]).length > 1 && (
+              {cols.filter((s) => row[s]).length > 1 && (
                 <button
                   className="btn primary subj"
                   onClick={() => startAll(year, row)}
                 >
-                  전 영역
+                  전 과목
                   <small>연속 응시</small>
                 </button>
               )}
@@ -167,12 +189,32 @@ function shuffle<T>(a: T[]): T[] {
   return b;
 }
 
-function RandomTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
+function RandomTab({
+  exam,
+  papers,
+  mode,
+}: {
+  exam: ExamDef;
+  papers: PaperMeta[];
+  mode: Mode;
+}) {
+  const allSubjects = useMemo(
+    () =>
+      ordered(
+        exam.subjects,
+        papers.map((p) => p.subject),
+      ),
+    [exam, papers],
+  );
+  const allGroups = useMemo(
+    () => ordered(exam.groups, papers.map(groupOf)),
+    [exam, papers],
+  );
   const years = papers.map((p) => p.year);
   const minY = Math.min(...years);
   const maxY = Math.max(...years);
-  const [subjects, setSubjects] = useState<Subject[]>(["언어논리"]);
-  const [groups, setGroups] = useState<string[]>(EXAM_GROUPS);
+  const [subjects, setSubjects] = useState<string[]>(allSubjects.slice(0, 1));
+  const [groups, setGroups] = useState<string[]>(allGroups);
   const [count, setCount] = useState(25);
   const [from, setFrom] = useState(Math.max(minY, maxY - 9));
   const [to, setTo] = useState(maxY);
@@ -182,42 +224,47 @@ function RandomTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
   const pool = papers.filter(
     (p) =>
       subjects.includes(p.subject) &&
-      groups.includes(examGroup(p.exams)) &&
+      groups.includes(groupOf(p)) &&
       p.year >= from &&
       p.year <= to,
   );
   const poolSize = pool.reduce((n, p) => n + p.count, 0);
-
   const toggle = <T,>(list: T[], v: T) =>
     list.includes(v) ? list.filter((x) => x !== v) : [...list, v];
 
   const go = async () => {
     setBusy(true);
     const seen = unseen ? seenKeys() : new Set<string>();
-    let refs: ItemRef[] = pool.flatMap((p) =>
-      Array.from({ length: p.count }, (_, i) => ({ paperId: p.id, no: i + 1 })),
+    let refs: ItemRef[] = shuffle(
+      pool.flatMap((p) =>
+        Array.from({ length: p.count }, (_, i) => ({
+          paperId: p.id,
+          no: i + 1,
+        })),
+      ),
     );
-    refs = shuffle(refs);
     const fresh = refs.filter((r) => !seen.has(`${r.paperId}#${r.no}`));
     const rest = refs.filter((r) => seen.has(`${r.paperId}#${r.no}`));
-    let picked = [...fresh, ...rest].slice(0, count);
-    // 공통 지문 세트 문제는 같이 나오도록, 그리고 영역별로 묶어 정렬
-    await Promise.all(
-      [...new Set(picked.map((r) => r.paperId))].map(loadPaper),
-    );
+    refs = [...fresh, ...rest].slice(0, count);
+    await Promise.all([...new Set(refs.map((r) => r.paperId))].map(loadPaper));
     const order = (r: ItemRef) =>
-      SUBJECTS.indexOf(papers.find((p) => p.id === r.paperId)!.subject);
-    picked = picked.sort((a, b) => order(a) - order(b));
+      allSubjects.indexOf(papers.find((p) => p.id === r.paperId)!.subject);
+    refs.sort((a, b) => order(a) - order(b));
     setBusy(false);
-    start(`랜덤 ${subjects.join("·")} ${picked.length}문항`, mode, picked);
+    start(
+      exam,
+      `${exam.name} 랜덤 ${subjects.join("·")} ${refs.length}문항`,
+      mode,
+      refs,
+    );
   };
 
   return (
     <div className="form">
       <fieldset>
-        <legend>영역</legend>
+        <legend>과목</legend>
         <div className="chips">
-          {SUBJECTS.map((s) => (
+          {allSubjects.map((s) => (
             <button
               key={s}
               className={subjects.includes(s) ? "chip on" : "chip"}
@@ -229,23 +276,23 @@ function RandomTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
           ))}
         </div>
       </fieldset>
-      <fieldset>
-        <legend>시험</legend>
-        <div className="chips">
-          {EXAM_GROUPS.filter((g) =>
-            papers.some((p) => examGroup(p.exams) === g),
-          ).map((g) => (
-            <button
-              key={g}
-              className={groups.includes(g) ? "chip on" : "chip"}
-              aria-pressed={groups.includes(g)}
-              onClick={() => setGroups(toggle(groups, g))}
-            >
-              {g}
-            </button>
-          ))}
-        </div>
-      </fieldset>
+      {allGroups.length > 1 && (
+        <fieldset>
+          <legend>시험</legend>
+          <div className="chips">
+            {allGroups.map((g) => (
+              <button
+                key={g}
+                className={groups.includes(g) ? "chip on" : "chip"}
+                aria-pressed={groups.includes(g)}
+                onClick={() => setGroups(toggle(groups, g))}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      )}
       <fieldset>
         <legend>출제 연도</legend>
         <div className="row">
@@ -301,7 +348,8 @@ function RandomTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
         <span className="muted">
           출제 대상 {poolSize.toLocaleString()}문항
           {mode === "exam" &&
-            ` · 제한 시간 ${timeLimitFor(Math.min(count, poolSize)) / 60}분`}
+            poolSize > 0 &&
+            ` · 제한 시간 ${timeLimitOf(exam, Math.min(count, poolSize)) / 60}분`}
         </span>
         <button
           className="btn primary lg"
@@ -315,12 +363,25 @@ function RandomTab({ papers, mode }: { papers: PaperMeta[]; mode: Mode }) {
   );
 }
 
-function HistoryTab({ papers }: { papers: PaperMeta[] }) {
-  const [sessions, setSessions] = useState(listSessions());
+/** 이 시험의 기록만 (예전 기록은 exam 이 없으면 PSAT) */
+export const sessionsOf = (examId: string): Session[] =>
+  listSessions().filter((s) => (s.exam ?? "psat") === examId);
+
+function HistoryTab({ exam, papers }: { exam: ExamDef; papers: PaperMeta[] }) {
+  const [sessions, setSessions] = useState(() => sessionsOf(exam.id));
   const [wrong, setWrong] = useState<ItemRef[] | null>(null);
+  const subjects = useMemo(
+    () =>
+      ordered(
+        exam.subjects,
+        papers.map((p) => p.subject),
+      ),
+    [exam, papers],
+  );
 
   useEffect(() => {
     // 오답 계산엔 정답이 필요해서 관련 문제지를 불러온다
+    const mine = new Set(papers.map((p) => p.id));
     const ids = [
       ...new Set(
         sessions
@@ -332,6 +393,7 @@ function HistoryTab({ papers }: { papers: PaperMeta[] }) {
       const map = new Map(ps.filter(Boolean).map((p) => [p!.id, p!]));
       setWrong(
         wrongItems((ref, choice) => {
+          if (!mine.has(ref.paperId)) return null;
           const q = map
             .get(ref.paperId)
             ?.questions.find((x) => x.no === ref.no);
@@ -340,7 +402,7 @@ function HistoryTab({ papers }: { papers: PaperMeta[] }) {
         }),
       );
     });
-  }, [sessions]);
+  }, [sessions, papers]);
 
   if (!sessions.length)
     return (
@@ -358,17 +420,25 @@ function HistoryTab({ papers }: { papers: PaperMeta[] }) {
             <strong>오답노트</strong>
             <div className="muted">
               최근 기록 기준 틀린 문항 {wrong.length}개 ·{" "}
-              {SUBJECTS.map(
-                (s) =>
-                  `${s} ${wrong.filter((w) => subjOf(w.paperId) === s).length}`,
-              ).join(" / ")}
+              {subjects
+                .map(
+                  (s) =>
+                    [
+                      s,
+                      wrong.filter((w) => subjOf(w.paperId) === s).length,
+                    ] as const,
+                )
+                .filter(([, n]) => n > 0)
+                .map(([s, n]) => `${s} ${n}`)
+                .join(" / ")}
             </div>
           </div>
           <button
             className="btn primary"
             onClick={() =>
               start(
-                `오답 다시 풀기 ${wrong.length}문항`,
+                exam,
+                `${exam.name} 오답 다시 풀기 ${wrong.length}문항`,
                 "practice",
                 shuffle(wrong),
               )
@@ -406,7 +476,7 @@ function HistoryTab({ papers }: { papers: PaperMeta[] }) {
                 aria-label="기록 삭제"
                 onClick={() => {
                   deleteSession(s.id);
-                  setSessions(listSessions());
+                  setSessions(sessionsOf(exam.id));
                 }}
               >
                 ×
@@ -419,71 +489,96 @@ function HistoryTab({ papers }: { papers: PaperMeta[] }) {
   );
 }
 
-export default function Home() {
-  const [papers, setPapers] = useState<PaperMeta[] | null>(null);
+export default function ExamHome({ exam }: { exam: ExamDef }) {
+  const [all, setAll] = useState<PaperMeta[] | null>(null);
   const [tab, setTab] = useState<Tab>("year");
   const [mode, setMode] = useState<Mode>("exam");
   useEffect(() => {
-    loadIndex().then(setPapers);
+    loadIndex().then(setAll);
   }, []);
+  const papers = useMemo(
+    () => all?.filter((p) => examOf(p).id === exam.id) ?? null,
+    [all, exam],
+  );
 
   const total = papers?.reduce((n, p) => n + p.count, 0) ?? 0;
-  const years = papers
+  const explained = papers?.reduce((n, p) => n + (p.explained ?? 0), 0) ?? 0;
+  const years = papers?.length
     ? `${Math.min(...papers.map((p) => p.year))}–${Math.max(...papers.map((p) => p.year))}`
     : "";
 
   return (
     <div className="home-wrap">
       <div className="home">
+        <nav className="crumb">
+          <a href="#/" onClick={(e) => (e.preventDefault(), navigate("/"))}>
+            ← 전체 시험
+          </a>
+        </nav>
         <header className="hero">
-          <h1>PSAT 기출 모의고사</h1>
+          <h1>{exam.name} 기출 모의고사</h1>
           <p>
-            5급 공채·외교관, 7급 공채·민경채, 지역인재 PSAT 기출을 실제 시험처럼
-            풀고, 문항별 해설로 복습하세요.
-            {papers && (
+            {exam.desc} 기출을 실제 시험처럼 풀고, 문항별 해설로 복습하세요.
+            {papers && papers.length > 0 && (
               <>
                 <br />
                 <strong>
                   {years}년 · 문제지 {papers.length}개 ·{" "}
                   {total.toLocaleString()}문항
+                  {explained > 0 &&
+                    explained < total &&
+                    ` · 해설 ${Math.round((explained / total) * 100)}%`}
                 </strong>
               </>
             )}
           </p>
         </header>
 
-        <nav className="tabs" role="tablist">
-          {(
-            [
-              ["year", "연도별 기출"],
-              ["random", "랜덤 모의고사"],
-              ["history", "기록·오답노트"],
-            ] as [Tab, string][]
-          ).map(([k, label]) => (
-            <button
-              key={k}
-              role="tab"
-              aria-selected={tab === k}
-              className={tab === k ? "on" : ""}
-              onClick={() => setTab(k)}
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
-
-        {!papers ? (
-          <div className="skeleton tall" />
+        {papers && papers.length === 0 ? (
+          <p className="muted empty">이 시험의 기출은 준비 중입니다.</p>
         ) : (
-          <section className="panel">
-            {tab !== "history" && <ModeToggle mode={mode} setMode={setMode} />}
-            <div className="ad-inline">
-              <SlopAd />
-            </div>
-            {tab === "year" && <YearTab papers={papers} mode={mode} />}
-            {tab === "random" && <RandomTab papers={papers} mode={mode} />}
-            {tab === "history" && <HistoryTab papers={papers} />}
-          </section>
+          <>
+            <nav className="tabs" role="tablist">
+              {(
+                [
+                  ["year", "연도별 기출"],
+                  ["random", "랜덤 모의고사"],
+                  ["history", "기록·오답노트"],
+                ] as [Tab, string][]
+              ).map(([k, label]) => (
+                <button
+                  key={k}
+                  role="tab"
+                  aria-selected={tab === k}
+                  className={tab === k ? "on" : ""}
+                  onClick={() => setTab(k)}
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
+            {!papers ? (
+              <div className="skeleton tall" />
+            ) : (
+              <section className="panel">
+                {tab !== "history" && (
+                  <ModeToggle mode={mode} setMode={setMode} />
+                )}
+                <div className="ad-inline">
+                  <SlopAd />
+                </div>
+                {tab === "year" && (
+                  <YearTab exam={exam} papers={papers} mode={mode} />
+                )}
+                {tab === "random" && (
+                  <RandomTab exam={exam} papers={papers} mode={mode} />
+                )}
+                {tab === "history" && (
+                  <HistoryTab exam={exam} papers={papers} />
+                )}
+              </section>
+            )}
+          </>
         )}
         <AdSlot slot="home-bottom" />
       </div>

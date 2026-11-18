@@ -1,11 +1,18 @@
 /** #/start/<paperId>/<exam|practice> — 검색 페이지(/psat/...)에서 문제지 하나를 바로 시작한다 */
 import { useEffect, useState } from "react";
-import { examGroup, loadIndex, timeLimitFor } from "./data";
+import { loadIndex } from "./data";
+import { examOf, groupOf, timeLimitOf } from "./exams";
 import { newSession } from "./store";
 import { navigate } from "./router";
 import type { Mode } from "./types";
 
-export default function StartPaper({ paperId, mode }: { paperId: string; mode: Mode }) {
+export default function StartPaper({
+  paperId,
+  mode,
+}: {
+  paperId: string;
+  mode: Mode;
+}) {
   const [error, setError] = useState(false);
   useEffect(() => {
     let alive = true;
@@ -13,12 +20,17 @@ export default function StartPaper({ paperId, mode }: { paperId: string; mode: M
       if (!alive) return;
       const p = papers.find((x) => x.id === paperId);
       if (!p) return setError(true);
-      const items = Array.from({ length: p.count }, (_, i) => ({ paperId: p.id, no: i + 1 }));
+      const exam = examOf(p);
+      const items = Array.from({ length: p.count }, (_, i) => ({
+        paperId: p.id,
+        no: i + 1,
+      }));
       const s = newSession({
-        title: `${p.year} ${examGroup(p.exams)} ${p.subject}`,
+        exam: exam.id,
+        title: `${p.year} ${groupOf(p)} ${p.subject}`,
         mode,
         items,
-        timeLimitSec: mode === "exam" ? timeLimitFor(items.length) : 0,
+        timeLimitSec: mode === "exam" ? timeLimitOf(exam, items.length) : 0,
       });
       // 기록을 바꿔치기해서 뒤로 가기로 시작 화면에 다시 오지 않게 한다 (hashchange 도 발생)
       window.location.replace(`#/exam/${s.id}`);

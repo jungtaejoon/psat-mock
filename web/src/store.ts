@@ -33,7 +33,7 @@ export function deleteSession(id: string) {
   write(read().filter((x) => x.id !== id));
 }
 
-export function newSession(init: Pick<Session, "title" | "mode" | "items" | "timeLimitSec">): Session {
+export function newSession(init: Pick<Session, "title" | "mode" | "items" | "timeLimitSec"> & { exam?: string }): Session {
   const s: Session = {
     ...init,
     id: Math.random().toString(36).slice(2, 10),

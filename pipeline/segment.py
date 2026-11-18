@@ -245,6 +245,18 @@ def segment(pdf_path: Path, n_questions: int):
     return dict(width=round(W, 1), height=round(doc[0].rect.height, 1), pages=len(doc)), questions
 
 
+def group_of(exam: str, exams: list[str]) -> str:
+    """시험 안의 계열 이름. PSAT 는 같은 문제지를 여러 시험이 함께 써서 시험 이름들로 정한다 (web/src/exams.ts 와 같은 규칙)."""
+    if exam == "psat":
+        if any(e.startswith("5급 공채") or e == "외교관후보자" for e in exams):
+            return "5급 공채·외교관"
+        if any("민간경력자" in e or e == "7급 공채" for e in exams):
+            return "7급 공채·민경채"
+        if any(e.startswith("지역인재") for e in exams):
+            return "지역인재 7급"
+    return exams[0] if exams else ""
+
+
 def _work(args):
     pid, src, n = args
     try:
@@ -284,13 +296,19 @@ def main(only: str | None = None) -> None:
         dst = OUT / "pdf" / f"{pid}.pdf"
         if src.resolve() != dst.resolve():
             shutil.copyfile(src, dst)
+        exam = p.get("exam", "psat")
+        common = dict(exam=exam, group=p.get("group") or group_of(exam, p["exams"]), choices=p.get("choices", 5))
+        if p.get("kogl"):
+            common["kogl"] = p["kogl"]
         paper = dict(id=pid, year=p["year"], subject=p["subject"], exams=p["exams"], booklet=p.get("booklet"),
-                     answersFinal=p.get("answersFinal", True), **meta, questions=qs)
+                     answersFinal=p.get("answersFinal", True), **common, **meta, questions=qs)
         (OUT / "papers" / f"{pid}.json").write_text(json.dumps(paper, ensure_ascii=False))
+        expl = OUT / "explanations" / f"{pid}.json"
+        explained = sum(1 for k in json.loads(expl.read_text()) if k.isdigit()) if expl.exists() else 0
         index.append(dict(id=pid, year=p["year"], subject=p["subject"], exams=p["exams"], count=len(qs),
-                          answersFinal=p.get("answersFinal", True)))
+                          answersFinal=p.get("answersFinal", True), explained=explained, **common))
     if not only:
-        index.sort(key=lambda x: (-x["year"], x["exams"][0], x["subject"]))
+        index.sort(key=lambda x: (x["exam"], -x["year"], x["exams"][0], x["subject"]))
         (OUT / "index.json").write_text(json.dumps(dict(papers=index), ensure_ascii=False))
     print(f"ok {len(index)}, failed {len(failed)}")
     for pid, why in failed:

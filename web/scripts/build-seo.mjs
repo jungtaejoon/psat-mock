@@ -3,10 +3,10 @@
  *
  * 앱은 해시 라우팅(#/...)이라 검색엔진에는 첫 화면 하나로만 보인다.
  * 그래서 문제지마다 정답표·문항별 해설이 글자로 들어 있는 정적 HTML 을 따로 만든다.
- *   dist/psat/                 전체 기출 목록 (허브)
- *   dist/psat/<slug>/          문제지 하나: 정답표 + 문항별 해설, 앱으로 바로 풀기 링크
+ *   dist/<시험>/               시험별 전체 기출 목록 (허브) — PSAT 는 /psat/
+ *   dist/<시험>/<slug>/        문제지 하나: 정답표 + 문항별 해설, 앱으로 바로 풀기 링크
  *   dist/sitemap.xml           위 페이지 전부
- * 데이터는 public/data(index.json, papers/, explanations/)를 그대로 읽는다.
+ * 데이터는 public/data(index.json, papers/, explanations/), 시험 목록은 src/exams.json 을 읽는다.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -19,17 +19,48 @@ const SITE = "https://alltests.ai.kr";
 const CIRCLED = "①②③④⑤";
 const TODAY = new Date().toISOString().slice(0, 10);
 
-const GROUPS = [
-  { key: "g5", label: "5급 공채·외교관", test: (ex) => ex.some((e) => e.startsWith("5급 공채") || e === "외교관후보자") },
-  { key: "g7", label: "7급 공채·민경채", test: (ex) => ex.some((e) => e.includes("민간경력자") || e === "7급 공채") },
-  { key: "r7", label: "지역인재 7급", test: (ex) => ex.some((e) => e.startsWith("지역인재")) },
-];
-const SUBJ = { 언어논리: "verbal", 자료해석: "data", 상황판단: "situation" };
-const SUBJ_ORDER = ["언어논리", "자료해석", "상황판단"];
+const CATALOG = JSON.parse(
+  fs.readFileSync(path.join(ROOT, "src", "exams.json"), "utf8"),
+);
+const EXAM = new Map(CATALOG.exams.map((e) => [e.id, e]));
+const PSAT_GROUP = (exams) =>
+  exams.some((e) => e.startsWith("5급 공채") || e === "외교관후보자")
+    ? "5급 공채·외교관"
+    : exams.some((e) => e.includes("민간경력자") || e === "7급 공채")
+      ? "7급 공채·민경채"
+      : exams.some((e) => e.startsWith("지역인재"))
+        ? "지역인재 7급"
+        : (exams[0] ?? "기타");
+const groupOf = (p) =>
+  p.group ??
+  ((p.exam ?? "psat") === "psat" ? PSAT_GROUP(p.exams) : (p.exams[0] ?? ""));
+/** 주소용 조각: 정해 둔 영문 키가 있으면 그것, 없으면 공백·기호만 정리한 원래 이름 */
+const slugPart = (map, v) =>
+  map?.[v] ??
+  String(v)
+    .trim()
+    .replace(/[\s/·()]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+const ordered = (defined, seen) => {
+  const uniq = [...new Set(seen)];
+  return defined
+    ? [
+        ...defined.filter((d) => uniq.includes(d)),
+        ...uniq.filter((u) => !defined.includes(u)),
+      ]
+    : uniq;
+};
 
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const esc = (s) =>
+  String(s ?? "").replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ],
+  );
 const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
-const group = (exams) => GROUPS.find((g) => g.test(exams)) ?? { key: "etc", label: exams[0] ?? "기타" };
 
 /** 해설 마크업: **굵게**, "- " 목록, 줄바꿈만 허용 */
 function md(text) {
@@ -43,7 +74,7 @@ function md(text) {
       list.push(`<li>${inline.slice(2)}</li>`);
       continue;
     }
-    if (list) out.push(`<ul>${list.join("")}</ul>`), (list = null);
+    if (list) (out.push(`<ul>${list.join("")}</ul>`), (list = null));
     if (line) out.push(`<p>${inline}</p>`);
   }
   if (list) out.push(`<ul>${list.join("")}</ul>`);
@@ -63,9 +94,10 @@ function stemOf(q) {
   }
   return stem.length > 160 ? stem.slice(0, 160) + "…" : stem;
 }
-const spacedOk = (t) => t.length > 0 && (t.match(/ /g)?.length ?? 0) / t.length > 0.08;
+const spacedOk = (t) =>
+  t.length > 0 && (t.match(/ /g)?.length ?? 0) / t.length > 0.08;
 
-function layout({ title, description, canonical, body, jsonld }) {
+function layout({ exam, title, description, canonical, body, jsonld }) {
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -75,7 +107,7 @@ function layout({ title, description, canonical, body, jsonld }) {
 <meta name="description" content="${esc(description)}" />
 <link rel="canonical" href="${canonical}" />
 <meta property="og:type" content="article" />
-<meta property="og:site_name" content="alltests · PSAT 기출 모의고사" />
+<meta property="og:site_name" content="alltests · 기출 모의고사" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:url" content="${canonical}" />
@@ -106,7 +138,7 @@ footer{color:var(--muted);font-size:13px;margin-top:28px}
 <body>
 <main>
 ${body}
-<footer>문제·정답 출처: 인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr). 해설은 AI(Claude)가 작성했으며 오류가 있을 수 있습니다. · <a href="/">alltests 홈</a> · <a href="/psat/">PSAT 기출 전체 목록</a></footer>
+<footer>문제·정답 출처: ${esc(exam.source)}. 해설은 AI(Claude)가 작성한 것으로 공식 해설이 아니며 오류가 있을 수 있습니다. · <a href="/">alltests 홈</a> · <a href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체 목록</a></footer>
 </main>
 </body>
 </html>
@@ -114,56 +146,70 @@ ${body}
 }
 
 const index = read(path.join(DATA, "index.json")).papers;
-
-// slug: 2025-g5-verbal (같은 해·계열·영역에 문제지가 둘 이상이면 -2, -3)
-const seen = new Map();
-const papers = [...index]
-  .sort((a, b) => b.year - a.year || a.id.localeCompare(b.id))
-  .map((p) => {
-    const g = group(p.exams);
-    const base = `${p.year}-${g.key}-${SUBJ[p.subject] ?? "etc"}`;
-    const n = (seen.get(base) ?? 0) + 1;
-    seen.set(base, n);
-    return { ...p, g, slug: n === 1 ? base : `${base}-${n}` };
-  });
-// 같은 슬롯에 둘 이상이면 제목에 시험 이름을 붙여 구별
-const dupBase = new Set([...seen].filter(([, n]) => n > 1).map(([b]) => b));
-for (const p of papers) {
-  const base = p.slug.replace(/-\d$/, "");
-  p.label = dupBase.has(base) ? p.exams.join("·") : p.g.label;
-  p.title = `${p.year}년 ${p.label} PSAT ${p.subject} 기출문제 정답·해설`;
-}
-
-fs.rmSync(path.join(DIST, "psat"), { recursive: true, force: true });
 let pages = 0;
+const urls = [{ loc: `${SITE}/`, pri: "1.0", freq: "daily" }];
+const recentLinks = [];
 
-for (const p of papers) {
-  const paper = read(path.join(DATA, "papers", `${p.id}.json`));
-  const exPath = path.join(DATA, "explanations", `${p.id}.json`);
-  const ex = fs.existsSync(exPath) ? read(exPath) : {};
-  const qs = paper.questions;
-  const url = `${SITE}/psat/${p.slug}/`;
-  const desc = `${p.year}년 ${p.exams.join(", ")} PSAT ${p.subject} 기출 ${qs.length}문항의 공식 정답과 문항별 해설. 빠른 풀이, 선택지별 판단, 시간 단축 팁까지. 실제 시험처럼 타이머·OMR로 바로 풀어 볼 수 있어요.`;
+function buildExam(exam, list) {
+  const base = exam.seo ?? exam.id;
+  const slugs = exam.slugs ?? {};
+  const ANS = (q) =>
+    q.answer.length >= (q.choices ?? exam.choices)
+      ? "전항"
+      : q.answer.map((a) => CIRCLED[a - 1]).join("");
 
-  const ansRows = [];
-  for (let i = 0; i < qs.length; i += 10) {
-    const chunk = qs.slice(i, i + 10);
-    ansRows.push(
-      `<tr><th>문항</th>${chunk.map((q) => `<th><a href="#q${q.no}">${q.no}</a></th>`).join("")}</tr>` +
-        `<tr><th>정답</th>${chunk.map((q) => `<td class="ans">${q.answer.length >= 5 ? "전항" : q.answer.map((a) => CIRCLED[a - 1]).join("")}</td>`).join("")}</tr>`,
-    );
+  // slug: 2025-g5-verbal (같은 해·계열·영역에 문제지가 둘 이상이면 -2, -3)
+  const seen = new Map();
+  const papers = [...list]
+    .sort((a, b) => b.year - a.year || a.id.localeCompare(b.id))
+    .map((p) => {
+      const gl = groupOf(p);
+      const g = { key: slugPart(slugs.groups, gl), label: gl };
+      const sb = `${p.year}-${g.key}-${slugPart(slugs.subjects, p.subject)}`;
+      const n = (seen.get(sb) ?? 0) + 1;
+      seen.set(sb, n);
+      return { ...p, g, slug: n === 1 ? sb : `${sb}-${n}` };
+    });
+  // 같은 슬롯에 둘 이상이면 제목에 시험 이름을 붙여 구별
+  const dupBase = new Set([...seen].filter(([, n]) => n > 1).map(([b]) => b));
+  for (const p of papers) {
+    const sb = p.slug.replace(/-\d$/, "");
+    p.label = dupBase.has(sb) ? p.exams.join("·") : p.g.label;
+    p.title = `${p.year}년 ${p.label} ${exam.name} ${p.subject} 기출문제 정답·해설`;
   }
 
-  const items = qs
-    .map((q) => {
-      const e = ex[String(q.no)];
-      const ans = q.answer.length >= 5 ? "모두 정답 처리" : q.answer.map((a) => CIRCLED[a - 1]).join(", ");
-      const shared = q.shared?.text ?? "";
-      const raw = (shared ? shared + "\n\n" : "") + q.text;
-      // 제목은 해설의 핵심 요약(주제어가 담겨 검색에 유리). 발문은 띄어쓰기가 살아 있을 때만 아래에
-      const stem = stemOf(q);
-      const heading = e?.key_point || stem;
-      return `<section class="card" id="q${q.no}">
+  fs.rmSync(path.join(DIST, base), { recursive: true, force: true });
+
+  for (const p of papers) {
+    const paper = read(path.join(DATA, "papers", `${p.id}.json`));
+    const exPath = path.join(DATA, "explanations", `${p.id}.json`);
+    const ex = fs.existsSync(exPath) ? read(exPath) : {};
+    const qs = paper.questions;
+    const url = `${SITE}/${base}/${p.slug}/`;
+    const desc = `${p.year}년 ${p.exams.join(", ")} ${exam.name} ${p.subject} 기출 ${qs.length}문항의 공식 정답과 문항별 해설. 빠른 풀이, 선택지별 판단, 시간 단축 팁까지. 실제 시험처럼 타이머·OMR로 바로 풀어 볼 수 있어요.`;
+
+    const ansRows = [];
+    for (let i = 0; i < qs.length; i += 10) {
+      const chunk = qs.slice(i, i + 10);
+      ansRows.push(
+        `<tr><th>문항</th>${chunk.map((q) => `<th><a href="#q${q.no}">${q.no}</a></th>`).join("")}</tr>` +
+          `<tr><th>정답</th>${chunk.map((q) => `<td class="ans">${ANS({ ...q, choices: paper.choices })}</td>`).join("")}</tr>`,
+      );
+    }
+
+    const items = qs
+      .map((q) => {
+        const e = ex[String(q.no)];
+        const ans =
+          q.answer.length >= (paper.choices ?? exam.choices)
+            ? "모두 정답 처리"
+            : q.answer.map((a) => CIRCLED[a - 1]).join(", ");
+        const shared = q.shared?.text ?? "";
+        const raw = (shared ? shared + "\n\n" : "") + q.text;
+        // 제목은 해설의 핵심 요약(주제어가 담겨 검색에 유리). 발문은 띄어쓰기가 살아 있을 때만 아래에
+        const stem = stemOf(q);
+        const heading = e?.key_point || stem;
+        return `<section class="card" id="q${q.no}">
 <h2>문 ${q.no}. ${esc(heading)}</h2>
 ${heading !== stem && spacedOk(stem) ? `<p class="tip">${esc(stem)}</p>` : ""}
 <div>정답 <span class="ans">${ans}</span></div>
@@ -177,18 +223,29 @@ ${e.tip ? `<p class="tip">⏱ ${esc(e.tip)}</p>` : ""}`
 }
 ${spacedOk(raw) ? `<details><summary>문항 원문 텍스트</summary><pre>${esc(raw)}</pre></details>` : ""}
 </section>`;
-    })
-    .join("\n");
+      })
+      .join("\n");
 
-  const sameYear = papers.filter((o) => o.year === p.year && o.g.key === p.g.key && o.id !== p.id);
-  const sameSubj = papers.filter((o) => o.subject === p.subject && o.g.key === p.g.key && o.id !== p.id && Math.abs(o.year - p.year) <= 3);
-  const related = [...sameYear, ...sameSubj]
-    .filter((o, i, a) => a.indexOf(o) === i)
-    .slice(0, 8)
-    .map((o) => `<a href="/psat/${o.slug}/">${esc(`${o.year} ${o.label} ${o.subject}`)}</a>`)
-    .join("");
+    const sameYear = papers.filter(
+      (o) => o.year === p.year && o.g.key === p.g.key && o.id !== p.id,
+    );
+    const sameSubj = papers.filter(
+      (o) =>
+        o.subject === p.subject &&
+        o.g.key === p.g.key &&
+        o.id !== p.id &&
+        Math.abs(o.year - p.year) <= 3,
+    );
+    const related = [...sameYear, ...sameSubj]
+      .filter((o, i, a) => a.indexOf(o) === i)
+      .slice(0, 8)
+      .map(
+        (o) =>
+          `<a href="/${base}/${o.slug}/">${esc(`${o.year} ${o.label} ${o.subject}`)}</a>`,
+      )
+      .join("");
 
-  const body = `<nav class="crumb"><a href="/">alltests</a> › <a href="/psat/">PSAT 기출</a> › ${p.year} ${esc(p.label)}</nav>
+    const body = `<nav class="crumb"><a href="/">alltests</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › ${p.year} ${esc(p.label)}</nav>
 <h1>${esc(p.title)}</h1>
 <p class="lead">${esc(p.exams.join(" · "))} · ${qs.length}문항${p.answersFinal ? "" : " · 정답 확정 전(가답안)"}</p>
 <div class="cta"><a class="btn" href="/#/start/${encodeURIComponent(p.id)}/exam">실전 모드로 풀기 (타이머·OMR)</a><a class="btn ghost" href="/#/start/${encodeURIComponent(p.id)}/practice">연습 모드로 풀기</a></div>
@@ -196,90 +253,151 @@ ${spacedOk(raw) ? `<details><summary>문항 원문 텍스트</summary><pre>${esc
 ${items}
 ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${related}</div></section>` : ""}`;
 
-  const jsonld = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "alltests", item: `${SITE}/` },
-          { "@type": "ListItem", position: 2, name: "PSAT 기출", item: `${SITE}/psat/` },
-          { "@type": "ListItem", position: 3, name: p.title, item: url },
-        ],
-      },
-      {
-        "@type": "LearningResource",
-        name: p.title,
+    const jsonld = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "alltests",
+              item: `${SITE}/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: `${exam.name} 기출`,
+              item: `${SITE}/${base}/`,
+            },
+            { "@type": "ListItem", position: 3, name: p.title, item: url },
+          ],
+        },
+        {
+          "@type": "LearningResource",
+          name: p.title,
+          description: desc,
+          url,
+          inLanguage: "ko",
+          educationalLevel: p.g.label,
+          learningResourceType: "기출문제 해설",
+          about: `${exam.name} ${p.subject}`,
+          isAccessibleForFree: true,
+          provider: {
+            "@type": "Organization",
+            name: "alltests",
+            url: `${SITE}/`,
+          },
+        },
+      ],
+    };
+
+    const dir = path.join(DIST, base, p.slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(
+      path.join(dir, "index.html"),
+      layout({
+        exam,
+        title: `${p.title} | alltests`,
         description: desc,
-        url,
-        inLanguage: "ko",
-        educationalLevel: p.g.label,
-        learningResourceType: "기출문제 해설",
-        about: `PSAT ${p.subject}`,
-        isAccessibleForFree: true,
-        provider: { "@type": "Organization", name: "alltests", url: `${SITE}/` },
-      },
-    ],
-  };
+        canonical: url,
+        body,
+        jsonld,
+      }),
+    );
+    pages++;
+  }
 
-  const dir = path.join(DIST, "psat", p.slug);
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "index.html"), layout({ title: `${p.title} | alltests`, description: desc, canonical: url, body, jsonld }));
-  pages++;
-}
-
-// 허브: 계열 → 연도 → 영역
-const hubSections = GROUPS.map((g) => {
-  const mine = papers.filter((p) => p.g.key === g.key);
-  if (!mine.length) return "";
-  const years = [...new Set(mine.map((p) => p.year))].sort((a, b) => b - a);
-  const rows = years
-    .map((y) => {
-      const links = mine
-        .filter((p) => p.year === y)
-        .sort((a, b) => SUBJ_ORDER.indexOf(a.subject) - SUBJ_ORDER.indexOf(b.subject) || a.slug.localeCompare(b.slug))
-        .map((p) => `<a href="/psat/${p.slug}/">${y} ${esc(p.label)} ${p.subject} <small>(${p.count}문항)</small></a>`)
-        .join("");
-      return `<h3>${y}년</h3><div class="grid">${links}</div>`;
+  // 허브: 계열 → 연도 → 과목
+  const subjOrder = ordered(
+    exam.subjects,
+    papers.map((p) => p.subject),
+  );
+  const hubSections = ordered(
+    exam.groups,
+    papers.map((p) => p.g.label),
+  )
+    .map((gl) => {
+      const mine = papers.filter((p) => p.g.label === gl);
+      const years = [...new Set(mine.map((p) => p.year))].sort((a, b) => b - a);
+      const rows = years
+        .map((y) => {
+          const links = mine
+            .filter((p) => p.year === y)
+            .sort(
+              (a, b) =>
+                subjOrder.indexOf(a.subject) - subjOrder.indexOf(b.subject) ||
+                a.slug.localeCompare(b.slug),
+            )
+            .map(
+              (p) =>
+                `<a href="/${base}/${p.slug}/">${y} ${esc(p.label)} ${esc(p.subject)} <small>(${p.count}문항)</small></a>`,
+            )
+            .join("");
+          return `<h3>${y}년</h3><div class="grid">${links}</div>`;
+        })
+        .join("\n");
+      return `<section class="card"><h2>${esc(gl)} ${esc(exam.name)} 기출</h2>${rows}</section>`;
     })
     .join("\n");
-  return `<section class="card"><h2>${g.label} PSAT 기출</h2>${rows}</section>`;
-}).join("\n");
-const total = papers.reduce((n, p) => n + p.count, 0);
-const minY = Math.min(...papers.map((p) => p.year));
-const maxY = Math.max(...papers.map((p) => p.year));
-const hubTitle = `PSAT 기출문제 정답·해설 전체 목록 (${minY}~${maxY}) | alltests`;
-const hubDesc = `5급 공채·외교관, 7급 공채·민경채, 지역인재 7급 PSAT 기출 ${papers.length}개 문제지 ${total.toLocaleString()}문항의 정답표와 문항별 해설. 언어논리·자료해석·상황판단을 연도별로 보고 실제 시험처럼 풀어 보세요.`;
-fs.mkdirSync(path.join(DIST, "psat"), { recursive: true });
-fs.writeFileSync(
-  path.join(DIST, "psat", "index.html"),
-  layout({
-    title: hubTitle,
-    description: hubDesc,
-    canonical: `${SITE}/psat/`,
-    jsonld: {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: hubTitle,
+  const total = papers.reduce((n, p) => n + p.count, 0);
+  const minY = Math.min(...papers.map((p) => p.year));
+  const maxY = Math.max(...papers.map((p) => p.year));
+  const hubTitle = `${exam.name} 기출문제 정답·해설 전체 목록 (${minY}~${maxY}) | alltests`;
+  const hubDesc = `${exam.desc} 기출 ${papers.length}개 문제지 ${total.toLocaleString()}문항의 정답표와 문항별 해설. ${subjOrder.join("·")}을 연도별로 보고 실제 시험처럼 풀어 보세요.`;
+  fs.mkdirSync(path.join(DIST, base), { recursive: true });
+  fs.writeFileSync(
+    path.join(DIST, base, "index.html"),
+    layout({
+      exam,
+      title: hubTitle,
       description: hubDesc,
-      url: `${SITE}/psat/`,
-      inLanguage: "ko",
-    },
-    body: `<nav class="crumb"><a href="/">alltests</a> › PSAT 기출</nav>
-<h1>PSAT 기출문제 정답·해설 (${minY}~${maxY})</h1>
+      canonical: `${SITE}/${base}/`,
+      jsonld: {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: hubTitle,
+        description: hubDesc,
+        url: `${SITE}/${base}/`,
+        inLanguage: "ko",
+      },
+      body: `<nav class="crumb"><a href="/">alltests</a> › ${esc(exam.name)} 기출</nav>
+<h1>${esc(exam.name)} 기출문제 정답·해설 (${minY}~${maxY})</h1>
 <p class="lead">문제지 ${papers.length}개 · ${total.toLocaleString()}문항 · 문항마다 AI 해설</p>
-<div class="cta"><a class="btn" href="/">실전 모의고사 풀기</a><a class="btn ghost" href="/#/">랜덤 모의고사 만들기</a></div>
+<div class="cta"><a class="btn" href="/#/x/${exam.id}">실전 모의고사 풀기</a><a class="btn ghost" href="/#/x/${exam.id}">랜덤 모의고사 만들기</a></div>
 ${hubSections}`,
-  }),
-);
-pages++;
+    }),
+  );
+  pages++;
+  urls.push({ loc: `${SITE}/${base}/`, pri: "0.9", freq: "weekly" });
+  urls.push(
+    ...papers.map((p) => ({
+      loc: `${SITE}/${base}/${p.slug}/`,
+      pri: p.year >= maxY - 2 ? "0.8" : "0.6",
+      freq: "monthly",
+    })),
+  );
+  recentLinks.push(
+    ...papers
+      .filter((p) => p.year >= maxY - 1)
+      .map((p) => `<li><a href="/${base}/${p.slug}/">${esc(p.title)}</a></li>`),
+  );
+  return { papers: papers.length, total, minY, maxY };
+}
+
+const totals = { papers: 0, total: 0, minY: 9999, maxY: 0 };
+for (const exam of CATALOG.exams) {
+  const list = index.filter((p) => (p.exam ?? "psat") === exam.id);
+  if (!list.length) continue;
+  const t = buildExam(exam, list);
+  totals.papers += t.papers;
+  totals.total += t.total;
+  totals.minY = Math.min(totals.minY, t.minY);
+  totals.maxY = Math.max(totals.maxY, t.maxY);
+}
 
 // sitemap
-const urls = [
-  { loc: `${SITE}/`, pri: "1.0", freq: "daily" },
-  { loc: `${SITE}/psat/`, pri: "0.9", freq: "weekly" },
-  ...papers.map((p) => ({ loc: `${SITE}/psat/${p.slug}/`, pri: p.year >= maxY - 2 ? "0.8" : "0.6", freq: "monthly" })),
-];
 fs.writeFileSync(
   path.join(DIST, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>
@@ -292,10 +410,13 @@ ${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${TODAY}</lastmod><changef
 // 홈 index.html 의 정적 대체 내용(#root 안)에 최근 기출 링크를 채운다 — JS 를 실행하지 않는 수집기도 링크를 따라가게
 const homePath = path.join(DIST, "index.html");
 const home = fs.readFileSync(homePath, "utf8");
-const recent = papers
-  .filter((p) => p.year >= maxY - 1)
-  .map((p) => `<li><a href="/psat/${p.slug}/">${esc(p.title)}</a></li>`)
-  .join("");
-fs.writeFileSync(homePath, home.replace("<!--SEO_RECENT-->", recent).replace(/__TOTAL__/g, total.toLocaleString()).replace(/__PAPERS__/g, String(papers.length)).replace(/__RANGE__/g, `${minY}~${maxY}`));
+fs.writeFileSync(
+  homePath,
+  home
+    .replace("<!--SEO_RECENT-->", recentLinks.join(""))
+    .replace(/__TOTAL__/g, totals.total.toLocaleString())
+    .replace(/__PAPERS__/g, String(totals.papers))
+    .replace(/__RANGE__/g, `${totals.minY}~${totals.maxY}`),
+);
 
 console.log(`seo: ${pages} pages, sitemap ${urls.length} urls`);
