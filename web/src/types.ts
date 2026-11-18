@@ -35,6 +35,8 @@ export interface ChoiceBox {
   y0: number;
   x1: number;
   y1: number;
+  /** ①~⑤ 기호 자체의 위치 [x0, y0, x1, y1] (고른 보기의 번호를 칠해 표시할 때 씀) */
+  m?: [number, number, number, number];
 }
 
 export interface Paper extends Omit<PaperMeta, "count"> {

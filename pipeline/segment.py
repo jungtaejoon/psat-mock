@@ -137,7 +137,9 @@ def choice_boxes(doc, regions: list[dict]) -> list[dict] | None:
         for j, i in enumerate(row):
             x0 = r["x0"] if j == 0 else marks[i][2].x0 - 4
             x1 = marks[row[j + 1]][2].x0 - 4 if j + 1 < len(row) else r["x1"]
-            boxes[i] = dict(r=ri, x0=round(x0, 1), y0=round(max(top, r["y0"]), 1), x1=round(x1, 1), y1=round(min(bottom, r["y1"]), 1))
+            m = marks[i][2]
+            boxes[i] = dict(r=ri, x0=round(x0, 1), y0=round(max(top, r["y0"]), 1), x1=round(x1, 1), y1=round(min(bottom, r["y1"]), 1),
+                            m=[round(m.x0, 1), round(m.y0, 1), round(m.x1, 1), round(m.y1, 1)])
     if any(b["y1"] - b["y0"] < 6 or b["x1"] - b["x0"] < 10 for b in boxes):
         return None
     return boxes

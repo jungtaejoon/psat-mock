@@ -89,19 +89,63 @@ function ChoiceLayer({
           width: `${((b.x1 - b.x0) / w) * 100}%`,
           height: `${((b.y1 - b.y0) / h) * 100}%`,
         };
-        return state.onChoose && !graded ? (
-          <button
-            key={n}
-            className={cls}
-            style={style}
-            role="radio"
-            aria-checked={sel}
-            aria-label={`${CIRCLED[i]} 선택`}
-            onClick={() => state.onChoose!(n)}
-          />
-        ) : (
-          <div key={n} className={cls} style={style} aria-hidden="true" />
-        );
+        const kind =
+          graded && state.correct!.includes(n)
+            ? "correct"
+            : graded && sel
+              ? "wrong"
+              : sel
+                ? "sel"
+                : null;
+        // 고른 보기는 ①~⑤ 기호 자체를 OMR 처럼 칠한다 (글자 위에 배지를 얹지 않도록)
+        const dot =
+          kind && b.m
+            ? (() => {
+                const [mx0, my0, mx1, my1] = b.m;
+                const d = Math.max(mx1 - mx0, 6) * 1.18;
+                const cx = (mx0 + mx1) / 2;
+                const cy = my0 + (my1 - my0) * 0.47;
+                return (
+                  <svg
+                    key={`d${n}`}
+                    className={`choice-dot ${kind}`}
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                    style={{
+                      left: `${((cx - d / 2 - region.x0) / w) * 100}%`,
+                      top: `${((cy - d / 2 - region.y0) / h) * 100}%`,
+                      width: `${(d / w) * 100}%`,
+                      height: `${(d / h) * 100}%`,
+                    }}
+                  >
+                    <circle cx="10" cy="10" r="10" />
+                    <text
+                      x="10"
+                      y="10.5"
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                    >
+                      {n}
+                    </text>
+                  </svg>
+                );
+              })()
+            : null;
+        const hit =
+          state.onChoose && !graded ? (
+            <button
+              key={n}
+              className={cls}
+              style={style}
+              role="radio"
+              aria-checked={sel}
+              aria-label={`${CIRCLED[i]} 선택`}
+              onClick={() => state.onChoose!(n)}
+            />
+          ) : (
+            <div key={n} className={cls} style={style} aria-hidden="true" />
+          );
+        return [hit, dot];
       })}
     </>
   );
