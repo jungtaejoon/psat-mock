@@ -3,6 +3,7 @@ import { EXAM_GROUPS, examGroup, loadIndex, loadPaper, timeLimitFor } from "../d
 import { deleteSession, listSessions, newSession, seenKeys, wrongItems } from "../store";
 import { navigate } from "../router";
 import { AdSlot } from "../monetization";
+import SlopAd from "../SlopAd";
 import { SUBJECTS, type ItemRef, type Mode, type PaperMeta, type Subject } from "../types";
 
 type Tab = "year" | "random" | "history";
@@ -318,6 +319,7 @@ export default function Home() {
           {tab === "history" && <HistoryTab papers={papers} />}
         </section>
       )}
+      <SlopAd />
       <AdSlot slot="home-bottom" />
     </div>
   );

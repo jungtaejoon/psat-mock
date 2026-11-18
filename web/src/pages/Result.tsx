@@ -4,6 +4,7 @@ import { getSession, newSession } from "../store";
 import { navigate } from "../router";
 import { ExplanationPanel, QuestionImage } from "../QuestionView";
 import { AdSlot } from "../monetization";
+import SlopAd from "../SlopAd";
 import { SUBJECTS, type Paper } from "../types";
 
 function fmtMin(sec: number) {
@@ -89,6 +90,7 @@ export default function Result({ id }: { id: string }) {
         )}
       </section>
 
+      <SlopAd />
       <AdSlot slot="result-top" />
 
       <div className="row between list-head">

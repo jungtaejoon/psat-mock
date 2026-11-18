@@ -793,3 +793,122 @@ li.no .mark {
     font-size: 14px;
   }
 }
+
+/* 자체 광고: slop.ai.kr */
+.slop-ad {
+  --slop-bg: #0f1115;
+  --slop-ink: #eef0f3;
+  --slop-muted: #9aa1ad;
+  --slop-line: #262a33;
+  --slop-gem: #2dd4bf;
+  --slop-gem-ink: #06201c;
+  margin: 20px 0;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: var(--slop-bg);
+  color: var(--slop-ink);
+  border: 1px solid var(--slop-line);
+  box-shadow: var(--shadow);
+}
+.slop-ad-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.slop-ad-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--slop-gem);
+}
+.slop-ad-brand b {
+  color: var(--slop-ink);
+  font-size: 17px;
+}
+.slop-ad-brand span {
+  color: var(--slop-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slop-ad-tag {
+  flex: none;
+  font-size: 11px;
+  color: var(--slop-muted);
+  border: 1px solid var(--slop-line);
+  border-radius: 4px;
+  padding: 0 6px;
+}
+.slop-ad-stem {
+  margin: 0 0 8px;
+}
+.slop-ad-stem b {
+  color: var(--slop-gem);
+}
+.slop-ad-choices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.slop-ad-choices button {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--slop-line);
+  background: transparent;
+  color: var(--slop-ink);
+}
+.slop-ad-choices button:not(:disabled):hover {
+  border-color: var(--slop-gem);
+}
+.slop-ad-choices button:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.slop-ad-choices button.ok {
+  border-color: var(--slop-gem);
+  background: color-mix(in srgb, var(--slop-gem) 16%, transparent);
+}
+.slop-ad-choices button.no {
+  border-color: #ff6b6b;
+  text-decoration: line-through;
+}
+.slop-ad-choices button.dim {
+  opacity: 0.5;
+}
+.slop-ad-choices .n {
+  color: var(--slop-muted);
+  flex: none;
+}
+.slop-ad-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--slop-muted);
+}
+.slop-ad-cta {
+  flex: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: var(--slop-gem);
+  color: var(--slop-gem-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.slop-ad-cta:hover {
+  filter: brightness(1.08);
+}
