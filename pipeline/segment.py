@@ -42,9 +42,12 @@ def page_frame(page, lines):
     """머리말/꼬리말을 제외한 본문 세로 범위."""
     H = page.rect.height
     head = [r.y1 for r, t in lines if r.y1 < H * 0.06]
-    foot = [r.y0 for r, t in lines if r.y0 > H * 0.95]
+    # 꼬리말은 쪽 번호 같은 짧은 글만. 페이지 맨 아래 선택지(⑤ …)를 꼬리말로 오인하지 않도록 한다
+    foot = [r.y0 for r, t in lines if r.y0 > H * 0.95 and re.fullmatch(r"[-–―\s]*\d{1,2}\s*(쪽)?[-–―\s]*|.*\d+\s*쪽.*", t)]
+    # 같은 높이에 다른 본문 글자가 있으면 쪽 번호가 아니다(표 형태 선택지의 숫자 칸)
+    foot = [y for y in foot if sum(1 for r, _ in lines if abs(r.y0 - y) < 3) == 1]
     top = max(head) + 2 if head else H * 0.04
-    bottom = min(foot) - 2 if foot else H * 0.97
+    bottom = min(foot) - 2 if foot else H * 0.985
     # 머리말 아래 가로줄(도형)도 머리말로 본다
     W = page.rect.width
     for d in page.get_drawings():
