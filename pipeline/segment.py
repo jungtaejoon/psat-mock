@@ -68,7 +68,8 @@ def page_ink(page) -> list[fitz.Rect]:
     key = id(page.parent) * 1000 + page.number
     if key not in _ink_cache:
         W = page.rect.width
-        rects = [d["rect"] for d in page.get_drawings() if d["rect"].width < W * 0.98]
+        # 두께 0 인 선(빈칸 상자 테두리 등)은 면적이 0 이라 intersects() 가 항상 거짓 → 살짝 부풀린다
+        rects = [d["rect"] + (-0.6, -0.6, 0.6, 0.6) for d in page.get_drawings() if d["rect"].width < W * 0.98]
         rects += [fitz.Rect(i["bbox"]) for i in page.get_image_info()]
         _ink_cache[key] = rects
     return _ink_cache[key]
