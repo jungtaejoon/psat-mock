@@ -37,6 +37,28 @@ SUBJECTS = {"언어논리영역": "언어논리", "자료해석영역": "자료�
 # 정답 비트마스크: 01=①, 02=②, 04=③, 08=④, 16=⑤, 00=전원정답, 32=아무거나 정답
 BIT = {1: 1, 2: 2, 4: 3, 8: 4, 16: 5}
 
+# 공개된 정답표가 문제지 PDF 의 문항 순서와 어긋난 경우 (책형 차이로 보임, 문항 내용으로 검증함)
+# paper id → 문항 번호(1부터) 쌍 목록. 쌍끼리 정답을 맞바꾼다.
+ANSWER_SWAPS = {
+    "2005-언어논리-aa17c2df78209c6b": [(n, n + 20) for n in range(1, 21)],
+    "2005-자료해석-1c76147d6e3495df": [(n, n + 20) for n in range(1, 6)],
+}
+
+# 정답표 오기로 보이는 문항: paper id → {문항 번호: 정답}
+# 2011 민경채 언어논리 간책형 2번은 ① 로 올라와 있지만 같은 문항인 민책형 12번은 ④ 이고 지문도 ④ 를 뒷받침한다
+ANSWER_OVERRIDES = {
+    "2011-언어논리-8b93055a786c43f0": {2: [4]},
+}
+
+
+def fix_answers(pid: str, answers: list) -> list:
+    answers = list(answers)
+    for n, a in ANSWER_OVERRIDES.get(pid, {}).items():
+        answers[n - 1] = a
+    for a, b in ANSWER_SWAPS.get(pid, []):
+        answers[a - 1], answers[b - 1] = answers[b - 1], answers[a - 1]
+    return answers
+
 S = requests.Session()
 S.headers["User-Agent"] = "Mozilla/5.0 (compatible; psat-archive-bot/1.0)"
 
@@ -277,7 +299,7 @@ def main() -> None:
             if test_nm not in p["exams"]:
                 p["exams"].append(test_nm)
             if answers:
-                p["answers"] = answers
+                p["answers"] = fix_answers(pid, answers)
                 p["answersFinal"] = final
             sources[key] = {"paper": pid, "final": final}
             added += 1

@@ -6,6 +6,7 @@
 - 정답 모순: 해설 본문이 '정답은 ③' 처럼 공식 정답과 다른 번호를 주장하는 경우
 - 다른 문항 해설: 해설 글이 자기 문항보다 같은 문제지의 다른 문항 텍스트와 더 많이 겹치는 경우가
   한 문제지에 3개 이상이면 (공통 지문 때문에 1~2개는 정상) 문제지 전체를 의심
+- 정답표 의심 문구: 해설이 사용자에게 '정답 표기 확인 필요', '책형 차이' 같은 말을 하는 경우
 - _review 에 남은 문항
 문제가 있으면 종료 코드 1.
 """
@@ -19,6 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "web" / "public" / "data"
 C = "①②③④⑤"
+KEY_DOUBT = re.compile(r"책형|meta\.json|정답 ?표기|제공 정답|정답표|공식 정답과 (?:다르|불일치)")
 
 
 def grams(s: str) -> set[str]:
@@ -52,6 +54,8 @@ def main() -> int:
                 claimed = {C.index(c) + 1 for c in claims}
                 if claimed and not claimed & set(q["answer"]):
                     msgs.append(f"{k}번 정답 모순 (공식 {q['answer']}, 해설 {sorted(claimed)})")
+            if KEY_DOUBT.search(e["explanation"] + " ".join(e["choices"]) + e.get("tip", "")):
+                msgs.append(f"{k}번 정답표 의심 문구")
             et = grams(e["explanation"] + " ".join(e["choices"]))
             own = len(et & grams(q["text"])) / max(1, len(et))
             other = max((len(et & grams(o["text"])) / max(1, len(et)) for n, o in qs.items() if n != int(k)), default=0)
