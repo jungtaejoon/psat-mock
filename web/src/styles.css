@@ -912,3 +912,51 @@ li.no .mark {
 .slop-ad-cta:hover {
   filter: brightness(1.08);
 }
+
+/* 홈 오른쪽 광고 레일: 넓은 화면에서는 옆에 고정, 좁은 화면에서는 모드 선택 아래에 */
+.home-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.home-wrap > .home {
+  max-width: none;
+  margin: 0;
+  min-width: 0;
+}
+.side-rail {
+  display: none;
+}
+.ad-inline .slop-ad {
+  margin: 0 0 16px;
+}
+@media (min-width: 1180px) {
+  .home-wrap {
+    max-width: 1260px;
+    display: grid;
+    grid-template-columns: minmax(0, 960px) 270px;
+    justify-content: center;
+    gap: 8px;
+  }
+  .side-rail {
+    display: block;
+    padding-top: 24px;
+  }
+  .side-rail .slop-ad {
+    position: sticky;
+    top: 16px;
+    margin: 8px 0 0;
+  }
+  .side-rail .slop-ad-brand span {
+    display: none;
+  }
+  .side-rail .slop-ad-foot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .side-rail .slop-ad-cta {
+    text-align: center;
+  }
+  .ad-inline {
+    display: none;
+  }
+}
