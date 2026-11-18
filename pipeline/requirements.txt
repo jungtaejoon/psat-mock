@@ -1,0 +1,4 @@
+pymupdf==1.26.5
+requests>=2.31
+playwright>=1.48
+anthropic>=0.75
