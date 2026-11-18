@@ -47,7 +47,7 @@ cd web && npm install && npm run dev
 ## 배포 설정 (GitHub)
 
 - Settings → Pages → Source: **GitHub Actions**
-- Secrets: `ANTHROPIC_API_KEY` (해설 생성용, 없으면 해설 단계만 건너뜀)
+- Variables (해설 생성용, Workload Identity Federation — 저장된 API 키 없음. 없으면 해설 단계만 건너뜀): `ANTHROPIC_FEDERATION_RULE_ID`, `ANTHROPIC_ORGANIZATION_ID`, `ANTHROPIC_SERVICE_ACCOUNT_ID`, (규칙이 여러 워크스페이스에 걸치면) `ANTHROPIC_WORKSPACE_ID`
 - Variables (선택): `CONTACT` 게시 중단 요청 연락처, `AD_CLIENT` 광고 클라이언트 ID
 
 ## 유료화 전환 지점

@@ -6,7 +6,7 @@
   python pipeline/explain.py run                  # collect → submit → 끝날 때까지 대기 → collect
 
 결과: web/public/data/explanations/{paperId}.json  →  {"<no>": {...}}
-ANTHROPIC_API_KEY 가 필요하다.
+인증: 로컬은 ANTHROPIC_API_KEY, CI 는 Workload Identity Federation(.github/workflows/update.yml 참고).
 """
 from __future__ import annotations
 

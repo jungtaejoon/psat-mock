@@ -42,11 +42,20 @@ jobs:
       - name: 문항 분할
         run: python pipeline/segment.py
 
+      # Claude API 인증은 Workload Identity Federation: 저장된 API 키 없이 실행마다 GitHub OIDC 토큰을
+      # 단기 토큰으로 교환한다(SDK 가 아래 환경 변수를 읽어 자동 처리). ID 값들은 비밀이 아니라 repo 변수로 둔다.
       - name: 해설 (배치 수거 → 신규 제출)
+        if: vars.ANTHROPIC_FEDERATION_RULE_ID != ''
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        if: env.ANTHROPIC_API_KEY != ''
+          ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+          ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+          ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+          ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
+          ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/anthropic-oidc.jwt
         run: |
+          [ -n "$ANTHROPIC_WORKSPACE_ID" ] || unset ANTHROPIC_WORKSPACE_ID
+          curl -sSf -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" | jq -r .value > "$ANTHROPIC_IDENTITY_TOKEN_FILE"
           python pipeline/explain.py collect
           python pipeline/explain.py submit ${{ inputs.explain_limit && format('--limit {0}', inputs.explain_limit) || '' }}
 
