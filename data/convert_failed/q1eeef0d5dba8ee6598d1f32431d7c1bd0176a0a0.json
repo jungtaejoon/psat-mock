@@ -1,1 +1,0 @@
-{"cid": "gong7-2022-06-통신이론__3", "model": "claude-sonnet-5-5", "reason": "빠진 글자 6개 (cossin)", "output": {"stem": "<p>FM 변조된 신호 \\( x(t)=\\cos(200\\pi t+5\\sin(20\\pi t)) \\)에서 카슨의 법칙(Carson’s rule)을 이용하여 구한 유효 대역폭[Hz]은?</p>", "choices": ["120", "150", "200", "240"], "figures": [], "confidence": "high", "notes": "뽑은 글자에서 빠진 수식은 그림을 보고 복원함.", "_ratio": 0.8286}}

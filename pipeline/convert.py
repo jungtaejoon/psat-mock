@@ -127,10 +127,13 @@ def build_params(paper: dict, q: dict, doc: fitz.Document, model: str) -> dict:
 
 # ---------------------------------------------------------------- 검사
 
-DASH = re.compile(r"[‐‑‒–—―－−~～_]")
+DASH = re.compile(r"[‐‑‒–—―－−~～_\-]")
 # 서식으로 더해지는 글자(낫표·칸 구분 /·가운뎃점 변형)는 비교에서 뺀다
 IGNORE = re.compile(r"[「」『』/\\＼ㆍᆞ·․‧∙•+=＝]")
-TEX_SYM = {"cdot": "·", "times": "×", "circ": "o", "prime": "′", "rightarrow": "→", "to": "→", "leftarrow": "←",
+TEX_SYM = {"log": "log", "ln": "ln", "sin": "sin", "cos": "cos", "tan": "tan", "exp": "exp", "lim": "lim", "max": "max",
+           "min": "min", "sec": "sec", "csc": "csc", "cot": "cot", "det": "det", "mod": "mod", "bmod": "mod", "prod": "∏",
+           "sum": "∑", "int": "∫", "sqrt": "√", "Pi": "Π", "partial": "∂", "nabla": "∇", "cdots": "⋯", "ldots": "…",
+           "cdot": "·", "times": "×", "circ": "°", "prime": "′", "rightarrow": "→", "to": "→", "leftarrow": "←",
            "le": "≤", "leq": "≤", "ge": "≥", "geq": "≥", "pm": "±", "div": "÷", "sim": "∼", "neq": "≠", "infty": "∞",
            "alpha": "α", "beta": "β", "gamma": "γ", "delta": "δ", "Delta": "Δ", "theta": "θ", "lambda": "λ", "mu": "μ",
            "pi": "π", "sigma": "σ", "Sigma": "Σ", "omega": "ω", "Omega": "Ω", "phi": "φ", "rho": "ρ", "eta": "η", "epsilon": "ε"}
@@ -142,6 +145,8 @@ QNUM = re.compile(r"문\s*\d{1,3}\s*\.?|^\s*\d{1,3}\s*\.(?!\d)\s*(?=\n?\s*문|$)
 def _norm(t: str) -> str:
     import unicodedata
 
+    t = re.sub(r"[<〈＜]\s*보\s*기\s*[>〉＞]", "", t)  # <보기> 제목 (PDF 에서는 그림인 경우가 많다)
+    t = t.replace("⟶", "→").replace("⟹", "⇒").replace("°", "o").replace("º", "o")
     t = QNUM.sub("", t)  # 문항 번호("문 6." / "6.\n문")는 어디에 있든 양쪽에서 뺀다
     t = IGNORE.sub("", t)
     t = unicodedata.normalize("NFKC", t)

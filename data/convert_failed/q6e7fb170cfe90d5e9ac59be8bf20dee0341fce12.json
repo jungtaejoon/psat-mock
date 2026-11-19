@@ -1,1 +1,0 @@
-{"cid": "gong7-2016-06-통신이론__13", "model": "claude-sonnet-5-5", "reason": "빠진 글자 6개 (cossin)", "output": {"stem": "<p>신호 \\(50\\cos(72t+\\pi)-30\\sin\\left(80\\pi t+\\frac{3}{4}\\pi\\right)+30\\)을 표본화할 때, 복원을 보장하는 최대 표본화 주기[ms]는?</p>", "choices": ["27", "12.5", "30", "72"], "figures": [], "confidence": "high", "notes": "수식은 그림을 보고 옮김. 뽑은 글자에는 수식이 빠져 있었음.", "_ratio": 0.7358}}
