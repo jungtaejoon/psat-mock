@@ -1,1 +1,0 @@
-{"cid": "gong9-2023-08-정보시스템보안__16", "model": "claude-haiku-5-5", "reason": "빠진 글자 97개 (다에에에에에서하하는는는검사도구어느한한한한한시시점스템존재)", "output": {"stem": "다음에서 설명하는 검사 도구는?<br>", "choices": ["Tripwire", "Burp Suite", "Snort", "NESSUS"], "figures": [], "confidence": "high", "notes": "지문은 상자 안에 있으므로 div.box로 옮김. 뽑은 글자와 그림 글자 일치. 상자 안 줄바꿈은 원본 줄 끝마다 넣지 않음.", "_ratio": 0.4641}}
