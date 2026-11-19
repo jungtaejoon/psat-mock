@@ -1,9 +1,22 @@
 {
  "scope": [
+  "20",
+  "appraiser-",
+  "customs-",
   "gong7-",
   "gong9-",
   "gong9-2026-",
-  "local-"
+  "housing-",
+  "labor-",
+  "local-",
+  "logistics-",
+  "patent-",
+  "realtor-",
+  "security-",
+  "social1-",
+  "tax-",
+  "tourguide-",
+  "youthcounsel-"
  ],
  "batches": [],
  "pending": [],
