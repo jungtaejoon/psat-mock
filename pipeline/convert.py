@@ -168,6 +168,12 @@ def plain_conv(o: dict) -> str:
     return _norm(s)
 
 
+def tidy(o: dict) -> dict:
+    """흔한 사소한 차이를 고친다: 본문 앞에 붙은 문항 번호("13." / "문 13.") 제거"""
+    o["stem"] = re.sub(r"^(\s*<p[^>]*>)?\s*(문\s*)?\d{1,3}\s*\.(?!\d)\s*", lambda m: m.group(1) or "", o.get("stem", ""), count=1)
+    return o
+
+
 def check(o: dict, src_text: str, n_choices: int, fig_text: str = "") -> list[str]:
     """문제가 없으면 빈 목록"""
     bad = []
@@ -350,6 +356,7 @@ def collect(client) -> bool:
                     papers[pid] = paper
                     q = next(x for x in paper["questions"] if str(x["no"]) == no)
                     doc = paper_pdf(paper)
+                    o = tidy(o)
                     rects = figure_rects(doc, q, o)
                     bad = check(o, pdf_text(doc, q), paper.get("choices", 5), figure_text(doc, rects))
                     if bad:
