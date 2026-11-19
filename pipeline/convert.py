@@ -180,6 +180,8 @@ def plain_conv(o: dict) -> str:
 
 def tidy(o: dict) -> dict:
     """흔한 사소한 차이를 고친다: 본문 앞에 붙은 문항 번호("13." / "문 13.") 제거"""
+    # 보기 앞에 붙은 ①~⑤ (화면에서 번호가 두 번 보인다)
+    o["choices"] = [re.sub(r"^(\s*<p[^>]*>)?\s*[①②③④⑤]\s*", lambda m: m.group(1) or "", c, count=1) for c in o.get("choices", [])]
     o["stem"] = re.sub(r"^(\s*<p[^>]*>)?\s*(문\s*)?\d{1,3}\s*\.(?!\d)\s*", lambda m: m.group(1) or "", o.get("stem", ""), count=1)
     return o
 
