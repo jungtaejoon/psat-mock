@@ -96,6 +96,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -112,6 +115,23 @@ jobs:
         env:
           VITE_CONTACT: ${{ vars.CONTACT }}
           VITE_AD_CLIENT: ${{ vars.AD_CLIENT }}
+          VITE_PDF_BASE: ${{ vars.PDF_BASE }}
+
+      # 문제지 PDF 는 Cloudflare Pages(alltests-pdf → pdf.alltests.ai.kr)에 따로 올린다.
+      # GitHub Pages 한 사이트 1GB 한도를 넘지 않게. 바뀐 파일만 올라간다(Wrangler 가 해시로 비교).
+      - name: PDF 배포 (Cloudflare Pages)
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          mkdir -p "$RUNNER_TEMP/pdfsite"
+          cp -r web/public/data/pdf/. "$RUNNER_TEMP/pdfsite/"
+          # 사이트(alltests.ai.kr)의 pdf.js 가 다른 주소에서 읽으므로 CORS 허용, 파일 이름이 내용 해시라 오래 캐시
+          printf '/*\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=604800\n' > "$RUNNER_TEMP/pdfsite/_headers"
+          npx -y wrangler@4 pages project create alltests-pdf --production-branch=main || true
+          npx -y wrangler@4 pages deploy "$RUNNER_TEMP/pdfsite" --project-name=alltests-pdf --branch=main --commit-dirty=true
+
+      # PDF 를 따로 두면 GitHub Pages 쪽에서는 뺀다
+      - if: vars.PDF_BASE != ''
+        run: rm -rf web/dist/data/pdf
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

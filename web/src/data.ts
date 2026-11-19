@@ -42,8 +42,11 @@ export function loadExplanations(paperId: string): Promise<Record<string, Explan
   return p;
 }
 
+// 문제지 PDF 는 용량이 커서 별도 사이트(Cloudflare Pages, VITE_PDF_BASE)에 둘 수 있다. 비어 있으면 같은 사이트의 data/pdf
+const PDF_BASE = (import.meta.env.VITE_PDF_BASE as string | undefined)?.replace(/\/$/, "") || `${BASE}/pdf`;
+
 export function pdfUrl(paper: { id: string; pdf?: string }) {
-  return `${BASE}/pdf/${paper.pdf ?? paper.id}.pdf`;
+  return `${PDF_BASE}/${paper.pdf ?? paper.id}.pdf`;
 }
 
 export const CIRCLED = ["①", "②", "③", "④", "⑤"];
