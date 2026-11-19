@@ -74,35 +74,46 @@
   {
    "id": "realtor",
    "name": "공인중개사",
-   "desc": "1차·2차 객관식",
+   "desc": "공인중개사 1차·2차 (부동산학개론·민법, 공인중개사법령·공법·공시세법)",
    "category": "부동산·안전",
    "choices": 5,
    "secPerQuestion": 75,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "08"
+   "status": "live",
+   "qnet": "08",
+   "groups": [
+    "1차",
+    "2차"
+   ],
+   "seo": "realtor"
   },
   {
    "id": "housing",
    "name": "주택관리사보",
-   "desc": "1차 객관식",
+   "desc": "주택관리사보 1차·2차 객관식",
    "category": "부동산·안전",
    "choices": 5,
    "secPerQuestion": 75,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "59"
+   "status": "live",
+   "qnet": "59",
+   "groups": [
+    "1차",
+    "2차"
+   ],
+   "seo": "housing"
   },
   {
    "id": "security",
    "name": "경비지도사",
-   "desc": "1차·2차 객관식",
+   "desc": "경비지도사 1차 (법학개론·민간경비론)",
    "category": "부동산·안전",
    "choices": 4,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "09"
+   "status": "live",
+   "qnet": "09",
+   "seo": "security"
   },
   {
    "id": "firemgr",
@@ -173,35 +184,43 @@
   {
    "id": "social1",
    "name": "사회복지사 1급",
-   "desc": "필기 8과목",
+   "desc": "사회복지사 1급 필기 (사회복지기초·실천·정책과 제도)",
    "category": "보건·복지·교육",
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "52"
+   "status": "live",
+   "qnet": "52",
+   "seo": "social1"
   },
   {
    "id": "youthcounsel",
    "name": "청소년상담사",
-   "desc": "1·2·3급 필기",
+   "desc": "청소년상담사 1급·2급·3급 필기",
    "category": "보건·복지·교육",
-   "choices": 4,
+   "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "67"
+   "status": "live",
+   "qnet": "67",
+   "groups": [
+    "1급",
+    "2급",
+    "3급"
+   ],
+   "seo": "youthcounsel"
   },
   {
    "id": "logistics",
    "name": "물류관리사",
-   "desc": "필기 5과목",
+   "desc": "물류관리사 필기 (물류관리론·화물운송론·보관하역론·국제물류론·물류관련법규)",
    "category": "문화·관광·물류",
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "61"
+   "status": "live",
+   "qnet": "61",
+   "seo": "logistics"
   },
   {
    "id": "tourguide",

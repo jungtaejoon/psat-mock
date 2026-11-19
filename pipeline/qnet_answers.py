@@ -114,7 +114,7 @@ def check(gid: str, choices: int) -> list[str]:
     for e in entries:
         tag = f"{e['year']} {e.get('round') or ''} {e.get('stage') or ''} {e['period']}교시 {e.get('booklet') or ''}".strip()
         subs = e["subjects"]
-        nums = sorted(int(k) for k in e["answers"])
+        nums = sorted({int(k) for k in e["answers"]} | {int(x) for x in e.get("text_items", [])})
         if not subs or subs[0]["from"] != (nums[0] if nums else 1):
             errs.append(f"{tag}: 첫 과목 시작 번호가 정답 번호와 다름")
         for a, b in zip(subs, subs[1:]):
@@ -130,27 +130,39 @@ def check(gid: str, choices: int) -> list[str]:
 
 
 def _key(e: dict) -> tuple:
-    return (e["year"], e.get("round"), e.get("stage"), e["period"], e.get("booklet"))
+    return (e["year"], e.get("round"), e.get("stage"), e["period"], e.get("booklet"), (e.get("track") or "").replace(" ", ""))
 
 
 def merge(gid: str, choices: int) -> list[str]:
     """두 결과가 완전히 같은 항목만 answers.json 에 넣고, 다른 곳은 diff 로 남긴다 (다시 읽어 확정)."""
     src = QNET / gid
-    a = {_key(e): e for e in json.loads((src / "answers_A.json").read_text())}
-    b = {_key(e): e for e in json.loads((src / "answers_B.json").read_text())}
-    prev = {_key(e): e for e in json.loads((src / "answers.json").read_text())} if (src / "answers.json").exists() else {}
+    # 두 판독이 1차/round 표기를 다르게 붙이기도 해서, 게시물·교시·구분(track)·시작 번호로 맞춘다
+    def mk(e: dict) -> tuple:
+        return (e.get("post"), e["period"], (e.get("track") or "").replace(" ", ""), e["subjects"][0]["from"] if e.get("subjects") else 0, (e["subjects"][0]["name"] if e.get("subjects") else "").replace(" ", "")[:4])
+
+    a = {mk(e): e for e in json.loads((src / "answers_A.json").read_text())}
+    b = {mk(e): e for e in json.loads((src / "answers_B.json").read_text())}
+    prev = {mk(e): e for e in json.loads((src / "answers.json").read_text())} if (src / "answers.json").exists() else {}
     merged, diffs = dict(prev), []
-    for k in sorted(set(a) | set(b), key=lambda k: (-k[0], str(k))):
+    for k in sorted(set(a) | set(b), key=str):
         if k in prev:
             continue
         ea, eb = a.get(k), b.get(k)
-        tag = " ".join(str(x) for x in k if x is not None)
+        e0 = a.get(k) or b.get(k)
+        tag = f"{e0['year']} " + " ".join(str(x) for x in k if x not in (None, ""))
+        if not ea or not eb:
+            diffs.append(f"{tag}: 한쪽에만 있음")
+            continue
+        # 1차 표기는 있는 쪽을 따른다
+        ea = dict(ea, stage=ea.get("stage") or eb.get("stage"))
         if not ea or not eb:
             diffs.append(f"{tag}: 한쪽에만 있음")
             continue
         sa = [(s["name"].replace(" ", ""), s["from"], s["to"]) for s in ea["subjects"]]
         sb = [(s["name"].replace(" ", ""), s["from"], s["to"]) for s in eb["subjects"]]
         bad = [n for n in sorted(set(ea["answers"]) | set(eb["answers"]), key=int) if sorted(ea["answers"].get(n) or []) != sorted(eb["answers"].get(n) or [])]
+        if sorted(ea.get("text_items", [])) != sorted(eb.get("text_items", [])):
+            bad.append("주관식 목록")
         if [x[1:] for x in sa] != [x[1:] for x in sb]:
             diffs.append(f"{tag}: 과목 범위 다름 {sa} / {sb}")
         elif bad or ea.get("unclear") or eb.get("unclear"):

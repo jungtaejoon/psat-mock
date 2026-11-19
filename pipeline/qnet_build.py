@@ -87,6 +87,12 @@ def paper_files(gid: str) -> list[dict]:
 def compatible(e: dict, f: dict) -> bool:
     if e["year"] != f["year"]:
         return False
+    if e.get("track"):
+        # 급수·일반/기계 같은 구분이 제목이나 파일명에 들어 있어야 한다
+        hay = (f["title"] + f["name"]).replace(" ", "")
+        tk = e["track"].replace(" ", "")
+        if tk not in hay and tk.replace("경비지도사", "") not in hay:
+            return False
     if (e.get("round") == "특별") != (f["round"] == "특별"):
         return False
     if e.get("stage") and f["stage"] and e["stage"] != f["stage"]:
@@ -117,12 +123,14 @@ def build(exam_id: str, rebuild: bool = False) -> None:
     entries = json.loads((QNET / gid / "answers.json").read_text())
     files = paper_files(gid)
     has_special = any(e.get("round") == "특별" for e in entries)
+    multi_stage = len({e.get("stage") for e in entries if e.get("stage")}) > 1
     (OUT / "papers").mkdir(parents=True, exist_ok=True)
     (OUT / "pdf").mkdir(parents=True, exist_ok=True)
     made, problems = [], []
     for e in sorted(entries, key=lambda x: (-x["year"], x.get("round") or "", x["period"])):
         tag = f"{e['year']} {e.get('round') or ''} {e.get('stage') or ''} {e['period']}교시".replace("  ", " ")
-        prefix = f"{exam_id}-{e['year']}{'-특별' if e.get('round') == '특별' else ''}{'-' + e['stage'] if e.get('stage') == '2차' else ''}-{e['period']}교시-"
+        track = f"-{slug(e['track'])}" if e.get("track") else ""
+        prefix = f"{exam_id}-{e['year']}{'-특별' if e.get('round') == '특별' else ''}{'-' + e['stage'] if e.get('stage') == '2차' else ''}{track}-{e['period']}교시-"
         if not rebuild and any((OUT / "papers").glob(f"{prefix}*.json")):
             continue  # 이미 만든 교시 (CI 는 새로 생긴 것만)
         f = pick([f for f in files if compatible(e, f)], e)
@@ -135,11 +143,11 @@ def build(exam_id: str, rebuild: bool = False) -> None:
         subs = e["subjects"]
         first, last = subs[0]["from"], subs[-1]["to"]
         try:
-            meta, qs = segment.segment(f["path"], last - first + 1, choices, first)
+            meta, qs = segment.segment(f["path"], last - first + 1, choices, first, [x["name"] for x in subs])
         except Exception as ex:  # noqa: BLE001
             # 시험지 번호가 1부터 다시 시작하는 경우
             try:
-                meta, qs = segment.segment(f["path"], last - first + 1, choices, 1)
+                meta, qs = segment.segment(f["path"], last - first + 1, choices, 1, [x["name"] for x in subs])
                 for q in qs:
                     q["no"] += first - 1
             except Exception:  # noqa: BLE001
@@ -147,18 +155,23 @@ def build(exam_id: str, rebuild: bool = False) -> None:
                 continue
         pdf_id = f"{exam_id}-{e['year']}-{hashlib.sha1(f['path'].read_bytes()).hexdigest()[:10]}"
         shutil.copyfile(f["path"], OUT / "pdf" / f"{pdf_id}.pdf")
-        group = "특별시험" if e.get("round") == "특별" else ("정기시험" if has_special else (e.get("stage") or "필기"))
+        parts = ["특별시험" if e.get("round") == "특별" else ("정기시험" if has_special else "")]
+        parts += [e.get("stage") or "" if multi_stage else "", e.get("track") or ""]
+        group = " ".join(p for p in parts if p) or "필기"
+        text_items = {int(x) for x in e.get("text_items", [])}
         for s in subs:
             sq = []
             for q in qs:
-                if s["from"] <= q["no"] <= s["to"]:
+                if s["from"] <= q["no"] <= s["to"] and q["no"] not in text_items:  # 주관식은 빼고 객관식만
                     ans = e["answers"].get(str(q["no"]))
-                    nq = dict(q, orig=q["no"], no=q["no"] - s["from"] + 1, answer=ans)
+                    nq = dict(q, orig=q["no"], no=len(sq) + 1, answer=ans)
                     sq.append(nq)
+            if not sq:
+                continue
             if any(q["answer"] is None for q in sq):
                 problems.append(f"{tag} {s['name']}: 정답 빠진 문항")
                 continue
-            pid = f"{exam_id}-{e['year']}{'-특별' if e.get('round') == '특별' else ''}{'-' + e['stage'] if e.get('stage') == '2차' else ''}-{e['period']}교시-{slug(s['name'])}"
+            pid = f"{prefix}{slug(s['name'])}"
             paper = dict(
                 id=pid,
                 exam=exam_id,

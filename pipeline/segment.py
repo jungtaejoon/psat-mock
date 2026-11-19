@@ -26,6 +26,8 @@ Q_RE = re.compile(r"^\s*(?:문\s*)?(\d{1,3})\s*\.(?!\d)")
 SHARED_RE = re.compile(r"^\s*(?:※|\[\s*(?:문\s*)?\d)")
 RANGE_RE = re.compile(r"(\d{1,3})\s*\.?\s*[～~∼\-–]\s*(?:문\s*)?(\d{1,3})")
 PAD = 3
+FOOT_RE = re.compile(r"(\d{4}년.*제\d+회|[A-B가-나]형?-\d+-\d+|-[A-B]-\d+-\d+|\d+-\d+\[|\(\d+-\d+\)$)")
+HEAD_RE = re.compile(r"^\s*\[?\s*제\s*\d+\s*과목")
 
 
 def lines_of(page):
@@ -38,15 +40,20 @@ def lines_of(page):
     return out
 
 
-def page_frame(page, lines):
+def page_frame(page, lines, headerless: bool = False):
     """머리말/꼬리말을 제외한 본문 세로 범위."""
     H = page.rect.height
     head = [r.y1 for r, t in lines if r.y1 < H * 0.06]
+    # 문항 번호가 페이지 꼭대기에 오는 문서(머리말 없이 본문이 맨 위에서 시작)는 머리말을 잘라내지 않는다
+    if headerless:
+        head = []
     # 꼬리말은 쪽 번호 같은 짧은 글만. 페이지 맨 아래 선택지(⑤ …)를 꼬리말로 오인하지 않도록 한다
     foot = [r.y0 for r, t in lines if r.y0 > H * 0.95 and re.fullmatch(r"[-–―\s]*\d{1,2}\s*(쪽)?[-–―\s]*|.*\d+\s*쪽.*", t)]
     # 같은 높이에 다른 본문 글자가 있으면 쪽 번호가 아니다(표 형태 선택지의 숫자 칸)
     foot = [y for y in foot if sum(1 for r, _ in lines if abs(r.y0 - y) < 3) == 1]
-    top = max(head) + 2 if head else H * 0.04
+    # 큐넷 문제지 꼬리말: "2017년 제20회 주택관리사보 1차 A-32-12", "일반경비지도사 - A - 18 - 11[1차]" 같은 줄
+    foot += [r.y0 for r, t in lines if r.y0 > H * 0.88 and FOOT_RE.search(t.replace(" ", ""))]
+    top = max(head) + 2 if head else (H * 0.02 if headerless else H * 0.04)
     bottom = min(foot) - 2 if foot else H * 0.985
     # 머리말 아래 가로줄(도형)도 머리말로 본다
     W = page.rect.width
@@ -146,7 +153,7 @@ def choice_boxes(doc, regions: list[dict], n_choices: int = 5) -> list[dict] | N
     return boxes
 
 
-def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1):
+def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1, headings: list[str] | None = None):
     doc = fitz.open(pdf_path)
     _ink_cache.clear()
     _char_cache.clear()
@@ -159,9 +166,15 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     one_col_doc = not any(
         r.x0 > mid - 5 and Q_RE.match(t) for page in doc for r, t in lines_of(page)
     )
+    H0 = doc[0].rect.height
+    headerless = any(r.y1 < H0 * 0.06 and Q_RE.match(t) for page in doc for r, t in lines_of(page))
+    # 첫 ① 이 나오기 전의 쪽은 표지·수험자 유의사항이다 (번호 매긴 안내문을 문항으로 착각하지 않도록)
+    first_q_page = next((i for i, pg in enumerate(doc) if any("①" in t for _, t in lines_of(pg))), 0)
     for pno, page in enumerate(doc):
         lines = lines_of(page)
-        top, bottom = page_frame(page, lines)
+        if pno < first_q_page:
+            continue
+        top, bottom = page_frame(page, lines, headerless)
         body = [(r, t) for r, t in lines if r.y0 >= top - 1 and r.y1 <= bottom + 1]
         spans_mid = [r for r, t in body if r.x0 < mid - 20 and r.x1 > mid + 20]
         if one_col_doc or len(spans_mid) > len(body) * 0.5:  # 1단 편집 페이지
@@ -175,6 +188,7 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
             cols.append(dict(page=pno, x0=rx0, x1=W, top=top, bottom=bottom, lines=R))
 
     # 2) 문항 시작 줄과 공통 지문 시작 줄을 순서대로 찾는다
+    heads = [h.replace(" ", "") for h in (headings or []) if len(h.replace(" ", "")) >= 3]
     marks = []  # (col_idx, y, kind, num/range)
     expect = first
     for ci, c in enumerate(cols):
@@ -186,6 +200,11 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
         ordered = sorted(c["lines"], key=lambda x: (x[0].y0, x[0].x0))
         for k, (r, t) in enumerate(ordered):
             if t == "문":
+                continue
+            # 과목 제목 줄(가운데 정렬·상자 안일 수 있음): 앞 문항을 여기서 끊는다
+            tt = t.replace(" ", "")
+            if marks and (HEAD_RE.match(t) or any(tt.startswith(h) and len(tt) <= len(h) + 8 for h in heads)):
+                marks.append((ci, r.y0 - 6, "h", None))  # 제목 상자 윗선까지 피한다
                 continue
             labeled = any(abs(m.y0 - r.y0) < 4 and m.x1 <= r.x0 + 6 for m in mun)
             if r.x0 > left + 14 and not labeled:
@@ -237,6 +256,8 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     questions = []
     shared = {}
     for kind, key, regions, text in blocks:
+        if kind == "h":
+            continue
         if kind == "s":
             for n in range(key[0], key[1] + 1):
                 shared[n] = dict(regions=regions, text=text)
