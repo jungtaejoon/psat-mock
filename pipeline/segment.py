@@ -207,11 +207,13 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
             if marks and (HEAD_RE.match(t) or (alone and any(tt.startswith(h) and len(tt) <= len(h) + 8 for h in heads))):
                 marks.append((ci, r.y0 - 6, "h", None))  # 제목 상자 윗선까지 피한다
                 continue
-            labeled = any(abs(m.y0 - r.y0) < 4 and m.x1 <= r.x0 + 6 for m in mun)
+            # 수식이 든 줄은 키가 커서 '문' 과 윗선이 어긋난다 → '문' 이 그 줄 높이 안에 들어오면 같은 줄로 본다
+            beside = [m for m in mun if m.x1 <= r.x0 + 6 and (abs(m.y0 - r.y0) < 4 or (m.y0 >= r.y0 - 2 and m.y1 <= r.y1 + 2))]
+            labeled = bool(beside)
             if r.x0 > left + 14 and not labeled:
                 continue
             if labeled:
-                r = fitz.Rect(min(m.x0 for m in mun if abs(m.y0 - r.y0) < 4), r.y0, r.x1, r.y1)
+                r = fitz.Rect(min(m.x0 for m in beside), r.y0, r.x1, r.y1)
             m = Q_RE.match(t)
             if m and int(m.group(1)) == expect:
                 marks.append((ci, r.y0, "q", expect))

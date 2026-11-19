@@ -16,12 +16,12 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import shutil
 import sys
 import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import pdfutil  # noqa: E402
 import segment  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -159,7 +159,7 @@ def build(exam_id: str, rebuild: bool = False) -> None:
                 problems.append(f"{tag}: 문항 나누기 실패 ({ex}) ← {f['name']}")
                 continue
         pdf_id = f"{exam_id}-{e['year']}-{hashlib.sha1(f['path'].read_bytes()).hexdigest()[:10]}"
-        shutil.copyfile(f["path"], OUT / "pdf" / f"{pdf_id}.pdf")
+        pdfutil.copy_compressed(f["path"], OUT / "pdf" / f"{pdf_id}.pdf")
         parts = ["특별시험" if e.get("round") == "특별" else ("정기시험" if has_special else "")]
         parts += [e.get("stage") or "" if multi_stage else "", e.get("track") or ""]
         group = " ".join(p for p in parts if p) or "필기"

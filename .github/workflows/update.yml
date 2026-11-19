@@ -50,6 +50,12 @@ jobs:
             python pipeline/qnet_answers.py prepare "$gid"
           done
 
+      # 공무원(9급·7급·지방직): 정답표가 글자 PDF 라 API 없이 읽는다. 최근 2년치만 확인
+      - name: 공무원 기출 수집
+        run: |
+          python pipeline/gosi.py --since=$(( $(date -u +%Y) - 1 ))
+          python pipeline/build_index.py
+
       # Claude API 인증은 Workload Identity Federation: 저장된 API 키 없이 실행마다 GitHub OIDC 토큰을
       # 단기 토큰으로 교환한다(SDK 가 아래 환경 변수를 읽어 자동 처리). ID 값들은 비밀이 아니라 repo 변수로 둔다.
       - name: 해설 (배치 수거 → 신규 제출)
