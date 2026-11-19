@@ -83,8 +83,17 @@ def build_request(paper: dict, q: dict, pdf: fitz.Document) -> dict:
     )
 
 
+def api_id(cid: str) -> str:
+    """배치 custom_id 는 영문·숫자·_- 64자까지만 → 문제지 id(한글 포함)를 해시로 바꾼다. 원래 id 는 상태 파일 ids 에 둔다"""
+    import hashlib
+
+    return "q" + hashlib.sha1(cid.encode()).hexdigest()[:40]
+
+
 def load_state() -> dict:
-    return json.loads(STATE.read_text()) if STATE.exists() else {"batches": [], "pending": []}
+    st = json.loads(STATE.read_text()) if STATE.exists() else {"batches": [], "pending": []}
+    st.setdefault("ids", {})
+    return st
 
 
 def save_state(st: dict) -> None:
@@ -114,7 +123,8 @@ def submit(client: anthropic.Anthropic, limit: int | None) -> None:
             if str(q["no"]) in done or cid in pending:
                 continue
             pdf = pdf or fitz.open(DATA / "pdf" / f"{paper.get('pdf', paper['id'])}.pdf")
-            reqs.append(Request(custom_id=cid, params=build_request(paper, q, pdf)))
+            reqs.append(Request(custom_id=api_id(cid), params=build_request(paper, q, pdf)))
+            st["ids"][api_id(cid)] = cid
             if limit and len(reqs) >= limit:
                 break
         if limit and len(reqs) >= limit:
@@ -127,7 +137,7 @@ def submit(client: anthropic.Anthropic, limit: int | None) -> None:
         chunk = reqs[i : i + 1000]
         b = client.messages.batches.create(requests=chunk)
         st["batches"].append(b.id)
-        st["pending"] += [r["custom_id"] for r in chunk]
+        st["pending"] += [st["ids"][r["custom_id"]] for r in chunk]
         save_state(st)
         print(f"submitted {b.id}: {len(chunk)}건")
 
@@ -145,22 +155,23 @@ def collect(client: anthropic.Anthropic) -> bool:
             all_done = False
             continue
         for res in client.messages.batches.results(bid):
-            pid, no = res.custom_id.rsplit("__", 1)
+            cid = st["ids"].pop(res.custom_id, res.custom_id)
+            pid, no = cid.rsplit("__", 1)
             if res.result.type == "succeeded":
                 msg = res.result.message
                 if msg.stop_reason != "end_turn":
-                    retry.append(res.custom_id)
+                    retry.append(cid)
                     continue
                 text = next((blk.text for blk in msg.content if blk.type == "text"), "")
                 try:
                     data = json.loads(text)
                 except json.JSONDecodeError:
-                    retry.append(res.custom_id)
+                    retry.append(cid)
                     continue
                 data["model"] = msg.model
                 updates.setdefault(pid, {})[no] = data
             else:
-                retry.append(res.custom_id)
+                retry.append(cid)
         print(f"collected {bid}")
     EXPL.mkdir(parents=True, exist_ok=True)
     for pid, items in updates.items():

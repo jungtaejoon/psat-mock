@@ -245,9 +245,16 @@ def save_figures(paper: dict, doc: fitz.Document, q: dict, rects) -> dict:
 
 # ---------------------------------------------------------------- 상태
 
+def api_id(cid: str) -> str:
+    """배치 custom_id 는 영문·숫자·_- 64자까지만 → 문제지 id(한글 포함)를 해시로 바꾼다. 원래 id 는 상태 파일 ids 에 둔다"""
+    import hashlib
+
+    return "q" + hashlib.sha1(cid.encode()).hexdigest()[:40]
+
+
 def load_state() -> dict:
     st = json.loads(STATE.read_text()) if STATE.exists() else {}
-    for k, v in (("scope", []), ("batches", []), ("pending", []), ("sonnet", []), ("gave_up", {})):
+    for k, v in (("scope", []), ("batches", []), ("pending", []), ("sonnet", []), ("gave_up", {}), ("ids", {})):
         st.setdefault(k, v)
     return st
 
@@ -289,7 +296,8 @@ def submit(client, limit: int | None) -> None:
                 continue
             doc = doc or paper_pdf(paper)
             model = SONNET if cid in sonnet or PUA.search(pdf_text(doc, q)) else HAIKU
-            reqs.append(Request(custom_id=cid, params=build_params(paper, q, doc, model)))
+            reqs.append(Request(custom_id=api_id(cid), params=build_params(paper, q, doc, model)))
+            st["ids"][api_id(cid)] = cid
             if limit and len(reqs) >= limit:
                 break
         if limit and len(reqs) >= limit:
@@ -301,7 +309,7 @@ def submit(client, limit: int | None) -> None:
         chunk = reqs[i : i + 500]
         b = client.messages.batches.create(requests=chunk)
         st["batches"].append(b.id)
-        st["pending"] += [r["custom_id"] for r in chunk]
+        st["pending"] += [st["ids"][r["custom_id"]] for r in chunk]
         save_state(st)
         print(f"submitted {b.id}: {len(chunk)}건 (Sonnet {sum(r['params']['model'] == SONNET for r in chunk)})")
 
@@ -320,7 +328,7 @@ def collect(client) -> bool:
             continue
         updates: dict[str, dict] = {}
         for res in client.messages.batches.results(bid):
-            cid = res.custom_id
+            cid = st["ids"].pop(res.custom_id, res.custom_id)
             pid, no = cid.rsplit("__", 1)
             st["pending"] = [c for c in st["pending"] if c != cid]
             reason = None
