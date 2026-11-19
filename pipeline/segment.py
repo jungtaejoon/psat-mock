@@ -203,7 +203,8 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
                 continue
             # 과목 제목 줄(가운데 정렬·상자 안일 수 있음): 앞 문항을 여기서 끊는다
             tt = t.replace(" ", "")
-            if marks and (HEAD_RE.match(t) or any(tt.startswith(h) and len(tt) <= len(h) + 8 for h in heads)):
+            alone = not any(abs(r2.y0 - r.y0) < 3 and r2 is not r for r2, _ in ordered)  # 본문 속 법령 이름(형사소송법 제6조…)과 구별
+            if marks and (HEAD_RE.match(t) or (alone and any(tt.startswith(h) and len(tt) <= len(h) + 8 for h in heads))):
                 marks.append((ci, r.y0 - 6, "h", None))  # 제목 상자 윗선까지 피한다
                 continue
             labeled = any(abs(m.y0 - r.y0) < 4 and m.x1 <= r.x0 + 6 for m in mun)

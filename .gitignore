@@ -13,3 +13,4 @@ data/qnet/*/*
 !data/qnet/*/answers.json
 data/qnet/*.log
 data/gosi/raw/
+data/gosi/*.log

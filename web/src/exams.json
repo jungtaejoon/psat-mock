@@ -44,50 +44,80 @@
   {
    "id": "gong9",
    "name": "9급 공무원",
-   "desc": "국가직 9급 공채 국어·영어·한국사·전공",
+   "desc": "국가직 9급 공채 필기 (국어·영어·한국사·전공과목, 2014~2026)",
    "category": "공무원",
    "choices": 4,
    "secPerQuestion": 60,
    "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
-   "status": "soon",
+   "status": "live",
    "gosi": [
     "08"
    ],
    "groupOf": {
     "08": "국가직 9급"
-   }
+   },
+   "seo": "gong9",
+   "subjects": [
+    "국어",
+    "영어",
+    "한국사",
+    "헌법",
+    "행정법",
+    "행정학",
+    "경제학"
+   ]
   },
   {
    "id": "gong7",
    "name": "7급 공무원",
-   "desc": "국가직 7급 공채 전공과목",
+   "desc": "국가직 7급 공채 필기 전공과목 (헌법·행정법·경제학 등, 2014~2026)",
    "category": "공무원",
    "choices": 4,
    "secPerQuestion": 60,
    "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
-   "status": "soon",
+   "status": "live",
    "gosi": [
     "06"
    ],
    "groupOf": {
     "06": "국가직 7급"
-   }
+   },
+   "seo": "gong7",
+   "subjects": [
+    "국어",
+    "영어",
+    "한국사",
+    "헌법",
+    "행정법",
+    "행정학",
+    "경제학"
+   ]
   },
   {
    "id": "local",
    "name": "지방직 공무원",
-   "desc": "지방직 7·9급",
+   "desc": "지방직 공무원 필기 (2017~2023)",
    "category": "공무원",
    "choices": 4,
    "secPerQuestion": 60,
    "source": "인사혁신처 국가공무원 채용시스템(gongmuwon.gosi.kr)",
-   "status": "soon",
+   "status": "live",
    "gosi": [
     "34"
    ],
    "groupOf": {
     "34": "지방직"
-   }
+   },
+   "seo": "local",
+   "subjects": [
+    "국어",
+    "영어",
+    "한국사",
+    "헌법",
+    "행정법",
+    "행정학",
+    "경제학"
+   ]
   },
   {
    "id": "realtor",

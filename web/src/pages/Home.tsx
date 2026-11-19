@@ -89,7 +89,13 @@ function YearTab({
     return [...byYear.entries()].sort((a, b) => b[0] - a[0]);
   }, [papers, group]);
   // 이 계열에 실제로 나오는 과목만 열로 쓴다
-  const cols = subjects.filter((s) => rows.some(([, r]) => r[s]));
+  const allCols = subjects.filter((s) => rows.some(([, r]) => r[s]));
+  // 과목이 많은 시험(공무원 등)은 과목을 먼저 고르고 그 과목의 연도 목록을 보여 준다
+  const many = allCols.length > 6;
+  const [pick, setPick] = useState("");
+  const picked = many ? (allCols.includes(pick) ? pick : allCols[0]) : "";
+  const cols = many ? [picked] : allCols;
+  const shownRows = many ? rows.filter(([, r]) => r[picked]) : rows;
 
   const startPaper = (p: PaperMeta) =>
     start(
@@ -127,8 +133,21 @@ function YearTab({
           ))}
         </div>
       )}
+      {many && (
+        <label className="subj-pick">
+          과목{" "}
+          <select value={picked} onChange={(e) => setPick(e.target.value)}>
+            {allCols.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+          <span className="muted">{allCols.length}개 과목</span>
+        </label>
+      )}
       <div className="year-list">
-        {rows.map(([year, row]) => (
+        {shownRows.map(([year, row]) => (
           <div key={year} className="year-row">
             <div className="year">{year}</div>
             <div

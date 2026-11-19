@@ -1123,3 +1123,21 @@ a.ex-card:hover {
   font-size: 12px;
   color: var(--muted);
 }
+
+.subj-pick {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 12px;
+  font-weight: 600;
+}
+.subj-pick select {
+  font: inherit;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  min-width: 0;
+  max-width: 100%;
+}
