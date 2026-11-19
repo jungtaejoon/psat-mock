@@ -1,4 +1,4 @@
-import type { Explanation, ItemRef, Paper, PaperMeta, Question } from "./types";
+import type { Explanation, ItemRef, Paper, PaperMeta, Question, TextItem } from "./types";
 
 const BASE = "./data";
 const paperCache = new Map<string, Promise<Paper>>();
@@ -40,6 +40,25 @@ export function loadExplanations(paperId: string): Promise<Record<string, Explan
     explCache.set(paperId, p);
   }
   return p;
+}
+
+const textCache = new Map<string, Promise<Record<string, TextItem>>>();
+
+/** 글자로 옮긴 문항들 (문제지에 없으면 빈 객체) */
+export function loadText(paperId: string): Promise<Record<string, TextItem>> {
+  let p = textCache.get(paperId);
+  if (!p) {
+    p = fetch(`${BASE}/text/${paperId}.json`)
+      .then((r) => (r.ok ? r.json() : {}))
+      .catch(() => ({}));
+    textCache.set(paperId, p);
+  }
+  return p;
+}
+
+/** data 폴더 안의 상대 경로(예: fig/…png) → 주소 */
+export function dataUrl(path: string) {
+  return `${BASE}/${path}`;
 }
 
 // 문제지 PDF 는 용량이 커서 별도 사이트(Cloudflare Pages, VITE_PDF_BASE)에 둘 수 있다. 비어 있으면 같은 사이트의 data/pdf

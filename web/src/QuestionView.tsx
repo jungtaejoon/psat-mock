@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { CIRCLED, loadExplanations, loadQuestion, pdfUrl } from "./data";
+import { CIRCLED, loadExplanations, loadQuestion, loadText, pdfUrl } from "./data";
 import { renderRegion } from "./pdf";
 import { canViewExplanation } from "./monetization";
+import { TextQuestion } from "./TextQuestion";
+import { useViewMode } from "./viewMode";
 import type {
   ChoiceBox,
   Explanation,
@@ -9,6 +11,7 @@ import type {
   Paper,
   Question,
   Region,
+  TextItem,
 } from "./types";
 
 function RegionCanvas({
@@ -163,20 +166,24 @@ export function QuestionImage({
 }) {
   const box = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-  const [data, setData] = useState<{ paper: Paper; q: Question } | null>(null);
+  const [data, setData] = useState<{ paper: Paper; q: Question; text?: TextItem } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [mode, setMode] = useViewMode();
 
   useEffect(() => {
     setData(null);
     setError(null);
-    loadQuestion(item).then(
-      (d) => {
-        setData(d);
-        onChoicesKnown?.(!!d.q.choices);
-      },
+    Promise.all([loadQuestion(item), loadText(item.paperId)]).then(
+      ([d, texts]) => setData({ ...d, text: texts[String(item.no)] }),
       (e) => setError(String(e)),
     );
-  }, [item.paperId, item.no]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [item.paperId, item.no]);
+
+  const asText = !!(data?.text && mode === "text");
+  useEffect(() => {
+    // 보기를 문제 위에서 직접 고를 수 있는지 (없으면 화면 아래 번호 버튼을 쓴다)
+    if (data) onChoicesKnown?.(asText || !!data.q.choices);
+  }, [data, asText]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const el = box.current;
@@ -193,7 +200,18 @@ export function QuestionImage({
     <div className="qimg" ref={box}>
       {error && <div className="render-error">{error}</div>}
       {!data && !error && <div className="skeleton" />}
-      {data && width > 0 && (
+      {data?.text && (
+        <div className="view-toggle" role="group" aria-label="문제 보기 방식">
+          <button type="button" aria-pressed={mode === "pdf"} onClick={() => setMode("pdf")}>
+            원본 PDF
+          </button>
+          <button type="button" aria-pressed={mode === "text"} onClick={() => setMode("text")}>
+            텍스트
+          </button>
+        </div>
+      )}
+      {data && asText && <TextQuestion item={data.text!} no={data.q.orig ?? data.q.no} choice={choice} />}
+      {data && !asText && width > 0 && (
         <>
           {data.q.shared && (
             <div className="shared">

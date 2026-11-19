@@ -25,6 +25,9 @@ def main() -> None:
         e["count"] = len(p["questions"])
         expl = OUT / "explanations" / f.name
         e["explained"] = sum(1 for k in json.loads(expl.read_text()) if k.isdigit()) if expl.exists() else 0
+        txt = OUT / "text" / f.name
+        if txt.exists():
+            e["text"] = len(json.loads(txt.read_text()))
         index.append(e)
     index.sort(key=lambda x: (x["exam"], -x["year"], x.get("group", ""), x["exams"][0] if x["exams"] else "", x["subject"]))
     (OUT / "index.json").write_text(json.dumps(dict(papers=index), ensure_ascii=False))

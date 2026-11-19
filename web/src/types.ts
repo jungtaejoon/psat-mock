@@ -18,6 +18,16 @@ export interface PaperMeta {
   explained?: number;
   /** 공공누리 유형 (1~4). 모르면 없음 */
   kogl?: number;
+  /** 글자로 옮긴 문항 수 (원본 PDF 대신 텍스트로 풀 수 있음) */
+  text?: number;
+}
+
+/** 글자로 옮긴 문항 (data/text/<문제지>.json 의 한 항목). stem·choices 는 제한된 HTML + LaTeX 수식 */
+export interface TextItem {
+  stem: string;
+  choices: string[];
+  /** 그림 id → data 폴더 안 경로 */
+  figs: Record<string, string>;
 }
 
 export interface Region {

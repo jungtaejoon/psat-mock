@@ -77,6 +77,9 @@ jobs:
             python pipeline/qnet_answers.py read-api "${spec%%:*}" "${spec##*:}" || true
           done
           python pipeline/qnet_build.py
+          # 문항 텍스트 변환: 끝난 배치 수거 → 범위(data/convert_state.json scope) 안의 새 문항 제출
+          python pipeline/convert.py collect
+          python pipeline/convert.py submit
           python pipeline/build_index.py
           python pipeline/explain.py collect
           python pipeline/explain.py submit ${{ inputs.explain_limit && format('--limit {0}', inputs.explain_limit) || '' }}

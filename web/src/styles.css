@@ -1141,3 +1141,177 @@ a.ex-card:hover {
   min-width: 0;
   max-width: 100%;
 }
+
+/* 원본 PDF / 텍스트 보기 전환 */
+.view-toggle {
+  align-self: flex-end;
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 12px;
+}
+.view-toggle button {
+  font: inherit;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 3px 12px;
+  cursor: pointer;
+}
+.view-toggle button[aria-pressed="true"] {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+.view-toggle button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -2px;
+}
+
+/* 글자로 옮긴 문항 */
+.tq {
+  width: 100%;
+  max-width: 640px;
+  font-family: "Noto Serif KR", "AppleMyungjo", "Batang", serif;
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.tq-stem {
+  display: flex;
+  gap: 6px;
+}
+.tq-stem > div {
+  min-width: 0;
+  flex: 1;
+}
+.tq-no {
+  font-weight: 700;
+  flex: none;
+}
+.tq p {
+  margin: 0 0 0.45em;
+}
+.tq .box {
+  border: 1px solid var(--ink);
+  padding: 10px 14px;
+  margin: 0.6em 0;
+  overflow-x: auto;
+}
+.tq .box-title {
+  text-align: center;
+}
+.tq p.item {
+  padding-left: 1.6em;
+  text-indent: -1.6em;
+}
+.tq .cap {
+  font-size: 14px;
+  color: var(--muted);
+}
+.tq .right {
+  text-align: right;
+}
+.tq-table {
+  overflow-x: auto;
+  margin: 0.6em 0;
+}
+.tq table {
+  border-collapse: collapse;
+  font-size: 14.5px;
+  line-height: 1.5;
+  overflow-wrap: normal;
+  margin: 0 auto;
+}
+.tq td {
+  white-space: nowrap;
+}
+.tq th,
+.tq td {
+  border: 1px solid var(--muted);
+  padding: 4px 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+.tq th {
+  background: color-mix(in srgb, var(--muted) 12%, transparent);
+  font-weight: 600;
+}
+.tq-fig {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5em auto;
+  background: #fff;
+  border-radius: 4px;
+}
+.tq-math-block {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.tq-choices {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+}
+.tq-choice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 12px;
+}
+button.tq-choice {
+  cursor: pointer;
+}
+button.tq-choice:hover {
+  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
+}
+button.tq-choice:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+.tq-choice.sel {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand) 13%, transparent);
+}
+.tq-choice.correct {
+  border-color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 14%, transparent);
+}
+.tq-choice.wrong {
+  border-color: var(--no);
+  background: color-mix(in srgb, var(--no) 12%, transparent);
+}
+.tq-mark {
+  flex: none;
+  font-weight: 600;
+}
+.tq-choice.sel .tq-mark {
+  color: var(--brand);
+}
+.tq-choice.correct .tq-mark {
+  color: var(--ok);
+}
+.tq-choice.wrong .tq-mark {
+  color: var(--no);
+}
+.tq-choice-text {
+  min-width: 0;
+  flex: 1;
+}
+@media (prefers-color-scheme: dark) {
+  .tq-fig {
+    filter: invert(0.92) hue-rotate(180deg);
+  }
+}
