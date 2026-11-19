@@ -74,6 +74,10 @@ jobs:
               "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" | jq -r .value > "$ANTHROPIC_IDENTITY_TOKEN_FILE"
           }
           jwt
+          # 제출이 길어지면(수천 건) 실행 중에도 만료되므로 2분마다 새로 받아 둔다
+          ( while sleep 120; do jwt || true; done ) &
+          JWT_LOOP=$!
+          trap 'kill $JWT_LOOP 2>/dev/null || true' EXIT
           # 인증·Batches 권한 확인 (토큰 비용 없음)
           python -c "import anthropic; c = anthropic.Anthropic(); c.models.retrieve('claude-opus-5-5'); list(c.messages.batches.list(limit=1)); print('Claude API 인증 OK')"
           # 새 큐넷 최종정답표: 그림이라 API 로 두 번 읽어 같을 때만 반영 → 문제지 만들기
