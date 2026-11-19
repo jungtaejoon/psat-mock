@@ -144,7 +144,9 @@ export default function Exam({ id }: { id: string }) {
 
   useEffect(() => {
     const next = s?.items[cur + 1];
-    if (next) prefetchPdf(pdfUrl(papers.get(next.paperId) ?? { id: next.paperId }));
+    // 문제지 정보(어느 PDF 를 쓰는지)를 받은 뒤에만 미리 받는다. 여러 과목이 PDF 하나를 같이 쓰기도 해서 id 로 짐작하면 틀린다
+    const p = next && papers.get(next.paperId);
+    if (p) prefetchPdf(pdfUrl(p));
   }, [cur, s?.items, papers]);
 
   const answeredCount = s ? Object.keys(s.answers).length : 0;

@@ -48,7 +48,7 @@
 
 ### PDF 저장소 (텍스트 전환과 별개로 먼저 진행)
 
-- **Cloudflare Pages에 PDF 전용 사이트**(`alltests-pdf` → `pdf.alltests.ai.kr`)를 둡니다. 화면과 데이터는 지금처럼 GitHub Pages(alltests.ai.kr)에 둡니다.
+- **Cloudflare Pages에 PDF 전용 사이트**(`alltests-pdf` → `pdf.alltests.ai.kr`)를 둡니다. **2026-11-19 적용 완료:** PDF 2,040개 이전, 사이트가 이 주소에서 PDF 를 읽음(저장소 변수 `PDF_BASE`), GitHub Pages 배포물에서는 PDF 제외. 화면과 데이터는 지금처럼 GitHub Pages(alltests.ai.kr)에 둡니다.
   - 무료 요금제로 트래픽 무제한, 사이트당 파일 20,000개, 파일당 25MB입니다. PDF는 지금 약 2,000개이고, 계획한 시험을 다 열어도 5,000개 안팎입니다.
   - 하위 도메인이라 가비아에 CNAME 하나만 추가하면 됩니다. 네임서버는 옮기지 않습니다.
   - 고르지 않은 것:
