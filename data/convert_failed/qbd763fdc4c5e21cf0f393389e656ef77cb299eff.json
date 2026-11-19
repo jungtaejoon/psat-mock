@@ -1,0 +1,1 @@
+{"cid": "2013-상황판단-3b65748dae8d2620__25", "model": "claude-haiku-5-5", "reason": "보기 0/5개; 빠진 글자 627개 (다다다다다다다음음글을을을근거거로로로로로로로로로판단할할할); 더해진 글자 11개 (문문항번호빼발시작합니); 자신감 low", "output": {"stem": "<p>와 같은 문항 번호는 빼고 발문부터 시작합니다.</p>", "choices": [], "figures": [], "confidence": "low", "notes": "placeholder", "_ratio": 0.0091}}
