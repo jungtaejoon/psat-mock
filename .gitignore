@@ -12,3 +12,4 @@ data/qnet/*/*
 !data/qnet/*/posts.json
 !data/qnet/*/answers.json
 data/qnet/*.log
+data/gosi/raw/
