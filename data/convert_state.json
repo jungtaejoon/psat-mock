@@ -1,6 +1,9 @@
 {
  "scope": [
-  "gong9-2026-"
+  "gong7-",
+  "gong9-",
+  "gong9-2026-",
+  "local-"
  ],
  "batches": [],
  "pending": [],
@@ -37,5 +40,8 @@
   "in": 847201,
   "out": 658313,
   "cache_r": 1857394
- }
+ },
+ "exclude": [
+  "-영어"
+ ]
 }

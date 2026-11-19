@@ -86,7 +86,8 @@ jobs:
           jwt
           python pipeline/convert.py collect
           jwt
-          python pipeline/convert.py submit
+          # 한 번에 12,000문항까지 (작업 시간 60분 안에 끝나 상태가 커밋되도록). 나머지는 다음 실행에서
+          python pipeline/convert.py submit --limit 12000
           python pipeline/build_index.py
           jwt
           python pipeline/explain.py collect

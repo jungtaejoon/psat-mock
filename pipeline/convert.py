@@ -12,7 +12,7 @@
 
 검사(모두 통과해야 저장): 허용 태그만, 보기 개수, 수식을 뺀 글자가 PDF 글자와 98% 이상 같음(깨진 글자가 있는
 문항은 90%), 그림 위치가 문항 안, 자신감 low 아님. Haiku 에서 걸리면 Sonnet 으로 한 번 더, 그래도 걸리면 PDF 로 둔다.
-수식이 들어 있어 PDF 글자가 깨진 문항은 처음부터 Sonnet 으로 보낸다.
+처음엔 모두 Haiku 로 보내고, 검사에 걸린 문항만 Sonnet 으로 한 번 더 보낸다. 범위에서 뺄 과목은 exclude.
 인증: 로컬은 ANTHROPIC_API_KEY, CI 는 Workload Identity Federation (.github/workflows/update.yml).
 """
 from __future__ import annotations
@@ -260,7 +260,7 @@ def api_id(cid: str) -> str:
 
 def load_state() -> dict:
     st = json.loads(STATE.read_text()) if STATE.exists() else {}
-    for k, v in (("scope", []), ("batches", []), ("pending", []), ("sonnet", []), ("gave_up", {}), ("ids", {})):
+    for k, v in (("scope", []), ("exclude", []), ("batches", []), ("pending", []), ("sonnet", []), ("gave_up", {}), ("ids", {})):
         st.setdefault(k, v)
     return st
 
@@ -281,43 +281,71 @@ def paper_pdf(paper: dict) -> fitz.Document:
 
 # ---------------------------------------------------------------- 명령
 
+def _questions_to_send(st: dict):
+    """범위 안에서 아직 변환 안 된 문항: (문제지, 문항, 모델)"""
+    pending, sonnet = set(st["pending"]), set(st["sonnet"])
+    for f in sorted((DATA / "papers").glob("*.json")):
+        if not any(f.stem.startswith(s) for s in st["scope"]):
+            continue
+        if any(x in f.stem for x in st["exclude"]):
+            continue  # 예: 영어 — PDF 글자 층에 영어가 없어 대조 검사를 할 수 없다 → PDF 로 둔다
+        paper = json.loads(f.read_text())
+        done = existing(paper["id"])
+        for q in paper["questions"]:
+            cid = f"{paper['id']}__{q['no']}"
+            if str(q["no"]) in done or cid in pending or cid in st["gave_up"]:
+                continue
+            # 처음엔 모두 Haiku, 검사에 걸린 것만 Sonnet 으로 다시 (2026-11-20 절감형)
+            yield paper, q, (SONNET if cid in sonnet else HAIKU)
+
+
 def submit(client, limit: int | None) -> None:
+    """500건씩 만들어 바로 제출한다 (한꺼번에 만들면 그림 때문에 메모리가 수 GB). 배치 대기열 한도에 걸리면 멈추고 다음 실행에서 이어 간다"""
     from anthropic.types.messages.batch_create_params import Request
 
     st = load_state()
     if not st["scope"]:
         print("변환 범위가 비어 있음 (convert.py scope add <접두어>)")
         return
-    pending, sonnet = set(st["pending"]), set(st["sonnet"])
-    reqs = []
-    for f in sorted((DATA / "papers").glob("*.json")):
-        if not any(f.stem.startswith(s) for s in st["scope"]):
-            continue
-        paper = json.loads(f.read_text())
-        done = existing(paper["id"])
-        doc = None
-        for q in paper["questions"]:
-            cid = f"{paper['id']}__{q['no']}"
-            if str(q["no"]) in done or cid in pending or cid in st["gave_up"]:
-                continue
-            doc = doc or paper_pdf(paper)
-            model = SONNET if cid in sonnet or PUA.search(pdf_text(doc, q)) else HAIKU
-            reqs.append(Request(custom_id=api_id(cid), params=build_params(paper, q, doc, model)))
-            st["ids"][api_id(cid)] = cid
-            if limit and len(reqs) >= limit:
-                break
-        if limit and len(reqs) >= limit:
-            break
-    if not reqs:
-        print("변환할 새 문항 없음")
-        return
-    for i in range(0, len(reqs), 500):
-        chunk = reqs[i : i + 500]
-        b = client.messages.batches.create(requests=chunk)
+    chunk, sent, docs = [], 0, {}
+
+    def flush() -> bool:
+        nonlocal chunk, sent
+        if not chunk:
+            return True
+        try:
+            b = client.messages.batches.create(requests=chunk)
+        except Exception as ex:  # noqa: BLE001
+            print(f"제출 멈춤 ({type(ex).__name__}: {str(ex)[:200]}) — 다음 실행에서 이어 감")
+            for r in chunk:
+                st["ids"].pop(r["custom_id"], None)
+            chunk = []
+            return False
         st["batches"].append(b.id)
         st["pending"] += [st["ids"][r["custom_id"]] for r in chunk]
         save_state(st)
-        print(f"submitted {b.id}: {len(chunk)}건 (Sonnet {sum(r['params']['model'] == SONNET for r in chunk)})")
+        print(f"submitted {b.id}: {len(chunk)}건 (Sonnet {sum(r['params']['model'] == SONNET for r in chunk)})", flush=True)
+        sent += len(chunk)
+        chunk = []
+        return True
+
+    for paper, q, model in _questions_to_send(st):
+        doc = docs.get(paper["id"])
+        if doc is None:
+            docs.clear()  # 문제지가 바뀌면 이전 PDF 는 닫는다
+            doc = docs[paper["id"]] = paper_pdf(paper)
+        cid = f"{paper['id']}__{q['no']}"
+        chunk.append(Request(custom_id=api_id(cid), params=build_params(paper, q, doc, model)))
+        st["ids"][api_id(cid)] = cid
+        if len(chunk) >= 500 and not flush():
+            break
+        if limit and sent + len(chunk) >= limit:
+            break
+    else:
+        flush()
+    if limit and chunk:
+        flush()
+    print(f"제출 {sent}건" if sent else "변환할 새 문항 없음")
 
 
 def collect(client) -> bool:
@@ -402,8 +430,10 @@ def main() -> None:
         st = load_state()
         if a.args[:1] == ["add"]:
             st["scope"] = sorted(set(st["scope"]) | set(a.args[1:]))
-            save_state(st)
-        print("범위:", st["scope"])
+        elif a.args[:1] == ["exclude"]:
+            st["exclude"] = sorted(set(st["exclude"]) | set(a.args[1:]))
+        save_state(st)
+        print("범위:", st["scope"], "제외:", st["exclude"])
         return
     if a.cmd == "check":
         # check <sample.json> <결과 폴더> : 시범 결과 검사 (개발용)
