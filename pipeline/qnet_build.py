@@ -91,7 +91,7 @@ def compatible(e: dict, f: dict) -> bool:
         # 급수·일반/기계 같은 구분이 제목이나 파일명에 들어 있어야 한다
         hay = (f["title"] + f["name"]).replace(" ", "")
         tk = e["track"].replace(" ", "")
-        if tk not in hay and tk.replace("경비지도사", "") not in hay:
+        if tk not in hay and tk.replace("경비지도사", "") not in hay and tk[:3] not in hay:
             return False
     if (e.get("round") == "특별") != (f["round"] == "특별"):
         return False
@@ -105,6 +105,11 @@ def compatible(e: dict, f: dict) -> bool:
 def pick(cands: list[dict], entry: dict) -> dict | None:
     if not cands:
         return None
+    # 교시가 안 적힌 파일이 여럿이면 과목 이름이 파일명에 들어 있는 것을 고른다
+    names = [x["name"].replace(" ", "") for x in entry.get("subjects", [])]
+    by_subject = [c for c in cands if any(n and n[:4] in c["name"].replace(" ", "") for n in names)]
+    if by_subject:
+        cands = by_subject
     want = entry.get("booklet") or "A"
     same = [c for c in cands if c["booklet"] == want] or [c for c in cands if c["booklet"] is None] or cands
     # 교시가 적힌 파일을 우선

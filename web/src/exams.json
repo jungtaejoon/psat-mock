@@ -129,57 +129,62 @@
   {
    "id": "labor",
    "name": "공인노무사",
-   "desc": "1차 객관식",
+   "desc": "공인노무사 1차 (노동법·민법·사회보험법·경제학원론/경영학개론)",
    "category": "법률·행정·경영",
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "05"
+   "status": "live",
+   "qnet": "05",
+   "seo": "labor"
   },
   {
    "id": "appraiser",
    "name": "감정평가사",
-   "desc": "1차 객관식",
+   "desc": "감정평가사 1차 (민법·경제학원론·부동산학원론·감정평가관계법규·회계학)",
    "category": "법률·행정·경영",
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "60"
+   "status": "live",
+   "qnet": "60",
+   "seo": "appraiser"
   },
   {
    "id": "tax",
    "name": "세무사",
-   "desc": "1차 객관식",
+   "desc": "세무사 1차 (재정학·세법학개론·회계학개론·상법/민법/행정소송법)",
    "category": "법률·행정·경영",
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "22"
+   "status": "live",
+   "qnet": "22",
+   "seo": "tax"
   },
   {
    "id": "customs",
    "name": "관세사",
-   "desc": "1차 객관식",
+   "desc": "관세사 1차 (관세법개론·무역영어·내국소비세법·회계학)",
    "category": "법률·행정·경영",
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "24"
+   "status": "live",
+   "qnet": "24",
+   "seo": "customs"
   },
   {
    "id": "patent",
    "name": "변리사",
-   "desc": "1차 객관식",
+   "desc": "변리사 1차 (산업재산권법·민법개론·자연과학개론)",
    "category": "법률·행정·경영",
    "choices": 5,
    "secPerQuestion": 100,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "51"
+   "status": "live",
+   "qnet": "51",
+   "seo": "patent"
   },
   {
    "id": "social1",

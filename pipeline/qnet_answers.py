@@ -129,6 +129,13 @@ def check(gid: str, choices: int) -> list[str]:
     return errs
 
 
+def _norm(entries: list) -> list:
+    """판독 결과 정리: 정답 값이 숫자 하나로 적혀 있으면 목록으로"""
+    for e in entries:
+        e["answers"] = {str(k): (v if isinstance(v, list) else [v]) for k, v in e.get("answers", {}).items()}
+    return entries
+
+
 def _key(e: dict) -> tuple:
     return (e["year"], e.get("round"), e.get("stage"), e["period"], e.get("booklet"), (e.get("track") or "").replace(" ", ""))
 
@@ -140,8 +147,8 @@ def merge(gid: str, choices: int) -> list[str]:
     def mk(e: dict) -> tuple:
         return (e.get("post"), e["period"], (e.get("track") or "").replace(" ", ""), e["subjects"][0]["from"] if e.get("subjects") else 0, (e["subjects"][0]["name"] if e.get("subjects") else "").replace(" ", "")[:4])
 
-    a = {mk(e): e for e in json.loads((src / "answers_A.json").read_text())}
-    b = {mk(e): e for e in json.loads((src / "answers_B.json").read_text())}
+    a = {mk(e): e for e in _norm(json.loads((src / "answers_A.json").read_text()))}
+    b = {mk(e): e for e in _norm(json.loads((src / "answers_B.json").read_text()))}
     prev = {mk(e): e for e in json.loads((src / "answers.json").read_text())} if (src / "answers.json").exists() else {}
     merged, diffs = dict(prev), []
     for k in sorted(set(a) | set(b), key=str):

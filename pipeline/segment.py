@@ -26,7 +26,7 @@ Q_RE = re.compile(r"^\s*(?:문\s*)?(\d{1,3})\s*\.(?!\d)")
 SHARED_RE = re.compile(r"^\s*(?:※|\[\s*(?:문\s*)?\d)")
 RANGE_RE = re.compile(r"(\d{1,3})\s*\.?\s*[～~∼\-–]\s*(?:문\s*)?(\d{1,3})")
 PAD = 3
-FOOT_RE = re.compile(r"(\d{4}년.*제\d+회|[A-B가-나]형?-\d+-\d+|-[A-B]-\d+-\d+|\d+-\d+\[|\(\d+-\d+\)$)")
+FOOT_RE = re.compile(r"(\d{4}년.*제\d+회|[A-B가-나]형?-\d+-\d+|-[A-B]-\d+-\d+|\d+-\d+\[|\(\d+-\d+\)$|형\d+-\d+-?\[|\d+-\d+-\[)")
 HEAD_RE = re.compile(r"^\s*\[?\s*제\s*\d+\s*과목")
 
 
@@ -164,7 +164,7 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     # 문항 번호가 오른쪽 절반에서 시작하는 일이 한 번도 없으면 1단 편집 문서다
     # (보기를 가로로 늘어놓은 1단 문서를 2단으로 잘못 나누지 않도록)
     one_col_doc = not any(
-        r.x0 > mid - 5 and Q_RE.match(t) for page in doc for r, t in lines_of(page)
+        r.x0 > W * 0.35 and Q_RE.match(t) for page in doc for r, t in lines_of(page)
     )
     H0 = doc[0].rect.height
     headerless = any(r.y1 < H0 * 0.06 and Q_RE.match(t) for page in doc for r, t in lines_of(page))
@@ -233,8 +233,16 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     page_objs = [doc[i] for i in range(len(doc))]
     pages = [page_objs[c["page"]] for c in cols]
     blocks = []  # (kind, key, [regions], text)
+    last_choice = CIRC[n_choices - 1]
     for i, (ci, y, kind, key) in enumerate(marks):
         end_ci, end_y = (marks[i + 1][0], marks[i + 1][1]) if i + 1 < len(marks) else (len(cols) - 1, None)
+        if i + 1 == len(marks):
+            # 마지막 문항은 문서 끝까지가 아니라 마지막 보기(⑤/④)가 나오는 단까지만
+            for cj in range(ci, len(cols)):
+                c = cols[cj]
+                if any(last_choice in t and (cj > ci or r.y0 > y) for r, t in c["lines"]):
+                    end_ci = cj
+                    break
         regions, texts = [], []
         for cj in range(ci, end_ci + 1):
             c = cols[cj]
