@@ -136,9 +136,13 @@ TEX_SYM = {"cdot": "·", "times": "×", "circ": "o", "prime": "′", "rightarrow
            "pi": "π", "sigma": "σ", "Sigma": "Σ", "omega": "ω", "Omega": "Ω", "phi": "φ", "rho": "ρ", "eta": "η", "epsilon": "ε"}
 
 
+QNUM = re.compile(r"문\s*\d{1,3}\s*\.?|^\s*\d{1,3}\s*\.(?!\d)\s*(?=\n?\s*문|$)|^\s*문\s*$", re.M)
+
+
 def _norm(t: str) -> str:
     import unicodedata
 
+    t = QNUM.sub("", t)  # 문항 번호("문 6." / "6.\n문")는 어디에 있든 양쪽에서 뺀다
     t = IGNORE.sub("", t)
     t = unicodedata.normalize("NFKC", t)
     t = DASH.sub("", t)
@@ -293,7 +297,7 @@ def _questions_to_send(st: dict):
         done = existing(paper["id"])
         for q in paper["questions"]:
             cid = f"{paper['id']}__{q['no']}"
-            if str(q["no"]) in done or cid in pending or cid in st["gave_up"]:
+            if str(q["no"]) in done or cid in pending or cid in st["gave_up"] or not regions_of(q):
                 continue
             # 처음엔 모두 Haiku, 검사에 걸린 것만 Sonnet 으로 다시 (2026-11-20 절감형)
             yield paper, q, (SONNET if cid in sonnet else HAIKU)
@@ -348,12 +352,63 @@ def submit(client, limit: int | None) -> None:
     print(f"제출 {sent}건" if sent else "변환할 새 문항 없음")
 
 
+FAILED = ROOT / "data" / "convert_failed"
+
+
+def judge(st: dict, cid: str, o: dict | None, model: str, papers: dict) -> tuple[str | None, dict | None]:
+    """변환 결과 하나를 검사. 통과하면 (None, 저장할 항목), 아니면 (이유, None)"""
+    if o is None:
+        return "응답 이상", None
+    pid, no = cid.rsplit("__", 1)
+    paper = papers.get(pid) or json.loads((DATA / "papers" / f"{pid}.json").read_text())
+    papers[pid] = paper
+    q = next(x for x in paper["questions"] if str(x["no"]) == no)
+    doc = paper_pdf(paper)
+    o = tidy(o)
+    rects = figure_rects(doc, q, o)
+    bad = check(o, pdf_text(doc, q), paper.get("choices", 5), figure_text(doc, rects))
+    if bad:
+        return "; ".join(bad), None
+    figs = save_figures(paper, doc, q, rects)
+    return None, dict(stem=o["stem"], choices=o["choices"], figs=figs, model=model, ratio=o["_ratio"], conf=o["confidence"])
+
+
+def record(st: dict, cid: str, model: str, reason: str | None, item: dict | None, o: dict | None, updates: dict) -> None:
+    """판정 결과를 상태에 반영. 걸린 결과는 data/convert_failed 에 남겨 검사기를 고친 뒤 API 없이 다시 볼 수 있게 한다"""
+    pid, no = cid.rsplit("__", 1)
+    f = FAILED / f"{api_id(cid)}.json"
+    if item is not None:
+        updates.setdefault(pid, {})[no] = item
+        st["gave_up"].pop(cid, None)
+        if f.exists():
+            f.unlink()
+        return
+    FAILED.mkdir(parents=True, exist_ok=True)
+    f.write_text(json.dumps(dict(cid=cid, model=model, reason=reason, output=o), ensure_ascii=False))
+    if model.startswith("claude-sonnet"):
+        st["gave_up"][cid] = reason  # Sonnet 도 못 넘음 → PDF 로 둔다
+    elif cid not in st["sonnet"]:
+        st["sonnet"].append(cid)
+
+
+def write_updates(st: dict, updates: dict) -> None:
+    TEXT.mkdir(parents=True, exist_ok=True)
+    done = set()
+    for pid, items in updates.items():
+        cur = existing(pid)
+        cur.update(items)
+        (TEXT / f"{pid}.json").write_text(json.dumps(cur, ensure_ascii=False))
+        done |= {f"{pid}__{no}" for no in items}
+    st["sonnet"] = [c for c in st["sonnet"] if c not in done]
+
+
 def collect(client) -> bool:
     st = load_state()
     remaining, all_done = [], True
     saved, failed = 0, 0
     usage = {"in": 0, "out": 0, "cache_r": 0}
     papers: dict[str, dict] = {}
+    pending = set(st["pending"])
     for bid in st["batches"]:
         b = client.messages.batches.retrieve(bid)
         if b.processing_status != "ended":
@@ -363,11 +418,11 @@ def collect(client) -> bool:
         updates: dict[str, dict] = {}
         for res in client.messages.batches.results(bid):
             cid = st["ids"].pop(res.custom_id, res.custom_id)
-            pid, no = cid.rsplit("__", 1)
-            st["pending"] = [c for c in st["pending"] if c != cid]
-            reason = None
+            pending.discard(cid)
+            o, model = None, ""
             if res.result.type == "succeeded":
                 msg = res.result.message
+                model = msg.model
                 u = msg.usage
                 usage["in"] += u.input_tokens
                 usage["out"] += u.output_tokens
@@ -377,40 +432,20 @@ def collect(client) -> bool:
                     o = json.loads(text) if msg.stop_reason == "end_turn" else None
                 except json.JSONDecodeError:
                     o = None
-                if o is None:
-                    reason = f"응답 이상 ({msg.stop_reason})"
-                else:
-                    paper = papers.get(pid) or json.loads((DATA / "papers" / f"{pid}.json").read_text())
-                    papers[pid] = paper
-                    q = next(x for x in paper["questions"] if str(x["no"]) == no)
-                    doc = paper_pdf(paper)
-                    o = tidy(o)
-                    rects = figure_rects(doc, q, o)
-                    bad = check(o, pdf_text(doc, q), paper.get("choices", 5), figure_text(doc, rects))
-                    if bad:
-                        reason = "; ".join(bad)
-                    else:
-                        figs = save_figures(paper, doc, q, rects)
-                        updates.setdefault(pid, {})[no] = dict(stem=o["stem"], choices=o["choices"], figs=figs,
-                                                               model=msg.model, ratio=o["_ratio"], conf=o["confidence"])
-                        saved += 1
+                reason, item = judge(st, cid, o, model, papers)
             else:
-                reason = f"요청 실패 ({res.result.type})"
+                reason, item = f"요청 실패 ({res.result.type})", None
+            record(st, cid, model or HAIKU, reason, item, o, updates)
             if reason:
                 failed += 1
-                if cid in st["sonnet"] or (res.result.type == "succeeded" and res.result.message.model.startswith("claude-sonnet")):
-                    st["gave_up"][cid] = reason  # Sonnet 도 못 넘음 → PDF 로 둔다
-                    st["sonnet"] = [c for c in st["sonnet"] if c != cid]
-                else:
-                    st["sonnet"].append(cid)
                 print(f"  ! {cid}: {reason}")
-        TEXT.mkdir(parents=True, exist_ok=True)
-        for pid, items in updates.items():
-            cur = existing(pid)
-            cur.update(items)
-            (TEXT / f"{pid}.json").write_text(json.dumps(cur, ensure_ascii=False))
-            st["sonnet"] = [c for c in st["sonnet"] if not (c.startswith(pid + "__") and c.rsplit("__", 1)[1] in items)]
-        print(f"collected {bid}")
+            else:
+                saved += 1
+        write_updates(st, updates)
+        st["pending"] = [c for c in st["pending"] if c in pending]
+        st["batches"] = [x for x in st["batches"] if x != bid]
+        save_state(st)  # 배치 하나 끝날 때마다 저장 (중간에 멈춰도 다시 받지 않게)
+        print(f"collected {bid}", flush=True)
     st["batches"] = remaining
     st.setdefault("usage", {"in": 0, "out": 0, "cache_r": 0})
     for k in usage:
@@ -420,9 +455,30 @@ def collect(client) -> bool:
     return all_done
 
 
+def recheck() -> None:
+    """data/convert_failed 에 남은 결과를 지금 검사기로 다시 본다 (API 호출 없음)"""
+    st = load_state()
+    papers: dict[str, dict] = {}
+    updates: dict[str, dict] = {}
+    ok = still = 0
+    for f in sorted(FAILED.glob("*.json")) if FAILED.exists() else []:
+        r = json.loads(f.read_text())
+        reason, item = judge(st, r["cid"], r["output"], r["model"], papers)
+        if item is not None:
+            ok += 1
+            record(st, r["cid"], r["model"], None, item, None, updates)
+        else:
+            still += 1
+            r["reason"] = reason
+            f.write_text(json.dumps(r, ensure_ascii=False))
+    write_updates(st, updates)
+    save_state(st)
+    print(f"다시 검사: 통과 {ok}건, 여전히 걸림 {still}건")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["scope", "submit", "collect", "check"])
+    ap.add_argument("cmd", choices=["scope", "submit", "collect", "check", "recheck"])
     ap.add_argument("args", nargs="*")
     ap.add_argument("--limit", type=int)
     a = ap.parse_args()
@@ -434,6 +490,9 @@ def main() -> None:
             st["exclude"] = sorted(set(st["exclude"]) | set(a.args[1:]))
         save_state(st)
         print("범위:", st["scope"], "제외:", st["exclude"])
+        return
+    if a.cmd == "recheck":
+        recheck()
         return
     if a.cmd == "check":
         # check <sample.json> <결과 폴더> : 시범 결과 검사 (개발용)
