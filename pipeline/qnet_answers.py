@@ -3,6 +3,7 @@
   python pipeline/qnet_answers.py prepare <gId>   # data/qnet/<gId>/ansimg/ 에 PNG + manifest.json
   python pipeline/qnet_answers.py merge <gId>     # 두 번 따로 읽은 answers_A/B.json 대조 → answers.json + 불일치 목록
   python pipeline/qnet_answers.py check <gId>     # answers.json 형식·번호 연속성 검사
+  python pipeline/qnet_answers.py read-api <gId> <선택지 수>  # (CI) 아직 안 읽은 정답표를 Claude API 로 두 번 읽어 대조
 
 PDF 는 쪽마다 그림으로 렌더링하고, HWP 는 문서 안에 들어 있는 그림(BinData)을 꺼낸다.
 읽은 결과는 data/qnet/<gId>/answers.json 에 아래 형식으로 둔다 (정답표에 적힌 그대로):
@@ -77,6 +78,8 @@ def prepare(gid: str) -> None:
         imgs = []
         for f in p["files"]:
             path = src / f["local"]
+            if not path.exists():
+                continue
             ext = path.suffix.lower()
             try:
                 if ext == ".pdf":
@@ -159,6 +162,51 @@ def merge(gid: str, choices: int) -> list[str]:
     return diffs
 
 
+READ_PROMPT = """이 이미지들은 한국 국가자격시험 최종정답표입니다. 표의 숫자를 정확히 옮겨 JSON 만 출력하세요.
+형식: [{"year": 2025, "round": "정기"|"특별"|null, "stage": "1차"|"2차"|null, "period": 1, "booklet": "A"|null,
+"subjects": [{"name": "과목명", "from": 1, "to": 25}], "answers": {"1": [3], "2": [1,2,3,4]}}]
+- 교시(period)·과목·형별 표마다 항목 하나. A형과 B형이 따로 있으면 A형만. 형별 표시가 없으면 booklet null.
+- 문항 번호는 정답표에 적힌 그대로, 복수 정답은 목록으로, 모두 정답이면 [1..선택지 수].
+- 게시물 제목: {title}"""
+
+
+def read_api(gid: str, choices: int, model: str = "claude-haiku-5-5") -> None:
+    """answers.json 에 없는 정답 게시물만 API 로 두 번 읽고, 두 결과가 같은 항목만 추가한다."""
+    import base64
+    import re as _re
+
+    import anthropic
+
+    src = QNET / gid
+    manifest = json.loads((src / "ansimg" / "manifest.json").read_text())
+    done = json.loads((src / "answers.json").read_text()) if (src / "answers.json").exists() else []
+    seen_posts = {e.get("post") for e in done}
+    client = anthropic.Anthropic()
+    added = 0
+    for m in manifest:
+        if m["post"] in seen_posts or not m["images"] or (m["year"] or 0) < 2014:
+            continue
+        content = [{"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": base64.b64encode((src / "ansimg" / n).read_bytes()).decode()}} for n in m["images"][:6]]
+        content.append({"type": "text", "text": READ_PROMPT.replace("{title}", m["title"])})
+        reads = []
+        for _ in range(2):
+            r = client.messages.create(model=model, max_tokens=8000, messages=[{"role": "user", "content": content}])
+            txt = "".join(b.text for b in r.content if b.type == "text")
+            mm = _re.search(r"\[.*\]", txt, _re.S)
+            reads.append(json.loads(mm.group(0)) if mm else [])
+        a = {_key(dict(e, year=m["year"])): e for e in reads[0]}
+        b = {_key(dict(e, year=m["year"])): e for e in reads[1]}
+        for k in a:
+            if k in b and a[k]["answers"] == b[k]["answers"] and [(s["from"], s["to"]) for s in a[k]["subjects"]] == [(s["from"], s["to"]) for s in b[k]["subjects"]]:
+                done.append(dict(a[k], post=m["post"], year=m["year"]))
+                added += 1
+            else:
+                print("  두 번 읽은 결과가 달라 보류:", m["year"], m["title"], k)
+    (src / "answers.json").write_text(json.dumps(done, ensure_ascii=False, indent=1))
+    errs = check(gid, choices)
+    print(f"read-api {gid}: {added}개 추가", "| 검사 문제:" if errs else "", "; ".join(errs))
+
+
 if __name__ == "__main__":
     cmd, gid = sys.argv[1], sys.argv[2]
     if cmd == "prepare":
@@ -166,6 +214,8 @@ if __name__ == "__main__":
     elif cmd == "merge":
         diffs = merge(gid, int(sys.argv[3]) if len(sys.argv) > 3 else 5)
         print("\n".join(diffs) or "모두 일치")
+    elif cmd == "read-api":
+        read_api(gid, int(sys.argv[3]) if len(sys.argv) > 3 else 5)
     elif cmd == "check":
         errs = check(gid, int(sys.argv[3]) if len(sys.argv) > 3 else 5)
         print("\n".join(errs) or "ok")

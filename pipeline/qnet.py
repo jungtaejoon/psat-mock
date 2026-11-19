@@ -101,7 +101,7 @@ def fetch(gid: str, only_year: int | None = None) -> None:
             if "공지" in p["title"] or y is None or y < 2013:
                 continue
             key = f"{kind}-{p['seq']}"
-            if key in meta and all((dst / f["local"]).exists() for f in meta[key]["files"]):
+            if key in meta:  # 이미 처리한 게시물 (CI 에서는 원본 파일이 없어도 다시 받지 않는다)
                 continue
             d = detail(gid, p["seq"], kind)
             for f in d["files"]:

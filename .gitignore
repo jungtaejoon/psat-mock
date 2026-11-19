@@ -7,4 +7,8 @@ web/public/pdfjs/
 .DS_Store
 # data/raw 의 원본 PDF 는 web/public/data/pdf 에 같은 파일이 있으므로 저장소에서 제외
 data/raw/
-data/qnet/
+# 큐넷 원본 파일은 저장소에 넣지 않고, 게시물 목록과 확정 정답만 넣는다
+data/qnet/*/*
+!data/qnet/*/posts.json
+!data/qnet/*/answers.json
+data/qnet/*.log

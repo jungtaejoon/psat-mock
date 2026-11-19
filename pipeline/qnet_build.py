@@ -53,6 +53,8 @@ def paper_files(gid: str) -> list[dict]:
             continue
         for f in p["files"]:
             path = src / f["local"]
+            if not path.exists():
+                continue
             ext = path.suffix.lower()
             items: list[tuple[Path, str]] = []
             if ext == ".pdf":
@@ -108,7 +110,7 @@ def slug(s: str) -> str:
     return re.sub(r"[\s/·()\[\]]+", "", s)
 
 
-def build(exam_id: str) -> None:
+def build(exam_id: str, rebuild: bool = False) -> None:
     exam = next(e for e in CATALOG["exams"] if e["id"] == exam_id)
     gid = exam["qnet"]
     choices = exam["choices"]
@@ -120,6 +122,9 @@ def build(exam_id: str) -> None:
     made, problems = [], []
     for e in sorted(entries, key=lambda x: (-x["year"], x.get("round") or "", x["period"])):
         tag = f"{e['year']} {e.get('round') or ''} {e.get('stage') or ''} {e['period']}교시".replace("  ", " ")
+        prefix = f"{exam_id}-{e['year']}{'-특별' if e.get('round') == '특별' else ''}{'-' + e['stage'] if e.get('stage') == '2차' else ''}-{e['period']}교시-"
+        if not rebuild and any((OUT / "papers").glob(f"{prefix}*.json")):
+            continue  # 이미 만든 교시 (CI 는 새로 생긴 것만)
         f = pick([f for f in files if compatible(e, f)], e)
         if not f:
             problems.append(f"{tag}: 맞는 문제지 파일 없음")
@@ -179,4 +184,6 @@ def build(exam_id: str) -> None:
 
 
 if __name__ == "__main__":
-    build(sys.argv[1])
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    for ex in args or [e["id"] for e in CATALOG["exams"] if e.get("qnet") and e["status"] == "live"]:
+        build(ex, rebuild="--rebuild" in sys.argv)
