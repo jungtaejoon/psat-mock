@@ -25,6 +25,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "web" / "public" / "data"
 EXPL = DATA / "explanations"
 STATE = ROOT / "data" / "explain_state.json"
+# API 로 자동 해설을 붙일 시험 (web/src/exams.json 의 autoExplain)
+AUTO_EXPLAIN = {e["id"] for e in json.loads((ROOT / "web" / "src" / "exams.json").read_text())["exams"] if e.get("autoExplain")}
 MODEL = "claude-opus-5-5"
 CIRCLED = "①②③④⑤"
 
@@ -103,13 +105,15 @@ def submit(client: anthropic.Anthropic, limit: int | None) -> None:
         paper = json.loads(f.read_text())
         if not paper.get("answersFinal", True):
             continue  # 정답 확정 후에 해설 생성
+        if paper.get("exam", "psat") not in AUTO_EXPLAIN:
+            continue  # API 자동 해설은 exams.json 에서 autoExplain 을 켠 시험만 (나머지는 단계별로 승인 후 진행)
         done = existing(paper["id"])
         pdf = None
         for q in paper["questions"]:
             cid = f"{paper['id']}__{q['no']}"
             if str(q["no"]) in done or cid in pending:
                 continue
-            pdf = pdf or fitz.open(DATA / "pdf" / f"{paper['id']}.pdf")
+            pdf = pdf or fitz.open(DATA / "pdf" / f"{paper.get('pdf', paper['id'])}.pdf")
             reqs.append(Request(custom_id=cid, params=build_request(paper, q, pdf)))
             if limit and len(reqs) >= limit:
                 break

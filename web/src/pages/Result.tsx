@@ -134,7 +134,7 @@ export default function Result({ id }: { id: string }) {
                 <span className="rn">문 {r.i + 1}</span>
                 <span className="muted src">
                   {r.paper.year} {groupOf(r.paper)} {r.paper.subject}{" "}
-                  {r.q.no}번
+                  {r.q.orig ?? r.q.no}번
                 </span>
                 <span className="ans">
                   내 답 {r.mine ? CIRCLED[r.mine - 1] : "–"} · 정답{" "}

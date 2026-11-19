@@ -35,6 +35,8 @@ export interface Question {
   /** 정답 선택지 번호(1~5). 복수 정답이면 여러 개, 전원 정답이면 [1,2,3,4,5] */
   answer: number[];
   shared?: { regions: Region[]; text: string };
+  /** 시험지에 인쇄된 원래 번호 (과목별로 나눈 문제지에서 no 와 다를 수 있음) */
+  orig?: number;
   /** 선택지 ①~⑤ 의 클릭 영역 (r: regions 의 몇 번째 영역인지, 좌표는 PDF 페이지 기준). 못 찾은 문항은 없음 */
   choices?: ChoiceBox[];
 }
@@ -51,6 +53,8 @@ export interface ChoiceBox {
 
 export interface Paper extends Omit<PaperMeta, "count"> {
   booklet?: string;
+  /** 문제 PDF 파일 id (여러 과목 문제지가 한 PDF 를 같이 쓸 때). 없으면 문제지 id */
+  pdf?: string;
   width: number;
   height: number;
   pages: number;

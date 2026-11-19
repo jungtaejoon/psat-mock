@@ -144,8 +144,8 @@ export default function Exam({ id }: { id: string }) {
 
   useEffect(() => {
     const next = s?.items[cur + 1];
-    if (next) prefetchPdf(pdfUrl(next.paperId));
-  }, [cur, s?.items]);
+    if (next) prefetchPdf(pdfUrl(papers.get(next.paperId) ?? { id: next.paperId }));
+  }, [cur, s?.items, papers]);
 
   const answeredCount = s ? Object.keys(s.answers).length : 0;
   const sectionBreaks = useMemo(() => {
@@ -211,7 +211,7 @@ export default function Exam({ id }: { id: string }) {
             </span>
             {paper && (
               <span className="q-src">
-                {paper.year} {groupOf(paper)} {paper.subject} {item!.no}
+                {paper.year} {groupOf(paper)} {paper.subject} {q?.orig ?? item!.no}
                 번{!paper.answersFinal && " (가답안)"}
               </span>
             )}

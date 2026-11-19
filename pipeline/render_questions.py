@@ -18,7 +18,7 @@ DATA = ROOT / "web" / "public" / "data"
 
 def main(pid: str, out: str) -> None:
     paper = json.loads((DATA / "papers" / f"{pid}.json").read_text())
-    pdf = fitz.open(DATA / "pdf" / f"{pid}.pdf")
+    pdf = fitz.open(DATA / "pdf" / f"{paper.get('pdf', pid)}.pdf")
     dst = Path(out) / pid
     dst.mkdir(parents=True, exist_ok=True)
     meta = []

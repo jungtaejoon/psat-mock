@@ -38,7 +38,8 @@
      "자료해석": "data",
      "상황판단": "situation"
     }
-   }
+   },
+   "autoExplain": true
   },
   {
    "id": "gong9",
@@ -78,7 +79,8 @@
    "choices": 5,
    "secPerQuestion": 75,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "08"
   },
   {
    "id": "housing",
@@ -88,7 +90,8 @@
    "choices": 5,
    "secPerQuestion": 75,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "59"
   },
   {
    "id": "security",
@@ -98,7 +101,8 @@
    "choices": 4,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "09"
   },
   {
    "id": "firemgr",
@@ -108,7 +112,8 @@
    "choices": 4,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "34"
   },
   {
    "id": "labor",
@@ -118,7 +123,8 @@
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "05"
   },
   {
    "id": "appraiser",
@@ -128,7 +134,8 @@
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "60"
   },
   {
    "id": "tax",
@@ -138,7 +145,8 @@
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "22"
   },
   {
    "id": "customs",
@@ -148,7 +156,8 @@
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "24"
   },
   {
    "id": "patent",
@@ -158,7 +167,8 @@
    "choices": 5,
    "secPerQuestion": 100,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "51"
   },
   {
    "id": "social1",
@@ -168,7 +178,8 @@
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "52"
   },
   {
    "id": "youthcounsel",
@@ -178,7 +189,8 @@
    "choices": 4,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "67"
   },
   {
    "id": "logistics",
@@ -188,17 +200,30 @@
    "choices": 5,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "soon",
+   "qnet": "61"
   },
   {
    "id": "tourguide",
    "name": "관광통역안내사",
-   "desc": "1차 필기",
+   "desc": "관광통역안내사 1차 필기 (국사·관광자원해설·관광법규·관광학개론)",
    "category": "문화·관광·물류",
    "choices": 4,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon"
+   "status": "live",
+   "qnet": "37",
+   "subjects": [
+    "국사",
+    "관광자원해설",
+    "관광법규",
+    "관광학개론"
+   ],
+   "groups": [
+    "정기시험",
+    "특별시험"
+   ],
+   "seo": "tourguide"
   }
  ]
 }

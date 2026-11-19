@@ -188,7 +188,7 @@ export function QuestionImage({
     return () => ro.disconnect();
   }, []);
 
-  const url = pdfUrl(item.paperId);
+  const url = data ? pdfUrl(data.paper) : "";
   return (
     <div className="qimg" ref={box}>
       {error && <div className="render-error">{error}</div>}

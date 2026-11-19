@@ -42,8 +42,8 @@ export function loadExplanations(paperId: string): Promise<Record<string, Explan
   return p;
 }
 
-export function pdfUrl(paperId: string) {
-  return `${BASE}/pdf/${paperId}.pdf`;
+export function pdfUrl(paper: { id: string; pdf?: string }) {
+  return `${BASE}/pdf/${paper.pdf ?? paper.id}.pdf`;
 }
 
 export const CIRCLED = ["①", "②", "③", "④", "⑤"];

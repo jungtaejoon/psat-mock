@@ -154,12 +154,17 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     mid = W / 2
     # 1) 읽는 순서대로 '단' 목록을 만든다
     cols = []  # dict(page, x0, x1, top, bottom, lines)
+    # 문항 번호가 오른쪽 절반에서 시작하는 일이 한 번도 없으면 1단 편집 문서다
+    # (보기를 가로로 늘어놓은 1단 문서를 2단으로 잘못 나누지 않도록)
+    one_col_doc = not any(
+        r.x0 > mid - 5 and Q_RE.match(t) for page in doc for r, t in lines_of(page)
+    )
     for pno, page in enumerate(doc):
         lines = lines_of(page)
         top, bottom = page_frame(page, lines)
         body = [(r, t) for r, t in lines if r.y0 >= top - 1 and r.y1 <= bottom + 1]
         spans_mid = [r for r, t in body if r.x0 < mid - 20 and r.x1 > mid + 20]
-        if len(spans_mid) > len(body) * 0.5:  # 1단 편집 페이지
+        if one_col_doc or len(spans_mid) > len(body) * 0.5:  # 1단 편집 페이지
             cols.append(dict(page=pno, x0=0, x1=W, top=top, bottom=bottom, lines=body))
         else:
             L = [x for x in body if x[0].x0 < mid - 5]

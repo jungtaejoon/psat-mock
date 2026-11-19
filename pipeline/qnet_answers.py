@@ -1,6 +1,7 @@
 """큐넷 최종정답표 → 이미지 (정답이 표 그림으로만 들어 있어 사람이/모델이 읽어야 한다).
 
   python pipeline/qnet_answers.py prepare <gId>   # data/qnet/<gId>/ansimg/ 에 PNG + manifest.json
+  python pipeline/qnet_answers.py merge <gId>     # 두 번 따로 읽은 answers_A/B.json 대조 → answers.json + 불일치 목록
   python pipeline/qnet_answers.py check <gId>     # answers.json 형식·번호 연속성 검사
 
 PDF 는 쪽마다 그림으로 렌더링하고, HWP 는 문서 안에 들어 있는 그림(BinData)을 꺼낸다.
@@ -84,6 +85,10 @@ def prepare(gid: str) -> None:
                         name = f"{p['seq']}-{f['fseq']}-p{i + 1}.png"
                         page.get_pixmap(dpi=130).save(dst / name)
                         imgs.append(name)
+                elif ext in (".jpg", ".jpeg", ".png", ".bmp", ".gif"):
+                    name = f"{p['seq']}-{f['fseq']}.png"
+                    (dst / name).write_bytes(to_png(path.read_bytes()))
+                    imgs.append(name)
                 elif ext in (".hwp", ".hwpx"):
                     for i, data in enumerate(hwp_images(path) if ext == ".hwp" else hwpx_images(path)):
                         png = to_png(data)
@@ -121,10 +126,46 @@ def check(gid: str, choices: int) -> list[str]:
     return errs
 
 
+def _key(e: dict) -> tuple:
+    return (e["year"], e.get("round"), e.get("stage"), e["period"], e.get("booklet"))
+
+
+def merge(gid: str, choices: int) -> list[str]:
+    """두 결과가 완전히 같은 항목만 answers.json 에 넣고, 다른 곳은 diff 로 남긴다 (다시 읽어 확정)."""
+    src = QNET / gid
+    a = {_key(e): e for e in json.loads((src / "answers_A.json").read_text())}
+    b = {_key(e): e for e in json.loads((src / "answers_B.json").read_text())}
+    prev = {_key(e): e for e in json.loads((src / "answers.json").read_text())} if (src / "answers.json").exists() else {}
+    merged, diffs = dict(prev), []
+    for k in sorted(set(a) | set(b), key=lambda k: (-k[0], str(k))):
+        if k in prev:
+            continue
+        ea, eb = a.get(k), b.get(k)
+        tag = " ".join(str(x) for x in k if x is not None)
+        if not ea or not eb:
+            diffs.append(f"{tag}: 한쪽에만 있음")
+            continue
+        sa = [(s["name"].replace(" ", ""), s["from"], s["to"]) for s in ea["subjects"]]
+        sb = [(s["name"].replace(" ", ""), s["from"], s["to"]) for s in eb["subjects"]]
+        bad = [n for n in sorted(set(ea["answers"]) | set(eb["answers"]), key=int) if sorted(ea["answers"].get(n) or []) != sorted(eb["answers"].get(n) or [])]
+        if [x[1:] for x in sa] != [x[1:] for x in sb]:
+            diffs.append(f"{tag}: 과목 범위 다름 {sa} / {sb}")
+        elif bad or ea.get("unclear") or eb.get("unclear"):
+            diffs.append(f"{tag}: 정답 다름 {bad} 불명확 {sorted(set(ea.get('unclear', [])) | set(eb.get('unclear', [])))}")
+        else:
+            merged[k] = {kk: vv for kk, vv in ea.items() if kk != "unclear"}
+    (src / "answers.json").write_text(json.dumps(list(merged.values()), ensure_ascii=False, indent=1))
+    (src / "answers_diff.json").write_text(json.dumps(diffs, ensure_ascii=False, indent=1))
+    return diffs
+
+
 if __name__ == "__main__":
     cmd, gid = sys.argv[1], sys.argv[2]
     if cmd == "prepare":
         prepare(gid)
+    elif cmd == "merge":
+        diffs = merge(gid, int(sys.argv[3]) if len(sys.argv) > 3 else 5)
+        print("\n".join(diffs) or "모두 일치")
     elif cmd == "check":
         errs = check(gid, int(sys.argv[3]) if len(sys.argv) > 3 else 5)
         print("\n".join(errs) or "ok")
