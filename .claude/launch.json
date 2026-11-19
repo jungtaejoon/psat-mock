@@ -4,8 +4,29 @@
     {
       "name": "web",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "web", "run", "dev", "--", "--port", "5173", "--strictPort"],
+      "runtimeArgs": [
+        "--prefix",
+        "web",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
       "port": 5173
+    },
+    {
+      "name": "conv",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8765",
+        "-d",
+        "/private/tmp/claude-501/-Users-taejoon-Library-Application-Support-Claude-scratch-workspaces-fdbb32a2-3510-4e97-a75a-db66fec8e244-1dda768b-442e-4ed7-951d-5fa2e87fbbc5-scratch-2026-11-18-5fc9a2/e3b2343a-b628-4873-8904-9637b9521bad/scratchpad/conv"
+      ],
+      "port": 8765
     }
   ]
 }
