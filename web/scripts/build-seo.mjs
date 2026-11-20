@@ -174,6 +174,7 @@ ol.qc{list-style:none;padding:0;margin:6px 0 10px}ol.qc li{display:flex;gap:8px;
 ${body}
 <footer>문제·정답 출처: ${esc(exam.source)}. 해설은 AI(Claude)가 작성한 것으로 공식 해설이 아니며 오류가 있을 수 있습니다. · <a href="/">alltests 홈</a> · <a href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체 목록</a></footer>
 </main>
+<script src="/track.js" defer></script>
 </body>
 </html>
 `;
