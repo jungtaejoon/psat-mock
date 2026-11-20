@@ -271,7 +271,11 @@ def build() -> None:
         e = next(x for x in CATALOG["exams"] if x["id"] == j["exam"])
         subs = en["subjects"]
         want = set(range(subs[0]["from"], subs[-1]["to"] + 1)) - {int(x) for x in en.get("text_items", [])}
-        # 시험지 번호가 과목마다 1부터 다시 시작하는 경우: 순서대로 번호를 다시 붙인다
+        # 교시 시험지 번호가 1부터 다시 시작하는 경우(예: 2교시 41~80번이 1~40번으로 인쇄): 순서대로 옮긴다
+        if not want <= set(regions) and set(range(1, len(want) + 1)) <= set(regions):
+            order = sorted(want)
+            regions = {order[i - 1]: regions[i] for i in range(1, len(want) + 1)}
+            shared = [(order[a - 1], order[min(b, len(order)) - 1], rs) for a, b, rs in shared if a <= len(order)]
         if not want <= set(regions):
             print("  ! 문항 번호가 모자람", j["id"], sorted(want - set(regions))[:10])
             continue
