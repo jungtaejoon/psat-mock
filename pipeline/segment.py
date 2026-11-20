@@ -26,8 +26,8 @@ Q_RE = re.compile(r"^\s*(?:문\s*)?(\d{1,3})\s*\.(?!\d)")
 SHARED_RE = re.compile(r"^\s*(?:※|\[\s*(?:문\s*)?\d)")
 RANGE_RE = re.compile(r"(\d{1,3})\s*\.?\s*[～~∼\-–]\s*(?:문\s*)?(\d{1,3})")
 PAD = 3
-FOOT_RE = re.compile(r"(\d{4}년.*제\d+회|[A-B가-나]형?-\d+-\d+|-[A-B]-\d+-\d+|\d+-\d+\[|\(\d+-\d+\)$|형\d+-\d+-?\[|\d+-\d+-\[)")
-HEAD_RE = re.compile(r"^\s*\[?\s*제\s*\d+\s*과목")
+FOOT_RE = re.compile(r"(\d{4}년.*제\d+회|[A-B가-나]형?-\d+-\d+|-[A-B]-\d+-\d+|\d+-\d+\[|\(\d+-\d+\)$|형\d+-\d+-?\[|\d+-\d+-\[|[A-B]-\d+-\[|\d+--[A-B]$)")
+HEAD_RE = re.compile(r"^\s*\[?\s*제\s*\d*\s*과목")  # HWP 변환본은 "제과목"처럼 숫자가 빠지기도 한다
 
 
 def lines_of(page):
@@ -54,13 +54,17 @@ def page_frame(page, lines, headerless: bool = False):
     # 큐넷 문제지 꼬리말: "2017년 제20회 주택관리사보 1차 A-32-12", "일반경비지도사 - A - 18 - 11[1차]" 같은 줄
     foot += [r.y0 for r, t in lines if r.y0 > H * 0.88 and FOOT_RE.search(t.replace(" ", ""))]
     top = max(head) + 2 if head else (H * 0.02 if headerless else H * 0.04)
+    if headerless:
+        # 문항 번호가 그보다 더 위에서 시작하는 쪽은 그 줄까지 포함한다
+        top = min([top] + [r.y0 - 1 for r, t in lines if r.y0 < top + 2 and Q_RE.match(t)])
     bottom = min(foot) - 2 if foot else H * 0.985
     # 머리말 아래 가로줄(도형)도 머리말로 본다
     W = page.rect.width
     for d in page.get_drawings():
         r = d["rect"]
         if r.height < 3 and r.width > W * 0.8:
-            if r.y1 < H * 0.08:
+            # 단, 선 위에 문항 번호가 있으면 머리말 선이 아니라 문항 안의 상자·표 윗선이다
+            if r.y1 < H * 0.08 and not any(t2.y1 <= r.y0 + 1 and Q_RE.match(tx) for t2, tx in lines):
                 top = max(top, r.y1 + 2)
             elif r.y0 > H * 0.93:
                 bottom = min(bottom, r.y0 - 2)

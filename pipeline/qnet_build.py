@@ -59,6 +59,8 @@ def paper_files(gid: str) -> list[dict]:
             items: list[tuple[Path, str]] = []
             if ext == ".pdf":
                 items.append((path, f["name"]))
+            elif ext == ".hwp" and path.with_suffix(".hwp.pdf").exists():
+                items.append((path.with_suffix(".hwp.pdf"), f["name"]))  # pipeline/hwp2pdf.py 로 바꿔 둔 것
             elif ext == ".zip":
                 xdir = src / "x"
                 xdir.mkdir(exist_ok=True)
@@ -69,7 +71,13 @@ def paper_files(gid: str) -> list[dict]:
                         name = name.encode("cp437").decode("cp949")
                     except (UnicodeEncodeError, UnicodeDecodeError):
                         pass
-                    if not name.lower().endswith(".pdf"):
+                    low = name.lower()
+                    if low.endswith(".hwp"):
+                        conv = xdir / f"{p['seq']}-{f['fseq']}-{i}.hwp.pdf"
+                        if conv.exists():
+                            items.append((conv, Path(name).name))
+                        continue
+                    if not low.endswith(".pdf"):
                         continue
                     dst = xdir / f"{p['seq']}-{f['fseq']}-{i}.pdf"
                     if not dst.exists():
@@ -93,6 +101,11 @@ def compatible(e: dict, f: dict) -> bool:
         tk = e["track"].replace(" ", "")
         if tk not in hay and tk.replace("경비지도사", "") not in hay and tk[:3] not in hay:
             return False
+        # 청소년상담사 1·2·3급처럼 급수가 다르면 다른 시험지. 게시물 제목엔 급수가 다 적혀 있으니 파일명을 먼저 본다
+        grade = re.search(r"(\d)급", tk)
+        name_grades = re.findall(r"\d급", f["name"].replace(" ", ""))
+        if grade and name_grades and grade.group(0) not in name_grades:
+            return False
     if (e.get("round") == "특별") != (f["round"] == "특별"):
         return False
     if e.get("stage") and f["stage"] and e["stage"] != f["stage"]:
@@ -113,8 +126,20 @@ def pick(cands: list[dict], entry: dict) -> dict | None:
     want = entry.get("booklet") or "A"
     same = [c for c in cands if c["booklet"] == want] or [c for c in cands if c["booklet"] is None] or cands
     # 교시가 적힌 파일을 우선
-    same.sort(key=lambda c: (c["period"] is None, c["name"]))
+    # 큐넷이 올린 PDF 를 HWP 에서 바꾼 PDF 보다 먼저 (같은 시험지가 둘 다 있을 때)
+    same.sort(key=lambda c: (str(c["path"]).endswith(".hwp.pdf"), c["period"] is None, c["name"]))
     return same[0]
+
+
+def seg_range(path, n: int, choices: int, first: int, heads: list[str]):
+    """문항 first..first+n-1 을 나눈다. 시험지 번호가 1부터 다시 시작하면 1부터 찾고 번호를 옮긴다"""
+    try:
+        return segment.segment(path, n, choices, first, heads)
+    except Exception:  # noqa: BLE001
+        meta, qs = segment.segment(path, n, choices, 1, heads)
+        for q in qs:
+            q["no"] += first - 1
+        return meta, qs
 
 
 def slug(s: str) -> str:
@@ -145,55 +170,68 @@ def build(exam_id: str, rebuild: bool = False) -> None:
         if not f.get("kogl"):
             problems.append(f"{tag}: 공공누리 표시 없음 → 보류")
             continue
-        subs = e["subjects"]
-        first, last = subs[0]["from"], subs[-1]["to"]
+        subs_all = e["subjects"]
+        first, last = subs_all[0]["from"], subs_all[-1]["to"]
+        # 보통은 교시 PDF 하나에 과목 여러 개. 옛 시험은 과목마다 파일이 따로 있다 → 과목별로 나눈다
+        chunks = []  # (파일, meta, 문항들, 이 파일의 과목들)
         try:
-            meta, qs = segment.segment(f["path"], last - first + 1, choices, first, [x["name"] for x in subs])
+            meta, qs = seg_range(f["path"], last - first + 1, choices, first, [x["name"] for x in subs_all])
+            chunks.append((f, meta, qs, subs_all))
         except Exception as ex:  # noqa: BLE001
-            # 시험지 번호가 1부터 다시 시작하는 경우
-            try:
-                meta, qs = segment.segment(f["path"], last - first + 1, choices, 1, [x["name"] for x in subs])
+            err = ex
+            for sub in subs_all:
+                key = sub["name"].replace(" ", "")[:3]
+                cands = [g for g in files if compatible(e, g) and key and key in g["name"].replace(" ", "")]
+                g = pick(cands, dict(e, subjects=[sub]))
+                if not g:
+                    chunks = []
+                    break
+                try:
+                    meta, qs = seg_range(g["path"], sub["to"] - sub["from"] + 1, choices, sub["from"], [sub["name"]])
+                except Exception:  # noqa: BLE001
+                    chunks = []
+                    break
+                chunks.append((g, meta, qs, [sub]))
+            if not chunks:
+                problems.append(f"{tag}: 문항 나누기 실패 ({err}) ← {f['name']}")
+                continue
+        for f, meta, qs, subs in chunks:
+            pdf_id = f"{exam_id}-{e['year']}-{hashlib.sha1(f['path'].read_bytes()).hexdigest()[:10]}"
+            pdfutil.copy_compressed(f["path"], OUT / "pdf" / f"{pdf_id}.pdf")
+            parts = ["특별시험" if e.get("round") == "특별" else ("정기시험" if has_special else "")]
+            parts += [e.get("stage") or "" if multi_stage else "", e.get("track") or ""]
+            group = " ".join(p for p in parts if p) or "필기"
+            text_items = {int(x) for x in e.get("text_items", [])}
+            for s in subs:
+                sq = []
                 for q in qs:
-                    q["no"] += first - 1
-            except Exception:  # noqa: BLE001
-                problems.append(f"{tag}: 문항 나누기 실패 ({ex}) ← {f['name']}")
-                continue
-        pdf_id = f"{exam_id}-{e['year']}-{hashlib.sha1(f['path'].read_bytes()).hexdigest()[:10]}"
-        pdfutil.copy_compressed(f["path"], OUT / "pdf" / f"{pdf_id}.pdf")
-        parts = ["특별시험" if e.get("round") == "특별" else ("정기시험" if has_special else "")]
-        parts += [e.get("stage") or "" if multi_stage else "", e.get("track") or ""]
-        group = " ".join(p for p in parts if p) or "필기"
-        text_items = {int(x) for x in e.get("text_items", [])}
-        for s in subs:
-            sq = []
-            for q in qs:
-                if s["from"] <= q["no"] <= s["to"] and q["no"] not in text_items:  # 주관식은 빼고 객관식만
-                    ans = e["answers"].get(str(q["no"]))
-                    nq = dict(q, orig=q["no"], no=len(sq) + 1, answer=ans)
-                    sq.append(nq)
-            if not sq:
-                continue
-            if any(q["answer"] is None for q in sq):
-                problems.append(f"{tag} {s['name']}: 정답 빠진 문항")
-                continue
-            pid = f"{prefix}{slug(s['name'])}"
-            paper = dict(
-                id=pid,
-                exam=exam_id,
-                group=group,
-                year=e["year"],
-                subject=s["name"],
-                exams=[exam["name"] + (" 특별시험" if e.get("round") == "특별" else "")],
-                answersFinal=True,
-                choices=choices,
-                kogl=f.get("kogl"),
-                pdf=pdf_id,
-                source=dict(post=f["post"], title=f["title"], answerPost=e.get("post")),
-                **meta,
-                questions=sq,
-            )
-            (OUT / "papers" / f"{pid}.json").write_text(json.dumps(paper, ensure_ascii=False))
-            made.append((pid, len(sq), sum("choices" in q for q in sq)))
+                    if s["from"] <= q["no"] <= s["to"] and q["no"] not in text_items:  # 주관식은 빼고 객관식만
+                        ans = e["answers"].get(str(q["no"]))
+                        nq = dict(q, orig=q["no"], no=len(sq) + 1, answer=ans)
+                        sq.append(nq)
+                if not sq:
+                    continue
+                if any(q["answer"] is None for q in sq):
+                    problems.append(f"{tag} {s['name']}: 정답 빠진 문항")
+                    continue
+                pid = f"{prefix}{slug(s['name'])}"
+                paper = dict(
+                    id=pid,
+                    exam=exam_id,
+                    group=group,
+                    year=e["year"],
+                    subject=s["name"],
+                    exams=[exam["name"] + (" 특별시험" if e.get("round") == "특별" else "")],
+                    answersFinal=True,
+                    choices=choices,
+                    kogl=f.get("kogl"),
+                    pdf=pdf_id,
+                    source=dict(post=f["post"], title=f["title"], answerPost=e.get("post")),
+                    **meta,
+                    questions=sq,
+                )
+                (OUT / "papers" / f"{pid}.json").write_text(json.dumps(paper, ensure_ascii=False))
+                made.append((pid, len(sq), sum("choices" in q for q in sq)))
     for pid, n, c in made:
         print(f"ok {pid}: {n}문항 (보기 위치 {c})")
     for p in problems:
