@@ -193,6 +193,17 @@ def merge(r1: list, r2: list) -> list:
     return out
 
 
+def median(*reads: list) -> list:
+    out = []
+    for segs in zip(*reads):
+        box = []
+        for i in range(4):
+            v = sorted(sg["box"][i] for sg in segs)[1]
+            box.append(max(0.0, v - 0.01) if i < 2 else min(1.0, v + 0.01))
+        out.append(dict(segs[0], box=box))
+    return out
+
+
 def collect(client) -> None:
     st = load(STATE, {"batches": [], "ids": {}, "reads": {}, "pages": {}, "failed": {}})
     remaining = []
@@ -217,8 +228,9 @@ def collect(client) -> None:
     st["batches"] = remaining
     # 판정
     ok = sonnet = bad = 0
+    st["failed"] = {}  # 판정 규칙이 바뀌면 다시 본다 (읽은 결과는 reads 에 남아 있다)
     for k, reads in st["reads"].items():
-        if k in st["pages"] or k in st["failed"]:
+        if k in st["pages"]:
             continue
         a, b, c = reads.get("a"), reads.get("b"), reads.get("c")
         if a is not None and b is not None and same(a, b):
@@ -226,8 +238,13 @@ def collect(client) -> None:
             ok += 1
         elif "c" in reads:
             pick = a if (c is not None and a is not None and same(a, c)) else b if (c is not None and b is not None and same(b, c)) else None
+            seq = lambda x: [(s_["kind"], s_["no"]) for s_ in (x or [])]  # noqa: E731
             if pick is not None:
                 st["pages"][k] = merge(pick, c)
+                ok += 1
+            elif a and b and c and seq(a) == seq(b) == seq(c):
+                # 번호는 셋 다 같고 상자만 조금씩 다름 → 좌표마다 가운데 값 + 1% 여유
+                st["pages"][k] = median(a, b, c)
                 ok += 1
             else:
                 st["failed"][k] = "세 읽기가 서로 다름"
@@ -240,6 +257,121 @@ def collect(client) -> None:
 
 
 # ------------------------------------------------------------------ 문제지 만들기
+
+def _ink_rows(page, x0f: float, x1f: float) -> list[int]:
+    """쪽 그림(72dpi 회색, 200 보다 어두우면 잉크)에서 단 [x0f, x1f] 안의 줄마다 잉크 점 수"""
+    pix = page.get_pixmap(dpi=72, colorspace=fitz.csGRAY)
+    w, h, buf = pix.width, pix.height, pix.samples
+    a, b = int(w * x0f), int(w * x1f)
+    return [sum(1 for v in buf[r * w + a : r * w + b] if v < 200) for r in range(h)]
+
+
+def _longest_blank(ink: list[int], lo: int, hi: int) -> tuple[int, int] | None:
+    best, run_start = None, None
+    for r in range(max(0, lo), min(len(ink), hi) + 1):
+        blank = r < len(ink) and ink[r] <= 1
+        if blank and run_start is None:
+            run_start = r
+        if (not blank or r == min(len(ink), hi)) and run_start is not None:
+            end = r if not blank else r + 1
+            if best is None or end - run_start > best[1] - best[0]:
+                best = (run_start, end)
+            run_start = None
+    return best
+
+
+def _gaps(ink: list[int], lo: int, hi: int) -> list[tuple[int, int]]:
+    out, start = [], None
+    for r in range(max(0, lo), min(len(ink), hi + 1)):
+        blank = ink[r] <= 1
+        if blank and start is None:
+            start = r
+        if not blank and start is not None:
+            out.append((start, r))
+            start = None
+    if start is not None:
+        out.append((start, min(len(ink), hi + 1)))
+    return out
+
+
+def widen(segs: list, page=None) -> list:
+    """AI 가 준 상자의 가장자리는 믿을 만하지 않다(표본에서 위·아래가 잘리거나 앞 문항 줄이 섞임). 그래서
+    가로는 그 조각이 속한 단(왼쪽 반·오른쪽 반·전체)의 폭으로 넓히고,
+    세로 경계는 쪽 그림의 빈 줄(잉크 없는 가로 띠)에 맞춘다:
+    - 같은 단의 두 조각 사이: 예측 경계 근처(±3%)의 가장 넓은 빈 띠 한가운데
+    - 단의 첫 조각 위: 예측 위치 근처의 가장 넓은 빈 띠
+    - 단의 마지막 조각 아래: 잉크가 이어지는 동안 내려가다 쪽 높이 2.5% 이상 빈 띠가 나오면 멈춘다(꼬리말 앞)"""
+    def col(b):
+        if b[0] < 0.45 and b[2] > 0.55:
+            return "full"
+        return "L" if (b[0] + b[2]) / 2 < 0.5 else "R"
+    bounds = {"full": (0.02, 0.98), "L": (0.02, 0.505), "R": (0.495, 0.98)}
+    out = [dict(sg, box=list(sg["box"])) for sg in segs]
+    extras: list = []  # (단, 위, 아래, 그 단 첫 조각의 순서) — 어느 상자에도 안 든 단 꼭대기 글
+    for c in ("full", "L", "R"):
+        idx = sorted([i for i, sg in enumerate(out) if col(segs[i]["box"]) == c], key=lambda i: out[i]["box"][1])
+        if not idx:
+            continue
+        ink = _ink_rows(page, bounds[c][0] + 0.01, bounds[c][1] - 0.01) if page is not None else None
+        H = len(ink) if ink else 1
+        for i in idx:
+            b = out[i]["box"]
+            b[0], b[2] = min(b[0], bounds[c][0]), max(b[2], bounds[c][1])
+        if not ink:
+            continue
+        # 꼬리말: 쪽 맨 아래의 짧은 잉크 띠(빈 띠 위에 따로 떨어진 것)
+        foot = 0.97
+        r = int(0.99 * H)
+        while r > 0 and ink[r] <= 1:
+            r -= 1
+        band_end = r
+        while r > 0 and ink[r] > 1:
+            r -= 1
+        if r > 0.88 * H and band_end - r < 0.03 * H and all(v <= 1 for v in ink[max(0, r - int(0.006 * H)) : r]):
+            foot = (r - 1) / H
+        # 첫 조각 위에 어느 상자에도 안 든 글이 있으면(앞 문항이 단·쪽을 넘어 이어진 부분) 알려 준다
+        b = out[idx[0]]["box"]
+        top_ink = [r for r in range(int(0.06 * H), max(int(0.06 * H), int((b[1] - 0.004) * H))) if ink[r] > 2]
+        if len(top_ink) >= 3:
+            extras.append((c, top_ink[0] / H - 0.005, top_ink[-1] / H + 0.005, idx[0]))
+        # 첫 조각 위
+        gap = _longest_blank(ink, int((b[1] - 0.03) * H), int((b[1] + 0.01) * H))
+        if gap:
+            b[1] = (gap[0] + gap[1]) / 2 / H
+        # 조각 사이
+        for n in range(len(idx) - 1):
+            up, dn = out[idx[n]]["box"], out[idx[n + 1]]["box"]
+            lo = min(up[3], dn[1]) - 0.05
+            hi = max(up[3], dn[1]) + 0.05
+            lo, hi = max(lo, up[1] + 0.01), min(hi, dn[3] - 0.01)
+            gaps = _gaps(ink, int(lo * H), int(hi * H))
+            if gaps:
+                # 충분히 넓은 빈 띠 가운데 다음 문항이 시작한다고 본 자리에 가장 가까운 것 (보기 ④·⑤ 사이 같은 데서 자르지 않게)
+                widest = max(b - a for a, b in gaps)
+                cands = [g for g in gaps if g[1] - g[0] >= 0.8 * widest]
+                g = min(cands, key=lambda g: abs(g[1] - dn[1] * H))
+                y = (g[0] + g[1]) / 2 / H
+                up[3], dn[1] = y, y
+        # 마지막 조각 아래: 그 단에서 꼬리말 전까지는 모두 이 문항 것이다 → 꼬리말 앞 마지막 잉크까지
+        b = out[idx[-1]]["box"]
+        r = int(min(foot, 0.97) * H) - 1
+        while r > int(b[1] * H) and ink[r] <= 1:
+            r -= 1
+        # 맨 아래 짧은 띠가 넓은 빈 띠(3% 이상)로 떨어져 있으면 다음 과목 제목 같은 것이라 뺀다
+        end = r
+        while r > int(b[1] * H) and ink[r] > 1:
+            r -= 1
+        band_top, g = r, 0
+        while r > int(b[1] * H) and ink[r] <= 1:
+            r -= 1
+            g += 1
+        if g >= 0.03 * H and end - band_top < 0.04 * H and r / H >= b[3] - 0.01:
+            end = r
+        b[3] = max(b[3], min(foot, (end + 3) / H))
+        for i in idx:
+            out[i]["box"][3] = min(out[i]["box"][3], foot)
+    return out, extras
+
 
 def build() -> None:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -255,9 +387,18 @@ def build() -> None:
         doc = fitz.open(DATA / "pdf" / f"{j['pdf']}.pdf")
         regions: dict[int, list] = {}
         shared: list[tuple[int, int, list]] = []
+        # 과목이 시작하는 번호(인쇄 번호가 1부터 다시 시작하는 경우도): 그 위의 글은 과목 제목이지 앞 문항이 아니다
+        _subs = j["entry"]["subjects"]
+        starts = {x["from"] for x in _subs} | {x["from"] - _subs[0]["from"] + 1 for x in _subs}
+        prev = None  # 읽는 순서로 바로 앞 조각 (쪽을 넘어서도)
+        bounds = {"full": (0.02, 0.98), "L": (0.02, 0.505), "R": (0.495, 0.98)}
         for pg, k in enumerate(keys):
             W, H = doc[pg].rect.width, doc[pg].rect.height
-            for s in st["pages"][k]:
+            segs, extras = widen(st["pages"][k], doc[pg])
+            prev_page_last = prev
+            if segs:
+                prev = segs[-1]
+            for s in segs:
                 x0, y0, x1, y1 = s["box"]
                 r = dict(page=pg, x0=round(max(0, x0) * W, 1), y0=round(max(0, y0) * H, 1), x1=round(min(1, x1) * W, 1), y1=round(min(1, y1) * H, 1))
                 if s["kind"] == "shared":
@@ -267,13 +408,24 @@ def build() -> None:
                         shared.append((s["no"], s.get("last_no") or s["no"], [r]))
                 else:
                     regions.setdefault(s["no"], []).append(r)
+            # 단 꼭대기의 주인 없는 글: 바로 앞 문항이 단 맨 아래까지 왔으면 그 문항이 이어진 것으로 본다
+            for c, ey0, ey1, first_i in extras:
+                before = segs[first_i - 1] if first_i > 0 else prev_page_last
+                if segs[first_i]["no"] in starts:
+                    continue
+                if before and before["kind"] == "question" and before["box"][3] > 0.85:
+                    x0, x1 = bounds[c]
+                    regions.setdefault(before["no"], []).append(
+                        dict(page=pg, x0=round(x0 * W, 1), y0=round(max(0, ey0) * H, 1), x1=round(x1 * W, 1), y1=round(min(1, ey1) * H, 1)))
         en = j["entry"]
         e = next(x for x in CATALOG["exams"] if x["id"] == j["exam"])
         subs = en["subjects"]
         want = set(range(subs[0]["from"], subs[-1]["to"] + 1)) - {int(x) for x in en.get("text_items", [])}
         # 교시 시험지 번호가 1부터 다시 시작하는 경우(예: 2교시 41~80번이 1~40번으로 인쇄): 순서대로 옮긴다
+        printed: dict[int, int] = {}
         if not want <= set(regions) and set(range(1, len(want) + 1)) <= set(regions):
             order = sorted(want)
+            printed = {order[i - 1]: i for i in range(1, len(want) + 1)}
             regions = {order[i - 1]: regions[i] for i in range(1, len(want) + 1)}
             shared = [(order[a - 1], order[min(b, len(order)) - 1], rs) for a, b, rs in shared if a <= len(order)]
         if not want <= set(regions):
@@ -290,11 +442,13 @@ def build() -> None:
                 ans = en["answers"].get(str(no))
                 if ans is None:
                     break
-                q = dict(no=len(sq) + 1, orig=no, regions=regions[no], text="", answer=ans)
+                q = dict(no=len(sq) + 1, orig=printed.get(no, no), regions=regions[no], text="", answer=ans)
                 sh = next((x for x in shared if x[0] <= no <= x[1]), None)
                 if sh:
                     q["shared"] = dict(regions=sh[2], text="")
                 sq.append(q)
+            if not sq:
+                continue
             if len(sq) != sum(1 for no in range(s["from"], s["to"] + 1) if no in want):
                 print("  ! 정답 빠짐", j["id"], s["name"])
                 continue
