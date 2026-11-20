@@ -115,7 +115,7 @@ def prepare() -> None:
 
 def page_png(pdf_id: str, page: int) -> bytes:
     doc = fitz.open(DATA / "pdf" / f"{pdf_id}.pdf")
-    return doc[page].get_pixmap(dpi=DPI).tobytes("png")
+    return doc[page].get_pixmap(dpi=DPI, colorspace=fitz.csGRAY).tobytes("jpeg", jpg_quality=80)
 
 
 def params(pdf_id: str, page: int, model: str, variant: str) -> dict:
@@ -126,7 +126,7 @@ def params(pdf_id: str, page: int, model: str, variant: str) -> dict:
         "system": [{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
         "output_config": {"format": {"type": "json_schema", "schema": SCHEMA}},
         "messages": [{"role": "user", "content": [
-            {"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": base64.standard_b64encode(page_png(pdf_id, page)).decode()}},
+            {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": base64.standard_b64encode(page_png(pdf_id, page)).decode()}},
             {"type": "text", "text": f"이 쪽의 문항 조각을 찾아 주세요.{hint}"},
         ]}],
     }
