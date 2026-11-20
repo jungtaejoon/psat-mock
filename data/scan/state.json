@@ -1,168 +1,6 @@
 {
- "batches": [
-  "msgbatch_01QaAXrmkjrRL7M4syHqFPGb"
- ],
- "ids": {
-  "s6f8e2516ffc4bfe219b1e4068985c2564d589dc3": "realtor-2025-2차-2교시-|0|c",
-  "sf585f12d63e371d40bbd67b50978efab03165c80": "realtor-2025-2차-2교시-|1|c",
-  "s687f35da267e8b20dbfb01ab174723f51f757541": "realtor-2025-2차-2교시-|3|c",
-  "s5b3d2cfd2fb3296e6048d4a30ced273b2dfb5684": "realtor-2025-1교시-|1|c",
-  "s8740f7050cc41fcfdd9adae058a687ea7af380c5": "housing-2025-2차-1교시-|3|c",
-  "s69a74aebaf9b49c26305ae6989db34cb4678fa61": "housing-2025-2차-1교시-|11|c",
-  "sd5760954e357c99b7770779c227fba4865a386c0": "housing-2025-2차-1교시-|15|c",
-  "s33076ecafdf6581d9a2f9a90495fe9f40a6f4646": "housing-2025-2차-1교시-|20|c",
-  "sc985b38432873f915923d2994f238f801020e440": "security-2018-1교시-|1|c",
-  "s1649f612881c7f9274809d81176730dbdb1998c2": "security-2018-1교시-|2|c",
-  "s9d8290c05e1526ca5a1343203d5ca43596373e3e": "security-2018-1교시-|3|c",
-  "s704d46dae9c3421f8aa0805535ee5e670e05495d": "security-2018-1교시-|4|c",
-  "s3f3b02d3c73ce4d352c4004544bf1af70fabb87b": "security-2018-1교시-|5|c",
-  "s08e309fe0f52df7007914115c3c61c4fd7eddb00": "security-2018-1교시-|6|c",
-  "saee4ddba8824a6ba9568b9474745d7dd123246e3": "security-2018-1교시-|8|c",
-  "s9f1ea756948704cdba235882389383a1880563a2": "security-2018-1교시-|9|c",
-  "s3f4b68b6ba66ea1349f0d4f0cfac37a8286bd37d": "security-2018-1교시-|11|c",
-  "s93d878eabef9016be911c455aee02e2c66a647d4": "security-2018-1교시-|12|c",
-  "s6a839ca0d141047a6b9accbbeddb0c99d8dca01d": "security-2018-1교시-|13|c",
-  "s87b5088859ec9d5e43b7ae3b6f1b2392eb74c653": "security-2018-1교시-|15|c",
-  "sdb1ae08ae0eff438468f25020b88d3711402e4d5": "security-2017-1교시-|2|c",
-  "sc1765323ea5e22850618ad8f3c89f3fbe7fb40e0": "security-2017-1교시-|4|c",
-  "s7eb0028690583b1f5a25321e076da3fc09d4f099": "security-2017-1교시-|6|c",
-  "sa5a11de3747a523446759dfc2e1a19ecf655ebf2": "security-2017-1교시-|8|c",
-  "scd5c98672e7679e00c7d62eea0dc531ce75f086b": "security-2017-1교시-|9|c",
-  "s973753b2ce17803977732412107de4b2cfd6b790": "security-2017-1교시-|11|c",
-  "s6f0b5b64951950999b1fe8b2224cbd8a6d36f746": "security-2017-1교시-|13|c",
-  "s026384b2a01ccca8b5983b357d981ffd94963c24": "security-2017-1교시-|16|c",
-  "s3d053589829198862247d4d697e6e280c04bbeda": "security-2017-1교시-|17|c",
-  "s7aeae30f59e1285802b17c216e4b8474a8f34fdc": "appraiser-2021-1교시-|1|c",
-  "s7a6b678a08f60ae0f7dc01addb0dd4d9d783cbf9": "appraiser-2021-1교시-|6|c",
-  "s861047cfad998489e405ed458a1a1c783b9db23c": "appraiser-2021-1교시-|19|c",
-  "s7c14f345bc6561eed018c870619827f35be64a51": "appraiser-2021-1교시-|26|c",
-  "s2a45c0407bc54620d4f4788ab68202f1683d205a": "appraiser-2021-2교시-|2|c",
-  "s8bc625e06c2d0c85da2a41c2d089edefcf9fd651": "appraiser-2021-2교시-|6|c",
-  "sc2322430f4df8e418c3fb9c90df0f8b0de67cb64": "appraiser-2021-2교시-|22|c",
-  "sceafff85def01aa7f21ae7a68869c762a98e1988": "appraiser-2022-1교시-|4|c",
-  "s8d18874f7d8961c547ef86596644299ceb52e317": "appraiser-2022-1교시-|10|c",
-  "s94060137d63c4ac643547defe0bff0024bd458b2": "appraiser-2022-1교시-|17|c",
-  "s03a741df260cda79471d85793ecff4d290b9f7cb": "appraiser-2022-1교시-|20|c",
-  "s66ea3a4f9e3a33614668908fd04abf925732a7f9": "appraiser-2022-1교시-|23|c",
-  "s027be00301ec336d26bc73aa579e70ff5877fd6c": "appraiser-2022-1교시-|26|c",
-  "s4891ed017f2d1b4f1f38bdab774b12465ca2df87": "appraiser-2022-1교시-|33|c",
-  "s62a8115dea3ee8a98d2b03d1cdf2c211dd046437": "appraiser-2022-2교시-|4|c",
-  "sc828ac54a216688877c39bcee469175ae0b3b6dc": "appraiser-2022-2교시-|20|c",
-  "sced6a89ba060a18ea289f7fcf944a1e7e9d10958": "appraiser-2023-1교시-|8|c",
-  "s2c44adcb1707073c2fc7847212482b30157fcc7a": "appraiser-2023-1교시-|9|c",
-  "s92a84d146614b156b24772a8224a98dc2b208bbe": "appraiser-2023-1교시-|24|c",
-  "sa0f077fae8115bbcc45cbbd574f50fbac2889ddc": "appraiser-2023-1교시-|26|c",
-  "s13d0446d473d6379594bbc30288803b88b81627c": "appraiser-2023-1교시-|33|c",
-  "s63ffcaf9ace7cb21e5e25d6029cc88ac6cb1ef5d": "appraiser-2023-2교시-|8|c",
-  "s3b3b3ababc6dd11c321bdefc590cb887e1de0d57": "appraiser-2023-2교시-|10|c",
-  "s040c2de25c57443e01c13cd2b04c53cbfe3ec8da": "appraiser-2023-2교시-|15|c",
-  "s318e2e19d1ead43be5f1a563f7b6a2ad08b0fb63": "tax-2018-1교시-|2|c",
-  "s7197195aff1f93e0b038a1eaca25986d6afdd98f": "tax-2018-1교시-|8|c",
-  "s6bc4382195dec5a8ba9be1893a558bfadaa03ed2": "tax-2018-1교시-|10|c",
-  "sf637c486947898af8a4c89250c642d715ef6dc12": "tax-2018-1교시-|16|c",
-  "saa1321cde04c71191437ecaded84ea6a166bc93e": "tax-2018-1교시-|22|c",
-  "s0b6f8d3a1c953faea4b0f5b06439bba3708feddf": "tax-2018-1교시-|32|c",
-  "sf2ff37afd60897976467361051663be93e954c24": "tax-2018-민법-2교시-|11|c",
-  "sd8b9978110ed2d3f9c786822355389b51084206a": "tax-2018-민법-2교시-|17|c",
-  "sc05ea2308212144cc97992b7d08b04b17f768dbf": "tax-2018-민법-2교시-|22|c",
-  "s244d17ef244e3053dacc7411f71c40bedfa29861": "tax-2018-민법-2교시-|25|c",
-  "s96e87785a1d3343705e02ef3e7b43d0283572eca": "tax-2018-민법-2교시-|26|c",
-  "sa380923a2489f97afe38817813476ec03c3b1edb": "tax-2018-상법-2교시-|4|c",
-  "s9c99bc35a8654990ebb4f48ae1439cf113fa8f68": "tax-2018-상법-2교시-|5|c",
-  "sae5a1714e34c01a996e556b2740f931294127741": "tax-2018-상법-2교시-|11|c",
-  "s54fa9f1dbde37f1fe582e0ffdf1275e9dbbb7ed6": "tax-2018-상법-2교시-|20|c",
-  "s6ee90d23aa3e5ecfc55851407197c5d4e9ab24ff": "tax-2018-상법-2교시-|21|c",
-  "sb9eb49601d28b056576ab5835223ba1f37983bce": "tax-2018-상법-2교시-|23|c",
-  "sb1db324973c3ed8c44cda1be62bf3cf1cc661194": "tax-2018-상법-2교시-|25|c",
-  "s5c3895f193ae50a6d389d93d0e1f0359c8675776": "tax-2018-행정소송법-2교시-|14|c",
-  "scd4632ad8e7d3acbc31ed138da61118b8f2e4989": "tax-2018-행정소송법-2교시-|19|c",
-  "sdfa6bbb183c69f8639fc1906811ba81daa95bbe8": "tax-2018-행정소송법-2교시-|25|c",
-  "sa87e50886e5f42904865c4a964eed08a333dbf7f": "tax-2018-행정소송법-2교시-|26|c",
-  "s7c569b3f34ab11711764b2e3baf5238d19503596": "tax-2019-민법-2교시-|4|c",
-  "sae652c6187569d0ea8986d3a04f6b27743cbf05b": "tax-2019-민법-2교시-|9|c",
-  "s78dabe5f473dda3f72e22574932b7853432115ad": "tax-2019-민법-2교시-|17|c",
-  "s8e5dace55327c6783e5c9aa5fd10b604bb0a55b4": "tax-2019-민법-2교시-|19|c",
-  "se1854afc9131431c31b0d37afc419d788f182f26": "tax-2019-민법-2교시-|20|c",
-  "sb6f0675ff4543c2759de4d113cc257b495affdc5": "tax-2019-민법-2교시-|24|c",
-  "s48173f20ffb0c4441f93b08cabd3a178e3ca616a": "tax-2019-민법-2교시-|25|c",
-  "sbded02557a89188afe5f6d5e296b6200de6219ad": "tax-2019-상법-2교시-|18|c",
-  "s55441554a952a1f630e51fb0c33ce3650d203e07": "tax-2019-상법-2교시-|22|c",
-  "s8da9084cb20cf28a6c81351dc448ab88a2427e2f": "tax-2019-상법-2교시-|23|c",
-  "saebf27b078171ad2832b1d39b6173ff2a6209e66": "tax-2019-행정소송법-2교시-|8|c",
-  "s5d96720efda56b4e260312cf29450fa74377fe7e": "tax-2019-행정소송법-2교시-|23|c",
-  "se7e23092bee32f9c7c0f2420866f2a4a86683e49": "tax-2019-행정소송법-2교시-|24|c",
-  "s17885b5f4ce1ac4f9df29ea44afe2ad1d0a3250e": "tax-2019-행정소송법-2교시-|25|c",
-  "sec4b8bc2be4b1bbf5cfaee88761bb386b7db2338": "tax-2020-민법-2교시-|0|c",
-  "s9f94e0c9d3f996eb70d3fe7283126560c2746829": "tax-2020-민법-2교시-|17|c",
-  "sf33395cf0003267ba1eb24d2ca3bbaa6c021f55c": "tax-2020-민법-2교시-|22|c",
-  "s35cba2ba4ab956c07bf02dacd92c0d51e1274ca8": "tax-2020-민법-2교시-|23|c",
-  "sf97a93e2e951cca17c73cf704c2c1932510e001a": "tax-2019-1교시-|2|c",
-  "s1785a4ab6216ba0a8e910b7407301bd4dc49716a": "tax-2019-1교시-|7|c",
-  "s502603d6a8e94ffd6e41847edcc2e55adfe36a01": "tax-2019-1교시-|8|c",
-  "sa2ebbdbe9c9d469fc0fd236cf90b1fcbc5c0590c": "tax-2019-1교시-|9|c",
-  "s0cfc49abe6d9d5b9259eed9133fbbd61b426ee5c": "tax-2019-1교시-|13|c",
-  "seea573a3015c166570e958fa4347a22b64bf93ca": "tax-2020-1교시-|3|c",
-  "sa588a85dc7ec59f20afea143d55aa635e3bc9276": "tax-2020-1교시-|4|c",
-  "s765c3777e2e71c738076f6bce3c620f20dc1ed30": "tax-2020-1교시-|5|c",
-  "se1f9c7755adcdd80a42ca3c617a7fa1c2d260747": "tax-2020-1교시-|6|c",
-  "s66eb4af396dbeddc17478cf377a205067b66b055": "tax-2020-1교시-|7|c",
-  "scc882ca05b039f3eab59a103207cd9244fb5e6c6": "tax-2020-1교시-|18|c",
-  "s474caca82a0fefa21a66e5f62a0ea19d0b7a307f": "tax-2020-1교시-|22|c",
-  "sbc05354eab9fa91326abfa3846a76d48103ce7a8": "tax-2020-1교시-|32|c",
-  "s7d22fdb238b2b3360848f4309249610edc5849f1": "tax-2020-행정소송법-2교시-|6|c",
-  "s09a6ecd3573fa876c459fe6406489e04bac47f09": "tax-2020-행정소송법-2교시-|11|c",
-  "sc1c853db50808b4da29f45ec9ddb99f2270c626f": "tax-2020-행정소송법-2교시-|15|c",
-  "s8772ad745592f5394581549293ff59dae471783e": "tax-2020-행정소송법-2교시-|16|c",
-  "sc47ab6b6e8b167cb12485e2ae36f78188bb0e6bb": "tax-2020-행정소송법-2교시-|17|c",
-  "sbd173d7a7a10cdf2897cf8f9a8fdd5d38064876d": "tax-2020-행정소송법-2교시-|18|c",
-  "sc5083350f7009f3b2a2d65d4b3a45d9023df0b12": "tax-2020-행정소송법-2교시-|24|c",
-  "s8bb4ad18839ba1dae248f0ebc8a7549d2fb61c14": "tax-2020-행정소송법-2교시-|26|c",
-  "sc7acab1a9009f7d9d200473053dfba24e5d9e836": "tax-2020-상법-2교시-|6|c",
-  "s00d633f4cc1d15e9bb512af7cdfad5357a310bdb": "tax-2020-상법-2교시-|20|c",
-  "s4dc0e17fb86326d1fabf69a1c805eea4c9e5c5c5": "tax-2020-상법-2교시-|23|c",
-  "s87d524727fd665bd50f3ae33166605783ce62008": "tax-2020-상법-2교시-|24|c",
-  "sdd6348552dcd5ab17b42cca9ba555bfad16bb312": "tax-2020-상법-2교시-|25|c",
-  "s61a2501b92091de37a544778f205164783f7080f": "tax-2020-상법-2교시-|26|c",
-  "sd6e987bc6e90451c37ed95a65e06a0c069a18c92": "tax-2020-상법-2교시-|28|c",
-  "sac08189eb7a368d4932c0127082dc9d5da16983b": "customs-2021-1교시-|4|c",
-  "s81e8301f22a8aaa42e45369c5fda5a54ce5cb1a2": "customs-2021-1교시-|5|c",
-  "s176d3a09f8706d180f63aa747d3d57e29bc2fbc3": "customs-2021-1교시-|11|c",
-  "sd41af75203d8c2be4efcfecca915eb24de68c96b": "customs-2021-1교시-|12|c",
-  "sfb6862df53de0f2a9001f1b3926f6449f435c9a6": "customs-2021-2교시-|0|c",
-  "s7a60bacb1415f501b441b979fd0e4895814b6230": "customs-2021-2교시-|1|c",
-  "s39f4a3851da0dbb30f1fadc63885c3262ef79e56": "customs-2021-2교시-|2|c",
-  "s83d0ff2d227efc811d6987bd840a6c243117a5a9": "customs-2021-2교시-|3|c",
-  "sf45608543a87549160418e63d99d10a21cb9314b": "customs-2021-2교시-|4|c",
-  "sfa812821a254ce3e5c82519c0671848a54d4b627": "customs-2021-2교시-|5|c",
-  "se624a15f93a65530c6bbcbc1e02c4a799c79e468": "customs-2021-2교시-|8|c",
-  "s4093a6b1440071fa5974fd075188fe9529cbe98b": "customs-2021-2교시-|10|c",
-  "s872e2c07af2115dfb9500ba25864ec225d524e18": "customs-2021-2교시-|11|c",
-  "se561c8e1bbd50001ca982b5db05bce7eaa037fd0": "customs-2021-2교시-|17|c",
-  "s4af9add41d1b11719e8d6bf4efacf9da4b7f7465": "customs-2021-2교시-|21|c",
-  "sd59f77eb50575b468d53eb6b2675d0eaafc203fd": "customs-2021-2교시-|23|c",
-  "sd4f402248acec7292b9b05fce263e92f45ff0a67": "patent-2020-1교시-|0|c",
-  "s1335b56fa90fadfbdaed33bd0c81ef288795285c": "patent-2020-1교시-|1|c",
-  "s24a390647e962b6a04f2a03909835373f36645bf": "patent-2020-1교시-|2|c",
-  "sa30081e1026549a8c30c4545fb38850a8b655b7a": "patent-2020-1교시-|3|c",
-  "s063a442b80d8cc76951bc6a8a9aed8506656c85a": "patent-2020-1교시-|5|c",
-  "s1dedd38fc6801658c60ed6f37fb20de8f0565884": "patent-2020-1교시-|6|c",
-  "sf60890080b3ddeaf143415dd5fb96cf7ddf9b3be": "patent-2020-1교시-|8|c",
-  "sad5c6c9f5c974c2a7cd516de8397d1ed75497e7f": "patent-2020-1교시-|10|c",
-  "s69190d6ce8fc812828925a502a315d43a077fdf6": "patent-2020-1교시-|15|c",
-  "s339964e7ab0faa9198862bb5fc5b9a2eeec67812": "patent-2020-1교시-|16|c",
-  "s2b11c4be706c0ef677307cf4f750924347283931": "patent-2020-2교시-|0|c",
-  "s8c48ed38a339415933808556ebc5c3cb8a32f264": "patent-2020-2교시-|2|c",
-  "sa09b2958db84f94783dbaf902ac9e0092ef50d43": "patent-2020-2교시-|3|c",
-  "sfb9fa871cf39ef80fb6ee50bfaff0d758e42db6a": "patent-2020-2교시-|5|c",
-  "sd614269941ae7db7dfd9c43811315f86826ae3d5": "patent-2020-2교시-|6|c",
-  "sca2a6061853c7d793f57a2df83a42912bc85cd93": "patent-2022-1교시-|10|c",
-  "sec9c040045856c71c4785db913594aa16eac7b64": "patent-2022-3교시-|12|c",
-  "se9c892ec79fdb9e3094915f59c4cf56624e32d98": "patent-2022-3교시-|15|c",
-  "sc790bb21472eb7df631ea1325d68456e4c9d131f": "patent-2025-2교시-|11|c",
-  "s66b9df24d70d51b0607eb18af888da8ce93b043e": "patent-2025-3교시-|4|c",
-  "s86f2441f598031d94292f0907db2afa86bbad868": "patent-2025-3교시-|5|c",
-  "sb33cc34cd84975d40078967081f11726ff3a99d2": "patent-2025-3교시-|7|c"
- },
+ "batches": [],
+ "ids": {},
  "reads": {
   "realtor-2025-2차-1교시-|7": {
    "a": [
@@ -415,7 +253,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.09,
+      0.115,
+      0.92,
+      0.295
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.09,
+      0.315,
+      0.92,
+      0.495
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.09,
+      0.515,
+      0.92,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 78,
+     "box": [
+      0.09,
+      0.718,
+      0.85,
+      0.875
+     ]
+    }
+   ]
   },
   "housing-2025-2차-1교시-|13": {
    "b": [
@@ -1032,7 +912,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.035,
+      0.95,
+      0.135
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.152,
+      0.95,
+      0.465
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.482,
+      0.95,
+      0.757
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.07,
+      0.772,
+      0.95,
+      0.945
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|2": {
    "b": [
@@ -1595,7 +1517,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.09,
+      0.115,
+      0.91,
+      0.295
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.09,
+      0.315,
+      0.91,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.09,
+      0.445,
+      0.91,
+      0.705
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.09,
+      0.725,
+      0.91,
+      0.875
+     ]
+    }
+   ]
   },
   "realtor-2025-2차-2교시-|3": {
    "a": [
@@ -1742,7 +1706,79 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.025,
+      0.015,
+      0.49,
+      0.185
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.025,
+      0.195,
+      0.49,
+      0.52
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.025,
+      0.535,
+      0.49,
+      0.76
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.025,
+      0.775,
+      0.49,
+      0.94
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.52,
+      0.015,
+      0.985,
+      0.175
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.52,
+      0.19,
+      0.985,
+      0.54
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.52,
+      0.555,
+      0.985,
+      0.95
+     ]
+    }
+   ]
   },
   "realtor-2025-2차-1교시-|1": {
    "a": [
@@ -2127,7 +2163,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.32
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.33,
+      0.94,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.07,
+      0.57,
+      0.94,
+      0.79
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|14": {
    "b": [
@@ -2638,7 +2706,99 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.03,
+      0.1,
+      0.49,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.03,
+      0.29,
+      0.49,
+      0.412
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.03,
+      0.418,
+      0.49,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.03,
+      0.708,
+      0.49,
+      0.832
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.03,
+      0.838,
+      0.49,
+      0.972
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.52,
+      0.02,
+      0.98,
+      0.092
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.52,
+      0.1,
+      0.98,
+      0.36
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.52,
+      0.366,
+      0.98,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.52,
+      0.683,
+      0.98,
+      0.958
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|10": {
    "b": [
@@ -2791,7 +2951,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.238,
+      0.94,
+      0.415
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.428,
+      0.94,
+      0.608
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.62,
+      0.94,
+      0.945
+     ]
+    }
+   ]
   },
   "realtor-2025-2차-1교시-|10": {
    "b": [
@@ -3176,7 +3378,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.338
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.352,
+      0.94,
+      0.558
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.572,
+      0.94,
+      0.7
+     ]
+    }
+   ]
   },
   "security-2018-1교시-|4": {
    "b": [
@@ -3283,7 +3517,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.09,
+      0.105,
+      0.87,
+      0.18
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.09,
+      0.195,
+      0.87,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.09,
+      0.363,
+      0.87,
+      0.505
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.09,
+      0.52,
+      0.9,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.09,
+      0.755,
+      0.9,
+      0.86
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|19": {
    "a": [
@@ -3986,7 +4272,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.23
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.07,
+      0.25,
+      0.94,
+      0.57
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.07,
+      0.59,
+      0.94,
+      0.73
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|2": {
    "a": [
@@ -4073,7 +4391,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.08,
+      0.04,
+      0.93,
+      0.24
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.08,
+      0.26,
+      0.93,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.08,
+      0.54,
+      0.93,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.08,
+      0.67,
+      0.93,
+      0.89
+     ]
+    }
+   ]
   },
   "realtor-2025-1교시-|2": {
    "a": [
@@ -5232,7 +5592,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.06,
+      0.045,
+      0.95,
+      0.165
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.06,
+      0.182,
+      0.95,
+      0.322
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.06,
+      0.338,
+      0.95,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.06,
+      0.558,
+      0.95,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.06,
+      0.762,
+      0.95,
+      0.925
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|0": {
    "a": [
@@ -6219,7 +6631,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.09,
+      0.115,
+      0.91,
+      0.2
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.09,
+      0.222,
+      0.91,
+      0.295
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.09,
+      0.308,
+      0.91,
+      0.475
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.09,
+      0.487,
+      0.91,
+      0.703
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.09,
+      0.715,
+      0.91,
+      0.915
+     ]
+    }
+   ]
   },
   "security-2017-1교시-|15": {
    "a": [
@@ -6432,7 +6896,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.09,
+      0.118,
+      0.9,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.09,
+      0.285,
+      0.9,
+      0.395
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.09,
+      0.412,
+      0.9,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.09,
+      0.515,
+      0.9,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.09,
+      0.71,
+      0.9,
+      0.77
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.09,
+      0.785,
+      0.9,
+      0.855
+     ]
+    }
+   ]
   },
   "security-2018-1교시-|1": {
    "b": [
@@ -6539,7 +7065,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.1,
+      0.105,
+      0.9,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.1,
+      0.222,
+      0.9,
+      0.395
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.1,
+      0.41,
+      0.9,
+      0.632
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.1,
+      0.643,
+      0.84,
+      0.713
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.1,
+      0.723,
+      0.9,
+      0.882
+     ]
+    }
+   ]
   },
   "housing-2025-2차-1교시-|5": {
    "b": [
@@ -6864,7 +7442,79 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.025,
+      0.012,
+      0.49,
+      0.24
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.025,
+      0.25,
+      0.49,
+      0.475
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.025,
+      0.485,
+      0.49,
+      0.77
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.025,
+      0.795,
+      0.49,
+      0.915
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.51,
+      0.012,
+      0.98,
+      0.32
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.51,
+      0.335,
+      0.98,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.51,
+      0.66,
+      0.98,
+      0.9
+     ]
+    }
+   ]
   },
   "security-2018-1교시-|12": {
    "a": [
@@ -6951,7 +7601,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.1,
+      0.115,
+      0.92,
+      0.37
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.1,
+      0.375,
+      0.92,
+      0.555
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.1,
+      0.568,
+      0.92,
+      0.75
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.1,
+      0.765,
+      0.92,
+      0.885
+     ]
+    }
+   ]
   },
   "realtor-2025-1교시-|10": {
    "b": [
@@ -7772,7 +8464,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.09,
+      0.115,
+      0.9,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.09,
+      0.225,
+      0.9,
+      0.395
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.09,
+      0.41,
+      0.9,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.09,
+      0.575,
+      0.9,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.09,
+      0.665,
+      0.9,
+      0.815
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.09,
+      0.83,
+      0.9,
+      0.895
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|15": {
    "a": [
@@ -7945,7 +8699,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.09,
+      0.115,
+      0.9,
+      0.272
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.09,
+      0.288,
+      0.9,
+      0.352
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.09,
+      0.365,
+      0.9,
+      0.527
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.09,
+      0.54,
+      0.9,
+      0.678
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.09,
+      0.692,
+      0.9,
+      0.885
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|1": {
    "b": [
@@ -8012,7 +8818,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.34
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.35,
+      0.94,
+      0.64
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.65,
+      0.94,
+      0.94
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|17": {
    "b": [
@@ -8781,7 +9619,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.09,
+      0.213,
+      0.9,
+      0.255
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.09,
+      0.272,
+      0.9,
+      0.447
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.09,
+      0.463,
+      0.9,
+      0.568
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.09,
+      0.585,
+      0.9,
+      0.775
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.09,
+      0.79,
+      0.9,
+      0.89
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|6": {
    "a": [
@@ -8848,7 +9738,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.3,
+      0.94,
+      0.585
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.595,
+      0.94,
+      0.875
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|3": {
    "a": [
@@ -9729,7 +10651,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.095,
+      0.113,
+      0.915,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.095,
+      0.333,
+      0.915,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.095,
+      0.552,
+      0.915,
+      0.775
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.095,
+      0.782,
+      0.915,
+      0.882
+     ]
+    }
+   ]
   },
   "security-2017-1교시-|5": {
    "b": [
@@ -9988,7 +10952,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.09,
+      0.195,
+      0.84,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.09,
+      0.365,
+      0.78,
+      0.52
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.09,
+      0.54,
+      0.9,
+      0.72
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.09,
+      0.735,
+      0.78,
+      0.9
+     ]
+    }
+   ]
   },
   "security-2017-1교시-|7": {
    "a": [
@@ -10327,7 +11333,89 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.025,
+      0.015,
+      0.49,
+      0.335
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.025,
+      0.352,
+      0.49,
+      0.557
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.025,
+      0.568,
+      0.49,
+      0.86
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.025,
+      0.868,
+      0.49,
+      0.955
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.52,
+      0.015,
+      0.985,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.52,
+      0.218,
+      0.985,
+      0.358
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.52,
+      0.372,
+      0.985,
+      0.598
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.52,
+      0.612,
+      0.985,
+      0.935
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|8": {
    "a": [
@@ -10440,7 +11528,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 79,
+     "box": [
+      0.09,
+      0.115,
+      0.91,
+      0.345
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 80,
+     "box": [
+      0.09,
+      0.345,
+      0.91,
+      0.545
+     ]
+    }
+   ]
   },
   "security-2017-1교시-|4": {
    "b": [
@@ -10547,7 +11657,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.08,
+      0.105,
+      0.88,
+      0.28
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.08,
+      0.298,
+      0.88,
+      0.455
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.08,
+      0.475,
+      0.8,
+      0.59
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.08,
+      0.607,
+      0.8,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.08,
+      0.705,
+      0.9,
+      0.895
+     ]
+    }
+   ]
   },
   "housing-2025-2차-1교시-|3": {
    "a": [
@@ -10614,7 +11776,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.32
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.07,
+      0.335,
+      0.94,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.705,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "security-2017-1교시-|13": {
    "a": [
@@ -10721,7 +11915,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.09,
+      0.115,
+      0.91,
+      0.185
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.09,
+      0.205,
+      0.91,
+      0.365
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.09,
+      0.385,
+      0.91,
+      0.465
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.09,
+      0.495,
+      0.91,
+      0.665
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.09,
+      0.685,
+      0.91,
+      0.885
+     ]
+    }
+   ]
   },
   "housing-2025-2차-1교시-|18": {
    "b": [
@@ -11828,7 +13074,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.08,
+      0.112,
+      0.92,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.08,
+      0.282,
+      0.92,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.08,
+      0.443,
+      0.92,
+      0.536
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.08,
+      0.552,
+      0.92,
+      0.749
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.08,
+      0.762,
+      0.92,
+      0.912
+     ]
+    }
+   ]
   },
   "appraiser-2021-2교시-|0": {
    "a": [
@@ -12021,7 +13319,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.09,
+      0.115,
+      0.91,
+      0.208
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.09,
+      0.222,
+      0.91,
+      0.312
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.09,
+      0.325,
+      0.91,
+      0.499
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.09,
+      0.512,
+      0.91,
+      0.617
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.09,
+      0.629,
+      0.91,
+      0.733
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.09,
+      0.746,
+      0.91,
+      0.896
+     ]
+    }
+   ]
   },
   "housing-2025-2차-1교시-|9": {
    "a": [
@@ -12604,7 +13964,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.225,
+      0.94,
+      0.415
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.435,
+      0.94,
+      0.665
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.68,
+      0.94,
+      0.905
+     ]
+    }
+   ]
   },
   "appraiser-2021-1교시-|16": {
    "a": [
@@ -13055,7 +14457,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.09,
+      0.115,
+      0.91,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.09,
+      0.295,
+      0.91,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.09,
+      0.385,
+      0.91,
+      0.472
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.09,
+      0.492,
+      0.91,
+      0.708
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.09,
+      0.722,
+      0.91,
+      0.865
+     ]
+    }
+   ]
   },
   "realtor-2025-2차-1교시-|2": {
    "a": [
@@ -13308,7 +14762,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.09,
+      0.115,
+      0.92,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.09,
+      0.275,
+      0.92,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.09,
+      0.44,
+      0.92,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.09,
+      0.685,
+      0.92,
+      0.865
+     ]
+    }
+   ]
   },
   "security-2018-1교시-|2": {
    "b": [
@@ -13435,7 +14931,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.09,
+      0.115,
+      0.92,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.09,
+      0.25,
+      0.84,
+      0.34
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.09,
+      0.355,
+      0.87,
+      0.495
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.09,
+      0.51,
+      0.62,
+      0.66
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.09,
+      0.675,
+      0.84,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.09,
+      0.76,
+      0.72,
+      0.915
+     ]
+    }
+   ]
   },
   "realtor-2025-2차-1교시-|9": {
    "b": [
@@ -13648,7 +15206,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.1,
+      0.115,
+      0.92,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.1,
+      0.332,
+      0.92,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.1,
+      0.515,
+      0.92,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.1,
+      0.69,
+      0.92,
+      0.89
+     ]
+    }
+   ]
   },
   "security-2017-1교시-|1": {
    "b": [
@@ -14363,7 +15963,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.035,
+      0.93,
+      0.29
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.315,
+      0.93,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.525,
+      0.93,
+      0.865
+     ]
+    }
+   ]
   },
   "appraiser-2022-1교시-|14": {
    "a": [
@@ -14898,7 +16530,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.01,
+      0.94,
+      0.39
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.41,
+      0.94,
+      0.79
+     ]
+    }
+   ]
   },
   "appraiser-2023-2교시-|19": {
    "b": [
@@ -15533,7 +17187,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.05,
+      0.93,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.24,
+      0.93,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.07,
+      0.34,
+      0.93,
+      0.49
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.07,
+      0.505,
+      0.93,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.07,
+      0.705,
+      0.93,
+      0.93
+     ]
+    }
+   ]
   },
   "appraiser-2022-2교시-|19": {
    "a": [
@@ -15666,7 +17372,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.17
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.18,
+      0.94,
+      0.44
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.46,
+      0.94,
+      0.77
+     ]
+    }
+   ]
   },
   "appraiser-2022-1교시-|29": {
    "b": [
@@ -16215,7 +17953,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.33,
+      0.94,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.07,
+      0.57,
+      0.94,
+      0.82
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|13": {
    "b": [
@@ -16850,7 +18620,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.08,
+      0.065,
+      0.91,
+      0.395
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.08,
+      0.405,
+      0.91,
+      0.705
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.08,
+      0.715,
+      0.91,
+      0.945
+     ]
+    }
+   ]
   },
   "appraiser-2022-2교시-|23": {
    "b": [
@@ -17089,7 +18891,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.07,
+      0.115,
+      0.94,
+      0.318
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.07,
+      0.328,
+      0.94,
+      0.532
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.07,
+      0.54,
+      0.94,
+      0.743
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.07,
+      0.752,
+      0.94,
+      0.928
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|16": {
    "b": [
@@ -17288,7 +19132,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.08,
+      0.065,
+      0.93,
+      0.705
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.08,
+      0.715,
+      0.93,
+      0.925
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|18": {
    "a": [
@@ -17527,7 +19393,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 106,
+     "box": [
+      0.06,
+      0.045,
+      0.94,
+      0.335
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 107,
+     "box": [
+      0.06,
+      0.345,
+      0.94,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 108,
+     "box": [
+      0.06,
+      0.74,
+      0.94,
+      0.945
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|35": {
    "b": [
@@ -17792,7 +19690,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.505,
+      0.94,
+      0.755
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.765,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "appraiser-2022-2교시-|24": {
    "a": [
@@ -18321,7 +20251,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.315
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.328,
+      0.94,
+      0.567
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.578,
+      0.94,
+      0.885
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|2": {
    "b": [
@@ -19206,7 +21168,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.3,
+      0.94,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.4,
+      0.94,
+      0.62
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.855
+     ]
+    }
+   ]
   },
   "appraiser-2023-2교시-|17": {
    "a": [
@@ -20065,7 +22069,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.08,
+      0.06,
+      0.93,
+      0.22
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.08,
+      0.24,
+      0.93,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.08,
+      0.67,
+      0.93,
+      0.92
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|15": {
    "a": [
@@ -20238,7 +22274,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.08,
+      0.035,
+      0.93,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.08,
+      0.245,
+      0.93,
+      0.485
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.08,
+      0.5,
+      0.93,
+      0.705
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.08,
+      0.715,
+      0.93,
+      0.915
+     ]
+    }
+   ]
   },
   "appraiser-2023-2교시-|20": {
    "b": [
@@ -20437,7 +22515,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.06,
+      0.04,
+      0.94,
+      0.33
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.06,
+      0.33,
+      0.94,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.06,
+      0.56,
+      0.94,
+      0.88
+     ]
+    }
+   ]
   },
   "tax-2018-1교시-|9": {
    "b": [
@@ -20748,7 +22858,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.08,
+      0.04,
+      0.93,
+      0.23
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.08,
+      0.25,
+      0.93,
+      0.48
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.08,
+      0.5,
+      0.93,
+      0.8
+     ]
+    }
+   ]
   },
   "tax-2018-1교시-|6": {
    "b": [
@@ -21317,7 +23459,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.08,
+      0.068,
+      0.9,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.08,
+      0.25,
+      0.9,
+      0.612
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.08,
+      0.628,
+      0.9,
+      0.78
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.08,
+      0.795,
+      0.9,
+      0.925
+     ]
+    }
+   ]
   },
   "appraiser-2023-2교시-|24": {
    "b": [
@@ -21516,7 +23700,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.07,
+      0.045,
+      0.93,
+      0.255
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.07,
+      0.27,
+      0.93,
+      0.53
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.07,
+      0.545,
+      0.93,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.07,
+      0.735,
+      0.93,
+      0.905
+     ]
+    }
+   ]
   },
   "appraiser-2023-1교시-|22": {
    "a": [
@@ -23155,7 +25381,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 112,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 113,
+     "box": [
+      0.07,
+      0.235,
+      0.94,
+      0.318
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 114,
+     "box": [
+      0.07,
+      0.34,
+      0.94,
+      0.572
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 115,
+     "box": [
+      0.07,
+      0.592,
+      0.94,
+      0.885
+     ]
+    }
+   ]
   },
   "appraiser-2022-1교시-|0": {
    "b": [
@@ -23902,7 +26170,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.08,
+      0.065,
+      0.9,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.08,
+      0.3,
+      0.9,
+      0.52
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.08,
+      0.54,
+      0.9,
+      0.945
+     ]
+    }
+   ]
   },
   "appraiser-2022-1교시-|23": {
    "a": [
@@ -23989,7 +26289,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.06,
+      0.045,
+      0.93,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.06,
+      0.3,
+      0.93,
+      0.475
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.06,
+      0.49,
+      0.93,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.06,
+      0.75,
+      0.93,
+      0.865
+     ]
+    }
+   ]
   },
   "appraiser-2023-2교시-|5": {
    "a": [
@@ -24294,7 +26636,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.025,
+      0.93,
+      0.34
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.355,
+      0.93,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.685,
+      0.93,
+      0.805
+     ]
+    }
+   ]
   },
   "tax-2018-1교시-|4": {
    "a": [
@@ -24473,7 +26847,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.08,
+      0.04,
+      0.93,
+      0.33
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.08,
+      0.34,
+      0.93,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.08,
+      0.66,
+      0.93,
+      0.91
+     ]
+    }
+   ]
   },
   "tax-2018-상법-2교시-|25": {
    "a": [
@@ -24540,7 +26946,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.08,
+      0.045,
+      0.93,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.08,
+      0.385,
+      0.93,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.08,
+      0.755,
+      0.88,
+      0.865
+     ]
+    }
+   ]
   },
   "tax-2018-행정소송법-2교시-|4": {
    "a": [
@@ -25121,7 +27559,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.07,
+      0.125,
+      0.95,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.07,
+      0.395,
+      0.95,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.07,
+      0.635,
+      0.95,
+      0.935
+     ]
+    }
+   ]
   },
   "tax-2019-상법-2교시-|7": {
    "a": [
@@ -25326,7 +27796,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.08,
+      0.04,
+      0.92,
+      0.34
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.08,
+      0.36,
+      0.92,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.08,
+      0.67,
+      0.92,
+      0.85
+     ]
+    }
+   ]
   },
   "tax-2018-상법-2교시-|12": {
    "b": [
@@ -25597,7 +28099,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.525
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.545,
+      0.94,
+      0.895
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|12": {
    "b": [
@@ -25868,7 +28392,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.08,
+      0.035,
+      0.91,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.08,
+      0.29,
+      0.91,
+      0.482
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.08,
+      0.5,
+      0.91,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.08,
+      0.74,
+      0.91,
+      0.915
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|20": {
    "b": [
@@ -26067,7 +28633,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.305
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.07,
+      0.315,
+      0.94,
+      0.595
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.605,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2018-상법-2교시-|10": {
    "a": [
@@ -26292,7 +28890,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.08,
+      0.04,
+      0.9,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.08,
+      0.57,
+      0.9,
+      0.91
+     ]
+    }
+   ]
   },
   "tax-2018-행정소송법-2교시-|21": {
    "b": [
@@ -27039,7 +29659,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.08,
+      0.045,
+      0.9,
+      0.23
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.08,
+      0.24,
+      0.9,
+      0.54
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.08,
+      0.55,
+      0.9,
+      0.71
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.08,
+      0.72,
+      0.9,
+      0.92
+     ]
+    }
+   ]
   },
   "tax-2018-상법-2교시-|15": {
    "b": [
@@ -27172,7 +29834,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.355
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.07,
+      0.365,
+      0.94,
+      0.67
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.69,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2018-1교시-|26": {
    "b": [
@@ -27331,7 +30025,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.035,
+      0.95,
+      0.37
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.385,
+      0.95,
+      0.63
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.645,
+      0.95,
+      0.94
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|5": {
    "b": [
@@ -27668,7 +30394,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.08,
+      0.04,
+      0.92,
+      0.29
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.08,
+      0.3,
+      0.92,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.08,
+      0.52,
+      0.92,
+      0.79
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.08,
+      0.8,
+      0.92,
+      0.93
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|9": {
    "b": [
@@ -27761,7 +30529,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.615
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2018-상법-2교시-|26": {
    "a": [
@@ -28646,7 +31436,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.045,
+      0.95,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.395,
+      0.95,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.645,
+      0.95,
+      0.895
+     ]
+    }
+   ]
   },
   "tax-2018-행정소송법-2교시-|12": {
    "b": [
@@ -29405,7 +32227,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.08,
+      0.045,
+      0.92,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.08,
+      0.28,
+      0.8,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.08,
+      0.455,
+      0.92,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.08,
+      0.715,
+      0.92,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2018-행정소송법-2교시-|13": {
    "a": [
@@ -29584,7 +32448,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.045,
+      0.9,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.225,
+      0.9,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.07,
+      0.52,
+      0.9,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.07,
+      0.755,
+      0.9,
+      0.915
+     ]
+    }
+   ]
   },
   "tax-2018-1교시-|32": {
    "a": [
@@ -29651,7 +32557,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 78,
+     "box": [
+      0.08,
+      0.065,
+      0.9,
+      0.395
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 79,
+     "box": [
+      0.08,
+      0.4,
+      0.9,
+      0.755
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 80,
+     "box": [
+      0.08,
+      0.765,
+      0.9,
+      0.915
+     ]
+    }
+   ]
   },
   "tax-2019-민법-2교시-|20": {
    "a": [
@@ -29718,7 +32656,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.07,
+      0.3,
+      0.95,
+      0.565
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.07,
+      0.58,
+      0.95,
+      0.84
+     ]
+    }
+   ]
   },
   "tax-2019-민법-2교시-|11": {
    "b": [
@@ -29923,7 +32893,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.08,
+      0.04,
+      0.92,
+      0.36
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.08,
+      0.37,
+      0.92,
+      0.8
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.08,
+      0.81,
+      0.92,
+      0.94
+     ]
+    }
+   ]
   },
   "tax-2019-상법-2교시-|0": {
    "a": [
@@ -30550,7 +33552,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.04,
+      0.93,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.52,
+      0.93,
+      0.68
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.7,
+      0.93,
+      0.91
+     ]
+    }
+   ]
   },
   "tax-2018-상법-2교시-|21": {
    "a": [
@@ -30617,7 +33651,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.08,
+      0.03,
+      0.92,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.08,
+      0.335,
+      0.92,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.08,
+      0.615,
+      0.92,
+      0.92
+     ]
+    }
+   ]
   },
   "tax-2019-상법-2교시-|21": {
    "b": [
@@ -30974,7 +34040,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.08,
+      0.045,
+      0.92,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.08,
+      0.445,
+      0.92,
+      0.875
+     ]
+    }
+   ]
   },
   "tax-2019-민법-2교시-|5": {
    "a": [
@@ -32029,7 +35117,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.07,
+      0.045,
+      0.95,
+      0.315
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.07,
+      0.33,
+      0.95,
+      0.575
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.59,
+      0.95,
+      0.885
+     ]
+    }
+   ]
   },
   "tax-2019-민법-2교시-|24": {
    "a": [
@@ -32096,7 +35216,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.37
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.395,
+      0.95,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.715,
+      0.95,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|24": {
    "a": [
@@ -32229,7 +35381,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.08,
+      0.128,
+      0.92,
+      0.443
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.08,
+      0.463,
+      0.92,
+      0.707
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.08,
+      0.725,
+      0.92,
+      0.915
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|26": {
    "b": [
@@ -32316,7 +35500,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.08,
+      0.04,
+      0.92,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.08,
+      0.32,
+      0.92,
+      0.54
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.08,
+      0.56,
+      0.92,
+      0.79
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.08,
+      0.81,
+      0.92,
+      0.93
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|10": {
    "b": [
@@ -32429,7 +35655,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.08,
+      0.045,
+      0.9,
+      0.345
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.08,
+      0.365,
+      0.9,
+      0.655
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.08,
+      0.675,
+      0.9,
+      0.855
+     ]
+    }
+   ]
   },
   "tax-2018-민법-2교시-|6": {
    "b": [
@@ -34410,7 +37668,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.07,
+      0.23,
+      0.94,
+      0.495
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.07,
+      0.51,
+      0.94,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.7,
+      0.94,
+      0.915
+     ]
+    }
+   ]
   },
   "tax-2019-1교시-|27": {
    "b": [
@@ -34951,7 +38251,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.07,
+      0.125,
+      0.93,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.07,
+      0.335,
+      0.93,
+      0.66
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.07,
+      0.668,
+      0.93,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2020-1교시-|18": {
    "a": [
@@ -34998,7 +38330,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.07,
+      0.025,
+      0.94,
+      0.485
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.495,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2019-1교시-|29": {
    "a": [
@@ -35131,7 +38485,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.295,
+      0.94,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.555,
+      0.94,
+      0.705
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.07,
+      0.715,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "tax-2020-민법-2교시-|8": {
    "a": [
@@ -35402,7 +38798,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.07,
+      0.235,
+      0.94,
+      0.355
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.37,
+      0.94,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.645,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "tax-2019-행정소송법-2교시-|16": {
    "a": [
@@ -35871,7 +39309,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.03,
+      0.94,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.4,
+      0.94,
+      0.61
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.62,
+      0.94,
+      0.79
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.8,
+      0.94,
+      0.92
+     ]
+    }
+   ]
   },
   "tax-2020-1교시-|29": {
    "b": [
@@ -36096,7 +39576,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.035,
+      0.95,
+      0.335
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.345,
+      0.95,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.715,
+      0.95,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2019-행정소송법-2교시-|24": {
    "a": [
@@ -36163,7 +39675,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.31,
+      0.95,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.66,
+      0.95,
+      0.91
+     ]
+    }
+   ]
   },
   "tax-2020-행정소송법-2교시-|4": {
    "a": [
@@ -36296,7 +39840,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.06,
+      0.035,
+      0.95,
+      0.245
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.06,
+      0.262,
+      0.95,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.06,
+      0.618,
+      0.95,
+      0.805
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.06,
+      0.818,
+      0.95,
+      0.945
+     ]
+    }
+   ]
   },
   "tax-2019-1교시-|26": {
    "a": [
@@ -36495,7 +40081,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.07,
+      0.32,
+      0.95,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.07,
+      0.51,
+      0.95,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.7,
+      0.95,
+      0.91
+     ]
+    }
+   ]
   },
   "tax-2020-1교시-|3": {
    "a": [
@@ -36582,7 +40210,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.03,
+      0.93,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.41,
+      0.93,
+      0.58
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.07,
+      0.59,
+      0.93,
+      0.78
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.79,
+      0.93,
+      0.94
+     ]
+    }
+   ]
   },
   "tax-2020-1교시-|13": {
    "b": [
@@ -37083,7 +40753,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.07,
+      0.045,
+      0.93,
+      0.475
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 40,
+     "box": [
+      0.04,
+      0.495,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2020-민법-2교시-|7": {
    "a": [
@@ -37756,7 +41448,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 79,
+     "box": [
+      0.06,
+      0.03,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 80,
+     "box": [
+      0.06,
+      0.51,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "tax-2019-행정소송법-2교시-|18": {
    "a": [
@@ -38871,7 +42585,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.24
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.26,
+      0.94,
+      0.53
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.55,
+      0.94,
+      0.83
+     ]
+    }
+   ]
   },
   "tax-2019-1교시-|28": {
    "a": [
@@ -39228,7 +42974,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.36,
+      0.94,
+      0.67
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.68,
+      0.94,
+      0.93
+     ]
+    }
+   ]
   },
   "tax-2019-1교시-|13": {
    "a": [
@@ -39295,7 +43073,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.045,
+      0.93,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.295,
+      0.93,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.695,
+      0.93,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2020-민법-2교시-|3": {
    "b": [
@@ -39414,7 +43224,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.08,
+      0.035,
+      0.93,
+      0.322
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.08,
+      0.345,
+      0.93,
+      0.7
+     ]
+    }
+   ]
   },
   "tax-2020-1교시-|17": {
    "a": [
@@ -39605,7 +43437,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.07,
+      0.045,
+      0.95,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.07,
+      0.625,
+      0.95,
+      0.875
+     ]
+    }
+   ]
   },
   "tax-2020-민법-2교시-|12": {
    "a": [
@@ -39962,7 +43816,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.2
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.21,
+      0.94,
+      0.44
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.46,
+      0.94,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.71,
+      0.94,
+      0.93
+     ]
+    }
+   ]
   },
   "tax-2019-1교시-|25": {
    "a": [
@@ -40075,7 +43971,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.185
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.2,
+      0.94,
+      0.46
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.475,
+      0.94,
+      0.665
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.07,
+      0.68,
+      0.94,
+      0.915
+     ]
+    }
+   ]
   },
   "tax-2019-행정소송법-2교시-|21": {
    "b": [
@@ -40366,7 +44304,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.17
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.07,
+      0.18,
+      0.95,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.44,
+      0.95,
+      0.68
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.69,
+      0.95,
+      0.93
+     ]
+    }
+   ]
   },
   "tax-2020-민법-2교시-|6": {
    "a": [
@@ -40479,7 +44459,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.028,
+      0.94,
+      0.452
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.472,
+      0.94,
+      0.81
+     ]
+    }
+   ]
   },
   "tax-2020-행정소송법-2교시-|1": {
    "a": [
@@ -40572,7 +44574,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.285,
+      0.94,
+      0.665
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.675,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2019-행정소송법-2교시-|0": {
    "a": [
@@ -41121,7 +45145,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.06,
+      0.115,
+      0.95,
+      0.455
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.06,
+      0.465,
+      0.95,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.06,
+      0.68,
+      0.95,
+      0.935
+     ]
+    }
+   ]
   },
   "tax-2020-행정소송법-2교시-|11": {
    "b": [
@@ -41208,7 +45264,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.07,
+      0.235,
+      0.94,
+      0.46
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.48,
+      0.94,
+      0.62
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.64,
+      0.94,
+      0.93
+     ]
+    }
+   ]
   },
   "tax-2019-상법-2교시-|27": {
    "a": [
@@ -41677,7 +45775,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.035,
+      0.95,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.345,
+      0.95,
+      0.59
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.61,
+      0.95,
+      0.905
+     ]
+    }
+   ]
   },
   "tax-2019-행정소송법-2교시-|13": {
    "b": [
@@ -41994,7 +46124,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.36,
+      0.94,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.66,
+      0.94,
+      0.94
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|5": {
    "a": [
@@ -42041,7 +46203,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.07,
+      0.56,
+      0.95,
+      0.94
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|10": {
    "b": [
@@ -42154,7 +46338,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.315
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.328,
+      0.94,
+      0.608
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.622,
+      0.94,
+      0.918
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|17": {
    "b": [
@@ -42313,7 +46529,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.37,
+      0.95,
+      0.66
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.67,
+      0.95,
+      0.93
+     ]
+    }
+   ]
   },
   "patent-2020-2교시-|6": {
    "a": [
@@ -42360,7 +46608,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.045,
+      0.93,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.395,
+      0.93,
+      0.72
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|23": {
    "b": [
@@ -42427,7 +46697,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.04,
+      0.93,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.385,
+      0.93,
+      0.615
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.625,
+      0.93,
+      0.915
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|14": {
    "a": [
@@ -42540,7 +46842,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.08,
+      0.045,
+      0.92,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.08,
+      0.405,
+      0.92,
+      0.635
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.08,
+      0.65,
+      0.92,
+      0.925
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|15": {
    "b": [
@@ -42607,7 +46941,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.295,
+      0.94,
+      0.585
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.605,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "patent-2020-2교시-|8": {
    "a": [
@@ -43004,7 +47370,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.455
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.485,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "customs-2021-1교시-|17": {
    "b": [
@@ -43183,7 +47571,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.035,
+      0.93,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.24,
+      0.93,
+      0.53
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.55,
+      0.93,
+      0.84
+     ]
+    }
+   ]
   },
   "customs-2021-2교시-|16": {
    "a": [
@@ -43316,7 +47736,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.06,
+      0.035,
+      0.94,
+      0.335
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.06,
+      0.345,
+      0.94,
+      0.585
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.06,
+      0.595,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "patent-2020-2교시-|14": {
    "b": [
@@ -43541,7 +47993,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.08,
+      0.115,
+      0.93,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.08,
+      0.395,
+      0.93,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.08,
+      0.685,
+      0.93,
+      0.925
+     ]
+    }
+   ]
   },
   "customs-2021-2교시-|3": {
    "a": [
@@ -43608,7 +48092,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.08,
+      0.025,
+      0.93,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.08,
+      0.335,
+      0.93,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.08,
+      0.61,
+      0.93,
+      0.87
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|12": {
    "a": [
@@ -43767,7 +48283,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.415,
+      0.94,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.725,
+      0.94,
+      0.89
+     ]
+    }
+   ]
   },
   "patent-2020-3교시-|3": {
    "a": [
@@ -44486,7 +49034,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.07,
+      0.035,
+      0.95,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.07,
+      0.445,
+      0.95,
+      0.875
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|1": {
    "a": [
@@ -45093,7 +49663,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.05,
+      0.04,
+      0.95,
+      0.25
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.05,
+      0.26,
+      0.95,
+      0.58
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 78,
+     "box": [
+      0.05,
+      0.59,
+      0.95,
+      0.91
+     ]
+    }
+   ]
   },
   "patent-2020-2교시-|12": {
    "b": [
@@ -45416,7 +50018,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.36,
+      0.95,
+      0.66
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.67,
+      0.95,
+      0.91
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|24": {
    "a": [
@@ -45503,7 +50137,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.06,
+      0.04,
+      0.94,
+      0.17
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.06,
+      0.19,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.06,
+      0.52,
+      0.94,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.06,
+      0.67,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "patent-2020-3교시-|10": {
    "a": [
@@ -46072,7 +50748,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.08,
+      0.035,
+      0.93,
+      0.315
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.08,
+      0.325,
+      0.93,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.08,
+      0.615,
+      0.93,
+      0.885
+     ]
+    }
+   ]
   },
   "patent-2020-2교시-|15": {
    "b": [
@@ -46337,7 +51045,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.07,
+      0.3,
+      0.94,
+      0.68
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.07,
+      0.7,
+      0.94,
+      0.945
+     ]
+    }
+   ]
   },
   "customs-2021-2교시-|13": {
    "b": [
@@ -46542,7 +51282,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.08,
+      0.04,
+      0.94,
+      0.38
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 40,
+     "box": [
+      0.08,
+      0.39,
+      0.94,
+      0.58
+     ]
+    }
+   ]
   },
   "customs-2021-2교시-|11": {
    "b": [
@@ -46609,7 +51371,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.035,
+      0.93,
+      0.16
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.175,
+      0.93,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.07,
+      0.395,
+      0.93,
+      0.82
+     ]
+    }
+   ]
   },
   "customs-2021-1교시-|27": {
    "b": [
@@ -46702,7 +51496,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.575
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.6,
+      0.94,
+      0.885
+     ]
+    }
+   ]
   },
   "customs-2021-2교시-|7": {
    "b": [
@@ -46835,7 +51651,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.268
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.28,
+      0.94,
+      0.572
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.583,
+      0.94,
+      0.885
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|22": {
    "b": [
@@ -47100,7 +51948,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.04,
+      0.93,
+      0.35
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.36,
+      0.93,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.66,
+      0.93,
+      0.94
+     ]
+    }
+   ]
   },
   "customs-2021-2교시-|19": {
    "a": [
@@ -47233,7 +52113,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.035,
+      0.93,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.295,
+      0.93,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.07,
+      0.615,
+      0.93,
+      0.925
+     ]
+    }
+   ]
   },
   "customs-2021-1교시-|18": {
    "a": [
@@ -47366,7 +52278,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.04,
+      0.93,
+      0.38
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.07,
+      0.39,
+      0.93,
+      0.67
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.07,
+      0.69,
+      0.93,
+      0.89
+     ]
+    }
+   ]
   },
   "customs-2021-1교시-|21": {
    "a": [
@@ -47643,7 +52587,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.07,
+      0.04,
+      0.93,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.37,
+      0.93,
+      0.92
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|2": {
    "b": [
@@ -47756,7 +52722,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.045,
+      0.93,
+      0.345
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.362,
+      0.93,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.618,
+      0.93,
+      0.905
+     ]
+    }
+   ]
   },
   "tax-2020-행정소송법-2교시-|28": {
    "b": [
@@ -48291,7 +53289,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.45
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.47,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|18": {
    "a": [
@@ -48450,7 +53470,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.04,
+      0.035,
+      0.96,
+      0.365
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.04,
+      0.365,
+      0.96,
+      0.64
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.04,
+      0.645,
+      0.96,
+      0.925
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|21": {
    "b": [
@@ -48847,7 +53899,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.185
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.285,
+      0.94,
+      0.525
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.625,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|4": {
    "a": [
@@ -49078,7 +54162,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.035,
+      0.93,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.445,
+      0.93,
+      0.805
+     ]
+    }
+   ]
   },
   "patent-2020-2교시-|9": {
    "b": [
@@ -49283,7 +54389,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.345
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.355,
+      0.94,
+      0.74
+     ]
+    }
+   ]
   },
   "customs-2021-1교시-|23": {
    "b": [
@@ -49574,7 +54702,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.515,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|4": {
    "b": [
@@ -49871,7 +55021,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.035,
+      0.95,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.405,
+      0.95,
+      0.875
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|1": {
    "b": [
@@ -49918,7 +55090,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.08,
+      0.04,
+      0.93,
+      0.48
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.08,
+      0.5,
+      0.93,
+      0.9
+     ]
+    }
+   ]
   },
   "patent-2020-3교시-|5": {
    "b": [
@@ -50077,7 +55271,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.405
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.425,
+      0.94,
+      0.67
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.685,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "patent-2020-1교시-|8": {
    "b": [
@@ -50124,7 +55350,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.475
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.49,
+      0.94,
+      0.905
+     ]
+    }
+   ]
   },
   "tax-2020-상법-2교시-|5": {
    "a": [
@@ -50237,7 +55485,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.45,
+      0.94,
+      0.89
+     ]
+    }
+   ]
   },
   "customs-2021-1교시-|8": {
    "a": [
@@ -50574,7 +55844,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.045,
+      0.94,
+      0.345
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.36,
+      0.94,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "patent-2025-1교시-|18": {
    "a": [
@@ -51757,7 +57059,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.04,
+      0.94,
+      0.12
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.14,
+      0.94,
+      0.38
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.39,
+      0.94,
+      0.73
+     ]
+    }
+   ]
   },
   "patent-2022-1교시-|1": {
    "a": [
@@ -52520,7 +57854,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.04,
+      0.93,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.41,
+      0.93,
+      0.86
+     ]
+    }
+   ]
   },
   "patent-2025-1교시-|15": {
    "a": [
@@ -53361,7 +58717,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.125
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.14,
+      0.94,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.315,
+      0.94,
+      0.585
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.07,
+      0.605,
+      0.94,
+      0.89
+     ]
+    }
+   ]
   },
   "patent-2025-3교시-|10": {
    "a": [
@@ -53560,7 +58958,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.07,
+      0.05,
+      0.93,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.25,
+      0.93,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.435,
+      0.93,
+      0.94
+     ]
+    }
+   ]
   },
   "patent-2025-1교시-|1": {
    "b": [
@@ -53999,7 +59429,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.06,
+      0.045,
+      0.9,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.06,
+      0.25,
+      0.9,
+      0.405
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.06,
+      0.42,
+      0.9,
+      0.585
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.06,
+      0.6,
+      0.9,
+      0.775
+     ]
+    }
+   ]
   },
   "patent-2022-3교시-|3": {
    "b": [
@@ -54158,7 +59630,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.035,
+      0.94,
+      0.305
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.325,
+      0.94,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.07,
+      0.665,
+      0.94,
+      0.91
+     ]
+    }
+   ]
   },
   "patent-2025-2교시-|10": {
    "b": [
@@ -54757,7 +60261,29 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.03,
+      0.93,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.45,
+      0.93,
+      0.87
+     ]
+    }
+   ]
   },
   "patent-2022-3교시-|17": {
    "a": [
@@ -77542,7 +83068,3305 @@
      0.88
     ]
    }
+  ],
+  "security-2017-1교시-|16": [
+   {
+    "kind": "question",
+    "no": 75,
+    "box": [
+     0.09,
+     0.115,
+     0.92,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 76,
+    "box": [
+     0.09,
+     0.315,
+     0.92,
+     0.495
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 77,
+    "box": [
+     0.09,
+     0.515,
+     0.92,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 78,
+    "box": [
+     0.09,
+     0.718,
+     0.92,
+     0.875
+    ]
+   }
+  ],
+  "housing-2025-2차-1교시-|11": [
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.14
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.06,
+     0.14,
+     0.95,
+     0.465
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.06,
+     0.47,
+     0.95,
+     0.76
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.06,
+     0.77,
+     0.95,
+     0.945
+    ]
+   }
+  ],
+  "realtor-2025-2차-2교시-|3": [
+   {
+    "kind": "question",
+    "no": 25,
+    "box": [
+     0.022,
+     0.015,
+     0.495,
+     0.19
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 26,
+    "box": [
+     0.022,
+     0.195,
+     0.495,
+     0.52
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.022,
+     0.535,
+     0.495,
+     0.762
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.022,
+     0.775,
+     0.495,
+     0.94
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.517,
+     0.015,
+     0.99,
+     0.175
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.517,
+     0.186,
+     0.99,
+     0.54
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.517,
+     0.55,
+     0.99,
+     0.952
+    ]
+   }
+  ],
+  "appraiser-2021-1교시-|6": [
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.07,
+     0.325,
+     0.94,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 23,
+    "box": [
+     0.07,
+     0.57,
+     0.94,
+     0.79
+    ]
+   }
+  ],
+  "realtor-2025-2차-2교시-|0": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.025,
+     0.09,
+     0.49,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.025,
+     0.29,
+     0.49,
+     0.412
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.025,
+     0.418,
+     0.49,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.025,
+     0.708,
+     0.49,
+     0.832
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.025,
+     0.838,
+     0.49,
+     0.975
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.52,
+     0.02,
+     0.99,
+     0.095
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.52,
+     0.1,
+     0.99,
+     0.36
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.52,
+     0.366,
+     0.99,
+     0.675
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.52,
+     0.683,
+     0.99,
+     0.958
+    ]
+   }
+  ],
+  "housing-2025-2차-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.23
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 73,
+    "box": [
+     0.07,
+     0.25,
+     0.94,
+     0.57
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 74,
+    "box": [
+     0.07,
+     0.59,
+     0.94,
+     0.74
+    ]
+   }
+  ],
+  "appraiser-2021-2교시-|2": [
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.25
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.06,
+     0.26,
+     0.95,
+     0.52
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.06,
+     0.53,
+     0.95,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.06,
+     0.66,
+     0.95,
+     0.89
+    ]
+   }
+  ],
+  "security-2018-1교시-|3": [
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.09,
+     0.1,
+     0.91,
+     0.2
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.09,
+     0.22,
+     0.91,
+     0.295
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.09,
+     0.285,
+     0.91,
+     0.475
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.09,
+     0.485,
+     0.91,
+     0.703
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.09,
+     0.71,
+     0.91,
+     0.915
+    ]
+   }
+  ],
+  "security-2018-1교시-|12": [
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.1,
+     0.11,
+     0.92,
+     0.37
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.1,
+     0.365,
+     0.92,
+     0.555
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.1,
+     0.568,
+     0.92,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.1,
+     0.755,
+     0.92,
+     0.885
+    ]
+   }
+  ],
+  "security-2017-1교시-|9": [
+   {
+    "kind": "question",
+    "no": 45,
+    "box": [
+     0.09,
+     0.11,
+     0.9,
+     0.275
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 46,
+    "box": [
+     0.09,
+     0.285,
+     0.9,
+     0.352
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 47,
+    "box": [
+     0.09,
+     0.355,
+     0.9,
+     0.53
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 48,
+    "box": [
+     0.09,
+     0.54,
+     0.9,
+     0.68
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.09,
+     0.69,
+     0.9,
+     0.895
+    ]
+   }
+  ],
+  "appraiser-2021-2교시-|6": [
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.07,
+     0.03,
+     0.94,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.07,
+     0.288,
+     0.94,
+     0.585
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.07,
+     0.553,
+     0.94,
+     0.88
+    ]
+   }
+  ],
+  "security-2018-1교시-|11": [
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.09,
+     0.11,
+     0.93,
+     0.325
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.09,
+     0.32,
+     0.93,
+     0.545
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 58,
+    "box": [
+     0.09,
+     0.55,
+     0.93,
+     0.775
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 59,
+    "box": [
+     0.09,
+     0.782,
+     0.93,
+     0.882
+    ]
+   }
+  ],
+  "security-2017-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 41,
+    "box": [
+     0.09,
+     0.195,
+     0.84,
+     0.35
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 42,
+    "box": [
+     0.09,
+     0.365,
+     0.83,
+     0.525
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.09,
+     0.54,
+     0.9,
+     0.72
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.09,
+     0.733,
+     0.83,
+     0.9
+    ]
+   }
+  ],
+  "realtor-2025-2차-2교시-|1": [
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.025,
+     0.015,
+     0.49,
+     0.34
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.025,
+     0.352,
+     0.49,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.025,
+     0.568,
+     0.49,
+     0.86
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.025,
+     0.868,
+     0.49,
+     0.96
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.5,
+     0.015,
+     0.99,
+     0.205
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.5,
+     0.215,
+     0.99,
+     0.36
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.5,
+     0.372,
+     0.99,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.5,
+     0.612,
+     0.99,
+     0.95
+    ]
+   }
+  ],
+  "security-2017-1교시-|17": [
+   {
+    "kind": "question",
+    "no": 79,
+    "box": [
+     0.09,
+     0.115,
+     0.91,
+     0.345
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 80,
+    "box": [
+     0.09,
+     0.345,
+     0.91,
+     0.545
+    ]
+   }
+  ],
+  "security-2017-1교시-|2": [
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.08,
+     0.11,
+     0.92,
+     0.265
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.08,
+     0.275,
+     0.92,
+     0.425
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.08,
+     0.44,
+     0.92,
+     0.536
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.08,
+     0.545,
+     0.92,
+     0.749
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.08,
+     0.755,
+     0.92,
+     0.912
+    ]
+   }
+  ],
+  "appraiser-2022-1교시-|4": [
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.055,
+     0.035,
+     0.94,
+     0.29
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.055,
+     0.285,
+     0.94,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.055,
+     0.505,
+     0.94,
+     0.865
+    ]
+   }
+  ],
+  "appraiser-2022-2교시-|20": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.06,
+     0.01,
+     0.94,
+     0.42
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.06,
+     0.41,
+     0.94,
+     0.83
+    ]
+   }
+  ],
+  "appraiser-2022-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.06,
+     0.04,
+     0.94,
+     0.17
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.06,
+     0.16,
+     0.94,
+     0.44
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.06,
+     0.445,
+     0.94,
+     0.77
+    ]
+   }
+  ],
+  "appraiser-2023-2교시-|8": [
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.07,
+     0.33,
+     0.94,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.07,
+     0.545,
+     0.94,
+     0.825
+    ]
+   }
+  ],
+  "appraiser-2023-1교시-|24": [
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.06,
+     0.1,
+     0.95,
+     0.33
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.06,
+     0.3,
+     0.95,
+     0.54
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.06,
+     0.51,
+     0.95,
+     0.743
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.06,
+     0.73,
+     0.95,
+     0.928
+    ]
+   }
+  ],
+  "appraiser-2022-1교시-|33": [
+   {
+    "kind": "question",
+    "no": 106,
+    "box": [
+     0.06,
+     0.035,
+     0.945,
+     0.35
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 107,
+    "box": [
+     0.06,
+     0.345,
+     0.945,
+     0.745
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 108,
+    "box": [
+     0.06,
+     0.735,
+     0.945,
+     0.945
+    ]
+   }
+  ],
+  "appraiser-2023-2교시-|15": [
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.07,
+     0.035,
+     0.94,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.07,
+     0.5,
+     0.94,
+     0.76
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.07,
+     0.765,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "appraiser-2023-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.07,
+     0.044,
+     0.94,
+     0.315
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.07,
+     0.328,
+     0.94,
+     0.567
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.07,
+     0.578,
+     0.94,
+     0.885
+    ]
+   }
+  ],
+  "appraiser-2023-1교시-|26": [
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.07,
+     0.028,
+     0.94,
+     0.29
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.07,
+     0.296,
+     0.94,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.07,
+     0.4,
+     0.94,
+     0.62
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.07,
+     0.611,
+     0.94,
+     0.855
+    ]
+   }
+  ],
+  "appraiser-2023-2교시-|10": [
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.24
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.06,
+     0.245,
+     0.95,
+     0.49
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.06,
+     0.5,
+     0.95,
+     0.705
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.06,
+     0.715,
+     0.95,
+     0.915
+    ]
+   }
+  ],
+  "appraiser-2023-1교시-|9": [
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.075,
+     0.037,
+     0.93,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 31,
+    "box": [
+     0.075,
+     0.25,
+     0.93,
+     0.487
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.075,
+     0.468,
+     0.93,
+     0.813
+    ]
+   }
+  ],
+  "tax-2018-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.07,
+     0.06,
+     0.9,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.07,
+     0.3,
+     0.9,
+     0.525
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.07,
+     0.535,
+     0.9,
+     0.945
+    ]
+   }
+  ],
+  "appraiser-2022-1교시-|23": [
+   {
+    "kind": "question",
+    "no": 74,
+    "box": [
+     0.06,
+     0.045,
+     0.93,
+     0.29
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 75,
+    "box": [
+     0.06,
+     0.283,
+     0.93,
+     0.478
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 76,
+    "box": [
+     0.06,
+     0.49,
+     0.93,
+     0.735
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 77,
+    "box": [
+     0.06,
+     0.742,
+     0.93,
+     0.865
+    ]
+   }
+  ],
+  "tax-2018-상법-2교시-|11": [
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.07,
+     0.01,
+     0.92,
+     0.36
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.07,
+     0.36,
+     0.92,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.07,
+     0.665,
+     0.92,
+     0.85
+    ]
+   }
+  ],
+  "tax-2019-민법-2교시-|9": [
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.07,
+     0.045,
+     0.94,
+     0.525
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.07,
+     0.51,
+     0.94,
+     0.895
+    ]
+   }
+  ],
+  "tax-2018-행정소송법-2교시-|19": [
+   {
+    "kind": "question",
+    "no": 48,
+    "box": [
+     0.08,
+     0.035,
+     0.91,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.08,
+     0.28,
+     0.91,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.08,
+     0.49,
+     0.91,
+     0.74
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.08,
+     0.735,
+     0.91,
+     0.92
+    ]
+   }
+  ],
+  "tax-2019-상법-2교시-|22": [
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.06,
+     0.035,
+     0.95,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.06,
+     0.28,
+     0.95,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.06,
+     0.59,
+     0.95,
+     0.925
+    ]
+   }
+  ],
+  "tax-2018-상법-2교시-|4": [
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.074,
+     0.0,
+     0.985,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.074,
+     0.548,
+     0.985,
+     0.91
+    ]
+   }
+  ],
+  "tax-2018-행정소송법-2교시-|25": [
+   {
+    "kind": "question",
+    "no": 70,
+    "box": [
+     0.08,
+     0.042,
+     0.9,
+     0.232
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 71,
+    "box": [
+     0.08,
+     0.24,
+     0.9,
+     0.545
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.08,
+     0.55,
+     0.9,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 73,
+    "box": [
+     0.08,
+     0.72,
+     0.9,
+     0.92
+    ]
+   }
+  ],
+  "tax-2019-민법-2교시-|19": [
+   {
+    "kind": "question",
+    "no": 48,
+    "box": [
+     0.07,
+     0.03,
+     0.94,
+     0.355
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.07,
+     0.35,
+     0.94,
+     0.67
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.07,
+     0.66,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "tax-2018-민법-2교시-|22": [
+   {
+    "kind": "question",
+    "no": 59,
+    "box": [
+     0.08,
+     0.03,
+     0.92,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.08,
+     0.28,
+     0.92,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.08,
+     0.52,
+     0.92,
+     0.8
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.08,
+     0.8,
+     0.92,
+     0.93
+    ]
+   }
+  ],
+  "tax-2019-민법-2교시-|4": [
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.07,
+     0.035,
+     0.94,
+     0.615
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.07,
+     0.61,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "tax-2018-민법-2교시-|25": [
+   {
+    "kind": "question",
+    "no": 69,
+    "box": [
+     0.06,
+     0.03,
+     0.93,
+     0.205
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 70,
+    "box": [
+     0.06,
+     0.215,
+     0.93,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 71,
+    "box": [
+     0.06,
+     0.515,
+     0.93,
+     0.735
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.06,
+     0.745,
+     0.93,
+     0.915
+    ]
+   }
+  ],
+  "tax-2018-1교시-|32": [
+   {
+    "kind": "question",
+    "no": 78,
+    "box": [
+     0.06,
+     0.05,
+     0.9,
+     0.395
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 79,
+    "box": [
+     0.06,
+     0.385,
+     0.9,
+     0.755
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 80,
+    "box": [
+     0.06,
+     0.755,
+     0.9,
+     0.915
+    ]
+   }
+  ],
+  "tax-2019-민법-2교시-|20": [
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.07,
+     0.04,
+     0.95,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 52,
+    "box": [
+     0.07,
+     0.28,
+     0.95,
+     0.565
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 53,
+    "box": [
+     0.07,
+     0.55,
+     0.95,
+     0.84
+    ]
+   }
+  ],
+  "tax-2018-상법-2교시-|21": [
+   {
+    "kind": "question",
+    "no": 53,
+    "box": [
+     0.06,
+     0.03,
+     0.93,
+     0.325
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 54,
+    "box": [
+     0.06,
+     0.335,
+     0.93,
+     0.605
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.06,
+     0.605,
+     0.93,
+     0.92
+    ]
+   }
+  ],
+  "tax-2018-행정소송법-2교시-|14": [
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.08,
+     0.04,
+     0.92,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.08,
+     0.43,
+     0.92,
+     0.88
+    ]
+   }
+  ],
+  "tax-2019-상법-2교시-|23": [
+   {
+    "kind": "question",
+    "no": 58,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.315
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 59,
+    "box": [
+     0.06,
+     0.32,
+     0.95,
+     0.575
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.06,
+     0.58,
+     0.95,
+     0.9
+    ]
+   }
+  ],
+  "tax-2019-민법-2교시-|24": [
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.07,
+     0.04,
+     0.95,
+     0.41
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.07,
+     0.395,
+     0.95,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 67,
+    "box": [
+     0.07,
+     0.715,
+     0.95,
+     0.965
+    ]
+   }
+  ],
+  "tax-2018-민법-2교시-|17": [
+   {
+    "kind": "question",
+    "no": 41,
+    "box": [
+     0.07,
+     0.128,
+     0.92,
+     0.443
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 42,
+    "box": [
+     0.07,
+     0.44,
+     0.92,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.07,
+     0.72,
+     0.92,
+     0.915
+    ]
+   }
+  ],
+  "tax-2018-민법-2교시-|11": [
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.08,
+     0.025,
+     0.9,
+     0.345
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.08,
+     0.365,
+     0.9,
+     0.655
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.08,
+     0.675,
+     0.9,
+     0.855
+    ]
+   }
+  ],
+  "tax-2020-1교시-|18": [
+   {
+    "kind": "question",
+    "no": 54,
+    "box": [
+     0.06,
+     0.024,
+     0.94,
+     0.485
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.06,
+     0.48,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "tax-2020-행정소송법-2교시-|16": [
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.05,
+     0.04,
+     0.95,
+     0.48
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 40,
+    "box": [
+     0.04,
+     0.495,
+     0.95,
+     0.93
+    ]
+   }
+  ],
+  "tax-2020-1교시-|32": [
+   {
+    "kind": "question",
+    "no": 79,
+    "box": [
+     0.06,
+     0.03,
+     0.94,
+     0.52
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 80,
+    "box": [
+     0.06,
+     0.51,
+     0.94,
+     0.94
+    ]
+   }
+  ],
+  "tax-2020-1교시-|4": [
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.24
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.07,
+     0.259,
+     0.94,
+     0.53
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.07,
+     0.549,
+     0.94,
+     0.84
+    ]
+   }
+  ],
+  "tax-2020-행정소송법-2교시-|15": [
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.35
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.07,
+     0.36,
+     0.94,
+     0.67
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.07,
+     0.68,
+     0.94,
+     0.93
+    ]
+   }
+  ],
+  "tax-2019-행정소송법-2교시-|8": [
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.06,
+     0.03,
+     0.94,
+     0.322
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.06,
+     0.31,
+     0.94,
+     0.7
+    ]
+   }
+  ],
+  "tax-2019-1교시-|9": [
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.07,
+     0.045,
+     0.95,
+     0.605
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.07,
+     0.6,
+     0.95,
+     0.875
+    ]
+   }
+  ],
+  "tax-2019-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.07,
+     0.04,
+     0.95,
+     0.17
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 31,
+    "box": [
+     0.07,
+     0.18,
+     0.95,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.07,
+     0.433,
+     0.95,
+     0.68
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.07,
+     0.677,
+     0.95,
+     0.93
+    ]
+   }
+  ],
+  "tax-2020-1교시-|22": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.06,
+     0.028,
+     0.94,
+     0.452
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.06,
+     0.445,
+     0.94,
+     0.815
+    ]
+   }
+  ],
+  "tax-2020-행정소송법-2교시-|11": [
+   {
+    "kind": "question",
+    "no": 26,
+    "box": [
+     0.065,
+     0.04,
+     0.94,
+     0.215
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.065,
+     0.22,
+     0.94,
+     0.46
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.065,
+     0.478,
+     0.94,
+     0.62
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.065,
+     0.64,
+     0.94,
+     0.93
+    ]
+   }
+  ],
+  "tax-2019-행정소송법-2교시-|23": [
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.06,
+     0.035,
+     0.95,
+     0.325
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.06,
+     0.33,
+     0.95,
+     0.59
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.06,
+     0.61,
+     0.95,
+     0.905
+    ]
+   }
+  ],
+  "tax-2020-행정소송법-2교시-|6": [
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.05,
+     0.04,
+     0.95,
+     0.37
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.05,
+     0.36,
+     0.95,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.05,
+     0.63,
+     0.95,
+     0.94
+    ]
+   }
+  ],
+  "patent-2020-1교시-|5": [
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.07,
+     0.04,
+     0.95,
+     0.58
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.07,
+     0.56,
+     0.95,
+     0.94
+    ]
+   }
+  ],
+  "patent-2020-2교시-|5": [
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.07,
+     0.035,
+     0.94,
+     0.345
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.07,
+     0.328,
+     0.94,
+     0.66
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.07,
+     0.622,
+     0.94,
+     0.918
+    ]
+   }
+  ],
+  "patent-2020-2교시-|6": [
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.06,
+     0.04,
+     0.94,
+     0.375
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.06,
+     0.385,
+     0.94,
+     0.72
+    ]
+   }
+  ],
+  "tax-2020-상법-2교시-|23": [
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.055,
+     0.035,
+     0.93,
+     0.375
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.055,
+     0.355,
+     0.93,
+     0.615
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.055,
+     0.62,
+     0.93,
+     0.915
+    ]
+   }
+  ],
+  "customs-2021-2교시-|8": [
+   {
+    "kind": "question",
+    "no": 23,
+    "box": [
+     0.06,
+     0.03,
+     0.92,
+     0.39
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 24,
+    "box": [
+     0.06,
+     0.38,
+     0.92,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 25,
+    "box": [
+     0.06,
+     0.62,
+     0.92,
+     0.925
+    ]
+   }
+  ],
+  "patent-2020-1교시-|6": [
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.07,
+     0.035,
+     0.94,
+     0.48
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.07,
+     0.485,
+     0.94,
+     0.955
+    ]
+   }
+  ],
+  "customs-2021-2교시-|2": [
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.07,
+     0.035,
+     0.93,
+     0.23
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.07,
+     0.24,
+     0.93,
+     0.53
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.07,
+     0.55,
+     0.93,
+     0.84
+    ]
+   }
+  ],
+  "tax-2020-상법-2교시-|25": [
+   {
+    "kind": "question",
+    "no": 67,
+    "box": [
+     0.05,
+     0.03,
+     0.94,
+     0.335
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 68,
+    "box": [
+     0.05,
+     0.345,
+     0.94,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 69,
+    "box": [
+     0.05,
+     0.595,
+     0.94,
+     0.965
+    ]
+   }
+  ],
+  "customs-2021-2교시-|0": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.06,
+     0.1,
+     0.94,
+     0.385
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.06,
+     0.39,
+     0.94,
+     0.675
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.06,
+     0.675,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "customs-2021-2교시-|3": [
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.08,
+     0.025,
+     0.93,
+     0.325
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.08,
+     0.332,
+     0.93,
+     0.6
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.08,
+     0.61,
+     0.93,
+     0.87
+    ]
+   }
+  ],
+  "patent-2020-1교시-|16": [
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.06,
+     0.033,
+     0.95,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.06,
+     0.42,
+     0.95,
+     0.88
+    ]
+   }
+  ],
+  "tax-2020-상법-2교시-|28": [
+   {
+    "kind": "question",
+    "no": 76,
+    "box": [
+     0.05,
+     0.04,
+     0.95,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 77,
+    "box": [
+     0.05,
+     0.26,
+     0.95,
+     0.58
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 78,
+    "box": [
+     0.05,
+     0.582,
+     0.95,
+     0.915
+    ]
+   }
+  ],
+  "tax-2020-행정소송법-2교시-|24": [
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.05,
+     0.04,
+     0.95,
+     0.35
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.05,
+     0.345,
+     0.95,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.05,
+     0.67,
+     0.95,
+     0.91
+    ]
+   }
+  ],
+  "tax-2020-상법-2교시-|24": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.06,
+     0.034,
+     0.94,
+     0.178
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.06,
+     0.19,
+     0.94,
+     0.515
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.06,
+     0.52,
+     0.94,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.06,
+     0.665,
+     0.94,
+     0.92
+    ]
+   }
+  ],
+  "customs-2021-2교시-|4": [
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.06,
+     0.32,
+     0.95,
+     0.605
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.06,
+     0.6,
+     0.95,
+     0.89
+    ]
+   }
+  ],
+  "tax-2020-행정소송법-2교시-|26": [
+   {
+    "kind": "question",
+    "no": 70,
+    "box": [
+     0.06,
+     0.035,
+     0.94,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 71,
+    "box": [
+     0.06,
+     0.3,
+     0.94,
+     0.68
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.06,
+     0.667,
+     0.94,
+     0.945
+    ]
+   }
+  ],
+  "customs-2021-1교시-|12": [
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.07,
+     0.035,
+     0.94,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 40,
+    "box": [
+     0.07,
+     0.37,
+     0.94,
+     0.58
+    ]
+   }
+  ],
+  "customs-2021-2교시-|11": [
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.06,
+     0.03,
+     0.94,
+     0.17
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.06,
+     0.17,
+     0.94,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.06,
+     0.38,
+     0.94,
+     0.82
+    ]
+   }
+  ],
+  "patent-2020-2교시-|3": [
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.07,
+     0.035,
+     0.94,
+     0.575
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.07,
+     0.585,
+     0.94,
+     0.885
+    ]
+   }
+  ],
+  "customs-2021-1교시-|11": [
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.06,
+     0.035,
+     0.94,
+     0.28
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.06,
+     0.275,
+     0.94,
+     0.575
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.06,
+     0.56,
+     0.94,
+     0.885
+    ]
+   }
+  ],
+  "tax-2020-상법-2교시-|20": [
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.07,
+     0.035,
+     0.93,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.07,
+     0.287,
+     0.93,
+     0.605
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 52,
+    "box": [
+     0.07,
+     0.612,
+     0.93,
+     0.925
+    ]
+   }
+  ],
+  "customs-2021-2교시-|10": [
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.07,
+     0.04,
+     0.93,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.07,
+     0.39,
+     0.93,
+     0.67
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 31,
+    "box": [
+     0.07,
+     0.675,
+     0.93,
+     0.89
+    ]
+   }
+  ],
+  "customs-2021-2교시-|17": [
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.07,
+     0.04,
+     0.93,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.07,
+     0.37,
+     0.93,
+     0.97
+    ]
+   }
+  ],
+  "patent-2020-1교시-|0": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.06,
+     0.04,
+     0.94,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.06,
+     0.47,
+     0.94,
+     0.9
+    ]
+   }
+  ],
+  "customs-2021-2교시-|23": [
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.065,
+     0.035,
+     0.94,
+     0.19
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 67,
+    "box": [
+     0.065,
+     0.255,
+     0.94,
+     0.525
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 68,
+    "box": [
+     0.065,
+     0.6,
+     0.94,
+     0.865
+    ]
+   }
+  ],
+  "patent-2020-2교시-|2": [
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.07,
+     0.035,
+     0.93,
+     0.425
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.07,
+     0.435,
+     0.93,
+     0.805
+    ]
+   }
+  ],
+  "customs-2021-2교시-|5": [
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.07,
+     0.045,
+     0.94,
+     0.36
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.07,
+     0.355,
+     0.94,
+     0.79
+    ]
+   }
+  ],
+  "patent-2020-1교시-|2": [
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.06,
+     0.035,
+     0.94,
+     0.535
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.06,
+     0.515,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "patent-2020-1교시-|3": [
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.07,
+     0.035,
+     0.95,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.07,
+     0.405,
+     0.95,
+     0.875
+    ]
+   }
+  ],
+  "patent-2020-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.07,
+     0.04,
+     0.93,
+     0.48
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.07,
+     0.49,
+     0.93,
+     0.9
+    ]
+   }
+  ],
+  "customs-2021-2교시-|1": [
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.06,
+     0.035,
+     0.94,
+     0.405
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.06,
+     0.41,
+     0.94,
+     0.67
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.06,
+     0.67,
+     0.94,
+     0.935
+    ]
+   }
+  ],
+  "patent-2020-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.07,
+     0.045,
+     0.94,
+     0.475
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.07,
+     0.49,
+     0.94,
+     0.905
+    ]
+   }
+  ],
+  "patent-2020-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.07,
+     0.43,
+     0.94,
+     0.89
+    ]
+   }
+  ],
+  "patent-2025-3교시-|5": [
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.12
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.07,
+     0.132,
+     0.94,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.07,
+     0.388,
+     0.94,
+     0.73
+    ]
+   }
+  ],
+  "patent-2025-3교시-|7": [
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.07,
+     0.035,
+     0.935,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.07,
+     0.405,
+     0.935,
+     0.86
+    ]
+   }
+  ],
+  "patent-2025-3교시-|4": [
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.07,
+     0.028,
+     0.94,
+     0.135
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.07,
+     0.14,
+     0.94,
+     0.317
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.07,
+     0.315,
+     0.94,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.07,
+     0.605,
+     0.94,
+     0.892
+    ]
+   }
+  ],
+  "patent-2022-3교시-|15": [
+   {
+    "kind": "question",
+    "no": 31,
+    "box": [
+     0.06,
+     0.045,
+     0.93,
+     0.235
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.06,
+     0.245,
+     0.93,
+     0.425
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.06,
+     0.43,
+     0.93,
+     0.94
+    ]
+   }
+  ],
+  "patent-2025-2교시-|11": [
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.06,
+     0.32,
+     0.95,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.06,
+     0.65,
+     0.95,
+     0.92
+    ]
+   }
+  ],
+  "patent-2022-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.06,
+     0.03,
+     0.95,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.06,
+     0.43,
+     0.95,
+     0.87
+    ]
+   }
   ]
  },
- "failed": {}
+ "failed": {
+  "security-2017-1교시-|11": "세 읽기가 서로 다름",
+  "appraiser-2021-1교시-|19": "세 읽기가 서로 다름",
+  "appraiser-2021-2교시-|22": "세 읽기가 서로 다름",
+  "security-2018-1교시-|4": "세 읽기가 서로 다름",
+  "housing-2025-2차-1교시-|15": "세 읽기가 서로 다름",
+  "security-2018-1교시-|9": "세 읽기가 서로 다름",
+  "security-2018-1교시-|1": "세 읽기가 서로 다름",
+  "realtor-2025-1교시-|1": "세 읽기가 서로 다름",
+  "security-2018-1교시-|5": "세 읽기가 서로 다름",
+  "appraiser-2021-1교시-|1": "세 읽기가 서로 다름",
+  "security-2018-1교시-|8": "세 읽기가 서로 다름",
+  "security-2017-1교시-|4": "세 읽기가 서로 다름",
+  "housing-2025-2차-1교시-|3": "세 읽기가 서로 다름",
+  "security-2017-1교시-|13": "세 읽기가 서로 다름",
+  "security-2018-1교시-|15": "세 읽기가 서로 다름",
+  "appraiser-2021-1교시-|26": "세 읽기가 서로 다름",
+  "security-2017-1교시-|6": "세 읽기가 서로 다름",
+  "security-2018-1교시-|6": "세 읽기가 서로 다름",
+  "security-2018-1교시-|2": "세 읽기가 서로 다름",
+  "security-2018-1교시-|13": "세 읽기가 서로 다름",
+  "appraiser-2022-1교시-|17": "세 읽기가 서로 다름",
+  "tax-2018-1교시-|16": "세 읽기가 서로 다름",
+  "tax-2018-1교시-|22": "세 읽기가 서로 다름",
+  "tax-2018-1교시-|8": "세 읽기가 서로 다름",
+  "appraiser-2022-1교시-|10": "세 읽기가 서로 다름",
+  "tax-2018-1교시-|2": "세 읽기가 서로 다름",
+  "appraiser-2022-1교시-|26": "세 읽기가 서로 다름",
+  "appraiser-2023-1교시-|33": "세 읽기가 서로 다름",
+  "appraiser-2022-2교시-|4": "세 읽기가 서로 다름",
+  "tax-2018-상법-2교시-|20": "세 읽기가 서로 다름",
+  "tax-2018-상법-2교시-|25": "세 읽기가 서로 다름",
+  "tax-2019-민법-2교시-|17": "세 읽기가 서로 다름",
+  "tax-2019-상법-2교시-|18": "세 읽기가 서로 다름",
+  "tax-2019-민법-2교시-|25": "세 읽기가 서로 다름",
+  "tax-2018-행정소송법-2교시-|26": "세 읽기가 서로 다름",
+  "tax-2018-상법-2교시-|23": "세 읽기가 서로 다름",
+  "tax-2018-상법-2교시-|5": "세 읽기가 서로 다름",
+  "tax-2018-민법-2교시-|26": "세 읽기가 서로 다름",
+  "tax-2020-1교시-|7": "세 읽기가 서로 다름",
+  "tax-2020-행정소송법-2교시-|17": "세 읽기가 서로 다름",
+  "tax-2020-행정소송법-2교시-|18": "세 읽기가 서로 다름",
+  "tax-2019-1교시-|7": "세 읽기가 서로 다름",
+  "tax-2020-1교시-|5": "세 읽기가 서로 다름",
+  "tax-2019-1교시-|2": "세 읽기가 서로 다름",
+  "tax-2019-행정소송법-2교시-|24": "세 읽기가 서로 다름",
+  "tax-2020-1교시-|6": "세 읽기가 서로 다름",
+  "tax-2020-민법-2교시-|22": "세 읽기가 서로 다름",
+  "tax-2020-1교시-|3": "세 읽기가 서로 다름",
+  "tax-2019-1교시-|13": "세 읽기가 서로 다름",
+  "tax-2020-민법-2교시-|23": "세 읽기가 서로 다름",
+  "tax-2019-행정소송법-2교시-|25": "세 읽기가 서로 다름",
+  "tax-2020-민법-2교시-|0": "세 읽기가 서로 다름",
+  "tax-2020-민법-2교시-|17": "세 읽기가 서로 다름",
+  "patent-2020-2교시-|0": "세 읽기가 서로 다름",
+  "patent-2020-1교시-|15": "세 읽기가 서로 다름",
+  "customs-2021-1교시-|4": "세 읽기가 서로 다름",
+  "tax-2020-상법-2교시-|6": "세 읽기가 서로 다름",
+  "customs-2021-1교시-|5": "세 읽기가 서로 다름",
+  "tax-2020-상법-2교시-|26": "세 읽기가 서로 다름",
+  "customs-2021-2교시-|21": "세 읽기가 서로 다름",
+  "patent-2022-3교시-|12": "세 읽기가 서로 다름"
+ }
 }
