@@ -20,6 +20,7 @@ export default function Exam({ id }: { id: string }) {
   const [papers, setPapers] = useState<Map<string, Paper>>(new Map());
   const [omrOpen, setOmrOpen] = useState(false);
   const tick = useRef<number>(0);
+  const qArea = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!s) return;
@@ -142,6 +143,20 @@ export default function Exam({ id }: { id: string }) {
     return () => window.removeEventListener("keydown", on);
   }, [choose, go, cur, nChoices]);
 
+  // 다음·이전 문제로 넘어가면 문제 맨 위가 보이게 한다 (긴 텍스트 문항을 아래까지 읽은 뒤 넘기면 새 문제가 중간부터 보이던 문제)
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    const el = qArea.current;
+    if (!el) return;
+    const bar = document.querySelector<HTMLElement>(".exam-bar")?.offsetHeight ?? 0;
+    const top = el.getBoundingClientRect().top;
+    if (top < bar) window.scrollTo({ top: window.scrollY + top - bar - 8 });
+  }, [cur]);
+
   useEffect(() => {
     const next = s?.items[cur + 1];
     // 문제지 정보(어느 PDF 를 쓰는지)를 받은 뒤에만 미리 받는다. 여러 과목이 PDF 하나를 같이 쓰기도 해서 id 로 짐작하면 틀린다
@@ -205,7 +220,7 @@ export default function Exam({ id }: { id: string }) {
       </div>
 
       <div className="exam-body">
-        <main className="q-area">
+        <main className="q-area" ref={qArea}>
           <div className="q-head">
             <span className="q-no">
               문 {cur + 1}
