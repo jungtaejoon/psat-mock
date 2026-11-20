@@ -178,10 +178,54 @@ def plain_conv(o: dict) -> str:
     return _norm(s)
 
 
+def _table_widths(tbl: str) -> list[int]:
+    """표 HTML → 행마다 실제 칸 수 (rowspan·colspan 반영)"""
+    widths, carry = [], {}  # carry: 열 위치 → 남은 rowspan 행 수
+    for row in re.findall(r"<tr[^>]*>(.*?)</tr>", tbl, re.S):
+        col, w = 0, 0
+        cells = re.findall(r"<t[hd]([^>]*)>", row)
+        occupied = {c for c, n in carry.items() if n > 0}
+        for attrs in cells:
+            while col in occupied:
+                col += 1
+            cs = int((re.search(r'colspan\s*=\s*"?(\d+)', attrs) or [0, 1])[1])
+            rs = int((re.search(r'rowspan\s*=\s*"?(\d+)', attrs) or [0, 1])[1])
+            for k in range(col, col + cs):
+                if rs > 1:
+                    carry[k] = rs  # 이번 행 포함
+            col += cs
+        w = max([col] + [c + 1 for c in occupied])
+        widths.append(w)
+        carry = {c: n - 1 for c, n in carry.items() if n - 1 > 0}
+    return widths
+
+
+def _even(widths: list[int]) -> bool:
+    # 맨 위 한 칸짜리 줄(표 제목)은 봐준다
+    w = widths[1:] if len(widths) > 1 and widths[0] == 1 else widths
+    return len(set(w)) <= 1
+
+
+def tables_ok(html_: str) -> bool:
+    return all(_even(_table_widths(t)) for t in re.findall(r"<table[^>]*>.*?</table>", html_, re.S))
+
+
+def fix_tables(html_: str) -> str:
+    """칸 수가 안 맞는 표는 rowspan 을 빼 보고, 그러면 맞으면 그렇게 고친다 (머리글 칸에 잘못 붙은 rowspan 이 흔하다)"""
+    def one(m: re.Match) -> str:
+        t = m.group(0)
+        if _even(_table_widths(t)):
+            return t
+        t2 = re.sub(r'\s*rowspan\s*=\s*"?\d+"?', "", t)
+        return t2 if _even(_table_widths(t2)) else t
+    return re.sub(r"<table[^>]*>.*?</table>", one, html_, flags=re.S)
+
+
 def tidy(o: dict) -> dict:
     """흔한 사소한 차이를 고친다: 본문 앞에 붙은 문항 번호("13." / "문 13.") 제거"""
     # 보기 앞에 붙은 ①~⑤ (화면에서 번호가 두 번 보인다)
     o["choices"] = [re.sub(r"^(\s*<p[^>]*>)?\s*[①②③④⑤]\s*", lambda m: m.group(1) or "", c, count=1) for c in o.get("choices", [])]
+    o["stem"] = fix_tables(o.get("stem", ""))
     o["stem"] = re.sub(r"^(\s*<p[^>]*>)?\s*(문\s*)?\d{1,3}\s*\.(?!\d)\s*", lambda m: m.group(1) or "", o.get("stem", ""), count=1)
     return o
 
@@ -216,6 +260,8 @@ def check(o: dict, src_text: str, n_choices: int, fig_text: str = "") -> list[st
     for fid, bx in figs.items():
         if len(bx) != 4 or not (0 <= bx[0] < bx[2] <= 1.001 and 0 <= bx[1] < bx[3] <= 1.001):
             bad.append(f"그림 {fid} 위치 이상 {bx}")
+    if not tables_ok(o.get("stem", "")):
+        bad.append("표 칸 수가 행마다 다름")
     if o.get("confidence") == "low":
         bad.append("자신감 low")
     o["_ratio"] = round(ratio, 4)

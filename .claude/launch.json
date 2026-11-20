@@ -15,6 +15,18 @@
         "--strictPort"
       ],
       "port": 5173
+    },
+    {
+      "name": "dist",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4173",
+        "-d",
+        "web/dist"
+      ],
+      "port": 4173
     }
   ]
 }

@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import katex from "katex";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA = path.join(ROOT, "public", "data");
@@ -97,7 +98,33 @@ function stemOf(q) {
 const spacedOk = (t) =>
   t.length > 0 && (t.match(/ /g)?.length ?? 0) / t.length > 0.08;
 
-function layout({ exam, title, description, canonical, body, jsonld }) {
+/** 글자로 옮긴 문항(data/text) 의 HTML: 허용 태그·속성만 남기고, 그림 자리에 그림, 수식은 KaTeX 로 미리 그린다 */
+const TAGS = new Set(["p", "br", "u", "b", "i", "sup", "sub", "div", "table", "thead", "tbody", "tr", "th", "td", "img", "span"]);
+const unesc = (s) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, "&");
+function textHtml(src, figs) {
+  let out = String(src ?? "").replace(/<(\/?)([a-zA-Z0-9]+)([^>]*)>/g, (m, close, tag, attrs) => {
+    const t = tag.toLowerCase();
+    if (!TAGS.has(t)) return "";
+    if (close) return `</${t}>`;
+    if (t === "img") {
+      const id = /data-fig="([^"]+)"/.exec(attrs)?.[1];
+      return id && figs?.[id] ? `<img class="fig" src="/data/${esc(figs[id])}" alt="문제 그림" loading="lazy">` : "";
+    }
+    const keep = [...attrs.matchAll(/\s(class|colspan|rowspan)="([^"]*)"/g)].map((a) => ` ${a[1]}="${esc(a[2])}"`).join("");
+    return t === "table" ? `<div class="tw"><table${keep}>` : `<${t}${keep}>`;
+  });
+  out = out.replace(/<\/table>/g, "</table></div>");
+  return out.replace(/\\\(([\s\S]+?)\\\)|\\\[([\s\S]+?)\\\]/g, (m, a, b) => {
+    try {
+      return katex.renderToString(unesc(a ?? b).trim(), { displayMode: b !== undefined, throwOnError: false, strict: "ignore", output: "html" });
+    } catch {
+      return esc(m);
+    }
+  });
+}
+const plainOf = (html) => unesc(String(html).replace(/<[^>]+>/g, " ")).replace(/\\[()[\]]/g, "").replace(/\s+/g, " ").trim();
+
+function layout({ exam, title, description, canonical, body, jsonld, math = false }) {
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -115,6 +142,7 @@ function layout({ exam, title, description, canonical, body, jsonld }) {
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+${math ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />' : ""}
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 <style>
 :root{--bg:#f4f5f7;--surface:#fff;--ink:#1b1f27;--muted:#6b7280;--line:#e3e5ea;--brand:#1f4fd8;--ok:#0f8a5f;--soft:#e8eefc}
@@ -133,6 +161,12 @@ ol.ch{padding-left:0;list-style:none;margin:8px 0}ol.ch li{margin:2px 0}ol.ch li
 details{margin-top:8px;font-size:14px;color:var(--muted)}details pre{white-space:pre-wrap;font:inherit}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}.grid a{display:block;padding:8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--ink)}
 footer{color:var(--muted);font-size:13px;margin-top:28px}
+.qt{margin:8px 0;font-size:15.5px}.qt p{margin:0 0 .45em}.qt .box{border:1px solid var(--ink);padding:8px 12px;margin:.5em 0}.qt .box-title{text-align:center}
+.qt p.item{padding-left:1.6em;text-indent:-1.6em}.qt .cap{font-size:13px;color:var(--muted)}.qt .right{text-align:right}
+.tw{overflow-x:auto;margin:.5em 0}.tw table{width:auto;margin:0 auto}.tw td{white-space:nowrap}
+img.fig{display:block;max-width:100%;height:auto;margin:.5em auto;background:#fff;border-radius:4px}
+ol.qc{list-style:none;padding:0;margin:6px 0 10px}ol.qc li{display:flex;gap:8px;margin:2px 0}ol.qc li.ok{color:var(--ok);font-weight:600}ol.qc .m{flex:none}
+.katex-display{overflow-x:auto;overflow-y:hidden}
 </style>
 </head>
 <body>
@@ -184,6 +218,9 @@ function buildExam(exam, list) {
     const paper = read(path.join(DATA, "papers", `${p.id}.json`));
     const exPath = path.join(DATA, "explanations", `${p.id}.json`);
     const ex = fs.existsSync(exPath) ? read(exPath) : {};
+    const txPath = path.join(DATA, "text", `${p.id}.json`);
+    const tx = fs.existsSync(txPath) ? read(txPath) : {};
+    const hasMath = Object.values(tx).some((t) => /\\[([]/.test(t.stem + t.choices.join("")));
     const qs = paper.questions;
     const url = `${SITE}/${base}/${p.slug}/`;
     const desc = `${p.year}년 ${p.exams.join(", ")} ${exam.name} ${p.subject} 기출 ${qs.length}문항의 공식 정답과 문항별 해설. 빠른 풀이, 선택지별 판단, 시간 단축 팁까지. 실제 시험처럼 타이머·OMR로 바로 풀어 볼 수 있어요.`;
@@ -207,11 +244,18 @@ function buildExam(exam, list) {
         const shared = q.shared?.text ?? "";
         const raw = (shared ? shared + "\n\n" : "") + q.text;
         // 제목은 해설의 핵심 요약(주제어가 담겨 검색에 유리). 발문은 띄어쓰기가 살아 있을 때만 아래에
-        const stem = stemOf(q);
+        const t = tx[String(q.no)];
+        let stem = t ? plainOf(t.stem) : stemOf(q);
+        if (stem.length > 160) stem = stem.slice(0, 160) + "…";
         const heading = e?.key_point || stem;
+        // 글자로 옮긴 문항은 문제 전체(지문·표·보기)를 싣는다
+        const body = t
+          ? `<div class="qt">${textHtml(t.stem, t.figs)}</div>
+<ol class="qc">${t.choices.map((c, i) => `<li${q.answer.includes(i + 1) ? ' class="ok"' : ""}><span class="m">${CIRCLED[i]}</span><span>${textHtml(c, t.figs)}</span></li>`).join("")}</ol>`
+          : "";
         return `<section class="card" id="q${q.no}">
 <h2>문 ${q.no}. ${esc(heading)}</h2>
-${heading !== stem && spacedOk(stem) ? `<p class="tip">${esc(stem)}</p>` : ""}
+${body || (heading !== stem && spacedOk(stem) ? `<p class="tip">${esc(stem)}</p>` : "")}
 <div>정답 <span class="ans">${ans}</span></div>
 ${
   e
@@ -221,7 +265,7 @@ ${md(e.explanation)}
 ${e.tip ? `<p class="tip">⏱ ${esc(e.tip)}</p>` : ""}`
     : `<p class="tip">이 문항의 해설은 준비 중이에요.</p>`
 }
-${spacedOk(raw) ? `<details><summary>문항 원문 텍스트</summary><pre>${esc(raw)}</pre></details>` : ""}
+${!t && spacedOk(raw) ? `<details><summary>문항 원문 텍스트</summary><pre>${esc(raw)}</pre></details>` : ""}
 </section>`;
       })
       .join("\n");
@@ -304,6 +348,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
         canonical: url,
         body,
         jsonld,
+        math: hasMath,
       }),
     );
     pages++;
