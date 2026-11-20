@@ -86,6 +86,12 @@ jobs:
             python pipeline/qnet_answers.py read-api "${spec%%:*}" "${spec##*:}" || true
           done
           python pipeline/qnet_build.py
+          # 스캔본 큐넷 문제지(data/scan/jobs.json): 쪽마다 문항 위치를 두 번 읽어 맞으면 확정 → 다 되면 문제지로
+          jwt
+          python pipeline/scan.py collect
+          python pipeline/scan.py build
+          jwt
+          python pipeline/scan.py submit
           # 문항 텍스트 변환: 끝난 배치 수거 → 범위(data/convert_state.json scope) 안의 새 문항 제출
           jwt
           python pipeline/convert.py collect

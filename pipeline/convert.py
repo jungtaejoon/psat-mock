@@ -111,7 +111,7 @@ def build_params(paper: dict, q: dict, doc: fitz.Document, model: str) -> dict:
     n = paper.get("choices", 5)
     text = (
         f"[{paper['year']}년 {'/'.join(paper.get('exams', []))} {paper['subject']} {q.get('orig', q['no'])}번, 보기 {n}개]\n\n"
-        f"[뽑은 글자]\n{pdf_text(doc, q)}"
+        + (f"[뽑은 글자]\n{pdf_text(doc, q)}" if not paper.get("scan") else "[뽑은 글자] 없음 — 스캔본이라 그림만 보고 옮긴다. 글자 하나하나를 그림 그대로 옮길 것.")
     )
     return {
         "model": model,
@@ -230,7 +230,8 @@ def tidy(o: dict) -> dict:
     return o
 
 
-def check(o: dict, src_text: str, n_choices: int, fig_text: str = "") -> list[str]:
+def check(o: dict, src_text: str, n_choices: int, fig_text: str = "", ref_plain: str | None = None) -> list[str]:
+    """ref_plain: 스캔본은 PDF 글자가 없어 다른 읽기의 글자(plain_conv)와 비교한다"""
     """문제가 없으면 빈 목록"""
     bad = []
     tags = {t.lower() for t in re.findall(r"</?\s*([a-zA-Z0-9]+)", o.get("stem", "") + "".join(o.get("choices", [])))}
@@ -240,7 +241,7 @@ def check(o: dict, src_text: str, n_choices: int, fig_text: str = "") -> list[st
         bad.append("style/이벤트 속성")
     if len(o.get("choices", [])) != n_choices:
         bad.append(f"보기 {len(o.get('choices', []))}/{n_choices}개")
-    a, b = plain_pdf(src_text), plain_conv(o)
+    a, b = (ref_plain if ref_plain is not None else plain_pdf(src_text)), plain_conv(o)
     # 순서와 상관없이 빠진 글자·더해진 글자를 센다 (표 칸 순서가 달라도 통과, 빠뜨리거나 지어낸 것은 걸림)
     from collections import Counter
 
@@ -318,7 +319,7 @@ def api_id(cid: str) -> str:
 
 def load_state() -> dict:
     st = json.loads(STATE.read_text()) if STATE.exists() else {}
-    for k, v in (("scope", []), ("exclude", []), ("batches", []), ("pending", []), ("sonnet", []), ("gave_up", {}), ("ids", {})):
+    for k, v in (("scope", []), ("exclude", []), ("batches", []), ("pending", []), ("sonnet", []), ("gave_up", {}), ("ids", {}), ("scan", {})):
         st.setdefault(k, v)
     return st
 
@@ -353,8 +354,17 @@ def _questions_to_send(st: dict):
             cid = f"{paper['id']}__{q['no']}"
             if str(q["no"]) in done or cid in pending or cid in st["gave_up"] or not regions_of(q):
                 continue
+            if paper.get("scan"):
+                # 스캔본: Haiku 로 두 번 따로 읽어 비교, 어긋나면 Sonnet 으로 한 번 더
+                reads = st["scan"].get(cid, {})
+                for r in ("a", "b"):
+                    if r not in reads and f"{cid}#{r}" not in pending:
+                        yield paper, q, HAIKU, f"#{r}"
+                if reads.get("need_c") and "c" not in reads and f"{cid}#c" not in pending:
+                    yield paper, q, SONNET, "#c"
+                continue
             # 처음엔 모두 Haiku, 검사에 걸린 것만 Sonnet 으로 다시 (2026-11-20 절감형)
-            yield paper, q, (SONNET if cid in sonnet else HAIKU)
+            yield paper, q, (SONNET if cid in sonnet else HAIKU), ""
 
 
 def submit(client, limit: int | None) -> None:
@@ -387,12 +397,12 @@ def submit(client, limit: int | None) -> None:
         chunk = []
         return True
 
-    for paper, q, model in _questions_to_send(st):
+    for paper, q, model, suffix in _questions_to_send(st):
         doc = docs.get(paper["id"])
         if doc is None:
             docs.clear()  # 문제지가 바뀌면 이전 PDF 는 닫는다
             doc = docs[paper["id"]] = paper_pdf(paper)
-        cid = f"{paper['id']}__{q['no']}"
+        cid = f"{paper['id']}__{q['no']}{suffix}"
         chunk.append(Request(custom_id=api_id(cid), params=build_params(paper, q, doc, model)))
         st["ids"][api_id(cid)] = cid
         if len(chunk) >= 500 and not flush():
@@ -456,6 +466,43 @@ def write_updates(st: dict, updates: dict) -> None:
     st["sonnet"] = [c for c in st["sonnet"] if c not in done]
 
 
+def scan_read(st: dict, rid: str, o: dict | None, model: str, papers: dict, updates: dict) -> None:
+    """스캔본 한 번 읽은 결과를 모아 두고, 두 읽기(또는 Sonnet 과 한 읽기)가 맞으면 저장한다"""
+    cid, r = rid.split("#", 1)
+    reads = st["scan"].setdefault(cid, {})
+    reads[r] = tidy(o) if o else None
+    pid, no = cid.rsplit("__", 1)
+    paper = papers.get(pid) or json.loads((DATA / "papers" / f"{pid}.json").read_text())
+    papers[pid] = paper
+    q = next(x for x in paper["questions"] if str(x["no"]) == no)
+    n = paper.get("choices", 5)
+
+    def agree(x: dict | None, y: dict | None):
+        if not x or not y:
+            return None
+        doc = paper_pdf(paper)
+        rects = figure_rects(doc, q, x)
+        if check(x, "", n, "", ref_plain=plain_conv(y)) or check(y, "", n, "", ref_plain=plain_conv(x)):
+            return None
+        return dict(stem=x["stem"], choices=x["choices"], figs=save_figures(paper, doc, q, rects), model=model, ratio=x.get("_ratio"), conf=x["confidence"], scan=True)
+
+    if "c" in reads:
+        item = agree(reads["c"], reads.get("a")) or agree(reads["c"], reads.get("b"))
+    elif "a" in reads and "b" in reads:
+        item = agree(reads["a"], reads["b"])
+        if item is None:
+            reads["need_c"] = True
+            return
+    else:
+        return
+    if item:
+        updates.setdefault(pid, {})[no] = item
+        st["scan"].pop(cid, None)
+    else:
+        st["gave_up"][cid] = "스캔본: 세 번 읽어도 맞지 않음"
+        st["scan"].pop(cid, None)
+
+
 def collect(client) -> bool:
     st = load_state()
     remaining, all_done = [], True
@@ -486,8 +533,14 @@ def collect(client) -> bool:
                     o = json.loads(text) if msg.stop_reason == "end_turn" else None
                 except json.JSONDecodeError:
                     o = None
+                if "#" in cid:
+                    scan_read(st, cid, o, model, papers, updates)
+                    continue
                 reason, item = judge(st, cid, o, model, papers)
             else:
+                if "#" in cid:
+                    scan_read(st, cid, None, model or HAIKU, papers, updates)
+                    continue
                 reason, item = f"요청 실패 ({res.result.type})", None
             record(st, cid, model or HAIKU, reason, item, o, updates)
             if reason:
