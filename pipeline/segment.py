@@ -156,6 +156,32 @@ def choice_boxes(doc, regions: list[dict], n_choices: int = 5) -> list[dict] | N
     return boxes
 
 
+def one_column_doc(doc) -> bool:
+    """1단 편집 문서인가.
+
+    문항 번호가 오른쪽 절반에서 시작하는 일이 한 번도 없으면 1단이다.
+    표 칸의 날짜('6. 30.')·소문항 번호가 오른쪽에 몇 개 걸려도, 그런 줄이 문항 번호의 5% 이하이고
+    대부분의 쪽에서 글줄이 가운데(단 사이 여백)를 가로지르면 1단이다 (회계학 등 긴 표·긴 줄 문서).
+    """
+    W = doc[0].rect.width
+    mid = W / 2
+    right_q = left_q = crossed = pages = 0
+    for page in doc:
+        lines = lines_of(page)
+        right_q += sum(1 for r, t in lines if r.x0 > W * 0.35 and Q_RE.match(t))
+        left_q += sum(1 for r, t in lines if r.x0 <= W * 0.35 and Q_RE.match(t))
+        top, bottom = page_frame(page, lines)
+        body = [r for r, _ in lines if r.y0 >= top - 1 and r.y1 <= bottom + 1]
+        if len(body) < 5:
+            continue
+        pages += 1
+        if sum(1 for r in body if r.x0 < mid - 20 and r.x1 > mid + 20) >= 3:
+            crossed += 1
+    if right_q == 0:
+        return True
+    return right_q <= left_q * 0.05 and pages > 0 and crossed >= pages * 0.8
+
+
 def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1, headings: list[str] | None = None):
     doc = fitz.open(pdf_path)
     _ink_cache.clear()
@@ -166,9 +192,7 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     cols = []  # dict(page, x0, x1, top, bottom, lines)
     # 문항 번호가 오른쪽 절반에서 시작하는 일이 한 번도 없으면 1단 편집 문서다
     # (보기를 가로로 늘어놓은 1단 문서를 2단으로 잘못 나누지 않도록)
-    one_col_doc = not any(
-        r.x0 > W * 0.35 and Q_RE.match(t) for page in doc for r, t in lines_of(page)
-    )
+    one_col_doc = one_column_doc(doc)
     H0 = doc[0].rect.height
     headerless = any(r.y1 < H0 * 0.06 and Q_RE.match(t) for page in doc for r, t in lines_of(page))
     # 첫 ① 이 나오기 전의 쪽은 표지·수험자 유의사항이다 (번호 매긴 안내문을 문항으로 착각하지 않도록)
@@ -210,7 +234,8 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
             # 과목 제목 줄(가운데 정렬·상자 안일 수 있음): 앞 문항을 여기서 끊는다
             tt = t.replace(" ", "")
             alone = not any(abs(r2.y0 - r.y0) < 3 and r2 is not r for r2, _ in ordered)  # 본문 속 법령 이름(형사소송법 제6조…)과 구별
-            if marks and (HEAD_RE.match(t) or (alone and any(tt.startswith(h) and len(tt) <= len(h) + 8 for h in heads))):
+            # 물음 줄('행정소송법상의 규정은?')은 과목 이름으로 시작해도 제목이 아니다
+            if marks and (HEAD_RE.match(t) or (alone and "?" not in tt and any(tt.startswith(h) and len(tt) <= len(h) + 8 for h in heads))):
                 marks.append((ci, r.y0 - 6, "h", None))  # 제목 상자 윗선까지 피한다
                 continue
             # 수식이 든 줄은 키가 커서 '문' 과 윗선이 어긋난다 → '문' 이 그 줄 높이 안에 들어오면 같은 줄로 본다
