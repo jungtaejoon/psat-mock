@@ -1,0 +1,37 @@
+# 해설 작업 중 발견한 데이터 문제 (2026-11-22, 에이전트 보고)
+
+- gong9-2022-08-행정법총론: Q11 text missing, Q19 text merged into Q20 (agent report)
+- gong9-2022-08-영어: Q4,11,13 regions merged into previous question (agent report)
+- gong9-2015-08-국어 Q2, gong9-2016-08-국어 Q11: spacing (띄어쓰기) choices may have been auto-corrected by text conversion — check text vs PDF
+- realtor-2015-2차-1교시-부동산공법 Q3,Q21,Q31 / realtor-2014-1교시-부동산학개론 Q17: question crop cut off a choice
+- realtor-2014-2차-1교시-부동산공법 Q29: crop shows only ①–④ (⑤ cut off)
+- gong7-2014-06-국어 Q2: spacing choice looks correct as transcribed
+- customs 2014/2019/2020 and tax-2014 회계학: different subjects share identical pdf+regions (8 groups) — likely mis-split papers
+- !! local-2014-34-국어, local-2014-34-한국사 (booklet B): stored answer key mismatches questions (2/20, 4/20 agree) — likely A-booklet key. 영어 OK. Check other local-2014 subjects.
+- local-2015-34-국어 Q15: text shows 있음 where original likely 있슴 — AI text conversion silently corrects spelling/spacing errors in 국어 어문규정 questions (systemic)
+- housing-2014/2015 (likely HWP-converted PDFs): blank choices/names in images (2015 민법 Q7, 관리실무 Q7, 2014 시설개론 Q3,Q20; 민법 party names) — HWP conversion drops some text
+- appraiser-2021-2교시-감정평가관계법규 Q15: crop cut after ④ (⑤ missing)
+- appraiser-2022-2교시-회계학 Q18: crop shows only ①–③
+- appraiser-2022-1교시-부동산학원론 Q35: crop cut after ③
+- appraiser-2017-1교시-부동산학원론 Q29: stored ③, computed ① (Reilly) — check key
+- appraiser-2016-2교시-회계학 Q34: stored ⑤, computed ② — check key; appraiser-2015-1교시-경제학원론 Q3,Q15 crop shows ①–④
+- appraiser-2014 (HWP-converted?): missing choice text in 민법 Q3,Q6; 부동산관계법규 Q4,Q15,Q24; 회계학 Q6
+- tax-2018-1교시-세법학개론 Q11: stem text missing in text data
+- tax-2018-상법-2교시-회계학개론 Q38: choice order differs from 민법 copy; stored ② wrong here (should be ④)
+- tax-2020: 세법학개론 Q1 ⑤, 민법 Q13 ③ text negation looks flipped vs original; 재정학 Q24 functions may be mis-transcribed — check text vs PDF
+- !! customs mis-split (wrong questions for subject + key): 2019-2교시-내국소비세법(=관세법 questions), 2019-2교시-회계학(=무역영어), 2018-2교시-내국소비세법(=관세법), 2018-2교시-회계학(=무역영어). Likely same for 2014/2020 pairs. Should be hidden/rebuilt.
+- tax-2016-상법-2교시-상법 Q4,Q38,Q39,Q40: stored answers look wrong (agent: Q38 ④, Q39 ②, Q40 ③) — check key
+- !! customs-2020-2교시-내국소비세법(=관세법 questions), customs-2020-2교시-회계학(=무역영어 questions) mis-split too
+- !! tax-2014-행정소송법-2교시-행정소송법: 9 items key mismatch — key likely wrong/other booklet. tax-2014 회계학개론 Q22 key looks wrong (② vs stored ③)
+- !! customs-2014-2교시-내국소비세법 (=관세법 q), customs-2014-2교시-회계학 (=무역영어 q) mis-split
+- patent-2019-3교시-자연과학개론 Q16–20: PDF render errors (blank images) — check PDF/regions
+- !! logistics-2015-1교시-물류관리론 Q1–4: regions point at the cover page (segmentation bug)
+- youthcounsel-2024-2급-1교시-심리측정평가의활용 Q17: stored ② but correct ① (MBTI S/N) — check key
+- youthcounsel-2020-2급-2교시-진로상담 Q2: crop cut after stem
+- youthcounsel-2022-3급-2교시-학습이론 Q1: crop shows only part of stem
+- youthcounsel-2015-2급-2교시-진로상담 Q6, youthcounsel-2015-2급-2교시-집단상담 Q26: crops cut off
+- youthcounsel subject typo '상담미론' should be '상담이론' (several years)
+- gong9-2025-08-알고리즘 Q7 crop cut; 전기이론 Q13,Q17 figure labels cut
+- gong9-2020-08-식용작물 Q16: stored ① looks wrong (② false)
+- gong9-2018-08-전자공학개론 Q18: stem text likely mistranscribed (minterm)
+- gong9-2017-08-관세법개론 Q9: stored ④ likely wrong (② false) — check original
