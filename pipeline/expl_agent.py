@@ -84,6 +84,8 @@ def prep(pid: str, out: Path) -> None:
                 stem = re.sub(rf"<img[^>]*data-fig=['\"]{k}['\"][^>]*>", f"[그림: {DATA / path}]", stem)
             lines.append(stem)
             for i, c in enumerate(t.get("choices") or []):
+                for k, path in (t.get("figs") or {}).items():
+                    c = re.sub(rf"<img[^>]*data-fig=['\"]{k}['\"][^>]*>", f"[그림: {DATA / path}]", c)
                 lines.append(f"{CIRCLED[i]} {plain(c)}")
         else:
             # 글자 변환이 없는 문항 → 문제 영역 그림을 보고 풀게 한다
