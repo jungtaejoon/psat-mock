@@ -51,9 +51,16 @@ def _run(fmt: str, src: Path, outdir: Path) -> Path:
     env = dict(os.environ)
     if "JAVA_HOME" not in env:
         env["JAVA_HOME"] = subprocess.run(["/usr/libexec/java_home"], capture_output=True, text=True).stdout.strip()
-    subprocess.run([SOFFICE, "--headless", "--convert-to", fmt, "--outdir", str(outdir), str(src)],
-                   check=True, capture_output=True, env=env, timeout=600)
     out = outdir / (src.stem + "." + fmt)
+    # 앞 실행이 다 끝나기 전에 시작하면 가끔 실패한다 → 잠깐 쉬고 다시 (최대 3번)
+    import time
+
+    for attempt in range(3):
+        r = subprocess.run([SOFFICE, "--headless", "--convert-to", fmt, "--outdir", str(outdir), str(src)],
+                           capture_output=True, env=env, timeout=600)
+        if r.returncode == 0 and out.exists():
+            break
+        time.sleep(5 * (attempt + 1))
     if not out.exists():
         raise RuntimeError(f"변환 실패: {src}")
     return out

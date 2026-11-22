@@ -22,7 +22,7 @@ RAW = ROOT / "data" / "raw"
 CATALOG = ROOT / "data" / "catalog.json"
 OUT = ROOT / "web" / "public" / "data"
 
-Q_RE = re.compile(r"^\s*(?:문\s*)?(\d{1,3})\s*\.(?!\d)")
+Q_RE = re.compile(r"^\s*[`'‘’·•]?\s*(?:문\s*)?(\d{1,3})\s*\.(?!\d)")  # HWP 변환본은 번호 앞에 ` 같은 군더더기가 붙기도 한다
 SHARED_RE = re.compile(r"^\s*(?:※|\[\s*(?:문\s*)?\d)")
 RANGE_RE = re.compile(r"(\d{1,3})\s*\.?\s*[～~∼\-–]\s*(?:문\s*)?(\d{1,3})")
 PAD = 3
@@ -54,9 +54,8 @@ def page_frame(page, lines, headerless: bool = False):
     # 큐넷 문제지 꼬리말: "2017년 제20회 주택관리사보 1차 A-32-12", "일반경비지도사 - A - 18 - 11[1차]" 같은 줄
     foot += [r.y0 for r, t in lines if r.y0 > H * 0.88 and FOOT_RE.search(t.replace(" ", ""))]
     top = max(head) + 2 if head else (H * 0.02 if headerless else H * 0.04)
-    if headerless:
-        # 문항 번호가 그보다 더 위에서 시작하는 쪽은 그 줄까지 포함한다
-        top = min([top] + [r.y0 - 1 for r, t in lines if r.y0 < top + 2 and Q_RE.match(t)])
+    # 문항 번호 줄이 본문 시작선에 걸쳐 있으면(대부분이 선 아래) 그 줄까지 포함한다
+    top = min([top] + [r.y0 - 1 for r, t in lines if r.y0 < top + 2 and (headerless or r.y1 > top + 3) and Q_RE.match(t)])
     bottom = min(foot) - 2 if foot else H * 0.985
     # 머리말 아래 가로줄(도형)도 머리말로 본다
     W = page.rect.width
@@ -64,7 +63,7 @@ def page_frame(page, lines, headerless: bool = False):
         r = d["rect"]
         if r.height < 3 and r.width > W * 0.8:
             # 단, 선 위에 문항 번호가 있으면 머리말 선이 아니라 문항 안의 상자·표 윗선이다
-            if r.y1 < H * 0.08 and not any(t2.y1 <= r.y0 + 1 and Q_RE.match(tx) for t2, tx in lines):
+            if r.y1 < H * 0.08 and not any(t2.y0 <= r.y1 + 3 and Q_RE.match(tx) for t2, tx in lines):
                 top = max(top, r.y1 + 2)
             elif r.y0 > H * 0.93:
                 bottom = min(bottom, r.y0 - 2)
@@ -195,7 +194,10 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
     heads = [h.replace(" ", "") for h in (headings or []) if len(h.replace(" ", "")) >= 3]
     marks = []  # (col_idx, y, kind, num/range)
     expect = first
+    done_all = False
     for ci, c in enumerate(cols):
+        if done_all:
+            break
         if not c["lines"]:
             continue
         left = min(r.x0 for r, _ in c["lines"])
@@ -220,6 +222,11 @@ def segment(pdf_path: Path, n_questions: int, n_choices: int = 5, first: int = 1
                 r = fitz.Rect(min(m.x0 for m in beside), r.y0, r.x1, r.y1)
             m = Q_RE.match(t)
             if m and int(m.group(1)) == expect:
+                if expect >= first + n_questions:
+                    # 필요한 문항을 다 찾았다(뒤는 주관식 등). 이 번호 줄은 앞 문항의 끝 경계로만 쓴다
+                    marks.append((ci, r.y0 - 6, "h", None))
+                    done_all = True
+                    break
                 marks.append((ci, r.y0, "q", expect))
                 expect += 1
                 continue

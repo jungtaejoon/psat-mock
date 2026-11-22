@@ -53,6 +53,16 @@ const ordered = (defined, seen) => {
     : uniq;
 };
 
+/** 제목 앞부분: 말이 겹치지 않게 ("국가직 9급" + "9급 공무원" → "국가직 9급 공무원", 자격증은 "공인중개사 1차") */
+function titleCore(exam, label) {
+  const lab = String(label ?? "").replace(/^필기$/, "");
+  if ((exam.id ?? "") === "psat") return `${lab} PSAT`.trim();
+  const last = lab.split(/\s+/).pop();
+  if (last && exam.name.startsWith(last)) return `${lab} ${exam.name.slice(last.length).trim()}`.trim();
+  if (exam.category === "공무원") return `${lab} ${exam.name}`.trim();
+  return `${exam.name} ${lab}`.trim();
+}
+
 const esc = (s) =>
   String(s ?? "").replace(
     /[&<>"']/g,
@@ -167,9 +177,13 @@ footer{color:var(--muted);font-size:13px;margin-top:28px}
 img.fig{display:block;max-width:100%;height:auto;margin:.5em auto;background:#fff;border-radius:4px}
 ol.qc{list-style:none;padding:0;margin:6px 0 10px}ol.qc li{display:flex;gap:8px;margin:2px 0}ol.qc li.ok{color:var(--ok);font-weight:600}ol.qc .m{flex:none}
 .katex-display{overflow-x:auto;overflow-y:hidden}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips a{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-decoration:none;font-size:14px}.chips a:hover{border-color:var(--brand);color:var(--brand)}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}.top div{max-width:860px;margin:0 auto;padding:0 16px;height:52px;display:flex;align-items:center;gap:10px}
+.top a{display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;letter-spacing:-.03em}.top span{font-size:12px;color:var(--muted);font-weight:600}.top .go{margin-left:auto;font-size:13px;font-weight:700;color:var(--brand)}
 </style>
 </head>
 <body>
+<header class="top"><div><a href="/"><svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="7" fill="#1f4fd8"/><circle cx="9" cy="10" r="3" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="19" cy="10" r="3.4" fill="#fff"/><circle cx="9" cy="19" r="3.4" fill="#fff"/><circle cx="19" cy="19" r="3" fill="none" stroke="#fff" stroke-width="1.6"/></svg>alltests</a><span>기출 모의고사</span><a class="go" href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체</a></div></header>
 <main>
 ${body}
 <footer>문제·정답 출처: ${esc(exam.source)}. 해설은 AI(Claude)가 작성한 것으로 공식 해설이 아니며 오류가 있을 수 있습니다. · <a href="/">alltests 홈</a> · <a href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체 목록</a></footer>
@@ -184,10 +198,13 @@ const index = read(path.join(DATA, "index.json")).papers;
 let pages = 0;
 const urls = [{ loc: `${SITE}/`, pri: "1.0", freq: "daily" }];
 const recentLinks = [];
+const examSummaries = [];
+const rssItems = [];
 
 function buildExam(exam, list) {
   const base = exam.seo ?? exam.id;
   const slugs = exam.slugs ?? {};
+  const subjSlug = (sb) => encodeURIComponent(slugPart(slugs.subjects, sb));
   const ANS = (q) =>
     q.answer.length >= (q.choices ?? exam.choices)
       ? "전항"
@@ -210,7 +227,7 @@ function buildExam(exam, list) {
   for (const p of papers) {
     const sb = p.slug.replace(/-\d$/, "");
     p.label = dupBase.has(sb) ? p.exams.join("·") : p.g.label;
-    p.title = `${p.year}년 ${p.label} ${exam.name} ${p.subject} 기출문제 정답·해설`;
+    p.title = `${p.year}년 ${titleCore(exam, p.label)} ${p.subject} 기출문제 정답·해설`;
   }
 
   fs.rmSync(path.join(DIST, base), { recursive: true, force: true });
@@ -290,7 +307,7 @@ ${!t && spacedOk(raw) ? `<details><summary>문항 원문 텍스트</summary><pre
       )
       .join("");
 
-    const body = `<nav class="crumb"><a href="/">alltests</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › ${p.year} ${esc(p.label)}</nav>
+    const body = `<nav class="crumb"><a href="/">alltests</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › <a href="/${base}/s/${subjSlug(p.subject)}/">${esc(p.subject)}</a> › ${p.year}</nav>
 <h1>${esc(p.title)}</h1>
 <p class="lead">${esc(p.exams.join(" · "))} · ${qs.length}문항${p.answersFinal ? "" : " · 정답 확정 전(가답안)"}</p>
 <div class="cta"><a class="btn" href="/#/start/${encodeURIComponent(p.id)}/exam">실전 모드로 풀기 (타이머·OMR)</a><a class="btn ghost" href="/#/start/${encodeURIComponent(p.id)}/practice">연습 모드로 풀기</a></div>
@@ -390,6 +407,56 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
   const total = papers.reduce((n, p) => n + p.count, 0);
   const minY = Math.min(...papers.map((p) => p.year));
   const maxY = Math.max(...papers.map((p) => p.year));
+
+  // 과목별 모음: /<시험>/s/<과목>/ — "9급 국어 기출문제" 같은 검색어용
+  const subjLinks = [];
+  for (const sb of subjOrder) {
+    const mine = papers.filter((p) => p.subject === sb);
+    if (!mine.length) continue;
+    const ys = mine.map((p) => p.year);
+    const a = Math.min(...ys), b = Math.max(...ys);
+    const n = mine.reduce((k, p) => k + p.count, 0);
+    const url = `${SITE}/${base}/s/${subjSlug(sb)}/`;
+    const t = `${exam.name} ${sb} 기출문제 모음 (${a}~${b}) 정답·해설`;
+    const d = `${exam.name} ${sb} 기출문제 ${mine.length}회분 ${n.toLocaleString()}문항을 연도별로 모았습니다. 공식 정답과 문항별 해설을 보고, 실제 시험처럼 타이머·OMR 로 풀어 보세요.`;
+    const rows = [...mine]
+      .sort((x, y) => y.year - x.year || x.slug.localeCompare(y.slug))
+      .map((p) => `<a href="/${base}/${p.slug}/">${p.year}년 ${esc(p.label)} ${esc(sb)} <small>(${p.count}문항)</small></a>`)
+      .join("");
+    const dir = path.join(DIST, base, "s", slugPart(slugs.subjects, sb));
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(
+      path.join(dir, "index.html"),
+      layout({
+        exam,
+        title: `${t} | alltests`,
+        description: d,
+        canonical: url,
+        jsonld: {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "alltests", item: `${SITE}/` },
+                { "@type": "ListItem", position: 2, name: `${exam.name} 기출`, item: `${SITE}/${base}/` },
+                { "@type": "ListItem", position: 3, name: `${sb} 기출`, item: url },
+              ],
+            },
+            { "@type": "CollectionPage", name: t, description: d, url, inLanguage: "ko" },
+          ],
+        },
+        body: `<nav class="crumb"><a href="/">alltests</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › ${esc(sb)}</nav>
+<h1>${esc(t.replace(" 정답·해설", ""))}</h1>
+<p class="lead">${mine.length}회분 · ${n.toLocaleString()}문항 · 공식 정답과 문항별 AI 해설</p>
+<div class="cta"><a class="btn" href="/#/x/${exam.id}">${esc(exam.name)} 실전 모의고사 풀기</a></div>
+<section class="card"><h2>${esc(sb)} 연도별 기출문제</h2><div class="grid">${rows}</div></section>`,
+      }),
+    );
+    pages++;
+    urls.push({ loc: url, pri: "0.85", freq: "weekly" });
+    subjLinks.push(`<a class="chip" href="/${base}/s/${subjSlug(sb)}/">${esc(sb)} <small>${mine.length}회</small></a>`);
+  }
   const hubTitle = `${exam.name} 기출문제 정답·해설 전체 목록 (${minY}~${maxY}) | alltests`;
   const hubDesc = `${exam.desc} 기출 ${papers.length}개 문제지 ${total.toLocaleString()}문항의 정답표와 문항별 해설. ${subjOrder.join("·")}을 연도별로 보고 실제 시험처럼 풀어 보세요.`;
   fs.mkdirSync(path.join(DIST, base), { recursive: true });
@@ -412,6 +479,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
 <h1>${esc(exam.name)} 기출문제 정답·해설 (${minY}~${maxY})</h1>
 <p class="lead">문제지 ${papers.length}개 · ${total.toLocaleString()}문항 · 문항마다 AI 해설</p>
 <div class="cta"><a class="btn" href="/#/x/${exam.id}">실전 모의고사 풀기</a><a class="btn ghost" href="/#/x/${exam.id}">랜덤 모의고사 만들기</a></div>
+<section class="card"><h2>과목별 기출문제 모음</h2><div class="chips">${subjLinks.join("")}</div></section>
 ${hubSections}`,
     }),
   );
@@ -429,6 +497,8 @@ ${hubSections}`,
       .filter((p) => p.year >= maxY - 1)
       .map((p) => `<li><a href="/${base}/${p.slug}/">${esc(p.title)}</a></li>`),
   );
+  examSummaries.push({ exam, base, papers: papers.length, total, minY, maxY, subjects: subjOrder.slice(0, 8) });
+  rssItems.push(...papers.filter((p) => p.year >= maxY - 1).map((p) => ({ title: p.title, link: `${SITE}/${base}/${p.slug}/`, desc: `${p.title} — 공식 정답과 문항별 해설, 실제 시험처럼 풀기` })));
   return { papers: papers.length, total, minY, maxY };
 }
 
@@ -454,12 +524,45 @@ ${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${TODAY}</lastmod><changef
 );
 
 // 홈 index.html 의 정적 대체 내용(#root 안)에 최근 기출 링크를 채운다 — JS 를 실행하지 않는 수집기도 링크를 따라가게
+const cats = [...new Set(examSummaries.map((x) => x.exam.category))];
+const examsHtml = cats
+  .map(
+    (c) =>
+      `<h2>${esc(c)} 기출문제</h2><ul>` +
+      examSummaries
+        .filter((x) => x.exam.category === c)
+        .map(
+          (x) =>
+            `<li><a href="/${x.base}/">${esc(x.exam.name)} 기출문제 정답·해설 (${x.minY}~${x.maxY}, ${x.total.toLocaleString()}문항)</a> — ${esc(x.subjects.join("·"))}</li>`,
+        )
+        .join("") +
+      "</ul>",
+  )
+  .join("");
+// RSS (네이버 서치어드바이저 제출용): 최근 연도 문제지 페이지
+const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>alltests 기출문제 정답·해설</title>
+<link>${SITE}/</link>
+<description>공무원·자격증 기출문제를 실제 시험처럼 풀고 문항별 해설로 복습하는 무료 모의고사</description>
+<language>ko</language>
+<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+${rssItems
+  .slice(0, 300)
+  .map((it) => `<item><title>${esc(it.title)}</title><link>${it.link}</link><guid>${it.link}</guid><description>${esc(it.desc)}</description></item>`)
+  .join("\n")}
+</channel></rss>
+`;
+fs.writeFileSync(path.join(DIST, "rss.xml"), rss);
+
 const homePath = path.join(DIST, "index.html");
 const home = fs.readFileSync(homePath, "utf8");
 fs.writeFileSync(
   homePath,
   home
-    .replace("<!--SEO_RECENT-->", recentLinks.join(""))
+    .replace("<!--SEO_EXAMS-->", examsHtml)
+    .replace(/__EXAMS__/g, String(examSummaries.length))
+    .replace("<!--SEO_RECENT-->", recentLinks.slice(0, 80).join(""))
     .replace(/__TOTAL__/g, totals.total.toLocaleString())
     .replace(/__PAPERS__/g, String(totals.papers))
     .replace(/__RANGE__/g, `${totals.minY}~${totals.maxY}`),

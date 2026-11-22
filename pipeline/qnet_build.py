@@ -92,8 +92,17 @@ def paper_files(gid: str) -> list[dict]:
     return out
 
 
+def session_of(text: str) -> int | None:
+    m = re.search(r"제\s*(\d{1,3})\s*회", text or "")
+    return int(m.group(1)) if m else None
+
+
 def compatible(e: dict, f: dict) -> bool:
     if e["year"] != f["year"]:
+        return False
+    # 한 해에 시험이 두 번(예: 청소년상담사 2016 제14회·제15회) 있으면 회차가 같은 문제지만
+    se, sf = e.get("session"), session_of(f["title"] + " " + f["name"])
+    if se and sf and se != sf:
         return False
     if e.get("track"):
         # 급수·일반/기계 같은 구분이 제목이나 파일명에 들어 있어야 한다
@@ -151,6 +160,14 @@ def build(exam_id: str, rebuild: bool = False) -> None:
     gid = exam["qnet"]
     choices = exam["choices"]
     entries = json.loads((QNET / gid / "answers.json").read_text())
+    posts = json.loads((QNET / gid / "posts.json").read_text())
+    for e in entries:
+        e["session"] = session_of(posts.get(f"answer-{e.get('post')}", {}).get("title", ""))
+    # 같은 해 회차가 둘 이상이면 첫 회차를 뺀 나머지 회차에만 주소에 "-제N회" 를 붙인다 (기존 주소 유지)
+    first_session = {}
+    for e in entries:
+        if e["session"] and not e.get("round"):
+            first_session[e["year"]] = min(first_session.get(e["year"], e["session"]), e["session"])
     files = paper_files(gid)
     has_special = any(e.get("round") == "특별" for e in entries)
     multi_stage = len({e.get("stage") for e in entries if e.get("stage")}) > 1
@@ -160,7 +177,8 @@ def build(exam_id: str, rebuild: bool = False) -> None:
     for e in sorted(entries, key=lambda x: (-x["year"], x.get("round") or "", x["period"])):
         tag = f"{e['year']} {e.get('round') or ''} {e.get('stage') or ''} {e['period']}교시".replace("  ", " ")
         track = f"-{slug(e['track'])}" if e.get("track") else ""
-        prefix = f"{exam_id}-{e['year']}{'-특별' if e.get('round') == '특별' else ''}{'-' + e['stage'] if e.get('stage') == '2차' else ''}{track}-{e['period']}교시-"
+        extra_session = e.get("session") and not e.get("round") and e["session"] != first_session.get(e["year"])
+        prefix = f"{exam_id}-{e['year']}{'-제' + str(e['session']) + '회' if extra_session else ''}{'-특별' if e.get('round') == '특별' else ''}{'-' + e['stage'] if e.get('stage') == '2차' else ''}{track}-{e['period']}교시-"
         if not rebuild and any((OUT / "papers").glob(f"{prefix}*.json")):
             continue  # 이미 만든 교시 (CI 는 새로 생긴 것만)
         f = pick([f for f in files if compatible(e, f)], e)
@@ -181,7 +199,8 @@ def build(exam_id: str, rebuild: bool = False) -> None:
             err = ex
             for sub in subs_all:
                 key = sub["name"].replace(" ", "")[:3]
-                cands = [g for g in files if compatible(e, g) and key and key in g["name"].replace(" ", "")]
+                # 과목별 파일: 공통 과목(예: 회계학) 파일엔 선택과목 이름이 없으니 선택과목(track) 조건은 빼고 과목 이름으로 고른다
+                cands = [g for g in files if compatible(dict(e, track=None), g) and key and key in g["name"].replace(" ", "")]
                 g = pick(cands, dict(e, subjects=[sub]))
                 if not g:
                     chunks = []
@@ -221,7 +240,7 @@ def build(exam_id: str, rebuild: bool = False) -> None:
                     group=group,
                     year=e["year"],
                     subject=s["name"],
-                    exams=[exam["name"] + (" 특별시험" if e.get("round") == "특별" else "")],
+                    exams=[exam["name"] + (" 특별시험" if e.get("round") == "특별" else "") + (f" 제{e['session']}회" if extra_session else "")],
                     answersFinal=True,
                     choices=choices,
                     kogl=f.get("kogl"),

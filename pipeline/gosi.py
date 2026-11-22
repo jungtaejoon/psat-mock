@@ -154,13 +154,22 @@ def _norm_subject(t: str) -> str:
 
 def _rows(toks: list[str]) -> list[dict]:
     """정답표 글자 줄 → 행 목록"""
+    # 다듬기: "15　데이터베이스론"(연번이 붙은 과목명) → 과목명만, "정답" "없음" 두 조각 → 한 칸(문항 무효 = 모두 정답)
+    fixed: list[str] = []
+    for t in toks:
+        t = re.sub(r"^\d+[\s\u3000]+(?=[가-힣A-Za-z])", "", t)
+        if t == "없음" and fixed and fixed[-1] == "정답":
+            fixed[-1] = "정답없음"
+            continue
+        fixed.append(t)
+    toks = fixed
     nums = {int(m.group(1)) for t in toks if (m := re.fullmatch(r"(\d{1,2})번", t))}
     nums |= {int(t) for t, u in zip(toks, toks[1:]) if u == "번" and t.isdigit()}  # '1' '번' 으로 나뉜 머리줄
     toks = [t for t in toks if t != "번"]
     if not nums:
         return []
     sizes = sorted({max(nums), 25, 20}, reverse=True)
-    ans_re = re.compile(r"[1-5](\s*,\s*[1-5])*|전항.*|모두.*")
+    ans_re = re.compile(r"[1-5](\s*,\s*[1-5])*|전항.*|모두.*|정답없음")
     out: list[dict] = []
     name: list[str] = []  # 과목명 칸이 두 줄로 나뉘기도 한다 ('정보' + '보호론')
     subject, i = None, 0

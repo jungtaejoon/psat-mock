@@ -11,28 +11,47 @@ interface Stat {
   papers: number;
   questions: number;
   explained: number;
+  text: number;
   from: number;
   to: number;
 }
 
+const CAT_TONE: Record<string, string> = {
+  공무원: "t1",
+  "부동산·안전": "t2",
+  "법률·행정·경영": "t3",
+  "보건·복지·교육": "t4",
+  "문화·관광·물류": "t5",
+};
+
 function ExamCard({ exam, stat }: { exam: ExamDef; stat?: Stat }) {
   const live = exam.status === "live" && !!stat;
+  const initial = exam.name.replace(/[0-9급\s]/g, "").slice(0, 1) || exam.name.slice(0, 1);
   const body = (
     <>
-      <span className="ex-name">{exam.name}</span>
-      <span className="ex-desc">{exam.desc}</span>
-      {live ? (
-        <span className="ex-stat">
-          {stat.from}–{stat.to} · {stat.questions.toLocaleString()}문항
-          {stat.explained >= stat.questions
-            ? " · 전 문항 해설"
-            : stat.explained > 0
-              ? ` · 해설 ${Math.round((stat.explained / stat.questions) * 100)}%`
-              : ""}
-        </span>
-      ) : (
-        <span className="ex-soon">준비 중</span>
-      )}
+      <span className={`ex-mark ${CAT_TONE[exam.category] ?? "t1"}`} aria-hidden="true">
+        {exam.id === "psat" ? "P" : /^\d/.test(exam.name) ? exam.name.match(/^\d+/)![0] : initial}
+      </span>
+      <span className="ex-main">
+        <span className="ex-name">{exam.name}</span>
+        <span className="ex-desc">{exam.desc}</span>
+        {live ? (
+          <span className="ex-meta">
+            <span>
+              {stat.from}–{stat.to}
+            </span>
+            <span>{stat.questions.toLocaleString()}문항</span>
+            {stat.text >= stat.questions * 0.5 && <span className="tag">텍스트</span>}
+            {stat.explained > 0 && (
+              <span className="tag ok">
+                해설{stat.explained >= stat.questions ? "" : ` ${Math.round((stat.explained / stat.questions) * 100)}%`}
+              </span>
+            )}
+          </span>
+        ) : (
+          <span className="ex-soon">준비 중</span>
+        )}
+      </span>
     </>
   );
   return live ? (
@@ -50,6 +69,8 @@ function ExamCard({ exam, stat }: { exam: ExamDef; stat?: Stat }) {
   );
 }
 
+const POPULAR = ["gong9", "psat", "realtor", "social1", "gong7"];
+
 export default function Hub() {
   const [papers, setPapers] = useState<PaperMeta[] | null>(null);
   const [q, setQ] = useState("");
@@ -65,12 +86,14 @@ export default function Hub() {
         papers: 0,
         questions: 0,
         explained: 0,
+        text: 0,
         from: p.year,
         to: p.year,
       };
       s.papers++;
       s.questions += p.count;
       s.explained += p.explained ?? 0;
+      s.text += p.text ?? 0;
       s.from = Math.min(s.from, p.year);
       s.to = Math.max(s.to, p.year);
       m.set(id, s);
@@ -95,24 +118,64 @@ export default function Hub() {
     );
   const recent = listSessions().slice(0, 3);
 
+  const liveExams = EXAMS.filter((e) => e.status === "live" && stats.has(e.id));
+  const paperCount = papers?.length ?? 0;
+
   return (
     <div className="home-wrap">
       <div className="home">
-        <header className="hero">
-          <h1>기출 모의고사 alltests</h1>
-          <p>
-            공무원·자격증 시험 기출문제를 실제 시험처럼 풀고, 문항마다 해설로
-            복습하세요. 타이머·답안지 실전 모드, 랜덤 모의고사, 오답노트를
-            무료로 씁니다.
-            {total > 0 && (
-              <>
-                <br />
-                <strong>
-                  지금 {total.toLocaleString()}문항 · 시험은 계속 늘어나요
-                </strong>
-              </>
-            )}
+        <header className="hub-hero">
+          <p className="eyebrow">공무원 · PSAT · 국가전문자격</p>
+          <h1>
+            기출문제, <em>실제 시험처럼</em> 풀고
+            <br />
+            해설로 복습하세요
+          </h1>
+          <p className="lede">
+            타이머와 OMR 답안지로 실전처럼 풀고, 공식 정답으로 바로 채점합니다. 문제는 원본 PDF 그대로 또는 읽기 쉬운 텍스트로 볼 수 있어요. 모두 무료입니다.
           </p>
+          <label className="hub-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M20 20l-4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <input
+              type="search"
+              placeholder="시험 이름 검색 (예: 9급, 공인중개사)"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              aria-label="시험 찾기"
+            />
+          </label>
+          <div className="quick">
+            {POPULAR.map((id) => getExam(id))
+              .filter((e): e is ExamDef => !!e && stats.has(e.id))
+              .map((e) => (
+                <button key={e.id} type="button" className="chip" onClick={() => navigate(`/x/${e.id}`)}>
+                  {e.name}
+                </button>
+              ))}
+          </div>
+          {total > 0 && (
+            <dl className="hub-stats">
+              <div>
+                <dt>시험</dt>
+                <dd>{liveExams.length}</dd>
+              </div>
+              <div>
+                <dt>문제지</dt>
+                <dd>{paperCount.toLocaleString()}</dd>
+              </div>
+              <div>
+                <dt>문항</dt>
+                <dd>{total.toLocaleString()}</dd>
+              </div>
+              <div>
+                <dt>이용료</dt>
+                <dd>무료</dd>
+              </div>
+            </dl>
+          )}
         </header>
 
         {recent.length > 0 && (
@@ -122,20 +185,19 @@ export default function Hub() {
               {recent.map((s) => (
                 <li key={s.id}>
                   <button
-                    className="link"
-                    onClick={() =>
-                      navigate(
-                        s.finishedAt ? `/result/${s.id}` : `/exam/${s.id}`,
-                      )
-                    }
+                    className="recent-card"
+                    onClick={() => navigate(s.finishedAt ? `/result/${s.id}` : `/exam/${s.id}`)}
                   >
                     <span className="h-title">{s.title}</span>
                     <span className="muted">
                       {getExam(s.exam ?? "psat")?.name} ·{" "}
-                      {s.finishedAt
-                        ? "채점 완료"
-                        : `진행 중 ${Object.keys(s.answers).length}/${s.items.length}`}
+                      {s.finishedAt ? "채점 완료" : `진행 중 ${Object.keys(s.answers).length}/${s.items.length}`}
                     </span>
+                    {!s.finishedAt && (
+                      <span className="bar" aria-hidden="true">
+                        <span style={{ width: `${(Object.keys(s.answers).length / s.items.length) * 100}%` }} />
+                      </span>
+                    )}
                   </button>
                 </li>
               ))}
@@ -143,27 +205,19 @@ export default function Hub() {
           </section>
         )}
 
-        <input
-          className="ex-search"
-          type="search"
-          placeholder="시험 이름으로 찾기 (예: PSAT, 공인중개사)"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          aria-label="시험 찾기"
-        />
-
         <div className="ad-inline">
           <SlopAd />
         </div>
 
         {CATEGORIES.map((cat) => {
-          const list = sorted(
-            EXAMS.filter((e) => e.category === cat && match(e)),
-          );
+          const list = sorted(EXAMS.filter((e) => e.category === cat && match(e)));
           if (!list.length) return null;
           return (
-            <section key={cat} className="ex-cat">
-              <h2>{cat}</h2>
+            <section key={cat} className="ex-cat" id={`cat-${cat}`}>
+              <h2>
+                {cat}
+                <span className="count">{list.filter(isLive).length}개 시험</span>
+              </h2>
               <div className="ex-grid">
                 {list.map((e) => (
                   <ExamCard key={e.id} exam={e} stat={stats.get(e.id)} />
@@ -172,9 +226,7 @@ export default function Hub() {
             </section>
           );
         })}
-        {needle && !EXAMS.some(match) && (
-          <p className="muted empty">"{needle}"에 맞는 시험이 아직 없어요.</p>
-        )}
+        {needle && !EXAMS.some(match) && <p className="muted empty">"{needle}"에 맞는 시험이 아직 없어요.</p>}
       </div>
       <aside className="side-rail">
         <SlopAd />
