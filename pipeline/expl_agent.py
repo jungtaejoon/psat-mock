@@ -81,7 +81,7 @@ def prep(pid: str, out: Path) -> None:
         if t:
             stem = plain(t["stem"])
             for k, path in (t.get("figs") or {}).items():
-                stem = stem.replace(f'<img data-fig="{k}">', f"[그림: {DATA / path}]")
+                stem = re.sub(rf"<img[^>]*data-fig=['\"]{k}['\"][^>]*>", f"[그림: {DATA / path}]", stem)
             lines.append(stem)
             for i, c in enumerate(t.get("choices") or []):
                 lines.append(f"{CIRCLED[i]} {plain(c)}")
