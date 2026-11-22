@@ -213,7 +213,11 @@ def answer_table(pst_id: str) -> list[dict]:
             continue
         if "정답" not in "".join(toks[:8]):
             continue  # 문제지 첨부는 건너뛴다
-        out += [r for r in _rows(toks) if (r["subject"], r["booklet"]) not in {(x["subject"], x["booklet"]) for x in out}]
+        # 한 게시물에 정답표가 여럿일 수 있다 (2014 지방직: '지방7급 등' 표와 '방재안전직 9급' 표에 국어·영어·한국사가 모두 있다).
+        # 표 제목을 행에 남겨 두고, 같은 표의 PDF·HWP 중복만 거른다
+        title = next((t for t in toks[:8] if "정답" in t), "")
+        seen = {(x["subject"], x["booklet"], x["title"]) for x in out}
+        out += [dict(r, title=title) for r in _rows(toks) if (r["subject"], r["booklet"], title) not in seen]
     _table_cache[pst_id] = out
     return out
 
@@ -225,10 +229,32 @@ def answers_for(r: dict) -> tuple[list[list[int]] | None, bool]:
     if r.get("cfmtnAnswRlsPstId"):
         name = _norm_subject(r["sbjctNm"])
         bk = (r.get("bktpNm") or "").strip()
-        for row in answer_table(r["cfmtnAnswRlsPstId"]):
-            if row["subject"] == name and row["booklet"] == CIRC_NUM.get(bk, bk or row["booklet"]):
-                return row["answers"], True
+        rows = [row for row in answer_table(r["cfmtnAnswRlsPstId"]) if row["subject"] == name and row["booklet"] == CIRC_NUM.get(bk, bk or row["booklet"])]
+        if len({json.dumps(row["answers"]) for row in rows}) > 1:
+            # 같은 과목이 여러 정답표에 있으면 과목명 괄호의 급수('국어(지방9급)', '국어(한문포함)(지방7급등)')가 제목에 든 표를 고른다
+            grade = _grade(r["sbjctNm"])
+            rows = [row for row in rows if grade and grade in row["title"].replace(" ", "")]
+            if len(rows) != 1:
+                return None, False  # 어느 표인지 모르면 틀린 정답을 쓰느니 비워 둔다
+        if rows:
+            return rows[0]["answers"], True
     return None, False
+
+
+def _grade(sbjct_nm: str) -> str | None:
+    """'국어(한문포함)(지방7급등)' → '7급'"""
+    m = re.findall(r"\(([^()]*\d급[^()]*)\)", sbjct_nm)
+    g = re.search(r"\d급", m[-1]) if m else None
+    return g.group(0) if g else None
+
+
+# 같은 해·같은 시험에 이름이 같은 과목이 급수별로 따로 있으면(2014 지방직 국어·영어·한국사: 7급 등 / 9급) 주소가 겹친다.
+# 겹치면 급수를 주소와 과목명에 붙인다. 이미 공개된 주소는 그대로 둔다 (아래 과목은 급수 없는 주소를 계속 쓴다).
+KEEP_PLAIN_ID = {
+    "local-2014-34-국어": "국어(지방9급)",
+    "local-2014-34-영어": "영어(지방7급등)",
+    "local-2014-34-한국사": "한국사(지방7급등)",
+}
 
 
 def build(exam_id: str, only: str | None = None, rebuild: bool = False, since: int = 0) -> None:
@@ -238,10 +264,15 @@ def build(exam_id: str, only: str | None = None, rebuild: bool = False, since: i
     RAW.mkdir(parents=True, exist_ok=True)
     made, problems = 0, []
     for test_cd in exam["gosi"]:
-        for r in rows_of(test_cd):
+        all_rows = rows_of(test_cd)
+        names: dict[tuple, set] = {}
+        for r in all_rows:
+            names.setdefault((r["enfcYr"], re.sub(r"\(.*?\)", "", r["sbjctNm"]).strip()), set()).add(r["sbjctNm"])
+        for r in all_rows:
             if only and only not in r["sbjctNm"]:
                 continue
             subject = re.sub(r"\(.*?\)", "", r["sbjctNm"]).strip()
+            grade = _grade(r["sbjctNm"]) if len(names[(r["enfcYr"], subject)]) > 1 else None
             if subject.endswith("영역"):
                 continue  # 7급 PSAT(언어논리·자료해석·상황판단)은 PSAT 시험에 이미 있다
             year = int(r["enfcYr"])
@@ -249,6 +280,10 @@ def build(exam_id: str, only: str | None = None, rebuild: bool = False, since: i
                 continue
             slug = re.sub(r"[\s/·()]+", "", subject)
             pid = f"{exam_id}-{year}-{test_cd}-{slug}"
+            if grade:  # 급수만 다른 같은 이름 과목
+                subject = f"{subject}({grade})"
+                if KEEP_PLAIN_ID.get(pid) != r["sbjctNm"]:
+                    pid = f"{pid}-{grade}"
             if not rebuild and (OUT / "papers" / f"{pid}.json").exists():
                 continue
             if year < 2014 and exam.get("minYear", 2014) >= 2014:

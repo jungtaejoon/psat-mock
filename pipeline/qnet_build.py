@@ -34,6 +34,8 @@ def parse(text: str) -> dict:
     """제목/파일명에서 시험 구분 정보"""
     t = text.replace(" ", "")
     m_period = re.search(r"([1-4])교시", t)
+    if re.search(r"[1-4](?:[,~·][1-4])+교시", t):
+        m_period = None  # '1,2교시'·'1~4교시': 여러 교시가 한 파일에 있다 (교시별 쪽은 period_pages 로 고른다)
     m_book = re.search(r"([ABab])형", t)
     return dict(
         round="특별" if "특별" in t else ("정기" if "정기" in t else None),
@@ -140,6 +142,36 @@ def pick(cands: list[dict], entry: dict) -> dict | None:
     return same[0]
 
 
+def period_pages(path: Path, period: int) -> Path:
+    """한 PDF 에 여러 교시가 들어 있으면(관세사 2014·2018~2020 1차: 1·2교시 합본) 그 교시 쪽만 떼어 낸 PDF.
+    쪽 머리글·꼬리글의 'N교시' 로 교시를 가른다. 교시가 하나뿐이거나 머리글·꼬리글이 없으면(그림 PDF) 원본 그대로."""
+    import fitz
+
+    doc = fitz.open(path)
+    marks: list[int | None] = []
+    for page in doc:
+        r = page.rect
+        head = "".join(page.get_text(clip=fitz.Rect(0, y0, r.width, y1)) for y0, y1 in ((0, r.height * 0.12), (r.height * 0.88, r.height))).replace(" ", "")
+        m = re.findall(r"([1-4])교시", head)
+        marks.append(int(m[0]) if len(set(m)) == 1 else None)
+    found = [m for m in marks if m]
+    if len(set(found)) < 2 or period not in found:
+        return path
+    cur = found[0]
+    pages = []
+    for i, m in enumerate(marks):
+        cur = m or cur  # 표시 없는 쪽은 앞 쪽의 교시
+        if cur == period:
+            pages.append(i)
+    out = path.with_name(f"{path.stem}-{period}교시.pdf")
+    if not out.exists():
+        sub = fitz.open()
+        for i in pages:
+            sub.insert_pdf(doc, from_page=i, to_page=i)
+        sub.save(out, garbage=3, deflate=True)
+    return out
+
+
 def seg_range(path, n: int, choices: int, first: int, heads: list[str]):
     """문항 first..first+n-1 을 나눈다. 시험지 번호가 1부터 다시 시작하면 1부터 찾고 번호를 옮긴다"""
     try:
@@ -185,6 +217,7 @@ def build(exam_id: str, rebuild: bool = False) -> None:
         if not f:
             problems.append(f"{tag}: 맞는 문제지 파일 없음")
             continue
+        f = dict(f, path=period_pages(f["path"], e["period"]))
         if not f.get("kogl"):
             problems.append(f"{tag}: 공공누리 표시 없음 → 보류")
             continue
