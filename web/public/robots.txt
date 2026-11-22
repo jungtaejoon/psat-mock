@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://alltests.ai.kr/sitemap.xml
+Sitemap: https://alltests.ai.kr/rss.xml
