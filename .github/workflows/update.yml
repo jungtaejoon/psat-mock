@@ -37,6 +37,8 @@ jobs:
       - run: python -m playwright install --with-deps chromium
 
       - name: 기출 수집
+        # 시행 기관 사이트가 잠시 안 열려도 나머지 단계(변환·해설·AI 모의고사·배포)는 진행
+        continue-on-error: true
         run: python pipeline/scrape.py
 
       - name: 문항 분할
@@ -44,6 +46,8 @@ jobs:
 
       # 큐넷 국가전문자격: 사이트에 연 시험(exams.json status live)만, 새 게시물만 받는다
       - name: 큐넷 기출 수집
+        # 시행 기관 사이트가 잠시 안 열려도 나머지 단계(변환·해설·AI 모의고사·배포)는 진행
+        continue-on-error: true
         run: |
           for gid in $(python -c "import json;print(' '.join(e['qnet'] for e in json.load(open('web/src/exams.json'))['exams'] if e.get('qnet') and e['status']=='live'))"); do
             python pipeline/qnet.py fetch "$gid"
@@ -52,6 +56,8 @@ jobs:
 
       # 공무원(9급·7급·지방직): 정답표가 글자 PDF 라 API 없이 읽는다. 최근 2년치만 확인
       - name: 공무원 기출 수집
+        # 시행 기관 사이트가 잠시 안 열려도 나머지 단계(변환·해설·AI 모의고사·배포)는 진행
+        continue-on-error: true
         run: |
           python pipeline/gosi.py --since=$(( $(date -u +%Y) - 1 ))
           python pipeline/build_index.py
