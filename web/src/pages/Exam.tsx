@@ -5,6 +5,7 @@ import { prefetchPdf } from "../pdf";
 import { getSession, saveSession } from "../store";
 import { navigate } from "../router";
 import { ExplanationPanel, QuestionImage } from "../QuestionView";
+import Talk from "../talk/Talk";
 import type { Paper, Session } from "../types";
 
 function fmt(sec: number) {
@@ -306,6 +307,8 @@ export default function Exam({ id }: { id: string }) {
                 </div>
               )}
               {revealed && <ExplanationPanel item={item!} answer={q.answer} />}
+              {/* 연습 모드에서만, 정답을 확인한 뒤에 (실전 모드에는 넣지 않는다) */}
+              {revealed && <Talk key={`${item!.paperId}:${item!.no}`} target={`q:${item!.paperId}:${item!.no}`} title="이 문제 이야기" />}
             </div>
           )}
 

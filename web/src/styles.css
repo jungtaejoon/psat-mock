@@ -1656,3 +1656,58 @@ button.tq-choice:focus-visible {
     filter: invert(0.92) hue-rotate(180deg);
   }
 }
+
+/* ---------- 수험생 이야기 (댓글·감정 반응) ---------- */
+.talk {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: left;
+}
+.talk.big { margin-top: 4px; }
+.talk-hidden { padding: 8px 0; border: 0; background: none; text-align: center; }
+.talk-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.talk-head h3 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: -0.02em; }
+.link-btn {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 2px;
+}
+.link-btn:hover { color: var(--ink); }
+.react-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.react {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 11px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font-size: 13px; font-weight: 600;
+}
+.react .e { font-size: 15px; line-height: 1; }
+.react b { font-weight: 800; color: var(--brand); }
+.react.on { border-color: var(--brand); background: var(--brand-soft); }
+.react:disabled { opacity: 0.6; cursor: default; }
+.composer textarea {
+  width: 100%; resize: vertical; min-height: 56px; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);
+  font: inherit; font-size: 14px; line-height: 1.5;
+}
+.composer-foot { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.mood-pick { display: flex; gap: 2px; }
+.mood-pick button {
+  width: 32px; height: 32px; border-radius: 8px; border: 1px solid transparent;
+  background: none; cursor: pointer; font-size: 17px; filter: grayscale(0.6); opacity: 0.75;
+}
+.mood-pick button.on { border-color: var(--brand); background: var(--brand-soft); filter: none; opacity: 1; }
+.composer-foot .who { margin-left: auto; font-size: 12px; }
+.login-cta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; }
+.login-btns { display: flex; gap: 6px; }
+.btn.kakao { background: #fee500; border-color: #fee500; color: #191600; }
+.talk-msg { margin: 8px 0 0; font-size: 13px; color: var(--warn); }
+.talk-empty { margin: 12px 0 2px; font-size: 13px; }
+.comments { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 2px; }
+.comments li { padding: 10px 0; border-top: 1px solid var(--line); }
+.c-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.c-meta b { font-size: 13px; }
+.c-mood { padding: 1px 7px; border-radius: 999px; background: var(--bg); font-size: 11px; font-weight: 600; }
+.c-act { margin-left: auto; }
+.c-body { margin: 4px 0 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }

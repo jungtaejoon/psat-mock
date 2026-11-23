@@ -4,6 +4,7 @@ import { choicesOf, groupOf } from "../exams";
 import { getSession, newSession } from "../store";
 import { navigate } from "../router";
 import { ExplanationPanel, QuestionImage } from "../QuestionView";
+import Talk from "../talk/Talk";
 import { AdSlot } from "../monetization";
 import SlopAd from "../SlopAd";
 import type { Paper } from "../types";
@@ -148,6 +149,7 @@ export default function Result({ id }: { id: string }) {
                     choice={{ selected: r.mine, correct: r.q.answer }}
                   />
                   <ExplanationPanel item={r.ref} answer={r.q.answer} />
+                  <Talk target={`q:${r.ref.paperId}:${r.ref.no}`} title="이 문제 이야기" />
                 </div>
               )}
             </li>

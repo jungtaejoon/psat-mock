@@ -12,6 +12,7 @@
     "predev": "node scripts/copy-pdfjs.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
     "katex": "0.16.22",
     "pdfjs-dist": "4.10.38",
     "react": "^19.1.0",

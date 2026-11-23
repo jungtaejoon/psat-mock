@@ -1,5 +1,6 @@
 /** 시험 하나의 첫 화면: 연도별 기출 / 랜덤 모의고사 / 기록·오답노트 */
 import { useEffect, useMemo, useState } from "react";
+import Talk from "../talk/Talk";
 import { loadIndex, loadPaper } from "../data";
 import {
   deleteSession,
@@ -14,7 +15,7 @@ import SlopAd from "../SlopAd";
 import { examOf, groupOf, ordered, timeLimitOf, type ExamDef } from "../exams";
 import type { ItemRef, Mode, PaperMeta, Session } from "../types";
 
-type Tab = "year" | "random" | "history";
+type Tab = "year" | "random" | "history" | "talk";
 
 function ModeToggle({
   mode,
@@ -563,6 +564,7 @@ export default function ExamHome({ exam }: { exam: ExamDef }) {
                   ["year", "연도별 기출"],
                   ["random", "랜덤 모의고사"],
                   ["history", "기록·오답노트"],
+                  ["talk", "수험생 이야기"],
                 ] as [Tab, string][]
               ).map(([k, label]) => (
                 <button
@@ -580,7 +582,7 @@ export default function ExamHome({ exam }: { exam: ExamDef }) {
               <div className="skeleton tall" />
             ) : (
               <section className="panel">
-                {tab !== "history" && (
+                {tab !== "history" && tab !== "talk" && (
                   <ModeToggle mode={mode} setMode={setMode} />
                 )}
                 <div className="ad-inline">
@@ -594,6 +596,9 @@ export default function ExamHome({ exam }: { exam: ExamDef }) {
                 )}
                 {tab === "history" && (
                   <HistoryTab exam={exam} papers={papers} />
+                )}
+                {tab === "talk" && (
+                  <Talk key={exam.id} target={`x:${exam.id}`} title={`${exam.name} 수험생 이야기`} big />
                 )}
               </section>
             )}
