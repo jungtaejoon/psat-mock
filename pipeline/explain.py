@@ -195,6 +195,12 @@ def submit(client: anthropic.Anthropic, limit: int | None, use_queue: bool = Fal
         n_new = max(int(left // per_q), 0)
         n_old = max(int((left - reserve) // per_q), 0)
         print(f"해설 예산: 남은 ${left:.2f}, 문항당 약 ${per_q:.3f} → 새 기출 최대 {n_new}건, 그 밖 최대 {n_old}건")
+        if (st.get("usage") or {}).get("count", 0) < 50:
+            # 문항당 비용을 아직 실측하지 못했으면 시범 100건만 (결과를 받아 실측한 뒤 늘린다)
+            if st["pending"]:
+                print("시범 배치 결과를 기다리는 중 — 문항당 비용을 실측한 뒤 제출")
+                return
+            n_new, n_old = min(n_new, 100), min(n_old, 100)
         if limit:
             n_new, n_old = min(n_new, limit), min(n_old, limit)
         if n_new <= 0:
