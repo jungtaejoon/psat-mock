@@ -21,7 +21,7 @@ CIRCLED = "①②③④⑤"
 MODEL_TAG = "claude-opus-5-5 (agent)"
 
 # 수요가 큰 시험부터
-PRIORITY = ["gong9", "realtor", "social1", "gong7", "housing", "local", "security", "labor", "appraiser",
+PRIORITY = ["gong9", "realtor", "social1", "gong7", "housing", "local", "security", "labor", "appraiser", "firemgr",
             "tax", "customs", "patent", "logistics", "tourguide", "youthcounsel"]
 
 
@@ -64,6 +64,10 @@ def prep(pid: str, out: Path) -> None:
     if tf.exists():
         text = json.loads(tf.read_text())
     done = existing(pid)
+    # API 배치(explain.py)로 이미 요청한 문항은 건너뛴다
+    st = ROOT / "data" / "explain_state.json"
+    api_pending = set(json.loads(st.read_text()).get("pending", [])) if st.exists() else set()
+    done = {**done, **{c.rsplit("__", 1)[1]: 1 for c in api_pending if c.rsplit("__", 1)[0] == pid}}
     out.mkdir(parents=True, exist_ok=True)
     pdf = None
     lines = [f"# {paper['year']}년 {' / '.join(paper['exams'])} {paper['subject']} ({pid})", ""]
