@@ -1,1 +1,1 @@
-{"month": "2026-11", "limitUsd": 30, "spentUsd": 1.16, "perQuestionUsd": 0.04, "total": 0, "tracks": []}
+{"month": "2026-11", "limitUsd": 30, "spentUsd": 1.29, "perQuestionUsd": 0.0322, "total": 40, "tracks": [{"exam": "gong9", "group": "국가직 9급", "subject": "국어", "paper": "ai-gong9-국가직9급-국어", "slots": 20, "choices": 4, "filled": 20, "active": 20}, {"exam": "gong9", "group": "국가직 9급", "subject": "영어", "paper": "ai-gong9-국가직9급-영어", "slots": 20, "choices": 4, "filled": 20, "active": 20}]}
