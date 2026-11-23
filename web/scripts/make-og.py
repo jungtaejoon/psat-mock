@@ -38,7 +38,7 @@ def og():
             else:
                 d.ellipse(box, outline="#3d4a70", width=3)
     x = 86
-    d.text((x, 172), "9급·7급 공무원 · PSAT · 자격증 16종", font=font(30, "sb"), fill=ACC)
+    d.text((x, 172), f"9급·7급 공무원 · PSAT · 자격증 등 {len({p.get('exam', 'psat') for p in ix})}개 시험", font=font(30, "sb"), fill=ACC)
     d.text((x, 222), "기출문제 무료 모의고사", font=font(76, "b"), fill=INK)
     d.text((x, 330), f"{min(years)}~{max(years)} 기출 {len(ix):,}과목 · {nq:,}문항", font=font(36, "m"), fill=SUB)
     cx = x

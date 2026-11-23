@@ -166,13 +166,14 @@
   {
    "id": "firemgr",
    "name": "소방시설관리사",
-   "desc": "1차 객관식",
+   "desc": "소방시설관리사 1차 (소방안전관리론·소방수리학·소방관련법령·위험물·소방시설 구조원리)",
    "category": "부동산·안전",
    "choices": 4,
    "secPerQuestion": 60,
    "source": "한국산업인력공단 큐넷(q-net.or.kr), 공공누리 제1유형",
-   "status": "soon",
-   "qnet": "34"
+   "status": "live",
+   "qnet": "34",
+   "seo": "firemgr"
   },
   {
    "id": "labor",

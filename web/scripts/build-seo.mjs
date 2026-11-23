@@ -148,7 +148,7 @@ function layout({ exam, title, description, canonical, body, jsonld, math = fals
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:url" content="${canonical}" />
-<meta property="og:image" content="${SITE}/og.png?v=3" />
+<meta property="og:image" content="${SITE}/og.png?v=4" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
