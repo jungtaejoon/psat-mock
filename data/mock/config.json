@@ -1,0 +1,7 @@
+{
+ "monthly_usd": 30,
+ "per_slot": 2,
+ "pilot": 40,
+ "exams": [],
+ "note": "AI 모의고사 문항 창고. monthly_usd: 매달(1일 KST 초기화) 새 문항 만들기·검토에 쓰는 API 한도. per_slot: 문항 번호(칸)마다 둘 후보 수 (클수록 사용자별 세트가 다양). pilot: 첫 실측 전 시범 분량. exams: 비우면 모든 시험, 넣으면 그 시험만."
+}

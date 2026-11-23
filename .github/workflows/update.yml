@@ -104,6 +104,9 @@ jobs:
           jwt
           # 예산(data/explain_budget.json) 안에서 새 기출 먼저, 그다음 우선순위 순. 수동 실행에서 explain_limit 를 주면 그 수 이하로
           python pipeline/explain.py submit --auto ${{ inputs.explain_limit && format('--limit {0}', inputs.explain_limit) || '' }}
+          # AI 모의고사 문항 창고: 평가 반영(나쁜 문항 빼기) → 만들기·검토 배치 수거 → 이번 달 예산(data/mock/config.json) 안에서 새로 제출
+          jwt
+          python pipeline/mock_gen.py run || true
 
       - name: 변경 사항 커밋
         run: |

@@ -65,6 +65,20 @@ export async function getReactions(target: string): Promise<ReactionCount[]> {
   return (data as { kind: Mood; n: number; mine: boolean }[]).map((r) => ({ kind: r.kind, n: Number(r.n), mine: !!r.mine }));
 }
 
+/** 임의 종류의 반응 (AI 문항 평가: good·bad·wrong_answer) */
+export async function getRawReactions(target: string): Promise<{ kind: string; n: number; mine: boolean }[]> {
+  const sb = await client();
+  const { data, error } = await sb.rpc("get_reactions", { p_targets: [target], p_device: deviceId() });
+  if (error) throw error;
+  return (data as { kind: string; n: number; mine: boolean }[]).map((r) => ({ ...r, n: Number(r.n), mine: !!r.mine }));
+}
+export async function toggleRaw(target: string, kind: string): Promise<boolean> {
+  const sb = await client();
+  const { data, error } = await sb.rpc("toggle_reaction", { p_target: target, p_kind: kind, p_device: deviceId() });
+  if (error) throw error;
+  return !!data;
+}
+
 export async function toggleReaction(target: string, kind: Mood): Promise<boolean> {
   const sb = await client();
   const { data, error } = await sb.rpc("toggle_reaction", { p_target: target, p_kind: kind, p_device: deviceId() });

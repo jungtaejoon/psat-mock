@@ -47,6 +47,9 @@ export interface Question {
   shared?: { regions: Region[]; text: string };
   /** 시험지에 인쇄된 원래 번호 (과목별로 나눈 문제지에서 no 와 다를 수 있음) */
   orig?: number;
+  /** AI 모의고사 문항: 기출의 몇 번 자리(칸)를 본떴는지, 평가가 나빠 빠졌는지(날짜) */
+  slot?: number;
+  retired?: string;
   /** 선택지 ①~⑤ 의 클릭 영역 (r: regions 의 몇 번째 영역인지, 좌표는 PDF 페이지 기준). 못 찾은 문항은 없음 */
   choices?: ChoiceBox[];
 }
@@ -63,6 +66,8 @@ export interface ChoiceBox {
 
 export interface Paper extends Omit<PaperMeta, "count"> {
   booklet?: string;
+  /** AI 모의고사 문항 창고 (그림 없이 글자로만 보여 준다) */
+  ai?: boolean;
   /** 문제 PDF 파일 id (여러 과목 문제지가 한 PDF 를 같이 쓸 때). 없으면 문제지 id */
   pdf?: string;
   width: number;

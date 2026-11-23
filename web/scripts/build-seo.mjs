@@ -480,7 +480,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
       body: `<nav class="crumb"><a href="/">올테스트</a> › ${esc(exam.name)} 기출</nav>
 <h1>${esc(exam.name)} 기출문제 정답·해설 (${minY}~${maxY})</h1>
 <p class="lead">문제지 ${papers.length}개 · ${total.toLocaleString()}문항 · 문항마다 AI 해설</p>
-<div class="cta"><a class="btn" href="/#/x/${exam.id}">실전 모의고사 풀기</a><a class="btn ghost" href="/#/x/${exam.id}">랜덤 모의고사 만들기</a></div>
+<div class="cta"><a class="btn" href="/#/x/${exam.id}">실전 모의고사 풀기</a><a class="btn ghost" href="/#/x/${exam.id}">기출 섞어 풀기</a></div>
 <section class="card"><h2>과목별 기출문제 모음</h2><div class="chips">${subjLinks.join("")}</div></section>
 ${hubSections}`,
     }),

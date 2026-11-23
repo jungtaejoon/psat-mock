@@ -6,6 +6,7 @@ import { getSession, saveSession } from "../store";
 import { navigate } from "../router";
 import { ExplanationPanel, QuestionImage } from "../QuestionView";
 import Talk from "../talk/Talk";
+import AiFeedback, { isAiItem } from "../talk/AiFeedback";
 import type { Paper, Session } from "../types";
 
 function fmt(sec: number) {
@@ -229,7 +230,7 @@ export default function Exam({ id }: { id: string }) {
             </span>
             {paper && (
               <span className="q-src">
-                {paper.year} {groupOf(paper)} {paper.subject} {q?.orig ?? item!.no}
+                {paper.ai ? `AI 모의고사 ${groupOf(paper)} ${paper.subject} ${q?.slot ?? ""}` : `${paper.year} ${groupOf(paper)} ${paper.subject} ${q?.orig ?? item!.no}`}
                 번{!paper.answersFinal && " (가답안)"}
               </span>
             )}
@@ -308,6 +309,7 @@ export default function Exam({ id }: { id: string }) {
               )}
               {revealed && <ExplanationPanel item={item!} answer={q.answer} />}
               {/* 연습 모드에서만, 정답을 확인한 뒤에 (실전 모드에는 넣지 않는다) */}
+              {revealed && isAiItem(item!.paperId) && <AiFeedback paperId={item!.paperId} no={item!.no} />}
               {revealed && <Talk key={`${item!.paperId}:${item!.no}`} target={`q:${item!.paperId}:${item!.no}`} title="이 문제 이야기" />}
             </div>
           )}

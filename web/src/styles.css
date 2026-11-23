@@ -1728,3 +1728,14 @@ button.tq-choice:focus-visible {
 .year-talk.on { border-color: var(--brand); background: var(--brand-soft); }
 .year-talk-box { flex-basis: 100%; }
 .year-talk-box .talk { margin-top: 4px; }
+
+/* ---------- AI 모의고사 ---------- */
+.ai-intro p { margin: 0 0 12px; font-size: 14px; line-height: 1.65; }
+.ai-budget { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; margin-bottom: 16px; }
+.ai-budget .bar { flex: 1 1 160px; max-width: 260px; height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.ai-budget .bar i { display: block; height: 100%; background: var(--brand); border-radius: inherit; }
+.ai-group h3 { margin: 14px 0 8px; font-size: 14px; }
+.ai-subjects { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.ai-note { margin-top: 14px; font-size: 12px; }
+.ai-fb { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 14px; font-size: 13px; }
+.ai-tag { padding: 2px 8px; border-radius: 6px; background: var(--brand-soft); color: var(--brand); font-weight: 800; font-size: 11px; }

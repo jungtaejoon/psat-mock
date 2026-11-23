@@ -1,6 +1,7 @@
-/** 시험 하나의 첫 화면: 연도별 기출 / 랜덤 모의고사 / 기록·오답노트 */
+/** 시험 하나의 첫 화면: 연도별 기출 / 기출 섞어 풀기 / AI 모의고사 / 기록·오답노트 / 수험생 이야기 */
 import { useEffect, useMemo, useState } from "react";
 import Talk, { useTalkVisible } from "../talk/Talk";
+import AiMockTab from "./AiMockTab";
 import { countComments, yearTarget } from "../talk/api";
 import { loadIndex, loadPaper } from "../data";
 import {
@@ -16,7 +17,7 @@ import SlopAd from "../SlopAd";
 import { examOf, groupOf, ordered, timeLimitOf, type ExamDef } from "../exams";
 import type { ItemRef, Mode, PaperMeta, Session } from "../types";
 
-type Tab = "year" | "random" | "history" | "talk";
+type Tab = "year" | "random" | "ai" | "history" | "talk";
 
 function ModeToggle({
   mode,
@@ -306,7 +307,7 @@ function RandomTab({
     setBusy(false);
     start(
       exam,
-      `${exam.name} 랜덤 ${subjects.join("·")} ${refs.length}문항`,
+      `${exam.name} 기출 섞어 풀기 ${subjects.join("·")} ${refs.length}문항`,
       mode,
       refs,
     );
@@ -460,7 +461,7 @@ function HistoryTab({ exam, papers }: { exam: ExamDef; papers: PaperMeta[] }) {
   if (!sessions.length)
     return (
       <p className="muted empty">
-        아직 푼 기록이 없습니다. 연도별 또는 랜덤 모의고사를 시작해 보세요.
+        아직 푼 기록이 없습니다. 연도별 기출이나 기출 섞어 풀기를 시작해 보세요.
       </p>
     );
   const subjOf = (id: string) => papers.find((p) => p.id === id)?.subject;
@@ -595,7 +596,8 @@ export default function ExamHome({ exam }: { exam: ExamDef }) {
               {(
                 [
                   ["year", "연도별 기출"],
-                  ["random", "랜덤 모의고사"],
+                  ["random", "기출 섞어 풀기"],
+                  ["ai", "AI 모의고사"],
                   ["history", "기록·오답노트"],
                   ["talk", "수험생 이야기"],
                 ] as [Tab, string][]
@@ -624,6 +626,7 @@ export default function ExamHome({ exam }: { exam: ExamDef }) {
                 {tab === "year" && (
                   <YearTab exam={exam} papers={papers} mode={mode} />
                 )}
+                {tab === "ai" && <AiMockTab exam={exam} mode={mode} />}
                 {tab === "random" && (
                   <RandomTab exam={exam} papers={papers} mode={mode} />
                 )}

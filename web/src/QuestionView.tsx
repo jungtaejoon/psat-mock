@@ -179,7 +179,7 @@ export function QuestionImage({
     );
   }, [item.paperId, item.no]);
 
-  const asText = !!(data?.text && mode === "text");
+  const asText = !!(data?.text && (mode === "text" || data.paper.ai));
   useEffect(() => {
     // 보기를 문제 위에서 직접 고를 수 있는지 (없으면 화면 아래 번호 버튼을 쓴다)
     if (data) onChoicesKnown?.(asText || !!data.q.choices);
@@ -200,7 +200,7 @@ export function QuestionImage({
     <div className="qimg" ref={box}>
       {error && <div className="render-error">{error}</div>}
       {!data && !error && <div className="skeleton" />}
-      {data?.text && (
+      {data?.text && !data.paper.ai && (
         <div className="view-toggle" role="group" aria-label="문제 보기 방식">
           <button type="button" aria-pressed={mode === "pdf"} onClick={() => setMode("pdf")}>
             원본 PDF
@@ -210,7 +210,7 @@ export function QuestionImage({
           </button>
         </div>
       )}
-      {data && asText && <TextQuestion item={data.text!} no={data.q.orig ?? data.q.no} choice={choice} />}
+      {data && asText && <TextQuestion item={data.text!} no={data.q.orig ?? data.q.slot ?? data.q.no} choice={choice} />}
       {data && !asText && width > 0 && (
         <>
           {data.q.shared && (

@@ -5,6 +5,7 @@ import { getSession, newSession } from "../store";
 import { navigate } from "../router";
 import { ExplanationPanel, QuestionImage } from "../QuestionView";
 import Talk from "../talk/Talk";
+import AiFeedback, { isAiItem } from "../talk/AiFeedback";
 import { AdSlot } from "../monetization";
 import SlopAd from "../SlopAd";
 import type { Paper } from "../types";
@@ -134,8 +135,9 @@ export default function Result({ id }: { id: string }) {
                 <span className="mark">{r.ok ? "○" : "✕"}</span>
                 <span className="rn">문 {r.i + 1}</span>
                 <span className="muted src">
-                  {r.paper.year} {groupOf(r.paper)} {r.paper.subject}{" "}
-                  {r.q.orig ?? r.q.no}번
+                  {r.paper.ai
+                    ? `AI 모의고사 ${r.paper.subject} ${r.q.slot ?? ""}번`
+                    : `${r.paper.year} ${groupOf(r.paper)} ${r.paper.subject} ${r.q.orig ?? r.q.no}번`}
                 </span>
                 <span className="ans">
                   내 답 {r.mine ? CIRCLED[r.mine - 1] : "–"} · 정답{" "}
@@ -149,6 +151,7 @@ export default function Result({ id }: { id: string }) {
                     choice={{ selected: r.mine, correct: r.q.answer }}
                   />
                   <ExplanationPanel item={r.ref} answer={r.q.answer} />
+                  {isAiItem(r.ref.paperId) && <AiFeedback paperId={r.ref.paperId} no={r.ref.no} />}
                   <Talk target={`q:${r.ref.paperId}:${r.ref.no}`} title="이 문제 이야기" />
                 </div>
               )}
