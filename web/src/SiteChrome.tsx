@@ -30,7 +30,7 @@ export function SiteHeader() {
       <div className="site-head-in">
         <a className="brand" href="#/" onClick={(e) => (e.preventDefault(), go())}>
           <Logo />
-          <span className="brand-name">alltests</span>
+          <span className="brand-name">올테스트</span>
           <span className="brand-sub">기출 모의고사</span>
         </a>
         <nav className="site-nav" aria-label="시험 분류">
@@ -53,7 +53,7 @@ export function SiteFooter({ source }: { source?: string }) {
         <div className="foot-brand">
           <a className="brand" href="#/" onClick={(e) => (e.preventDefault(), navigate("/"))}>
             <Logo />
-            <span className="brand-name">alltests</span>
+            <span className="brand-name">올테스트</span>
           </a>
           <p>
             공무원·자격증 기출문제를 실제 시험처럼 풀고, 공식 정답과 문항별 해설로 복습하는 무료 모의고사입니다.

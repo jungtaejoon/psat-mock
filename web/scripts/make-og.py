@@ -51,7 +51,8 @@ def og():
     logo = fitz.open(PUB / "favicon.svg")[0].get_pixmap(matrix=fitz.Matrix(44 / 28, 44 / 28), alpha=True)
     li = Image.frombytes("RGBA", (logo.width, logo.height), logo.samples)
     im.paste(li, (x, 545), li)
-    d.text((x + 58, 551), "alltests.ai.kr", font=font(30, "b"), fill=ACC)
+    d.text((x + 58, 549), "올테스트", font=font(32, "b"), fill=INK)
+    d.text((x + 58 + d.textlength("올테스트", font=font(32, "b")) + 16, 554), "alltests.ai.kr", font=font(27, "m"), fill=ACC)
     im.save(PUB / "og.png", optimize=True)
 
 

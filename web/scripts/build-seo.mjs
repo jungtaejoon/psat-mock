@@ -144,11 +144,11 @@ function layout({ exam, title, description, canonical, body, jsonld, math = fals
 <meta name="description" content="${esc(description)}" />
 <link rel="canonical" href="${canonical}" />
 <meta property="og:type" content="article" />
-<meta property="og:site_name" content="alltests · 기출 모의고사" />
+<meta property="og:site_name" content="올테스트 · 기출 모의고사" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:url" content="${canonical}" />
-<meta property="og:image" content="${SITE}/og.png?v=2" />
+<meta property="og:image" content="${SITE}/og.png?v=3" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -185,10 +185,10 @@ ol.qc{list-style:none;padding:0;margin:6px 0 10px}ol.qc li{display:flex;gap:8px;
 </style>
 </head>
 <body>
-<header class="top"><div><a href="/"><svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="7" fill="#1f4fd8"/><circle cx="9" cy="10" r="3" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="19" cy="10" r="3.4" fill="#fff"/><circle cx="9" cy="19" r="3.4" fill="#fff"/><circle cx="19" cy="19" r="3" fill="none" stroke="#fff" stroke-width="1.6"/></svg>alltests</a><span>기출 모의고사</span><a class="go" href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체</a></div></header>
+<header class="top"><div><a href="/"><svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="7" fill="#1f4fd8"/><circle cx="9" cy="10" r="3" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="19" cy="10" r="3.4" fill="#fff"/><circle cx="9" cy="19" r="3.4" fill="#fff"/><circle cx="19" cy="19" r="3" fill="none" stroke="#fff" stroke-width="1.6"/></svg>올테스트</a><span>기출 모의고사</span><a class="go" href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체</a></div></header>
 <main>
 ${body}
-<footer>문제·정답 출처: ${esc(exam.source)}. 해설은 AI(Claude)가 작성한 것으로 공식 해설이 아니며 오류가 있을 수 있습니다. · <a href="/">alltests 홈</a> · <a href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체 목록</a></footer>
+<footer>문제·정답 출처: ${esc(exam.source)}. 해설은 AI(Claude)가 작성한 것으로 공식 해설이 아니며 오류가 있을 수 있습니다. · <a href="/">올테스트 홈</a> · <a href="/${exam.seo ?? exam.id}/">${esc(exam.name)} 기출 전체 목록</a></footer>
 </main>
 <script src="/track.js" defer></script>
 </body>
@@ -309,7 +309,7 @@ ${!t && spacedOk(raw) ? `<details><summary>문항 원문 텍스트</summary><pre
       )
       .join("");
 
-    const body = `<nav class="crumb"><a href="/">alltests</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › <a href="/${base}/s/${subjSlug(p.subject)}/">${esc(p.subject)}</a> › ${p.year}</nav>
+    const body = `<nav class="crumb"><a href="/">올테스트</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › <a href="/${base}/s/${subjSlug(p.subject)}/">${esc(p.subject)}</a> › ${p.year}</nav>
 <h1>${esc(p.title)}</h1>
 <p class="lead">${esc(p.exams.join(" · "))} · ${qs.length}문항${p.answersFinal ? "" : " · 정답 확정 전(가답안)"}</p>
 <div class="cta"><a class="btn" href="/#/start/${encodeURIComponent(p.id)}/exam">실전 모드로 풀기 (타이머·OMR)</a><a class="btn ghost" href="/#/start/${encodeURIComponent(p.id)}/practice">연습 모드로 풀기</a></div>
@@ -326,7 +326,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
             {
               "@type": "ListItem",
               position: 1,
-              name: "alltests",
+              name: "올테스트",
               item: `${SITE}/`,
             },
             {
@@ -350,7 +350,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
           isAccessibleForFree: true,
           provider: {
             "@type": "Organization",
-            name: "alltests",
+            name: "올테스트",
             url: `${SITE}/`,
           },
         },
@@ -363,7 +363,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
       path.join(dir, "index.html"),
       layout({
         exam,
-        title: `${p.title} | alltests`,
+        title: `${p.title} | 올테스트`,
         description: desc,
         canonical: url,
         body,
@@ -431,7 +431,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
       path.join(dir, "index.html"),
       layout({
         exam,
-        title: `${t} | alltests`,
+        title: `${t} | 올테스트`,
         description: d,
         canonical: url,
         jsonld: {
@@ -440,7 +440,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
             {
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "alltests", item: `${SITE}/` },
+                { "@type": "ListItem", position: 1, name: "올테스트", item: `${SITE}/` },
                 { "@type": "ListItem", position: 2, name: `${exam.name} 기출`, item: `${SITE}/${base}/` },
                 { "@type": "ListItem", position: 3, name: `${sb} 기출`, item: url },
               ],
@@ -448,7 +448,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
             { "@type": "CollectionPage", name: t, description: d, url, inLanguage: "ko" },
           ],
         },
-        body: `<nav class="crumb"><a href="/">alltests</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › ${esc(sb)}</nav>
+        body: `<nav class="crumb"><a href="/">올테스트</a> › <a href="/${base}/">${esc(exam.name)} 기출</a> › ${esc(sb)}</nav>
 <h1>${esc(t.replace(" 정답·해설", ""))}</h1>
 <p class="lead">${mine.length}회분 · ${n.toLocaleString()}문항 · 공식 정답과 문항별 AI 해설</p>
 <div class="cta"><a class="btn" href="/#/x/${exam.id}">${esc(exam.name)} 실전 모의고사 풀기</a></div>
@@ -459,7 +459,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
     urls.push({ loc: url, pri: "0.85", freq: "weekly" });
     subjLinks.push(`<a class="chip" href="/${base}/s/${subjSlug(sb)}/">${esc(sb)} <small>${mine.length}회</small></a>`);
   }
-  const hubTitle = `${exam.name} 기출문제 정답·해설 전체 목록 (${minY}~${maxY}) | alltests`;
+  const hubTitle = `${exam.name} 기출문제 정답·해설 전체 목록 (${minY}~${maxY}) | 올테스트`;
   const hubDesc = `${exam.desc} 기출 ${papers.length}개 문제지 ${total.toLocaleString()}문항의 정답표와 문항별 해설. ${subjOrder.join("·")}을 연도별로 보고 실제 시험처럼 풀어 보세요.`;
   fs.mkdirSync(path.join(DIST, base), { recursive: true });
   fs.writeFileSync(
@@ -477,7 +477,7 @@ ${related ? `<section><h2>같이 보면 좋은 기출</h2><div class="grid">${re
         url: `${SITE}/${base}/`,
         inLanguage: "ko",
       },
-      body: `<nav class="crumb"><a href="/">alltests</a> › ${esc(exam.name)} 기출</nav>
+      body: `<nav class="crumb"><a href="/">올테스트</a> › ${esc(exam.name)} 기출</nav>
 <h1>${esc(exam.name)} 기출문제 정답·해설 (${minY}~${maxY})</h1>
 <p class="lead">문제지 ${papers.length}개 · ${total.toLocaleString()}문항 · 문항마다 AI 해설</p>
 <div class="cta"><a class="btn" href="/#/x/${exam.id}">실전 모의고사 풀기</a><a class="btn ghost" href="/#/x/${exam.id}">랜덤 모의고사 만들기</a></div>
@@ -544,7 +544,7 @@ const examsHtml = cats
 // RSS (네이버 서치어드바이저 제출용): 최근 연도 문제지 페이지
 const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
-<title>alltests 기출문제 정답·해설</title>
+<title>올테스트 기출문제 정답·해설</title>
 <link>${SITE}/</link>
 <description>공무원·자격증 기출문제를 실제 시험처럼 풀고 문항별 해설로 복습하는 무료 모의고사</description>
 <language>ko</language>
