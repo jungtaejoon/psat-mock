@@ -164,5 +164,11 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
+      # GitHub 가 방금 올린 artifact 를 못 찾을 때가 있다("No artifacts named github-pages"): 30초 뒤 한 번 더
       - id: deploy
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+      - if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
