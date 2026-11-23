@@ -2,7 +2,7 @@
  * 수험생 이야기(댓글·감정 반응) — Supabase(alltests 프로젝트).
  * supabase-js 는 이 기능을 처음 쓸 때만 불러온다(첫 화면·시험 화면 번들에 넣지 않음).
  *
- * 대상(target): 시험 전체 "x:<examId>", 문항 "q:<paperId>:<no>"
+ * 대상(target): 시험 전체 "x:<examId>", 연도·회차 "y:<examId>:<계열>:<연도>", 문항 "q:<paperId>:<no>"
  * 로그인 없이: 반응·댓글 모두 기기 id(브라우저에 저장한 무작위 uuid)와 닉네임으로. 본인 글 삭제도 기기 id 로.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -96,6 +96,20 @@ export async function deleteComment(id: string): Promise<void> {
   const sb = await client();
   const { error } = await sb.rpc("delete_comment", { p_id: id, p_device: deviceId() });
   if (error) throw error;
+}
+
+/** 여러 대상의 댓글 수 (연도 목록의 💬 숫자) */
+export async function countComments(targets: string[]): Promise<Record<string, number>> {
+  if (!targets.length) return {};
+  const sb = await client();
+  const { data, error } = await sb.rpc("count_comments", { p_targets: targets });
+  if (error) throw error;
+  return Object.fromEntries((data as { target: string; n: number }[]).map((r) => [r.target, Number(r.n)]));
+}
+
+/** 연도·회차별 대상: 계열(정기·특별, 1차·2차, 시험 구분)까지 넣어 회차를 구분한다 */
+export function yearTarget(examId: string, group: string, year: number): string {
+  return `y:${examId}:${encodeURIComponent(group || "-")}:${year}`;
 }
 
 export async function reportComment(id: string): Promise<void> {

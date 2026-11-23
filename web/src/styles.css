@@ -1716,3 +1716,15 @@ button.tq-choice:focus-visible {
   background: var(--bg); color: var(--ink); font: inherit; font-size: 13px;
 }
 .composer-foot .btn.primary { margin-left: auto; }
+/* 연도·회차별 이야기 */
+.year-row { flex-wrap: wrap; }
+.year-row .subj-btns { flex: 1 1 0; min-width: 0; }
+.year-talk {
+  flex: none; display: inline-flex; align-items: center; gap: 3px;
+  min-width: 44px; height: 36px; padding: 0 8px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink); font-size: 14px;
+}
+.year-talk span { font-size: 12px; font-weight: 700; color: var(--brand); }
+.year-talk.on { border-color: var(--brand); background: var(--brand-soft); }
+.year-talk-box { flex-basis: 100%; }
+.year-talk-box .talk { margin-top: 4px; }

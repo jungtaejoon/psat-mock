@@ -1,6 +1,7 @@
 /** 시험 하나의 첫 화면: 연도별 기출 / 랜덤 모의고사 / 기록·오답노트 */
 import { useEffect, useMemo, useState } from "react";
-import Talk from "../talk/Talk";
+import Talk, { useTalkVisible } from "../talk/Talk";
+import { countComments, yearTarget } from "../talk/api";
 import { loadIndex, loadPaper } from "../data";
 import {
   deleteSession,
@@ -79,6 +80,10 @@ function YearTab({
     [exam, papers],
   );
   const [group, setGroup] = useState(groups[0]);
+  // 연도·회차별 이야기: 열어 둔 연도, 연도별 댓글 수
+  const [talkYear, setTalkYear] = useState<number | null>(null);
+  const [talkOn] = useTalkVisible();
+  const [talkCounts, setTalkCounts] = useState<Record<string, number>>({});
   const rows = useMemo(() => {
     const byYear = new Map<number, Record<string, PaperMeta>>();
     for (const p of papers) {
@@ -97,6 +102,14 @@ function YearTab({
   const picked = many ? (allCols.includes(pick) ? pick : allCols[0]) : "";
   const cols = many ? [picked] : allCols;
   const shownRows = many ? rows.filter(([, r]) => r[picked]) : rows;
+
+  const yearKeys = shownRows.map(([y]) => yearTarget(exam.id, group, y)).join("|");
+  useEffect(() => {
+    if (!talkOn || !yearKeys) return;
+    countComments(yearKeys.split("|"))
+      .then(setTalkCounts)
+      .catch(() => setTalkCounts({}));
+  }, [talkOn, yearKeys]);
 
   const startPaper = (p: PaperMeta) =>
     start(
@@ -193,6 +206,26 @@ function YearTab({
                 </button>
               )}
             </div>
+            {talkOn && (
+              <button
+                className={`year-talk ${talkYear === year ? "on" : ""}`}
+                onClick={() => setTalkYear(talkYear === year ? null : year)}
+                aria-expanded={talkYear === year}
+                title={`${year} ${group} 이야기`}
+              >
+                💬<span>{talkCounts[yearTarget(exam.id, group, year)] ?? ""}</span>
+              </button>
+            )}
+            {talkYear === year && (
+              <div className="year-talk-box">
+                <Talk
+                  key={yearTarget(exam.id, group, year)}
+                  target={yearTarget(exam.id, group, year)}
+                  title={`${year}년 ${group} 이야기`}
+                  hint={`${year}년 ${group} 시험 어땠나요? 체감 난이도, 합격선 예상, 과목별 소감을 남겨 주세요`}
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>

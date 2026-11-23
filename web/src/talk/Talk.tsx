@@ -58,7 +58,7 @@ function ago(iso: string): string {
   return new Date(iso).toLocaleDateString("ko-KR");
 }
 
-export default function Talk({ target, title = "수험생 이야기", big = false }: { target: string; title?: string; big?: boolean }) {
+export default function Talk({ target, title = "수험생 이야기", big = false, hint }: { target: string; title?: string; big?: boolean; hint?: string }) {
   const [visible, setVisible] = useTalkVisible();
   const [reacts, setReacts] = useState<ReactionCount[] | null>(null);
   const [comments, setComments] = useState<Comment[] | null>(null);
@@ -156,7 +156,7 @@ export default function Talk({ target, title = "수험생 이야기", big = fals
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value.slice(0, 1000))}
-          placeholder={big ? "이 시험에 대한 생각, 공부 팁, 응원 한마디를 남겨 주세요" : "이 문제 어땠나요? 풀이 팁이나 헷갈린 점을 남겨 주세요"}
+          placeholder={hint ?? (big ? "이 시험에 대한 생각, 공부 팁, 응원 한마디를 남겨 주세요" : "이 문제 어땠나요? 풀이 팁이나 헷갈린 점을 남겨 주세요")}
           rows={big ? 3 : 2}
         />
         <div className="composer-foot">
