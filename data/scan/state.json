@@ -1,116 +1,6 @@
 {
- "batches": [
-  "msgbatch_01BPcjNb1axehF6BmwAAeqYe"
- ],
- "ids": {
-  "s4c47c855485f6637ec40a6389b89fcb7eb5b1160": "firemgr-2018-1교시-|1|c",
-  "s9c44081cd58479435e1d402b51e339456c738b43": "firemgr-2018-1교시-|5|c",
-  "s5730a8453b23a80c580f623ca3d37eb4acbdebb1": "firemgr-2018-1교시-|13|c",
-  "sf050e188d81fed1d265ecc9fe4ffc29ba1dc68fc": "firemgr-2018-1교시-|14|c",
-  "s4cc69c3063593d5e69c27239e5a4f212bb788c54": "firemgr-2018-1교시-|15|c",
-  "se4c095a41fec006b5cf559382d3003379b16b759": "firemgr-2018-1교시-|17|c",
-  "sa422033ce18511aa7abd7a48608c3e91fe7b6130": "firemgr-2018-1교시-|18|c",
-  "s7113f151f7d63f99185cb26f4917b777ae0d8252": "firemgr-2018-1교시-|19|c",
-  "seae861c02e3e20558387985e55e7a6dbf22a59de": "firemgr-2018-1교시-|20|c",
-  "s99464da2acc8ca2df661ce1d1e61de09dc114723": "firemgr-2018-1교시-|22|c",
-  "s848dea8d52da982a541ceda76bd4efcac7d2dd0f": "firemgr-2018-1교시-|24|c",
-  "sb34c189fcdd153e1b71e2d5b0a1fe58f4275ad9a": "firemgr-2018-1교시-|26|c",
-  "s14b57dca2ca9d58bf1ac5e8e4192de5e558d40d0": "firemgr-2018-1교시-|28|c",
-  "s4b58b24770a0ce6cf3703ed3edb147512dd8e70e": "firemgr-2019-1교시-|1|c",
-  "s1c8747282847e9733ee6f8bc1b26b71e6db7f147": "firemgr-2019-1교시-|4|c",
-  "sde1e818e95c3995a8b98d4425531d88b00925db4": "firemgr-2019-1교시-|6|c",
-  "s833eeb8838d6656db8bcd2f5ac8d450085873b61": "firemgr-2019-1교시-|7|c",
-  "s1e28987f16c9bdb90d54c829d02513e5d0a3ef76": "firemgr-2019-1교시-|8|c",
-  "s59cb79251137a3fb3980dee15ccc74aa15fcd535": "firemgr-2019-1교시-|9|c",
-  "sfa69c6f0731a081af5b18e37c0287fccf38c4c3e": "firemgr-2019-1교시-|10|c",
-  "sba5c202018154528c7fd4b8f5f2f81d1b19ee380": "firemgr-2019-1교시-|11|c",
-  "s7db4daf03ad35c6bb51cd13d03041ed4092a2846": "firemgr-2019-1교시-|12|c",
-  "s3074f9e44f9f282a38e3791af7b2ef861ffc2d9c": "firemgr-2019-1교시-|14|c",
-  "sc0e7768153774dc7afc5d0ef51da902d677a91ab": "firemgr-2019-1교시-|15|c",
-  "s559bc91ffd151d10ade05294c4ec0d6adffe7b46": "firemgr-2019-1교시-|18|c",
-  "sc6b473aa5a67410e8abe64e0aa8581eb632f4809": "firemgr-2019-1교시-|19|c",
-  "sb959f47c1584d481993ac2ecadfaacedcde55410": "firemgr-2019-1교시-|23|c",
-  "sc8ac13b6ae28d64638aecf82426e95ad69470098": "firemgr-2019-1교시-|26|c",
-  "s887d77a64142d2d40bdf96da1b00ec912631acb3": "firemgr-2020-1교시-|1|c",
-  "se96364f74d2038499fc98d1863401fa60f8efaf5": "firemgr-2020-1교시-|2|c",
-  "scc934257b885ef38f02b24692b0ff2ba02179f34": "firemgr-2020-1교시-|6|c",
-  "s02fbaebfad0e777bb9681eb639c9ea4bde9bd87a": "firemgr-2020-1교시-|8|c",
-  "s37ae6aa02af96d03c7423988c05a0c893602c59e": "firemgr-2020-1교시-|9|c",
-  "s6a5005d9822dfac66a9cd6c1c6fb230bf457efd2": "firemgr-2020-1교시-|12|c",
-  "s8a141cf29ce6fb955a4c7688ead1f5647bd7d54b": "firemgr-2020-1교시-|13|c",
-  "s0289b5a93b30ce43166c4584ce80904db1ba7283": "firemgr-2020-1교시-|14|c",
-  "s06f29ac7c0472bf83962fb4939c8c783f6319025": "firemgr-2020-1교시-|15|c",
-  "sc043ee84a8a65d4a49c544d520834280738326d6": "firemgr-2020-1교시-|16|c",
-  "s5853ed63a50aaefc3b263c9ab241388dad88aaa0": "firemgr-2020-1교시-|19|c",
-  "se2b6a620cd85c4b1bd12092900cd64f6236028a6": "firemgr-2020-1교시-|20|c",
-  "s3ff09e1f23366dc7f87223b292189003e8b45d9e": "firemgr-2020-1교시-|21|c",
-  "s49d8e66d8cce854c936987e136a3c8645f8316c7": "firemgr-2020-1교시-|23|c",
-  "s42697c6f8e1345b72e49cb509623cd7b0903b3a7": "firemgr-2020-1교시-|24|c",
-  "s232aa4c20290725a0b033cef6fb702e9450cb07d": "firemgr-2020-1교시-|25|c",
-  "sd41b0444daaabb670104de55cd7b5941cd782bb1": "firemgr-2020-1교시-|26|c",
-  "se480936ab1e85d625ba1c4238d474587a2b0193f": "firemgr-2020-1교시-|27|c",
-  "s0cbbd607fda68962b43bfe8c9d07e7aaa57ebed5": "firemgr-2021-1교시-|1|c",
-  "s03e6bc33c663266db143e5fa5fd44b2da095b271": "firemgr-2021-1교시-|4|c",
-  "s257b6b6f35a98f2be66d549037d4c903e1c0b5d9": "firemgr-2021-1교시-|5|c",
-  "s87ac817e793c062f2799b41cd7e49e9554b8cfc1": "firemgr-2021-1교시-|6|c",
-  "safe9b24706b50e8f41612cee76741737f6f40129": "firemgr-2021-1교시-|7|c",
-  "sa85260430ab82345afd2b3f54df65fb2eff213ab": "firemgr-2021-1교시-|10|c",
-  "s774cd623f9a53f914bcbda922c0552810a898863": "firemgr-2021-1교시-|12|c",
-  "sef175de5d41dd24faf878b073713963b38e9b32a": "firemgr-2021-1교시-|13|c",
-  "seb2a12cfe1e912786ca770edc2136a6076e056ab": "firemgr-2021-1교시-|15|c",
-  "s7e3a5813cf002da29a867a578d163a7d8dbd21cf": "firemgr-2021-1교시-|17|c",
-  "s7e9f3f166e2b2e9c345293c7525a40a815967d5e": "firemgr-2021-1교시-|18|c",
-  "scf24427eca18de4ba5f8f5d1f621ee404c8d6955": "firemgr-2021-1교시-|19|c",
-  "s89227ce652688ab1d2fb72c9ac9597a449e845a1": "firemgr-2021-1교시-|20|c",
-  "s55294eedb1442d138eeee205007994b4185540f9": "firemgr-2021-1교시-|21|c",
-  "s29b386c8cd9dc9add70b5ceb6cd7a1401ec0433a": "firemgr-2021-1교시-|22|c",
-  "s2d86790c032c7ba5847799960bc8858ba53fcf61": "firemgr-2021-1교시-|23|c",
-  "sc451f627ac680f99ed76b88ae83fdb6a05eac783": "firemgr-2021-1교시-|28|c",
-  "s299e9a9c0579dbf4336067c2de5bafdb8bd559a5": "firemgr-2023-1교시-|1|c",
-  "s894be9e5ddcacfc5fae9f379563c850bcdbaf9e5": "firemgr-2023-1교시-|2|c",
-  "s5477f6323d0a0cd03ef0a49dffae8af4eee3f93b": "firemgr-2023-1교시-|4|c",
-  "s42421a2533fa761a8107f338c018667060ba6162": "firemgr-2023-1교시-|5|c",
-  "sc1a92e485d9c2d756b6a3ce7a6a120650bfe9ce5": "firemgr-2023-1교시-|7|c",
-  "sb2a86ca9f46b3011babb3f089804b8a298c898f6": "firemgr-2023-1교시-|8|c",
-  "sfbe6d74284ff870ff07055a7432dafeeea9c2a83": "firemgr-2023-1교시-|10|c",
-  "s9a235400170788ae4612e2241af7e5d8ef8940d9": "firemgr-2023-1교시-|14|c",
-  "s5780d66f8e82d9eb2c1eb9460d1b3de83aaeb08b": "firemgr-2023-1교시-|16|c",
-  "s094a3f8b6e1b71c39db222b0b820946a557a8338": "firemgr-2023-1교시-|18|c",
-  "s5a7529dc8fe6b424f1b679b53079d65c68e96a2d": "firemgr-2023-1교시-|19|c",
-  "sf4cc548770487e5ff2576ae2cb57a566f457a015": "firemgr-2023-1교시-|20|c",
-  "sec10831e62888b99c0e81c224f93ff62c20c9815": "firemgr-2023-1교시-|21|c",
-  "sa80342a15b92c9c721074fa9881ef33e78a997e9": "firemgr-2023-1교시-|22|c",
-  "s95ec2d6246c1553cbf91631bf206bb44838a2603": "firemgr-2023-1교시-|23|c",
-  "s55f0fb9cf140f5b649bccb329b9c21260ad65e90": "firemgr-2024-1교시-|1|c",
-  "s020ade92c46bac49de295a7edb7cef5d86c80df2": "firemgr-2024-1교시-|2|c",
-  "s18d4f0847b8dcffdd3489eeb8aab3378e418f08c": "firemgr-2024-1교시-|3|c",
-  "sb470a8e0f942a484528a9f61f4858409487bc806": "firemgr-2024-1교시-|4|c",
-  "s8993baf96712d66c52aa24d3570ceed30c0e8310": "firemgr-2024-1교시-|5|c",
-  "s0ecd53257be7fbf7c298ba680e6f6af5a4c8d435": "firemgr-2024-1교시-|8|c",
-  "s8238dc8d0caf59b5fc9a4d36f8dd837d5977aa08": "firemgr-2024-1교시-|9|c",
-  "sbbfb80d8950dfe8a3a1acfafc122ea3c903af9df": "firemgr-2024-1교시-|10|c",
-  "s05c863080ac9a7af1d3165a797877b3708320d25": "firemgr-2024-1교시-|12|c",
-  "s9df4eeec088e9c1e6de9d657e28f0085eedbbbe2": "firemgr-2024-1교시-|14|c",
-  "s0328e9b59dc15033bf47b07aaecaf1139b937ae9": "firemgr-2024-1교시-|20|c",
-  "s13afeafabb789645746cd7949330fae4bde8032a": "firemgr-2024-1교시-|21|c",
-  "se1f4821fd45faa9ebd59ea5bec9a2d6ec587e4c3": "firemgr-2024-1교시-|22|c",
-  "sdc1e2569b8d2d994eea2e61d3573c3c59bda5460": "firemgr-2024-1교시-|24|c",
-  "s84927ff3e0529376aa49e7f0fafa126ab52b297b": "firemgr-2024-1교시-|26|c",
-  "s91c8dd94e18244dc1f42de8cbcae7b846cf8973d": "firemgr-2024-1교시-|27|c",
-  "s5e7474b9a1aa9a00da55cc00fb9ceabffbfac362": "firemgr-2025-1교시-|2|c",
-  "s80180cef6b6e427d7438cea88317c21089ccce7b": "firemgr-2025-1교시-|3|c",
-  "sab450000e9f766526c141e95b2facaf571b45518": "firemgr-2025-1교시-|7|c",
-  "sebbe82417b3f9b949b703c61d5e494f9371d8546": "firemgr-2025-1교시-|10|c",
-  "s17d264c3410af18a002f50bb6efe8e7bc8ca43ad": "firemgr-2025-1교시-|13|c",
-  "s83515070b1653ee6ce1851bfe2991ad529dd70f6": "firemgr-2025-1교시-|15|c",
-  "sb076503c2e62ea22fc6a8ead3803bf6e7ca59573": "firemgr-2025-1교시-|18|c",
-  "s41b947e23ac5820d831f7e40fe01b703488fe43d": "firemgr-2025-1교시-|20|c",
-  "s64fa58ccca64142c1d0fe44eaae1378a1d1310ca": "firemgr-2025-1교시-|22|c",
-  "s4be5a76fde67ee2bd7a464efe7b1898ef3801d87": "firemgr-2025-1교시-|23|c",
-  "s35326ace59eaccbe21dab7ffa0082b9a4c808a2b": "firemgr-2025-1교시-|26|c",
-  "sedf9deaea69ea24de51be50a2b7e000b4f347973": "firemgr-2025-1교시-|27|c",
-  "saf9a99dd9c557843794b137dc85ea26e62b7d62c": "firemgr-2025-1교시-|29|c"
- },
+ "batches": [],
+ "ids": {},
  "reads": {
   "realtor-2025-2차-1교시-|7": {
    "a": [
@@ -62064,7 +61954,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.125,
+      0.93,
+      0.39
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.07,
+      0.41,
+      0.93,
+      0.555
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.07,
+      0.575,
+      0.93,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.07,
+      0.69,
+      0.93,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|2": {
    "b": [
@@ -62211,7 +62143,79 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.062,
+      0.93,
+      0.135
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.147,
+      0.93,
+      0.29
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.303,
+      0.93,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.388,
+      0.93,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.52,
+      0.93,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.62,
+      0.93,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.75,
+      0.93,
+      0.882
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|19": {
    "b": [
@@ -62318,7 +62322,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.07,
+      0.24,
+      0.94,
+      0.327
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.07,
+      0.343,
+      0.94,
+      0.635
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.07,
+      0.648,
+      0.94,
+      0.737
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.07,
+      0.752,
+      0.94,
+      0.893
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|2": {
    "a": [
@@ -62425,7 +62481,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.235,
+      0.94,
+      0.41
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.435,
+      0.94,
+      0.555
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.575,
+      0.94,
+      0.635
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.655,
+      0.94,
+      0.83
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|26": {
    "a": [
@@ -62512,7 +62620,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 113,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 114,
+     "box": [
+      0.07,
+      0.285,
+      0.94,
+      0.525
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 115,
+     "box": [
+      0.07,
+      0.535,
+      0.94,
+      0.76
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 116,
+     "box": [
+      0.07,
+      0.775,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|7": {
    "a": [
@@ -62639,7 +62789,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.175
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.19,
+      0.94,
+      0.305
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.325,
+      0.94,
+      0.435
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.07,
+      0.455,
+      0.94,
+      0.555
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.07,
+      0.575,
+      0.94,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.765,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|18": {
    "a": [
@@ -62766,7 +62978,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.07,
+      0.125,
+      0.95,
+      0.2
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.07,
+      0.215,
+      0.95,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 78,
+     "box": [
+      0.07,
+      0.39,
+      0.95,
+      0.485
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 79,
+     "box": [
+      0.07,
+      0.5,
+      0.95,
+      0.575
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 80,
+     "box": [
+      0.07,
+      0.59,
+      0.95,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.07,
+      0.715,
+      0.95,
+      0.895
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|27": {
    "a": [
@@ -63151,7 +63425,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.155
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.172,
+      0.93,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.07,
+      0.282,
+      0.93,
+      0.397
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.07,
+      0.412,
+      0.93,
+      0.575
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.592,
+      0.93,
+      0.74
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|13": {
    "a": [
@@ -63238,7 +63564,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.32
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.33,
+      0.94,
+      0.53
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.07,
+      0.54,
+      0.94,
+      0.75
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.07,
+      0.76,
+      0.94,
+      0.91
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|4": {
    "b": [
@@ -63623,7 +63991,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.065,
+      0.95,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 92,
+     "box": [
+      0.07,
+      0.235,
+      0.95,
+      0.405
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 93,
+     "box": [
+      0.07,
+      0.415,
+      0.95,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 94,
+     "box": [
+      0.07,
+      0.555,
+      0.95,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 95,
+     "box": [
+      0.07,
+      0.735,
+      0.95,
+      0.885
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|24": {
    "a": [
@@ -63882,7 +64302,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.06,
+      0.93,
+      0.28
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.07,
+      0.29,
+      0.93,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.58,
+      0.93,
+      0.74
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.07,
+      0.75,
+      0.93,
+      0.92
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|17": {
    "a": [
@@ -64055,7 +64517,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.235,
+      0.94,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.395,
+      0.94,
+      0.525
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.07,
+      0.545,
+      0.94,
+      0.815
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|21": {
    "b": [
@@ -64142,7 +64646,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 94,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.25
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 95,
+     "box": [
+      0.07,
+      0.27,
+      0.94,
+      0.53
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 96,
+     "box": [
+      0.07,
+      0.55,
+      0.94,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 97,
+     "box": [
+      0.07,
+      0.72,
+      0.94,
+      0.88
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|6": {
    "b": [
@@ -64269,7 +64815,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.07,
+      0.135,
+      0.93,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.07,
+      0.295,
+      0.93,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.4,
+      0.93,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.52,
+      0.93,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.07,
+      0.635,
+      0.93,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 31,
+     "box": [
+      0.07,
+      0.75,
+      0.93,
+      0.875
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|28": {
    "b": [
@@ -64462,7 +65070,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 92,
+     "box": [
+      0.07,
+      0.062,
+      0.93,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 93,
+     "box": [
+      0.07,
+      0.248,
+      0.93,
+      0.312
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 94,
+     "box": [
+      0.07,
+      0.328,
+      0.93,
+      0.497
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 95,
+     "box": [
+      0.07,
+      0.512,
+      0.93,
+      0.628
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 96,
+     "box": [
+      0.07,
+      0.647,
+      0.93,
+      0.898
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|18": {
    "b": [
@@ -64589,7 +65249,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.06,
+      0.065,
+      0.94,
+      0.135
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.06,
+      0.155,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.06,
+      0.33,
+      0.94,
+      0.48
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.06,
+      0.5,
+      0.94,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.06,
+      0.67,
+      0.94,
+      0.795
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.06,
+      0.815,
+      0.94,
+      0.89
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|6": {
    "a": [
@@ -64676,7 +65398,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.06,
+      0.125,
+      0.94,
+      0.2
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.06,
+      0.215,
+      0.94,
+      0.32
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.06,
+      0.33,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.06,
+      0.64,
+      0.94,
+      0.92
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|16": {
    "a": [
@@ -64763,7 +65527,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.065,
+      0.95,
+      0.272
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.287,
+      0.95,
+      0.435
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.449,
+      0.95,
+      0.627
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.07,
+      0.641,
+      0.95,
+      0.875
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|24": {
    "a": [
@@ -64870,7 +65676,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 105,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 106,
+     "box": [
+      0.07,
+      0.295,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 107,
+     "box": [
+      0.07,
+      0.445,
+      0.94,
+      0.59
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 108,
+     "box": [
+      0.07,
+      0.605,
+      0.94,
+      0.715
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 109,
+     "box": [
+      0.07,
+      0.73,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|23": {
    "a": [
@@ -64937,7 +65795,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 103,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 104,
+     "box": [
+      0.07,
+      0.32,
+      0.94,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 105,
+     "box": [
+      0.07,
+      0.67,
+      0.94,
+      0.82
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|24": {
    "a": [
@@ -65110,7 +66000,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.058,
+      0.93,
+      0.455
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.475,
+      0.93,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.745,
+      0.93,
+      0.885
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|7": {
    "b": [
@@ -65197,7 +66119,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 32,
+     "box": [
+      0.07,
+      0.06,
+      0.95,
+      0.29
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 33,
+     "box": [
+      0.07,
+      0.3,
+      0.95,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 34,
+     "box": [
+      0.07,
+      0.48,
+      0.95,
+      0.58
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 35,
+     "box": [
+      0.07,
+      0.6,
+      0.95,
+      0.8
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|17": {
    "b": [
@@ -65284,7 +66248,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.33
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.07,
+      0.34,
+      0.94,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.07,
+      0.57,
+      0.94,
+      0.75
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.07,
+      0.76,
+      0.94,
+      0.91
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|1": {
    "b": [
@@ -65391,7 +66397,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.125,
+      0.9,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.295,
+      0.9,
+      0.44
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.455,
+      0.94,
+      0.575
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.595,
+      0.9,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.75,
+      0.9,
+      0.855
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|16": {
    "a": [
@@ -65544,7 +66602,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.415,
+      0.94,
+      0.58
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.595,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|9": {
    "b": [
@@ -65843,7 +66933,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 71,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.07,
+      0.3,
+      0.94,
+      0.495
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.07,
+      0.51,
+      0.94,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.07,
+      0.715,
+      0.94,
+      0.795
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.07,
+      0.81,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|5": {
    "b": [
@@ -65950,7 +67092,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.25
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.26,
+      0.94,
+      0.57
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.07,
+      0.59,
+      0.94,
+      0.66
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.07,
+      0.68,
+      0.94,
+      0.77
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.07,
+      0.79,
+      0.94,
+      0.92
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|22": {
    "a": [
@@ -66103,7 +67297,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.27
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.29,
+      0.94,
+      0.39
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.07,
+      0.41,
+      0.94,
+      0.52
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.07,
+      0.54,
+      0.94,
+      0.76
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.07,
+      0.78,
+      0.94,
+      0.92
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|0": {
    "a": [],
@@ -66220,7 +67466,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.315
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.33,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.62,
+      0.94,
+      0.82
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|13": {
    "b": [
@@ -66307,7 +67585,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.05,
+      0.93,
+      0.22
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.07,
+      0.23,
+      0.93,
+      0.48
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.49,
+      0.93,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.07,
+      0.61,
+      0.93,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|30": {
    "a": [],
@@ -66418,7 +67738,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 112,
+     "box": [
+      0.06,
+      0.065,
+      0.95,
+      0.155
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 113,
+     "box": [
+      0.06,
+      0.165,
+      0.95,
+      0.245
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 114,
+     "box": [
+      0.06,
+      0.26,
+      0.95,
+      0.48
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 115,
+     "box": [
+      0.06,
+      0.5,
+      0.95,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 116,
+     "box": [
+      0.06,
+      0.74,
+      0.95,
+      0.905
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|14": {
    "a": [
@@ -66545,7 +67917,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.245,
+      0.94,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.335,
+      0.94,
+      0.445
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.455,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.61,
+      0.94,
+      0.79
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.8,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|16": {
    "b": [
@@ -66652,7 +68086,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.295
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.31,
+      0.94,
+      0.415
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.43,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.62,
+      0.94,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.75,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|17": {
    "a": [
@@ -66951,7 +68437,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 121,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.335
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 122,
+     "box": [
+      0.07,
+      0.345,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 123,
+     "box": [
+      0.07,
+      0.445,
+      0.94,
+      0.63
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 124,
+     "box": [
+      0.07,
+      0.645,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|7": {
    "b": [
@@ -67508,7 +69036,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 101,
+     "box": [
+      0.07,
+      0.125,
+      0.94,
+      0.382
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 102,
+     "box": [
+      0.07,
+      0.397,
+      0.94,
+      0.581
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 103,
+     "box": [
+      0.07,
+      0.595,
+      0.94,
+      0.822
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|25": {
    "a": [
@@ -67595,7 +69155,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 108,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.18
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 109,
+     "box": [
+      0.07,
+      0.19,
+      0.94,
+      0.38
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 110,
+     "box": [
+      0.07,
+      0.39,
+      0.94,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 111,
+     "box": [
+      0.07,
+      0.67,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|27": {
    "b": [
@@ -67748,7 +69350,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.06,
+      0.058,
+      0.94,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.06,
+      0.39,
+      0.94,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.06,
+      0.565,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|22": {
    "b": [
@@ -67855,7 +69489,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 96,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 97,
+     "box": [
+      0.07,
+      0.32,
+      0.94,
+      0.49
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 98,
+     "box": [
+      0.07,
+      0.5,
+      0.94,
+      0.63
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 99,
+     "box": [
+      0.07,
+      0.64,
+      0.94,
+      0.76
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 100,
+     "box": [
+      0.07,
+      0.77,
+      0.94,
+      0.93
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|25": {
    "b": [
@@ -68220,7 +69906,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.07,
+      0.055,
+      0.93,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.07,
+      0.21,
+      0.93,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.07,
+      0.435,
+      0.93,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.07,
+      0.56,
+      0.93,
+      0.69
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.07,
+      0.7,
+      0.93,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|11": {
    "b": [
@@ -68353,7 +70091,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.132,
+      0.94,
+      0.241
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.261,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.514,
+      0.94,
+      0.709
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.723,
+      0.89,
+      0.888
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|19": {
    "b": [
@@ -68460,7 +70240,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.06,
+      0.065,
+      0.94,
+      0.158
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.06,
+      0.172,
+      0.94,
+      0.327
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.06,
+      0.348,
+      0.94,
+      0.538
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.06,
+      0.56,
+      0.94,
+      0.712
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.06,
+      0.73,
+      0.94,
+      0.828
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|31": {
    "b": [],
@@ -69173,7 +71005,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 101,
+     "box": [
+      0.07,
+      0.125,
+      0.93,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 102,
+     "box": [
+      0.07,
+      0.31,
+      0.93,
+      0.53
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 103,
+     "box": [
+      0.07,
+      0.53,
+      0.93,
+      0.665
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 104,
+     "box": [
+      0.07,
+      0.68,
+      0.93,
+      0.87
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|11": {
    "b": [
@@ -69366,7 +71240,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.222
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.232,
+      0.93,
+      0.322
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.335,
+      0.93,
+      0.468
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.478,
+      0.93,
+      0.632
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.07,
+      0.648,
+      0.93,
+      0.768
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.07,
+      0.776,
+      0.93,
+      0.868
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|8": {
    "b": [
@@ -69629,7 +71565,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.065,
+      0.95,
+      0.245
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.255,
+      0.95,
+      0.415
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.425,
+      0.95,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.07,
+      0.51,
+      0.95,
+      0.635
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 40,
+     "box": [
+      0.07,
+      0.655,
+      0.95,
+      0.795
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|9": {
    "b": [
@@ -69696,7 +71684,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.06,
+      0.06,
+      0.95,
+      0.37
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.06,
+      0.38,
+      0.95,
+      0.54
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.06,
+      0.56,
+      0.95,
+      0.78
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|8": {
    "b": [
@@ -69803,7 +71823,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.185
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.2,
+      0.94,
+      0.295
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.07,
+      0.31,
+      0.94,
+      0.46
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 40,
+     "box": [
+      0.07,
+      0.475,
+      0.94,
+      0.63
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.07,
+      0.645,
+      0.94,
+      0.84
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|5": {
    "a": [
@@ -69910,7 +71982,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.062,
+      0.93,
+      0.222
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.232,
+      0.93,
+      0.396
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.07,
+      0.408,
+      0.93,
+      0.568
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.07,
+      0.58,
+      0.93,
+      0.742
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.07,
+      0.752,
+      0.93,
+      0.882
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|3": {
    "a": [
@@ -70129,7 +72253,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 121,
+     "box": [
+      0.06,
+      0.065,
+      0.93,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 122,
+     "box": [
+      0.06,
+      0.3,
+      0.93,
+      0.545
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 123,
+     "box": [
+      0.06,
+      0.555,
+      0.93,
+      0.775
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|2": {
    "b": [
@@ -70452,7 +72608,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.06,
+      0.131,
+      0.94,
+      0.236
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.06,
+      0.254,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.06,
+      0.447,
+      0.94,
+      0.585
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.06,
+      0.603,
+      0.94,
+      0.724
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 30,
+     "box": [
+      0.06,
+      0.742,
+      0.94,
+      0.867
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|30": {
    "b": [],
@@ -70563,7 +72771,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.225,
+      0.94,
+      0.485
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.495,
+      0.94,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.795
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.805,
+      0.94,
+      0.915
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|27": {
    "b": [
@@ -70630,7 +72890,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 117,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.355
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 118,
+     "box": [
+      0.07,
+      0.375,
+      0.94,
+      0.645
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 119,
+     "box": [
+      0.07,
+      0.66,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|12": {
    "a": [
@@ -70737,7 +73029,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.125,
+      0.93,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.07,
+      0.235,
+      0.93,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.07,
+      0.385,
+      0.93,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.07,
+      0.575,
+      0.93,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.755,
+      0.93,
+      0.905
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|3": {
    "b": [
@@ -70950,7 +73294,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 96,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.157
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 97,
+     "box": [
+      0.07,
+      0.172,
+      0.94,
+      0.337
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 98,
+     "box": [
+      0.07,
+      0.352,
+      0.94,
+      0.523
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 99,
+     "box": [
+      0.07,
+      0.538,
+      0.94,
+      0.693
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 100,
+     "box": [
+      0.07,
+      0.708,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|11": {
    "a": [
@@ -71143,7 +73539,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.25
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.26,
+      0.94,
+      0.34
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.35,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.51,
+      0.94,
+      0.68
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.69,
+      0.94,
+      0.8
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.81,
+      0.94,
+      0.94
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|14": {
    "b": [
@@ -71342,7 +73800,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 104,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 105,
+     "box": [
+      0.07,
+      0.39,
+      0.94,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 106,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.775
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 107,
+     "box": [
+      0.07,
+      0.785,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|1": {
    "a": [
@@ -71449,7 +73949,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.128,
+      0.94,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.252,
+      0.94,
+      0.318
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.335,
+      0.94,
+      0.428
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.445,
+      0.94,
+      0.718
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.738,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|20": {
    "a": [
@@ -71576,7 +74128,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.15
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.07,
+      0.165,
+      0.93,
+      0.25
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.27,
+      0.93,
+      0.34
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.355,
+      0.93,
+      0.46
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.48,
+      0.93,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.67,
+      0.93,
+      0.81
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|18": {
    "b": [
@@ -71683,7 +74297,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.07,
+      0.132,
+      0.93,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.07,
+      0.243,
+      0.93,
+      0.397
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 78,
+     "box": [
+      0.07,
+      0.405,
+      0.93,
+      0.468
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 79,
+     "box": [
+      0.07,
+      0.488,
+      0.93,
+      0.693
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 80,
+     "box": [
+      0.07,
+      0.713,
+      0.93,
+      0.822
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|20": {
    "b": [
@@ -71810,7 +74476,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.07,
+      0.05,
+      0.94,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.215,
+      0.94,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.315,
+      0.94,
+      0.41
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.42,
+      0.94,
+      0.52
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.53,
+      0.94,
+      0.705
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 92,
+     "box": [
+      0.07,
+      0.715,
+      0.94,
+      0.91
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|4": {
    "b": [
@@ -71917,7 +74645,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.056,
+      0.93,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.225,
+      0.93,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.41,
+      0.93,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.52,
+      0.93,
+      0.63
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.65,
+      0.93,
+      0.78
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|30": {
    "b": [],
@@ -72068,7 +74848,79 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.07,
+      0.06,
+      0.95,
+      0.15
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.17,
+      0.95,
+      0.26
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.28,
+      0.95,
+      0.44
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.46,
+      0.95,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.57,
+      0.95,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 92,
+     "box": [
+      0.07,
+      0.67,
+      0.95,
+      0.78
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 93,
+     "box": [
+      0.07,
+      0.8,
+      0.95,
+      0.89
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|23": {
    "b": [
@@ -72155,7 +75007,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 101,
+     "box": [
+      0.06,
+      0.135,
+      0.93,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 102,
+     "box": [
+      0.06,
+      0.325,
+      0.93,
+      0.54
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 103,
+     "box": [
+      0.06,
+      0.555,
+      0.93,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 104,
+     "box": [
+      0.06,
+      0.745,
+      0.93,
+      0.945
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|29": {
    "a": [],
@@ -72286,7 +75180,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.07,
+      0.065,
+      0.95,
+      0.17
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.07,
+      0.175,
+      0.95,
+      0.38
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.07,
+      0.395,
+      0.95,
+      0.465
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.07,
+      0.48,
+      0.95,
+      0.575
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.07,
+      0.59,
+      0.95,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.07,
+      0.76,
+      0.95,
+      0.895
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|1": {
    "a": [
@@ -72413,7 +75369,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.135,
+      0.93,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.295,
+      0.93,
+      0.39
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.405,
+      0.93,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.525,
+      0.93,
+      0.595
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.605,
+      0.93,
+      0.735
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.75,
+      0.93,
+      0.91
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|14": {
    "b": [
@@ -72500,7 +75518,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.29
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.31,
+      0.94,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.42,
+      0.94,
+      0.59
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.61,
+      0.94,
+      0.89
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|20": {
    "b": [
@@ -72607,7 +75667,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.07,
+      0.235,
+      0.93,
+      0.305
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.32,
+      0.93,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.51,
+      0.93,
+      0.74
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.75,
+      0.93,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|0": {
    "a": [],
@@ -72784,7 +75896,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 51,
+     "box": [
+      0.07,
+      0.135,
+      0.94,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 52,
+     "box": [
+      0.07,
+      0.3,
+      0.94,
+      0.505
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 53,
+     "box": [
+      0.07,
+      0.515,
+      0.94,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 54,
+     "box": [
+      0.07,
+      0.685,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|10": {
    "b": [
@@ -73021,7 +76175,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 59,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.205
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 60,
+     "box": [
+      0.07,
+      0.215,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.44,
+      0.94,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.715,
+      0.94,
+      0.835
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.845,
+      0.94,
+      0.945
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|15": {
    "a": [
@@ -73128,7 +76334,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.185
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.195,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.32,
+      0.94,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.525,
+      0.94,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.74,
+      0.94,
+      0.895
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|3": {
    "a": [
@@ -73325,7 +76583,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 114,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.268
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 115,
+     "box": [
+      0.07,
+      0.285,
+      0.94,
+      0.438
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 116,
+     "box": [
+      0.07,
+      0.455,
+      0.94,
+      0.643
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 117,
+     "box": [
+      0.07,
+      0.66,
+      0.94,
+      0.912
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|31": {
    "a": [],
@@ -73654,7 +76954,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.07,
+      0.285,
+      0.94,
+      0.405
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.07,
+      0.415,
+      0.94,
+      0.715
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.725,
+      0.94,
+      0.835
+     ]
+    }
+   ]
   },
   "firemgr-2023-1교시-|18": {
    "b": [
@@ -73761,7 +77103,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 76,
+     "box": [
+      0.07,
+      0.125,
+      0.94,
+      0.322
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 77,
+     "box": [
+      0.07,
+      0.322,
+      0.94,
+      0.428
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 78,
+     "box": [
+      0.07,
+      0.443,
+      0.94,
+      0.625
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 79,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.822
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 80,
+     "box": [
+      0.07,
+      0.838,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|4": {
    "b": [
@@ -73954,7 +77348,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.08,
+      0.055,
+      0.95,
+      0.135
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.08,
+      0.145,
+      0.95,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.08,
+      0.235,
+      0.95,
+      0.385
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.08,
+      0.395,
+      0.95,
+      0.655
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.08,
+      0.665,
+      0.95,
+      0.895
+     ]
+    }
+   ]
   },
   "firemgr-2021-1교시-|22": {
    "a": [
@@ -74041,7 +77487,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 97,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.245
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 98,
+     "box": [
+      0.07,
+      0.26,
+      0.94,
+      0.462
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 99,
+     "box": [
+      0.07,
+      0.48,
+      0.94,
+      0.648
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 100,
+     "box": [
+      0.07,
+      0.665,
+      0.94,
+      0.76
+     ]
+    }
+   ]
   },
   "firemgr-2020-1교시-|10": {
    "b": [
@@ -74280,7 +77768,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.135,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.325,
+      0.94,
+      0.47
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.48,
+      0.94,
+      0.63
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.645,
+      0.94,
+      0.76
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.77,
+      0.94,
+      0.915
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|11": {
    "a": [
@@ -74347,7 +77887,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.16
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.07,
+      0.18,
+      0.94,
+      0.37
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.375,
+      0.94,
+      0.65
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|15": {
    "a": [
@@ -74454,7 +78026,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 66,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 67,
+     "box": [
+      0.07,
+      0.235,
+      0.94,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 68,
+     "box": [
+      0.07,
+      0.385,
+      0.94,
+      0.665
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 69,
+     "box": [
+      0.07,
+      0.675,
+      0.94,
+      0.805
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 70,
+     "box": [
+      0.07,
+      0.815,
+      0.94,
+      0.9
+     ]
+    }
+   ]
   },
   "firemgr-2019-1교시-|13": {
    "a": [
@@ -74753,7 +78377,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 36,
+     "box": [
+      0.07,
+      0.05,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.32,
+      0.94,
+      0.51
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.52,
+      0.94,
+      0.64
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.07,
+      0.65,
+      0.94,
+      0.89
+     ]
+    }
+   ]
   },
   "firemgr-2018-1교시-|23": {
    "b": [
@@ -75052,7 +78718,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.15
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.16,
+      0.94,
+      0.31
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.32,
+      0.94,
+      0.47
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.48,
+      0.94,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.74,
+      0.94,
+      0.93
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|7": {
    "b": [
@@ -75139,7 +78857,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 26,
+     "box": [
+      0.07,
+      0.135,
+      0.94,
+      0.335
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 27,
+     "box": [
+      0.07,
+      0.345,
+      0.94,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 28,
+     "box": [
+      0.07,
+      0.51,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 29,
+     "box": [
+      0.07,
+      0.62,
+      0.94,
+      0.82
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|10": {
    "a": [
@@ -75226,7 +78986,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 47,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.235
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 48,
+     "box": [
+      0.07,
+      0.245,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 49,
+     "box": [
+      0.07,
+      0.445,
+      0.94,
+      0.715
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 50,
+     "box": [
+      0.07,
+      0.725,
+      0.94,
+      0.875
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|21": {
    "b": [
@@ -75333,7 +79135,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.065,
+      0.95,
+      0.255
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.275,
+      0.95,
+      0.455
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 92,
+     "box": [
+      0.07,
+      0.47,
+      0.95,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 93,
+     "box": [
+      0.07,
+      0.615,
+      0.95,
+      0.745
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 94,
+     "box": [
+      0.07,
+      0.762,
+      0.95,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|26": {
    "b": [
@@ -75420,7 +79274,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 110,
+     "box": [
+      0.06,
+      0.065,
+      0.94,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 111,
+     "box": [
+      0.06,
+      0.285,
+      0.94,
+      0.425
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 112,
+     "box": [
+      0.06,
+      0.435,
+      0.94,
+      0.58
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 113,
+     "box": [
+      0.06,
+      0.595,
+      0.94,
+      0.92
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|28": {
    "b": [
@@ -75805,7 +79701,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.162
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 86,
+     "box": [
+      0.07,
+      0.17,
+      0.94,
+      0.236
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 87,
+     "box": [
+      0.07,
+      0.25,
+      0.94,
+      0.398
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 88,
+     "box": [
+      0.07,
+      0.412,
+      0.94,
+      0.535
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 89,
+     "box": [
+      0.07,
+      0.548,
+      0.94,
+      0.795
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|22": {
    "a": [
@@ -75892,7 +79840,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 95,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.225
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 96,
+     "box": [
+      0.07,
+      0.24,
+      0.94,
+      0.58
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 97,
+     "box": [
+      0.07,
+      0.595,
+      0.94,
+      0.715
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 98,
+     "box": [
+      0.07,
+      0.73,
+      0.94,
+      0.915
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|10": {
    "b": [
@@ -76039,7 +80029,79 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 40,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.135
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.07,
+      0.145,
+      0.94,
+      0.295
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.07,
+      0.315,
+      0.94,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.07,
+      0.39,
+      0.94,
+      0.505
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.52,
+      0.94,
+      0.615
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.635,
+      0.94,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.735,
+      0.94,
+      0.805
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|15": {
    "a": [
@@ -76494,7 +80556,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 9,
+     "box": [
+      0.07,
+      0.06,
+      0.95,
+      0.24
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 10,
+     "box": [
+      0.07,
+      0.26,
+      0.95,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 11,
+     "box": [
+      0.07,
+      0.42,
+      0.95,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.07,
+      0.58,
+      0.95,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.75,
+      0.95,
+      0.91
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|3": {
    "a": [
@@ -76581,7 +80695,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 12,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.325
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 13,
+     "box": [
+      0.07,
+      0.345,
+      0.94,
+      0.49
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 14,
+     "box": [
+      0.07,
+      0.51,
+      0.94,
+      0.76
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 15,
+     "box": [
+      0.07,
+      0.775,
+      0.94,
+      0.935
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|0": {
    "a": [],
@@ -76672,7 +80828,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.065,
+      0.94,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.07,
+      0.305,
+      0.94,
+      0.47
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.49,
+      0.94,
+      0.68
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 58,
+     "box": [
+      0.07,
+      0.7,
+      0.94,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|4": {
    "b": [
@@ -76991,7 +81189,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 41,
+     "box": [
+      0.07,
+      0.06,
+      0.95,
+      0.16
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 42,
+     "box": [
+      0.07,
+      0.165,
+      0.95,
+      0.23
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 43,
+     "box": [
+      0.07,
+      0.245,
+      0.95,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 44,
+     "box": [
+      0.07,
+      0.41,
+      0.95,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 45,
+     "box": [
+      0.07,
+      0.51,
+      0.95,
+      0.67
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 46,
+     "box": [
+      0.07,
+      0.68,
+      0.95,
+      0.79
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|29": {
    "a": [
@@ -77230,7 +81490,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 119,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.288
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 120,
+     "box": [
+      0.07,
+      0.298,
+      0.94,
+      0.52
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 121,
+     "box": [
+      0.07,
+      0.53,
+      0.94,
+      0.737
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 122,
+     "box": [
+      0.07,
+      0.747,
+      0.94,
+      0.945
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|25": {
    "a": [
@@ -77641,7 +81943,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 90,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.155
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 91,
+     "box": [
+      0.07,
+      0.172,
+      0.93,
+      0.378
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 92,
+     "box": [
+      0.07,
+      0.395,
+      0.93,
+      0.605
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 93,
+     "box": [
+      0.07,
+      0.622,
+      0.93,
+      0.718
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 94,
+     "box": [
+      0.07,
+      0.735,
+      0.93,
+      0.805
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|12": {
    "b": [
@@ -77986,7 +82340,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 81,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.38
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 82,
+     "box": [
+      0.07,
+      0.39,
+      0.94,
+      0.48
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 83,
+     "box": [
+      0.07,
+      0.5,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 84,
+     "box": [
+      0.07,
+      0.61,
+      0.94,
+      0.72
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 85,
+     "box": [
+      0.07,
+      0.73,
+      0.94,
+      0.93
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|5": {
    "b": [
@@ -78199,7 +82605,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.06,
+      0.95,
+      0.17
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.18,
+      0.95,
+      0.29
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.3,
+      0.95,
+      0.42
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 7,
+     "box": [
+      0.07,
+      0.43,
+      0.95,
+      0.59
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 8,
+     "box": [
+      0.07,
+      0.6,
+      0.95,
+      0.71
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|13": {
    "a": [
@@ -78266,7 +82724,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 55,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.265
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 56,
+     "box": [
+      0.07,
+      0.285,
+      0.93,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 57,
+     "box": [
+      0.07,
+      0.585,
+      0.93,
+      0.785
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|13": {
    "a": [
@@ -78443,7 +82933,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 72,
+     "box": [
+      0.07,
+      0.07,
+      0.94,
+      0.3
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 73,
+     "box": [
+      0.07,
+      0.31,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 74,
+     "box": [
+      0.07,
+      0.44,
+      0.94,
+      0.56
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 75,
+     "box": [
+      0.07,
+      0.57,
+      0.94,
+      0.77
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|14": {
    "b": [
@@ -78768,7 +83300,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 37,
+     "box": [
+      0.07,
+      0.055,
+      0.94,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 38,
+     "box": [
+      0.07,
+      0.3,
+      0.94,
+      0.43
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 39,
+     "box": [
+      0.07,
+      0.45,
+      0.94,
+      0.73
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 40,
+     "box": [
+      0.07,
+      0.74,
+      0.94,
+      0.925
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|0": {
    "a": [],
@@ -78839,7 +83413,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 61,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.135
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 62,
+     "box": [
+      0.07,
+      0.15,
+      0.93,
+      0.4
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.41,
+      0.93,
+      0.79
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|30": {
    "a": [],
@@ -79056,7 +83662,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 21,
+     "box": [
+      0.07,
+      0.055,
+      0.95,
+      0.215
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 22,
+     "box": [
+      0.07,
+      0.225,
+      0.95,
+      0.375
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 23,
+     "box": [
+      0.07,
+      0.385,
+      0.95,
+      0.482
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 24,
+     "box": [
+      0.07,
+      0.495,
+      0.95,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 25,
+     "box": [
+      0.07,
+      0.685,
+      0.95,
+      0.825
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|27": {
    "b": [
@@ -79143,7 +83801,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 114,
+     "box": [
+      0.07,
+      0.06,
+      0.95,
+      0.17
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 115,
+     "box": [
+      0.07,
+      0.19,
+      0.95,
+      0.45
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 116,
+     "box": [
+      0.07,
+      0.46,
+      0.95,
+      0.65
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 117,
+     "box": [
+      0.07,
+      0.66,
+      0.95,
+      0.86
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|7": {
    "b": [
@@ -79396,7 +84096,69 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 1,
+     "box": [
+      0.07,
+      0.135,
+      0.93,
+      0.195
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 2,
+     "box": [
+      0.07,
+      0.208,
+      0.93,
+      0.298
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 3,
+     "box": [
+      0.07,
+      0.312,
+      0.93,
+      0.382
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 4,
+     "box": [
+      0.07,
+      0.395,
+      0.93,
+      0.568
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 5,
+     "box": [
+      0.07,
+      0.582,
+      0.93,
+      0.675
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 6,
+     "box": [
+      0.07,
+      0.688,
+      0.93,
+      0.868
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|24": {
    "a": [
@@ -79681,7 +84443,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 16,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.275
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 17,
+     "box": [
+      0.07,
+      0.295,
+      0.93,
+      0.445
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 18,
+     "box": [
+      0.07,
+      0.46,
+      0.93,
+      0.525
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 19,
+     "box": [
+      0.07,
+      0.545,
+      0.93,
+      0.7
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 20,
+     "box": [
+      0.07,
+      0.715,
+      0.93,
+      0.82
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|1": {
    "a": [
@@ -80052,7 +84866,59 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 109,
+     "box": [
+      0.07,
+      0.06,
+      0.94,
+      0.24
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 110,
+     "box": [
+      0.07,
+      0.25,
+      0.94,
+      0.42
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 111,
+     "box": [
+      0.07,
+      0.43,
+      0.94,
+      0.6
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 112,
+     "box": [
+      0.07,
+      0.61,
+      0.94,
+      0.74
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 113,
+     "box": [
+      0.07,
+      0.75,
+      0.94,
+      0.92
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|30": {
    "b": [
@@ -80357,7 +85223,39 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 63,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.305
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 64,
+     "box": [
+      0.07,
+      0.315,
+      0.93,
+      0.495
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 65,
+     "box": [
+      0.07,
+      0.505,
+      0.93,
+      0.795
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|26": {
    "a": [
@@ -80444,7 +85342,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 105,
+     "box": [
+      0.07,
+      0.07,
+      0.94,
+      0.16
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 106,
+     "box": [
+      0.07,
+      0.17,
+      0.94,
+      0.44
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 107,
+     "box": [
+      0.07,
+      0.46,
+      0.94,
+      0.61
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 108,
+     "box": [
+      0.07,
+      0.63,
+      0.94,
+      0.76
+     ]
+    }
+   ]
   },
   "firemgr-2024-1교시-|24": {
    "a": [
@@ -80531,7 +85471,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 101,
+     "box": [
+      0.07,
+      0.135,
+      0.93,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 102,
+     "box": [
+      0.07,
+      0.305,
+      0.93,
+      0.55
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 103,
+     "box": [
+      0.07,
+      0.57,
+      0.93,
+      0.725
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 104,
+     "box": [
+      0.07,
+      0.74,
+      0.93,
+      0.865
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|23": {
    "b": [
@@ -80618,7 +85600,49 @@
      ]
     }
    ],
-   "needs_sonnet": true
+   "needs_sonnet": true,
+   "c": [
+    {
+     "kind": "question",
+     "no": 95,
+     "box": [
+      0.07,
+      0.065,
+      0.93,
+      0.285
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 96,
+     "box": [
+      0.07,
+      0.3,
+      0.93,
+      0.5
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 97,
+     "box": [
+      0.07,
+      0.515,
+      0.93,
+      0.62
+     ]
+    },
+    {
+     "kind": "question",
+     "no": 98,
+     "box": [
+      0.07,
+      0.635,
+      0.93,
+      0.895
+     ]
+    }
+   ]
   },
   "firemgr-2025-1교시-|11": {
    "b": [
@@ -111804,6 +116828,5140 @@
      0.49,
      0.93,
      0.91
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|12": [
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.060000000000000005,
+     0.12200000000000001,
+     0.9400000000000001,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 52,
+    "box": [
+     0.060000000000000005,
+     0.39999999999999997,
+     0.9400000000000001,
+     0.5650000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 53,
+    "box": [
+     0.060000000000000005,
+     0.565,
+     0.9400000000000001,
+     0.685
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 54,
+    "box": [
+     0.060000000000000005,
+     0.6799999999999999,
+     0.9400000000000001,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|2": [
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.93,
+     0.14500000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.060000000000000005,
+     0.13,
+     0.93,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.060000000000000005,
+     0.293,
+     0.93,
+     0.385
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.060000000000000005,
+     0.378,
+     0.93,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.060000000000000005,
+     0.51,
+     0.93,
+     0.615
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.060000000000000005,
+     0.6,
+     0.93,
+     0.745
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.93,
+     0.892
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|19": [
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.060000000000000005,
+     0.045,
+     0.95,
+     0.23500000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.060000000000000005,
+     0.212,
+     0.95,
+     0.337
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.060000000000000005,
+     0.321,
+     0.95,
+     0.62
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.060000000000000005,
+     0.614,
+     0.95,
+     0.72
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.060000000000000005,
+     0.716,
+     0.95,
+     0.88
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|2": [
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.07,
+     0.065,
+     0.94,
+     0.215
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.07,
+     0.235,
+     0.94,
+     0.41
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.07,
+     0.435,
+     0.94,
+     0.555
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.07,
+     0.575,
+     0.94,
+     0.635
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.07,
+     0.655,
+     0.94,
+     0.83
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|26": [
+   {
+    "kind": "question",
+    "no": 113,
+    "box": [
+     0.049999999999999996,
+     0.04,
+     0.96,
+     0.28500000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 114,
+    "box": [
+     0.049999999999999996,
+     0.27,
+     0.96,
+     0.54
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 115,
+    "box": [
+     0.049999999999999996,
+     0.52,
+     0.96,
+     0.77
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 116,
+    "box": [
+     0.049999999999999996,
+     0.745,
+     0.96,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|7": [
+   {
+    "kind": "question",
+    "no": 31,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.188
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.060000000000000005,
+     0.173,
+     0.9400000000000001,
+     0.313
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.060000000000000005,
+     0.315,
+     0.9400000000000001,
+     0.445
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.060000000000000005,
+     0.445,
+     0.9400000000000001,
+     0.557
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.060000000000000005,
+     0.5569999999999999,
+     0.9400000000000001,
+     0.749
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.060000000000000005,
+     0.751,
+     0.9400000000000001,
+     0.856
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|18": [
+   {
+    "kind": "question",
+    "no": 76,
+    "box": [
+     0.060000000000000005,
+     0.12000000000000001,
+     0.9400000000000001,
+     0.21000000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 77,
+    "box": [
+     0.060000000000000005,
+     0.205,
+     0.9400000000000001,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 78,
+    "box": [
+     0.060000000000000005,
+     0.36,
+     0.9400000000000001,
+     0.494
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 79,
+    "box": [
+     0.060000000000000005,
+     0.475,
+     0.9400000000000001,
+     0.582
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 80,
+    "box": [
+     0.060000000000000005,
+     0.5579999999999999,
+     0.9400000000000001,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.060000000000000005,
+     0.705,
+     0.9400000000000001,
+     0.888
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|7": [
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.055,
+     0.055,
+     0.9400000000000001,
+     0.17500000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.055,
+     0.16199999999999998,
+     0.9400000000000001,
+     0.275
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.055,
+     0.27199999999999996,
+     0.9400000000000001,
+     0.40700000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.055,
+     0.40199999999999997,
+     0.9400000000000001,
+     0.585
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.055,
+     0.582,
+     0.9400000000000001,
+     0.75
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|13": [
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.062,
+     0.048,
+     0.94,
+     0.324
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.062,
+     0.312,
+     0.94,
+     0.541
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 58,
+    "box": [
+     0.062,
+     0.513,
+     0.94,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 59,
+    "box": [
+     0.062,
+     0.728,
+     0.94,
+     0.913
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|21": [
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.049999999999999996,
+     0.055,
+     0.96,
+     0.23
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 92,
+    "box": [
+     0.049999999999999996,
+     0.21,
+     0.96,
+     0.41000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 93,
+    "box": [
+     0.049999999999999996,
+     0.39999999999999997,
+     0.96,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 94,
+    "box": [
+     0.049999999999999996,
+     0.54,
+     0.96,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 95,
+    "box": [
+     0.049999999999999996,
+     0.69,
+     0.96,
+     0.895
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|13": [
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.29000000000000004
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.060000000000000005,
+     0.27999999999999997,
+     0.9400000000000001,
+     0.5700000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.060000000000000005,
+     0.57,
+     0.9400000000000001,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 58,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.9400000000000001,
+     0.93
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.06,
+     0.05,
+     0.94,
+     0.225
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 45,
+    "box": [
+     0.06,
+     0.22,
+     0.94,
+     0.385
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 46,
+    "box": [
+     0.06,
+     0.38,
+     0.94,
+     0.535
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 47,
+    "box": [
+     0.06,
+     0.535,
+     0.94,
+     0.815
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|21": [
+   {
+    "kind": "question",
+    "no": 94,
+    "box": [
+     0.07,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.28
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 95,
+    "box": [
+     0.07,
+     0.26,
+     0.9400000000000001,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 96,
+    "box": [
+     0.07,
+     0.54,
+     0.9400000000000001,
+     0.72
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 97,
+    "box": [
+     0.07,
+     0.71,
+     0.9400000000000001,
+     0.9
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|6": [
+   {
+    "kind": "question",
+    "no": 26,
+    "box": [
+     0.058,
+     0.12400000000000001,
+     0.9400000000000001,
+     0.28500000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.058,
+     0.285,
+     0.9400000000000001,
+     0.395
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.058,
+     0.386,
+     0.9400000000000001,
+     0.512
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.058,
+     0.51,
+     0.9400000000000001,
+     0.615
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.058,
+     0.611,
+     0.9400000000000001,
+     0.745
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 31,
+    "box": [
+     0.058,
+     0.735,
+     0.9400000000000001,
+     0.885
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|21": [
+   {
+    "kind": "question",
+    "no": 92,
+    "box": [
+     0.060000000000000005,
+     0.052,
+     0.9400000000000001,
+     0.25
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 93,
+    "box": [
+     0.060000000000000005,
+     0.238,
+     0.9400000000000001,
+     0.33
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 94,
+    "box": [
+     0.060000000000000005,
+     0.318,
+     0.9400000000000001,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 95,
+    "box": [
+     0.060000000000000005,
+     0.502,
+     0.9400000000000001,
+     0.64
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 96,
+    "box": [
+     0.060000000000000005,
+     0.637,
+     0.9400000000000001,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|18": [
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.065,
+     0.058,
+     0.9400000000000001,
+     0.132
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.065,
+     0.145,
+     0.9400000000000001,
+     0.317
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.065,
+     0.32,
+     0.9400000000000001,
+     0.492
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.065,
+     0.492,
+     0.9400000000000001,
+     0.667
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.065,
+     0.66,
+     0.9400000000000001,
+     0.805
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 86,
+    "box": [
+     0.065,
+     0.8049999999999999,
+     0.9400000000000001,
+     0.898
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|6": [
+   {
+    "kind": "question",
+    "no": 26,
+    "box": [
+     0.06,
+     0.12,
+     0.95,
+     0.2
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.06,
+     0.2,
+     0.95,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.06,
+     0.315,
+     0.95,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.06,
+     0.605,
+     0.95,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|16": [
+   {
+    "kind": "question",
+    "no": 68,
+    "box": [
+     0.049999999999999996,
+     0.055,
+     0.96,
+     0.28
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 69,
+    "box": [
+     0.049999999999999996,
+     0.27,
+     0.96,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 70,
+    "box": [
+     0.049999999999999996,
+     0.437,
+     0.96,
+     0.637
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 71,
+    "box": [
+     0.049999999999999996,
+     0.631,
+     0.96,
+     0.85
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|24": [
+   {
+    "kind": "question",
+    "no": 105,
+    "box": [
+     0.060000000000000005,
+     0.04,
+     0.9450000000000001,
+     0.29000000000000004
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 106,
+    "box": [
+     0.060000000000000005,
+     0.27999999999999997,
+     0.9450000000000001,
+     0.441
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 107,
+    "box": [
+     0.060000000000000005,
+     0.42,
+     0.9450000000000001,
+     0.59
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 108,
+    "box": [
+     0.060000000000000005,
+     0.58,
+     0.9450000000000001,
+     0.74
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 109,
+    "box": [
+     0.060000000000000005,
+     0.72,
+     0.9450000000000001,
+     0.88
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|23": [
+   {
+    "kind": "question",
+    "no": 103,
+    "box": [
+     0.065,
+     0.057,
+     0.9420000000000001,
+     0.308
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 104,
+    "box": [
+     0.065,
+     0.31,
+     0.9420000000000001,
+     0.66
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 105,
+    "box": [
+     0.065,
+     0.66,
+     0.9420000000000001,
+     0.83
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|15": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.44
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.060000000000000005,
+     0.46499999999999997,
+     0.9400000000000001,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.060000000000000005,
+     0.71,
+     0.9400000000000001,
+     0.87
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|7": [
+   {
+    "kind": "question",
+    "no": 32,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.95,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 33,
+    "box": [
+     0.060000000000000005,
+     0.27699999999999997,
+     0.95,
+     0.47000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 34,
+    "box": [
+     0.060000000000000005,
+     0.47,
+     0.95,
+     0.59
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 35,
+    "box": [
+     0.060000000000000005,
+     0.59,
+     0.95,
+     0.81
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|17": [
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.07,
+     0.05,
+     0.94,
+     0.33
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 73,
+    "box": [
+     0.07,
+     0.33,
+     0.94,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 74,
+    "box": [
+     0.07,
+     0.565,
+     0.94,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 75,
+    "box": [
+     0.07,
+     0.745,
+     0.94,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.060000000000000005,
+     0.115,
+     0.91,
+     0.28500000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.060000000000000005,
+     0.285,
+     0.91,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.060000000000000005,
+     0.445,
+     0.93,
+     0.585
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.060000000000000005,
+     0.585,
+     0.91,
+     0.74
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.91,
+     0.865
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|14": [
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.07,
+     0.04,
+     0.94,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.07,
+     0.405,
+     0.94,
+     0.58
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.07,
+     0.59,
+     0.94,
+     0.865
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|17": [
+   {
+    "kind": "question",
+    "no": 71,
+    "box": [
+     0.068,
+     0.055,
+     0.9400000000000001,
+     0.28700000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.068,
+     0.27499999999999997,
+     0.9400000000000001,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 73,
+    "box": [
+     0.068,
+     0.5,
+     0.9400000000000001,
+     0.71
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 74,
+    "box": [
+     0.068,
+     0.71,
+     0.9400000000000001,
+     0.795
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 75,
+    "box": [
+     0.068,
+     0.787,
+     0.9400000000000001,
+     0.9400000000000001
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|5": [
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.95,
+     0.26
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.060000000000000005,
+     0.25,
+     0.95,
+     0.58
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 23,
+    "box": [
+     0.060000000000000005,
+     0.578,
+     0.95,
+     0.66
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 24,
+    "box": [
+     0.060000000000000005,
+     0.67,
+     0.95,
+     0.78
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 25,
+    "box": [
+     0.060000000000000005,
+     0.78,
+     0.95,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|5": [
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.95,
+     0.28
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.060000000000000005,
+     0.252,
+     0.95,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 23,
+    "box": [
+     0.060000000000000005,
+     0.395,
+     0.95,
+     0.535
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 24,
+    "box": [
+     0.060000000000000005,
+     0.525,
+     0.95,
+     0.77
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 25,
+    "box": [
+     0.060000000000000005,
+     0.755,
+     0.95,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|15": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.07,
+     0.06,
+     0.94,
+     0.335
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.07,
+     0.33,
+     0.94,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.07,
+     0.62,
+     0.94,
+     0.83
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|13": [
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.060000000000000005,
+     0.04,
+     0.9400000000000001,
+     0.232
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.060000000000000005,
+     0.22,
+     0.9400000000000001,
+     0.49
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.060000000000000005,
+     0.469,
+     0.9400000000000001,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 58,
+    "box": [
+     0.060000000000000005,
+     0.6,
+     0.9400000000000001,
+     0.86
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|26": [
+   {
+    "kind": "question",
+    "no": 112,
+    "box": [
+     0.06,
+     0.065,
+     0.95,
+     0.155
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 113,
+    "box": [
+     0.06,
+     0.165,
+     0.95,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 114,
+    "box": [
+     0.06,
+     0.26,
+     0.95,
+     0.482
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 115,
+    "box": [
+     0.06,
+     0.5,
+     0.95,
+     0.73
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 116,
+    "box": [
+     0.06,
+     0.74,
+     0.95,
+     0.905
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|14": [
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.95,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.065,
+     0.235,
+     0.95,
+     0.335
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.065,
+     0.322,
+     0.95,
+     0.456
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.065,
+     0.445,
+     0.95,
+     0.6
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.065,
+     0.587,
+     0.95,
+     0.8
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.065,
+     0.79,
+     0.95,
+     0.9450000000000001
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|16": [
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.07,
+     0.063,
+     0.94,
+     0.295
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 67,
+    "box": [
+     0.07,
+     0.31,
+     0.94,
+     0.42
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 68,
+    "box": [
+     0.07,
+     0.43,
+     0.94,
+     0.6
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 69,
+    "box": [
+     0.07,
+     0.614,
+     0.94,
+     0.735
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 70,
+    "box": [
+     0.07,
+     0.74,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|28": [
+   {
+    "kind": "question",
+    "no": 121,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.33
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 122,
+    "box": [
+     0.060000000000000005,
+     0.325,
+     0.9400000000000001,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 123,
+    "box": [
+     0.060000000000000005,
+     0.43,
+     0.9400000000000001,
+     0.64
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 124,
+    "box": [
+     0.060000000000000005,
+     0.635,
+     0.9400000000000001,
+     0.87
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|23": [
+   {
+    "kind": "question",
+    "no": 101,
+    "box": [
+     0.065,
+     0.125,
+     0.94,
+     0.382
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 102,
+    "box": [
+     0.065,
+     0.395,
+     0.94,
+     0.581
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 103,
+    "box": [
+     0.065,
+     0.595,
+     0.94,
+     0.83
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|25": [
+   {
+    "kind": "question",
+    "no": 108,
+    "box": [
+     0.07,
+     0.06,
+     0.94,
+     0.18
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 109,
+    "box": [
+     0.07,
+     0.17,
+     0.94,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 110,
+    "box": [
+     0.07,
+     0.39,
+     0.94,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 111,
+    "box": [
+     0.07,
+     0.67,
+     0.94,
+     0.9
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 45,
+    "box": [
+     0.06,
+     0.058,
+     0.94,
+     0.385
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 46,
+    "box": [
+     0.06,
+     0.39,
+     0.94,
+     0.545
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 47,
+    "box": [
+     0.06,
+     0.54,
+     0.94,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|22": [
+   {
+    "kind": "question",
+    "no": 96,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.95,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 97,
+    "box": [
+     0.060000000000000005,
+     0.31,
+     0.95,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 98,
+    "box": [
+     0.060000000000000005,
+     0.49,
+     0.95,
+     0.64
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 99,
+    "box": [
+     0.060000000000000005,
+     0.62,
+     0.95,
+     0.77
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 100,
+    "box": [
+     0.060000000000000005,
+     0.76,
+     0.95,
+     0.9400000000000001
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|19": [
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.067,
+     0.045,
+     0.93,
+     0.2
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.067,
+     0.19699999999999998,
+     0.93,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.067,
+     0.425,
+     0.93,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.067,
+     0.55,
+     0.93,
+     0.6940000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 86,
+    "box": [
+     0.067,
+     0.69,
+     0.93,
+     0.875
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.07,
+     0.12,
+     0.94,
+     0.25
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.07,
+     0.25,
+     0.94,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.07,
+     0.5,
+     0.94,
+     0.72
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.07,
+     0.72,
+     0.94,
+     0.888
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|19": [
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.06,
+     0.05,
+     0.94,
+     0.16
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.06,
+     0.16,
+     0.94,
+     0.33
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.06,
+     0.33,
+     0.94,
+     0.538
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.06,
+     0.53,
+     0.94,
+     0.712
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.06,
+     0.72,
+     0.94,
+     0.828
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|23": [
+   {
+    "kind": "question",
+    "no": 101,
+    "box": [
+     0.060000000000000005,
+     0.12000000000000001,
+     0.9400000000000001,
+     0.315
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 102,
+    "box": [
+     0.060000000000000005,
+     0.31,
+     0.9400000000000001,
+     0.54
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 103,
+    "box": [
+     0.060000000000000005,
+     0.53,
+     0.9400000000000001,
+     0.675
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 104,
+    "box": [
+     0.060000000000000005,
+     0.67,
+     0.9400000000000001,
+     0.88
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.06,
+     0.05,
+     0.94,
+     0.222
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.06,
+     0.225,
+     0.94,
+     0.322
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 45,
+    "box": [
+     0.06,
+     0.33,
+     0.94,
+     0.468
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 46,
+    "box": [
+     0.06,
+     0.475,
+     0.94,
+     0.632
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 47,
+    "box": [
+     0.06,
+     0.64,
+     0.94,
+     0.768
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 48,
+    "box": [
+     0.06,
+     0.77,
+     0.94,
+     0.868
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.95,
+     0.255
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.060000000000000005,
+     0.245,
+     0.95,
+     0.425
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.060000000000000005,
+     0.417,
+     0.95,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.060000000000000005,
+     0.5,
+     0.95,
+     0.645
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 40,
+    "box": [
+     0.060000000000000005,
+     0.645,
+     0.95,
+     0.805
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|9": [
+   {
+    "kind": "question",
+    "no": 42,
+    "box": [
+     0.06,
+     0.05,
+     0.95,
+     0.37
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.06,
+     0.37,
+     0.95,
+     0.54
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.06,
+     0.545,
+     0.95,
+     0.78
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.060000000000000005,
+     0.045,
+     0.9400000000000001,
+     0.195
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.060000000000000005,
+     0.18,
+     0.9400000000000001,
+     0.305
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.060000000000000005,
+     0.29,
+     0.9400000000000001,
+     0.47000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 40,
+    "box": [
+     0.060000000000000005,
+     0.46499999999999997,
+     0.9400000000000001,
+     0.64
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 41,
+    "box": [
+     0.060000000000000005,
+     0.635,
+     0.9400000000000001,
+     0.85
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|5": [
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.06,
+     0.05,
+     0.93,
+     0.23
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.06,
+     0.22,
+     0.93,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 23,
+    "box": [
+     0.06,
+     0.408,
+     0.93,
+     0.58
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 24,
+    "box": [
+     0.06,
+     0.58,
+     0.93,
+     0.742
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 25,
+    "box": [
+     0.06,
+     0.75,
+     0.93,
+     0.882
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|28": [
+   {
+    "kind": "question",
+    "no": 121,
+    "box": [
+     0.05,
+     0.04,
+     0.94,
+     0.29
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 122,
+    "box": [
+     0.05,
+     0.29,
+     0.94,
+     0.545
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 123,
+    "box": [
+     0.05,
+     0.54,
+     0.94,
+     0.775
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|6": [
+   {
+    "kind": "question",
+    "no": 26,
+    "box": [
+     0.06,
+     0.118,
+     0.95,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.06,
+     0.237,
+     0.95,
+     0.44
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.06,
+     0.435,
+     0.95,
+     0.585
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.06,
+     0.578,
+     0.95,
+     0.724
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 30,
+    "box": [
+     0.06,
+     0.72,
+     0.95,
+     0.867
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|4": [
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.060000000000000005,
+     0.058,
+     0.93,
+     0.227
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.060000000000000005,
+     0.215,
+     0.93,
+     0.49
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.060000000000000005,
+     0.49,
+     0.93,
+     0.63
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.060000000000000005,
+     0.61,
+     0.93,
+     0.782
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.060000000000000005,
+     0.787,
+     0.93,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|27": [
+   {
+    "kind": "question",
+    "no": 117,
+    "box": [
+     0.060000000000000005,
+     0.045,
+     0.9400000000000001,
+     0.35000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 118,
+    "box": [
+     0.060000000000000005,
+     0.345,
+     0.9400000000000001,
+     0.6
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 119,
+    "box": [
+     0.060000000000000005,
+     0.615,
+     0.9400000000000001,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|12": [
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.060000000000000005,
+     0.115,
+     0.9400000000000001,
+     0.23500000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 52,
+    "box": [
+     0.060000000000000005,
+     0.22499999999999998,
+     0.9400000000000001,
+     0.385
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 53,
+    "box": [
+     0.060000000000000005,
+     0.36,
+     0.9400000000000001,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 54,
+    "box": [
+     0.060000000000000005,
+     0.542,
+     0.9400000000000001,
+     0.745
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.060000000000000005,
+     0.726,
+     0.9400000000000001,
+     0.915
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|22": [
+   {
+    "kind": "question",
+    "no": 96,
+    "box": [
+     0.07,
+     0.045,
+     0.94,
+     0.16
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 97,
+    "box": [
+     0.07,
+     0.135,
+     0.94,
+     0.34
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 98,
+    "box": [
+     0.07,
+     0.34,
+     0.94,
+     0.53
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 99,
+    "box": [
+     0.07,
+     0.53,
+     0.94,
+     0.693
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 100,
+    "box": [
+     0.07,
+     0.69,
+     0.94,
+     0.9
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|4": [
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.95,
+     0.255
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.060000000000000005,
+     0.25,
+     0.95,
+     0.323
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.060000000000000005,
+     0.322,
+     0.95,
+     0.514
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.060000000000000005,
+     0.508,
+     0.95,
+     0.674
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.060000000000000005,
+     0.6799999999999999,
+     0.95,
+     0.8
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.060000000000000005,
+     0.795,
+     0.95,
+     0.936
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|24": [
+   {
+    "kind": "question",
+    "no": 104,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 105,
+    "box": [
+     0.060000000000000005,
+     0.365,
+     0.9400000000000001,
+     0.635
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 106,
+    "box": [
+     0.060000000000000005,
+     0.697,
+     0.9400000000000001,
+     0.785
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 107,
+    "box": [
+     0.060000000000000005,
+     0.77,
+     0.9400000000000001,
+     0.875
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.060000000000000005,
+     0.11800000000000001,
+     0.93,
+     0.24000000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.060000000000000005,
+     0.209,
+     0.93,
+     0.328
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.060000000000000005,
+     0.317,
+     0.93,
+     0.438
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.060000000000000005,
+     0.428,
+     0.93,
+     0.728
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.060000000000000005,
+     0.717,
+     0.93,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 86,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.16
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 87,
+    "box": [
+     0.060000000000000005,
+     0.155,
+     0.9400000000000001,
+     0.26
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.060000000000000005,
+     0.26,
+     0.9400000000000001,
+     0.35000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.060000000000000005,
+     0.345,
+     0.9400000000000001,
+     0.47000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.060000000000000005,
+     0.47,
+     0.9400000000000001,
+     0.66
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.060000000000000005,
+     0.66,
+     0.9400000000000001,
+     0.8200000000000001
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|18": [
+   {
+    "kind": "question",
+    "no": 76,
+    "box": [
+     0.060000000000000005,
+     0.12200000000000001,
+     0.78,
+     0.23
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 77,
+    "box": [
+     0.060000000000000005,
+     0.23299999999999998,
+     0.84,
+     0.39
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 78,
+    "box": [
+     0.060000000000000005,
+     0.393,
+     0.84,
+     0.47300000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 79,
+    "box": [
+     0.060000000000000005,
+     0.475,
+     0.93,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 80,
+    "box": [
+     0.060000000000000005,
+     0.703,
+     0.93,
+     0.832
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 87,
+    "box": [
+     0.060000000000000005,
+     0.045,
+     0.95,
+     0.2
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.060000000000000005,
+     0.19999999999999998,
+     0.95,
+     0.315
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.060000000000000005,
+     0.305,
+     0.95,
+     0.425
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.060000000000000005,
+     0.42,
+     0.95,
+     0.54
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.060000000000000005,
+     0.53,
+     0.95,
+     0.715
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 92,
+    "box": [
+     0.060000000000000005,
+     0.71,
+     0.95,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|4": [
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.06,
+     0.056,
+     0.93,
+     0.22
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.07,
+     0.22,
+     0.93,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.07,
+     0.41,
+     0.93,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.07,
+     0.51,
+     0.93,
+     0.63
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.07,
+     0.63,
+     0.93,
+     0.78
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 87,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.95,
+     0.16
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.060000000000000005,
+     0.145,
+     0.95,
+     0.27
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.060000000000000005,
+     0.27,
+     0.95,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.060000000000000005,
+     0.435,
+     0.95,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.060000000000000005,
+     0.55,
+     0.95,
+     0.66
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 92,
+    "box": [
+     0.060000000000000005,
+     0.638,
+     0.95,
+     0.79
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 93,
+    "box": [
+     0.060000000000000005,
+     0.79,
+     0.95,
+     0.9
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|23": [
+   {
+    "kind": "question",
+    "no": 101,
+    "box": [
+     0.049999999999999996,
+     0.125,
+     0.93,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 102,
+    "box": [
+     0.049999999999999996,
+     0.315,
+     0.93,
+     0.55
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 103,
+    "box": [
+     0.049999999999999996,
+     0.545,
+     0.93,
+     0.74
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 104,
+    "box": [
+     0.049999999999999996,
+     0.735,
+     0.93,
+     0.9450000000000001
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|19": [
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.07,
+     0.058,
+     0.95,
+     0.17
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.07,
+     0.16,
+     0.95,
+     0.39
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.07,
+     0.39,
+     0.95,
+     0.467
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.07,
+     0.47,
+     0.95,
+     0.575
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.07,
+     0.577,
+     0.95,
+     0.745
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 86,
+    "box": [
+     0.07,
+     0.735,
+     0.95,
+     0.898
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.07,
+     0.12,
+     0.93,
+     0.285
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.07,
+     0.275,
+     0.93,
+     0.39
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.07,
+     0.39,
+     0.93,
+     0.515
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.07,
+     0.515,
+     0.93,
+     0.595
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.07,
+     0.595,
+     0.93,
+     0.74
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.07,
+     0.735,
+     0.93,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|14": [
+   {
+    "kind": "question",
+    "no": 59,
+    "box": [
+     0.07,
+     0.06,
+     0.94,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.07,
+     0.31,
+     0.94,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.07,
+     0.41,
+     0.94,
+     0.6
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.07,
+     0.61,
+     0.94,
+     0.89
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 86,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.8,
+     0.23
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 87,
+    "box": [
+     0.060000000000000005,
+     0.22499999999999998,
+     0.85,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.060000000000000005,
+     0.305,
+     0.9400000000000001,
+     0.505
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.060000000000000005,
+     0.5,
+     0.9400000000000001,
+     0.745
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.83,
+     0.865
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|12": [
+   {
+    "kind": "question",
+    "no": 51,
+    "box": [
+     0.060000000000000005,
+     0.125,
+     0.8,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 52,
+    "box": [
+     0.060000000000000005,
+     0.29,
+     0.9400000000000001,
+     0.515
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 53,
+    "box": [
+     0.060000000000000005,
+     0.505,
+     0.9400000000000001,
+     0.685
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 54,
+    "box": [
+     0.060000000000000005,
+     0.675,
+     0.81,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|14": [
+   {
+    "kind": "question",
+    "no": 59,
+    "box": [
+     0.065,
+     0.065,
+     0.94,
+     0.212
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 60,
+    "box": [
+     0.065,
+     0.212,
+     0.94,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.065,
+     0.44,
+     0.94,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.065,
+     0.715,
+     0.94,
+     0.845
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.065,
+     0.845,
+     0.94,
+     0.945
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|15": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.060000000000000005,
+     0.045,
+     0.95,
+     0.195
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.060000000000000005,
+     0.173,
+     0.95,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.060000000000000005,
+     0.293,
+     0.95,
+     0.527
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.060000000000000005,
+     0.515,
+     0.95,
+     0.735
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 67,
+    "box": [
+     0.060000000000000005,
+     0.718,
+     0.95,
+     0.909
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|26": [
+   {
+    "kind": "question",
+    "no": 114,
+    "box": [
+     0.07,
+     0.06,
+     0.94,
+     0.27
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 115,
+    "box": [
+     0.07,
+     0.28,
+     0.94,
+     0.46
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 116,
+    "box": [
+     0.07,
+     0.455,
+     0.94,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 117,
+    "box": [
+     0.07,
+     0.66,
+     0.94,
+     0.912
+    ]
+   }
+  ],
+  "firemgr-2020-1교시-|9": [
+   {
+    "kind": "question",
+    "no": 41,
+    "box": [
+     0.07,
+     0.06,
+     0.94,
+     0.275
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 42,
+    "box": [
+     0.07,
+     0.28,
+     0.94,
+     0.405
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.07,
+     0.415,
+     0.94,
+     0.715
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.07,
+     0.72,
+     0.94,
+     0.835
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|18": [
+   {
+    "kind": "question",
+    "no": 76,
+    "box": [
+     0.065,
+     0.125,
+     0.9400000000000001,
+     0.31
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 77,
+    "box": [
+     0.065,
+     0.315,
+     0.9400000000000001,
+     0.438
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 78,
+    "box": [
+     0.065,
+     0.435,
+     0.9400000000000001,
+     0.62
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 79,
+    "box": [
+     0.065,
+     0.625,
+     0.9400000000000001,
+     0.831
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 80,
+    "box": [
+     0.065,
+     0.83,
+     0.9400000000000001,
+     0.911
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|19": [
+   {
+    "kind": "question",
+    "no": 87,
+    "box": [
+     0.07,
+     0.045,
+     0.93,
+     0.14500000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.07,
+     0.13499999999999998,
+     0.93,
+     0.23500000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.07,
+     0.20199999999999999,
+     0.93,
+     0.395
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.07,
+     0.365,
+     0.93,
+     0.655
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.07,
+     0.655,
+     0.93,
+     0.905
+    ]
+   }
+  ],
+  "firemgr-2021-1교시-|22": [
+   {
+    "kind": "question",
+    "no": 97,
+    "box": [
+     0.06,
+     0.05,
+     0.94,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 98,
+    "box": [
+     0.06,
+     0.24,
+     0.94,
+     0.475
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 99,
+    "box": [
+     0.06,
+     0.47,
+     0.94,
+     0.655
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 100,
+    "box": [
+     0.06,
+     0.655,
+     0.94,
+     0.765
+    ]
+   }
+  ],
+  "firemgr-2018-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.060000000000000005,
+     0.12000000000000001,
+     0.9400000000000001,
+     0.32
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.060000000000000005,
+     0.31,
+     0.9400000000000001,
+     0.48
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.060000000000000005,
+     0.47,
+     0.9400000000000001,
+     0.64
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.060000000000000005,
+     0.63,
+     0.9400000000000001,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.9400000000000001,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|11": [
+   {
+    "kind": "question",
+    "no": 48,
+    "box": [
+     0.07,
+     0.06,
+     0.94,
+     0.16
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.07,
+     0.18,
+     0.94,
+     0.37
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.07,
+     0.37,
+     0.94,
+     0.65
+    ]
+   }
+  ],
+  "firemgr-2019-1교시-|15": [
+   {
+    "kind": "question",
+    "no": 66,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 67,
+    "box": [
+     0.060000000000000005,
+     0.22,
+     0.9400000000000001,
+     0.392
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 68,
+    "box": [
+     0.060000000000000005,
+     0.37,
+     0.9400000000000001,
+     0.675
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 69,
+    "box": [
+     0.060000000000000005,
+     0.666,
+     0.9400000000000001,
+     0.8200000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 70,
+    "box": [
+     0.060000000000000005,
+     0.8099999999999999,
+     0.9400000000000001,
+     0.91
+    ]
+   }
+  ],
+  "firemgr-2023-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 36,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.060000000000000005,
+     0.31,
+     0.9400000000000001,
+     0.51
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.060000000000000005,
+     0.485,
+     0.9400000000000001,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.060000000000000005,
+     0.64,
+     0.9400000000000001,
+     0.88
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|2": [
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.07,
+     0.05,
+     0.94,
+     0.15
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.07,
+     0.16,
+     0.94,
+     0.315
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.07,
+     0.32,
+     0.94,
+     0.47
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.07,
+     0.476,
+     0.94,
+     0.73
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.07,
+     0.74,
+     0.94,
+     0.932
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|7": [
+   {
+    "kind": "question",
+    "no": 26,
+    "box": [
+     0.06,
+     0.12,
+     0.94,
+     0.335
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 27,
+    "box": [
+     0.06,
+     0.34,
+     0.94,
+     0.52
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 28,
+    "box": [
+     0.06,
+     0.51,
+     0.94,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 29,
+    "box": [
+     0.06,
+     0.615,
+     0.94,
+     0.82
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 47,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 48,
+    "box": [
+     0.060000000000000005,
+     0.22499999999999998,
+     0.9400000000000001,
+     0.44
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 49,
+    "box": [
+     0.060000000000000005,
+     0.43,
+     0.9400000000000001,
+     0.725
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 50,
+    "box": [
+     0.060000000000000005,
+     0.705,
+     0.9400000000000001,
+     0.87
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|21": [
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.055,
+     0.055,
+     0.9450000000000001,
+     0.265
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.055,
+     0.246,
+     0.9450000000000001,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 92,
+    "box": [
+     0.055,
+     0.438,
+     0.9450000000000001,
+     0.585
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 93,
+    "box": [
+     0.055,
+     0.602,
+     0.9450000000000001,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 94,
+    "box": [
+     0.055,
+     0.752,
+     0.9450000000000001,
+     0.855
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|26": [
+   {
+    "kind": "question",
+    "no": 110,
+    "box": [
+     0.05,
+     0.05,
+     0.95,
+     0.28
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 111,
+    "box": [
+     0.05,
+     0.27,
+     0.95,
+     0.44
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 112,
+    "box": [
+     0.05,
+     0.43,
+     0.95,
+     0.58
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 113,
+    "box": [
+     0.05,
+     0.595,
+     0.95,
+     0.93
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.060000000000000005,
+     0.04,
+     0.95,
+     0.17500000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 86,
+    "box": [
+     0.060000000000000005,
+     0.155,
+     0.95,
+     0.245
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 87,
+    "box": [
+     0.060000000000000005,
+     0.235,
+     0.95,
+     0.40800000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 88,
+    "box": [
+     0.060000000000000005,
+     0.395,
+     0.95,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 89,
+    "box": [
+     0.060000000000000005,
+     0.585,
+     0.95,
+     0.79
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|22": [
+   {
+    "kind": "question",
+    "no": 95,
+    "box": [
+     0.06,
+     0.05,
+     0.94,
+     0.235
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 96,
+    "box": [
+     0.06,
+     0.23,
+     0.94,
+     0.585
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 97,
+    "box": [
+     0.06,
+     0.59,
+     0.94,
+     0.715
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 98,
+    "box": [
+     0.06,
+     0.71,
+     0.94,
+     0.925
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|10": [
+   {
+    "kind": "question",
+    "no": 40,
+    "box": [
+     0.06,
+     0.055,
+     0.94,
+     0.14
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 41,
+    "box": [
+     0.06,
+     0.145,
+     0.94,
+     0.295
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 42,
+    "box": [
+     0.06,
+     0.31,
+     0.94,
+     0.375
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.06,
+     0.39,
+     0.94,
+     0.505
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.06,
+     0.505,
+     0.94,
+     0.615
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 45,
+    "box": [
+     0.06,
+     0.63,
+     0.94,
+     0.725
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 46,
+    "box": [
+     0.06,
+     0.735,
+     0.94,
+     0.805
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|3": [
+   {
+    "kind": "question",
+    "no": 9,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.9400000000000001,
+     0.26
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 10,
+    "box": [
+     0.060000000000000005,
+     0.25,
+     0.9400000000000001,
+     0.41000000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 11,
+    "box": [
+     0.060000000000000005,
+     0.41,
+     0.9400000000000001,
+     0.5700000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.060000000000000005,
+     0.57,
+     0.9400000000000001,
+     0.74
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.9400000000000001,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|3": [
+   {
+    "kind": "question",
+    "no": 12,
+    "box": [
+     0.057,
+     0.05,
+     0.948,
+     0.335
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 13,
+    "box": [
+     0.057,
+     0.33,
+     0.948,
+     0.49
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 14,
+    "box": [
+     0.057,
+     0.49,
+     0.948,
+     0.76
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 15,
+    "box": [
+     0.057,
+     0.745,
+     0.948,
+     0.935
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|12": [
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.28500000000000003
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.060000000000000005,
+     0.295,
+     0.9400000000000001,
+     0.48
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.060000000000000005,
+     0.48,
+     0.9400000000000001,
+     0.6900000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 58,
+    "box": [
+     0.060000000000000005,
+     0.69,
+     0.9400000000000001,
+     0.875
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|9": [
+   {
+    "kind": "question",
+    "no": 41,
+    "box": [
+     0.065,
+     0.049999999999999996,
+     0.95,
+     0.16
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 42,
+    "box": [
+     0.065,
+     0.155,
+     0.95,
+     0.24000000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 43,
+    "box": [
+     0.065,
+     0.23299999999999998,
+     0.95,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 44,
+    "box": [
+     0.065,
+     0.39999999999999997,
+     0.95,
+     0.5
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 45,
+    "box": [
+     0.065,
+     0.498,
+     0.95,
+     0.665
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 46,
+    "box": [
+     0.065,
+     0.664,
+     0.95,
+     0.8
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|29": [
+   {
+    "kind": "question",
+    "no": 119,
+    "box": [
+     0.066,
+     0.06,
+     0.94,
+     0.288
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 120,
+    "box": [
+     0.066,
+     0.298,
+     0.94,
+     0.52
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 121,
+    "box": [
+     0.066,
+     0.53,
+     0.94,
+     0.737
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 122,
+    "box": [
+     0.066,
+     0.747,
+     0.94,
+     0.945
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|22": [
+   {
+    "kind": "question",
+    "no": 90,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.162
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 91,
+    "box": [
+     0.060000000000000005,
+     0.16199999999999998,
+     0.9400000000000001,
+     0.388
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 92,
+    "box": [
+     0.060000000000000005,
+     0.385,
+     0.9400000000000001,
+     0.595
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 93,
+    "box": [
+     0.060000000000000005,
+     0.597,
+     0.9400000000000001,
+     0.728
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 94,
+    "box": [
+     0.060000000000000005,
+     0.698,
+     0.9400000000000001,
+     0.78
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|20": [
+   {
+    "kind": "question",
+    "no": 81,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.93,
+     0.38
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 82,
+    "box": [
+     0.060000000000000005,
+     0.38,
+     0.93,
+     0.485
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 83,
+    "box": [
+     0.060000000000000005,
+     0.485,
+     0.93,
+     0.575
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 84,
+    "box": [
+     0.060000000000000005,
+     0.595,
+     0.93,
+     0.725
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 85,
+    "box": [
+     0.060000000000000005,
+     0.72,
+     0.93,
+     0.925
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|2": [
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.060000000000000005,
+     0.049999999999999996,
+     0.93,
+     0.18000000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.060000000000000005,
+     0.16499999999999998,
+     0.93,
+     0.305
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.060000000000000005,
+     0.285,
+     0.93,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 7,
+    "box": [
+     0.060000000000000005,
+     0.42,
+     0.93,
+     0.6
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 8,
+    "box": [
+     0.060000000000000005,
+     0.59,
+     0.93,
+     0.71
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|13": [
+   {
+    "kind": "question",
+    "no": 55,
+    "box": [
+     0.07,
+     0.065,
+     0.93,
+     0.265
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 56,
+    "box": [
+     0.07,
+     0.265,
+     0.93,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 57,
+    "box": [
+     0.07,
+     0.56,
+     0.93,
+     0.785
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|18": [
+   {
+    "kind": "question",
+    "no": 72,
+    "box": [
+     0.06,
+     0.07,
+     0.94,
+     0.3
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 73,
+    "box": [
+     0.06,
+     0.31,
+     0.94,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 74,
+    "box": [
+     0.06,
+     0.44,
+     0.94,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 75,
+    "box": [
+     0.06,
+     0.55,
+     0.94,
+     0.77
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|8": [
+   {
+    "kind": "question",
+    "no": 37,
+    "box": [
+     0.060000000000000005,
+     0.045,
+     0.9400000000000001,
+     0.29000000000000004
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 38,
+    "box": [
+     0.060000000000000005,
+     0.27299999999999996,
+     0.9400000000000001,
+     0.44
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 39,
+    "box": [
+     0.060000000000000005,
+     0.44,
+     0.9400000000000001,
+     0.73
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 40,
+    "box": [
+     0.060000000000000005,
+     0.721,
+     0.9400000000000001,
+     0.92
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|15": [
+   {
+    "kind": "question",
+    "no": 61,
+    "box": [
+     0.065,
+     0.065,
+     0.93,
+     0.135
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 62,
+    "box": [
+     0.065,
+     0.15,
+     0.93,
+     0.4
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.065,
+     0.41,
+     0.93,
+     0.79
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|5": [
+   {
+    "kind": "question",
+    "no": 21,
+    "box": [
+     0.065,
+     0.052,
+     0.93,
+     0.217
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 22,
+    "box": [
+     0.065,
+     0.215,
+     0.93,
+     0.379
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 23,
+    "box": [
+     0.065,
+     0.38,
+     0.9400000000000001,
+     0.48
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 24,
+    "box": [
+     0.065,
+     0.485,
+     0.93,
+     0.667
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 25,
+    "box": [
+     0.065,
+     0.669,
+     0.93,
+     0.832
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|27": [
+   {
+    "kind": "question",
+    "no": 114,
+    "box": [
+     0.05,
+     0.05,
+     0.95,
+     0.17
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 115,
+    "box": [
+     0.05,
+     0.175,
+     0.95,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 116,
+    "box": [
+     0.05,
+     0.46,
+     0.95,
+     0.65
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 117,
+    "box": [
+     0.05,
+     0.635,
+     0.95,
+     0.86
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|1": [
+   {
+    "kind": "question",
+    "no": 1,
+    "box": [
+     0.060000000000000005,
+     0.12000000000000001,
+     0.9400000000000001,
+     0.20500000000000002
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 2,
+    "box": [
+     0.060000000000000005,
+     0.19699999999999998,
+     0.9400000000000001,
+     0.308
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 3,
+    "box": [
+     0.060000000000000005,
+     0.295,
+     0.9400000000000001,
+     0.39
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 4,
+    "box": [
+     0.060000000000000005,
+     0.373,
+     0.9400000000000001,
+     0.5700000000000001
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 5,
+    "box": [
+     0.060000000000000005,
+     0.5599999999999999,
+     0.9400000000000001,
+     0.67
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 6,
+    "box": [
+     0.060000000000000005,
+     0.66,
+     0.9400000000000001,
+     0.86
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|4": [
+   {
+    "kind": "question",
+    "no": 16,
+    "box": [
+     0.07,
+     0.06,
+     0.93,
+     0.275
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 17,
+    "box": [
+     0.07,
+     0.29,
+     0.93,
+     0.445
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 18,
+    "box": [
+     0.07,
+     0.455,
+     0.93,
+     0.525
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 19,
+    "box": [
+     0.07,
+     0.54,
+     0.93,
+     0.7
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 20,
+    "box": [
+     0.07,
+     0.7,
+     0.93,
+     0.82
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|27": [
+   {
+    "kind": "question",
+    "no": 109,
+    "box": [
+     0.060000000000000005,
+     0.060000000000000005,
+     0.95,
+     0.25
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 110,
+    "box": [
+     0.060000000000000005,
+     0.24,
+     0.95,
+     0.43
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 111,
+    "box": [
+     0.060000000000000005,
+     0.43,
+     0.95,
+     0.63
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 112,
+    "box": [
+     0.060000000000000005,
+     0.6,
+     0.95,
+     0.75
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 113,
+    "box": [
+     0.060000000000000005,
+     0.74,
+     0.95,
+     0.93
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|14": [
+   {
+    "kind": "question",
+    "no": 63,
+    "box": [
+     0.05,
+     0.05,
+     0.95,
+     0.305
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 64,
+    "box": [
+     0.05,
+     0.31,
+     0.95,
+     0.495
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 65,
+    "box": [
+     0.05,
+     0.5,
+     0.95,
+     0.795
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|26": [
+   {
+    "kind": "question",
+    "no": 105,
+    "box": [
+     0.060000000000000005,
+     0.058,
+     0.95,
+     0.17
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 106,
+    "box": [
+     0.060000000000000005,
+     0.155,
+     0.95,
+     0.45
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 107,
+    "box": [
+     0.060000000000000005,
+     0.45,
+     0.95,
+     0.62
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 108,
+    "box": [
+     0.060000000000000005,
+     0.595,
+     0.95,
+     0.77
+    ]
+   }
+  ],
+  "firemgr-2024-1교시-|24": [
+   {
+    "kind": "question",
+    "no": 101,
+    "box": [
+     0.060000000000000005,
+     0.115,
+     0.9400000000000001,
+     0.295
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 102,
+    "box": [
+     0.060000000000000005,
+     0.265,
+     0.9400000000000001,
+     0.56
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 103,
+    "box": [
+     0.060000000000000005,
+     0.538,
+     0.9400000000000001,
+     0.735
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 104,
+    "box": [
+     0.060000000000000005,
+     0.73,
+     0.9400000000000001,
+     0.87
+    ]
+   }
+  ],
+  "firemgr-2025-1교시-|23": [
+   {
+    "kind": "question",
+    "no": 95,
+    "box": [
+     0.060000000000000005,
+     0.055,
+     0.9400000000000001,
+     0.295
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 96,
+    "box": [
+     0.060000000000000005,
+     0.29,
+     0.9400000000000001,
+     0.502
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 97,
+    "box": [
+     0.060000000000000005,
+     0.49,
+     0.9400000000000001,
+     0.61
+    ]
+   },
+   {
+    "kind": "question",
+    "no": 98,
+    "box": [
+     0.060000000000000005,
+     0.6,
+     0.9400000000000001,
+     0.89
     ]
    }
   ]
