@@ -156,20 +156,67 @@ def queue_ids() -> list[str]:
     return buf.getvalue().split()
 
 
-def submit(client: anthropic.Anthropic, limit: int | None, use_queue: bool = False) -> None:
+BUDGET = ROOT / "data" / "explain_budget.json"
+DEFAULT_PER_Q = 0.05  # 실측 전 문항당 예상 비용(USD)
+
+
+def spent_usd(st: dict) -> float:
+    u = st.get("usage") or {}
+    return (u.get("input", 0) / 1e6 * PRICE_IN + u.get("output", 0) / 1e6 * PRICE_OUT) + st.get("spent_before_usd", 0)
+
+
+def per_question(st: dict) -> float:
+    u = st.get("usage") or {}
+    if u.get("count", 0) >= 50:
+        return max((u["input"] / 1e6 * PRICE_IN + u["output"] / 1e6 * PRICE_OUT) / u["count"], 0.005)
+    return DEFAULT_PER_Q
+
+
+def budget_left(st: dict) -> tuple[float, float, float]:
+    """(남은 예산, 문항당 비용, 신규 문항용 예비분). 남은 예산 = 한도 - 이미 쓴 돈 - 진행 중 배치 예상 비용"""
+    b = json.loads(BUDGET.read_text()) if BUDGET.exists() else {"budget_usd": 0}
+    per_q = per_question(st)
+    left = b.get("budget_usd", 0) - spent_usd(st) - len(st["pending"]) * per_q
+    return left, per_q, b.get("reserve_usd", 0)
+
+
+def is_new(paper: dict) -> bool:
+    """올해·작년 시험(새로 공개된 기출) — 예산을 먼저 쓴다"""
+    return int(paper["year"]) >= time.gmtime().tm_year - 1
+
+
+def submit(client: anthropic.Anthropic, limit: int | None, use_queue: bool = False, auto: bool = False) -> None:
     st = load_state()
     pending = set(st["pending"])
-    reqs = []
-    if use_queue:
-        files = [DATA / "papers" / f"{pid}.json" for pid in queue_ids()]
+    reqs: list = []
+    if auto:
+        # 정기 실행: 예산 안에서 새 기출 먼저, 그다음 우선순위 순 (새 기출용 예비분은 남겨 둔다)
+        left, per_q, reserve = budget_left(st)
+        n_new = max(int(left // per_q), 0)
+        n_old = max(int((left - reserve) // per_q), 0)
+        print(f"해설 예산: 남은 ${left:.2f}, 문항당 약 ${per_q:.3f} → 새 기출 최대 {n_new}건, 그 밖 최대 {n_old}건")
+        if limit:
+            n_new, n_old = min(n_new, limit), min(n_old, limit)
+        if n_new <= 0:
+            print("해설 예산 없음 — data/explain_budget.json 의 budget_usd 를 올리면 이어서 진행")
+            return
+        ids = queue_ids()
+        papers = [json.loads((DATA / "papers" / f"{pid}.json").read_text()) for pid in ids]
+        order = [p for p in papers if is_new(p)] + [p for p in papers if not is_new(p)]
     else:
-        files = sorted((DATA / "papers").glob("*.json"))
-    for f in files:
-        paper = json.loads(f.read_text())
+        files = [DATA / "papers" / f"{pid}.json" for pid in queue_ids()] if use_queue else sorted((DATA / "papers").glob("*.json"))
+        order = [json.loads(f.read_text()) for f in files]
+        n_new = n_old = limit or 10**9
+    for paper in order:
         if not paper.get("answersFinal", True):
             continue  # 정답 확정 후에 해설 생성
-        if not use_queue and paper.get("exam", "psat") not in AUTO_EXPLAIN:
-            continue  # 정기 실행은 exams.json 에서 autoExplain 을 켠 시험만 (나머지는 --queue 로 한도를 정해 돌린다)
+        if not (use_queue or auto) and paper.get("exam", "psat") not in AUTO_EXPLAIN:
+            continue
+        cap = n_new if (auto and is_new(paper)) else n_old
+        if len(reqs) >= cap:
+            if auto and is_new(paper):
+                continue
+            break
         done = existing(paper["id"])
         tf = DATA / "text" / f"{paper['id']}.json"
         text_map = json.loads(tf.read_text()) if tf.exists() else {}
@@ -178,24 +225,30 @@ def submit(client: anthropic.Anthropic, limit: int | None, use_queue: bool = Fal
             cid = f"{paper['id']}__{q['no']}"
             if str(q["no"]) in done or cid in pending:
                 continue
+            if len(reqs) >= cap:
+                break
             pdf = pdf or fitz.open(DATA / "pdf" / f"{paper.get('pdf', paper['id'])}.pdf")
             reqs.append(Request(custom_id=api_id(cid), params=build_request(paper, q, pdf, text_map)))
             st["ids"][api_id(cid)] = cid
-            if limit and len(reqs) >= limit:
-                break
-        if limit and len(reqs) >= limit:
-            break
     if not reqs:
         print("해설할 새 문항 없음")
         return
     # 배치 하나당 256MB 제한 → 1000건씩 나눠 제출
     for i in range(0, len(reqs), 1000):
         chunk = reqs[i : i + 1000]
-        b = client.messages.batches.create(requests=chunk)
+        try:
+            b = client.messages.batches.create(requests=chunk)
+        except anthropic.APIStatusError as e:
+            # 크레딧 부족 등: 이번 실행은 여기서 멈추고 다음 실행에 다시 시도
+            print(f"배치 제출 실패 ({e.status_code}): {str(e)[:200]} — 남은 {len(reqs) - i}건은 다음 실행에서")
+            for r in reqs[i:]:
+                st["ids"].pop(r["custom_id"], None)
+            break
         st["batches"].append(b.id)
         st["pending"] += [st["ids"][r["custom_id"]] for r in chunk]
         save_state(st)
         print(f"submitted {b.id}: {len(chunk)}건")
+    save_state(st)
 
 
 _CH: dict[str, dict] = {}
@@ -262,6 +315,8 @@ def collect(client: anthropic.Anthropic) -> bool:
         cost = usage["input"] / 1e6 * PRICE_IN + usage["output"] / 1e6 * PRICE_OUT
         print(f"누적 API 사용: {usage['count']}건, 입력 {usage['input']:,} / 출력 {usage['output']:,} 토큰, "
               f"약 ${cost:.2f} (문항당 ${cost / usage['count']:.3f})")
+    left, per_q, _ = budget_left(st)
+    print(f"해설 예산 남은 금액(진행 중 배치 예상분 제외): ${left:.2f}")
     return all_done
 
 
@@ -270,15 +325,16 @@ def main() -> None:
     ap.add_argument("cmd", choices=["submit", "collect", "run"])
     ap.add_argument("--limit", type=int)
     ap.add_argument("--queue", action="store_true", help="모든 시험에서 우선순위 순으로 (--limit 와 함께)")
+    ap.add_argument("--auto", action="store_true", help="정기 실행: data/explain_budget.json 예산 안에서 새 기출 먼저")
     a = ap.parse_args()
     client = anthropic.Anthropic()
     if a.cmd == "submit":
-        submit(client, a.limit, a.queue)
+        submit(client, a.limit, a.queue, a.auto)
     elif a.cmd == "collect":
         collect(client)
     else:
         collect(client)
-        submit(client, a.limit, a.queue)
+        submit(client, a.limit, a.queue, a.auto)
         while not collect(client):
             time.sleep(120)
 

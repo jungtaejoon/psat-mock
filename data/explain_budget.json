@@ -1,0 +1,5 @@
+{
+ "budget_usd": 100,
+ "reserve_usd": 10,
+ "note": "API 해설 총 예산(USD). 정기 실행이 이 한도 안에서 새 기출(올해·작년) 먼저, 그다음 우선순위 순으로 해설을 요청한다. reserve_usd 는 새 기출용으로 남겨 두는 금액. 크레딧을 충전하면 budget_usd 를 올린다. 쓴 금액은 data/explain_state.json 의 usage 로 계산한다."
+}
