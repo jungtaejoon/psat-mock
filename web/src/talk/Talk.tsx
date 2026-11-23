@@ -1,24 +1,19 @@
 /**
- * 수험생 이야기: 감정 반응(로그인 없이) + 댓글(로그인 후).
+ * 수험생 이야기: 감정 반응 + 닉네임 댓글 (둘 다 로그인 없이).
  * - 실전 모드(시험 중)에는 아예 넣지 않는다. 연습 모드는 정답 확인 뒤, 결과 화면은 문항을 펼쳤을 때만.
  * - "이야기 숨기기"를 누르면 모든 화면에서 접어 둔다(기기에 저장).
  */
 import { useCallback, useEffect, useState } from "react";
-import type { User } from "@supabase/supabase-js";
 import {
   MOODS,
-  PROVIDERS,
   addComment,
-  currentUser,
   deleteComment,
-  finishLoginIfNeeded,
   friendlyError,
   getReactions,
   listComments,
-  onAuth,
   reportComment,
-  signIn,
-  signOut,
+  saveName,
+  savedName,
   toggleReaction,
   type Comment,
   type Mood,
@@ -63,18 +58,15 @@ function ago(iso: string): string {
   return new Date(iso).toLocaleDateString("ko-KR");
 }
 
-let loginChecked = false;
-
 export default function Talk({ target, title = "수험생 이야기", big = false }: { target: string; title?: string; big?: boolean }) {
   const [visible, setVisible] = useTalkVisible();
   const [reacts, setReacts] = useState<ReactionCount[] | null>(null);
   const [comments, setComments] = useState<Comment[] | null>(null);
-  const [user, setUser] = useState<User | null>(null);
+  const [name, setName] = useState(savedName);
   const [body, setBody] = useState("");
   const [mood, setMood] = useState<Mood | null>(null);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState("");
-  const [loginOpen, setLoginOpen] = useState(false);
 
   const load = useCallback(() => {
     setMsg("");
@@ -88,20 +80,6 @@ export default function Talk({ target, title = "수험생 이야기", big = fals
     setComments(null);
     load();
   }, [visible, load]);
-
-  useEffect(() => {
-    if (!visible) return;
-    let off: (() => void) | undefined;
-    (async () => {
-      if (!loginChecked) {
-        loginChecked = true;
-        await finishLoginIfNeeded();
-      }
-      setUser(await currentUser());
-      off = await onAuth(setUser);
-    })();
-    return () => off?.();
-  }, [visible]);
 
   if (!visible)
     return (
@@ -134,7 +112,8 @@ export default function Talk({ target, title = "수험생 이야기", big = fals
     setBusy(true);
     setMsg("");
     try {
-      const c = await addComment(target, body.trim(), mood);
+      const c = await addComment(target, body.trim(), mood, name.trim());
+      saveName(name.trim() || "수험생");
       setComments((cs) => [c, ...(cs ?? [])]);
       setBody("");
       setMood(null);
@@ -142,14 +121,6 @@ export default function Talk({ target, title = "수험생 이야기", big = fals
       setMsg(friendlyError(e));
     } finally {
       setBusy(false);
-    }
-  };
-
-  const login = async (p: "google" | "kakao") => {
-    try {
-      await signIn(p);
-    } catch (e) {
-      setMsg(friendlyError(e));
     }
   };
 
@@ -181,64 +152,40 @@ export default function Talk({ target, title = "수험생 이야기", big = fals
         })}
       </div>
 
-      {user ? (
-        <div className="composer">
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value.slice(0, 1000))}
-            placeholder={big ? "이 시험에 대한 생각, 공부 팁, 응원 한마디를 남겨 주세요" : "이 문제 어땠나요? 풀이 팁이나 헷갈린 점을 남겨 주세요"}
-            rows={big ? 3 : 2}
+      <div className="composer">
+        <textarea
+          value={body}
+          onChange={(e) => setBody(e.target.value.slice(0, 1000))}
+          placeholder={big ? "이 시험에 대한 생각, 공부 팁, 응원 한마디를 남겨 주세요" : "이 문제 어땠나요? 풀이 팁이나 헷갈린 점을 남겨 주세요"}
+          rows={big ? 3 : 2}
+        />
+        <div className="composer-foot">
+          <input
+            className="nick"
+            value={name}
+            onChange={(e) => setName(e.target.value.slice(0, 20))}
+            aria-label="닉네임"
+            placeholder="닉네임"
           />
-          <div className="composer-foot">
-            <div className="mood-pick" role="radiogroup" aria-label="기분">
-              {MOODS.map((m) => (
-                <button
-                  key={m.k}
-                  role="radio"
-                  aria-checked={mood === m.k}
-                  className={mood === m.k ? "on" : ""}
-                  onClick={() => setMood(mood === m.k ? null : m.k)}
-                  title={m.label}
-                >
-                  {m.e}
-                </button>
-              ))}
-            </div>
-            <span className="muted who">
-              {(user.user_metadata?.nickname || user.user_metadata?.name || "수험생") as string} ·{" "}
-              <button className="link-btn" onClick={() => signOut()}>
-                로그아웃
+          <div className="mood-pick" role="radiogroup" aria-label="기분">
+            {MOODS.map((m) => (
+              <button
+                key={m.k}
+                role="radio"
+                aria-checked={mood === m.k}
+                className={mood === m.k ? "on" : ""}
+                onClick={() => setMood(mood === m.k ? null : m.k)}
+                title={m.label}
+              >
+                {m.e}
               </button>
-            </span>
-            <button className="btn primary sm" disabled={!body.trim() || busy} onClick={post}>
-              남기기
-            </button>
+            ))}
           </div>
+          <button className="btn primary sm" disabled={body.trim().length < 2 || busy} onClick={post}>
+            남기기
+          </button>
         </div>
-      ) : (
-        <div className="login-cta">
-          {PROVIDERS.length === 0 ? (
-            <span className="muted">글로 의견 남기기는 곧 열려요. 반응은 지금 누를 수 있어요.</span>
-          ) : (
-            <>
-              {!loginOpen ? (
-                <button className="btn ghost sm" onClick={() => setLoginOpen(true)}>
-                  로그인하고 의견 남기기
-                </button>
-              ) : (
-                <div className="login-btns">
-                  {PROVIDERS.map((p) => (
-                    <button key={p.id} className={`btn sm ${p.id}`} onClick={() => login(p.id)}>
-                      {p.label}로 로그인
-                    </button>
-                  ))}
-                </div>
-              )}
-              <span className="muted">반응은 로그인 없이 누를 수 있어요</span>
-            </>
-          )}
-        </div>
-      )}
+      </div>
 
       {msg && <p className="talk-msg">{msg}</p>}
 
@@ -261,7 +208,7 @@ export default function Talk({ target, title = "수험생 이야기", big = fals
                   )}
                   <span className="muted">{ago(c.created_at)}</span>
                   <span className="c-act">
-                    {user?.id === c.author_id ? (
+                    {c.mine ? (
                       <button
                         className="link-btn"
                         onClick={async () => {
