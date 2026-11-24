@@ -184,11 +184,20 @@ VERIFY_SCHEMA = {
 }
 
 
+_CACHE: dict = {}
+
+
+def cached(p: Path, default):
+    if p not in _CACHE:
+        _CACHE[p] = load(p, default)
+    return _CACHE[p]
+
+
 def ref_block(t: dict, slot: int) -> str:
     parts = []
     for pid in t["refs"]:
-        paper = load(DATA / "papers" / f"{pid}.json", None)
-        text = load(DATA / "text" / f"{pid}.json", {})
+        paper = cached(DATA / "papers" / f"{pid}.json", None)
+        text = cached(DATA / "text" / f"{pid}.json", {})
         if not paper:
             continue
         q = next((x for x in paper["questions"] if x["no"] == slot), None)
@@ -300,15 +309,24 @@ def client():
 
 
 def submit_batch(cl, reqs: list, kind: str, st: dict) -> None:
+    import time
+
     from anthropic.types.messages.batch_create_params import Request
 
-    for i in range(0, len(reqs), 500):
-        chunk = reqs[i:i + 500]
-        try:
-            b = cl.messages.batches.create(requests=[Request(custom_id=c, params=p) for c, p in chunk])
-        except Exception as e:  # 크레딧 부족 등: 다음 실행에서 다시
-            print(f"{kind} 배치 제출 실패: {str(e)[:200]}")
-            for c, _ in chunk:
+    for i in range(0, len(reqs), 200):
+        chunk = reqs[i:i + 200]
+        b, err = None, ""
+        for attempt in range(3):
+            try:
+                b = cl.messages.batches.create(requests=[Request(custom_id=c, params=p) for c, p in chunk])
+                break
+            except Exception as e:  # 인증 토큰 교환이 잠깐 실패하는 경우가 있어 새 클라이언트로 다시
+                err = str(e)[:200]
+                time.sleep(20)
+                cl = client()
+        if b is None:  # 크레딧 부족 등: 남은 요청은 모두 거두고 다음 실행에서 다시
+            print(f"{kind} 배치 제출 실패: {err}")
+            for c, _ in reqs[i:]:
                 st["pending"].pop(st["ids"].pop(c, ""), None)
             break
         st[f"{kind}_batches"].append(b.id)
@@ -319,6 +337,10 @@ def submit_batch(cl, reqs: list, kind: str, st: dict) -> None:
 def collect() -> None:
     st = state()
     if not (st["gen_batches"] or st["verify_batches"]):
+        if st["pending"]:  # 제출에 실패해 남은 기록 정리
+            print(f"배치 없이 남은 요청 {len(st['pending'])}건 정리")
+            st["pending"], st["ids"] = {}, {}
+            save(STATE, st)
         print("진행 중인 배치 없음")
         return
     cl = client()
@@ -404,6 +426,7 @@ def submit(limit: int | None = None) -> None:
             print("시범 배치 결과를 기다리는 중")
             return
         n_budget = min(n_budget, cf.get("pilot", 40))
+    n_budget = min(n_budget, cf.get("max_per_run", 300))  # 한 번에 너무 많이 내지 않는다 (매일 나눠 채움)
     if limit is not None:
         n_budget = min(n_budget, limit)
     print(f"AI 출제 예산: 이번 달 남은 ${left:.2f}, 문항당 약 ${per_q:.3f} → 최대 {n_budget}개")
