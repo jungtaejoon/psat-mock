@@ -337,7 +337,7 @@ export function ExplanationPanel({
               )}
               {ex.tip && <div className="tip">⏱ {ex.tip}</div>}
               <div className="ai-note">
-                AI가 작성한 해설입니다. 정답은 시험 시행기관의 공식 발표 기준입니다.
+                {item.paperId.startsWith("ai-") ? "AI가 만든 문항과 해설입니다. 공식 정답이 아니며 오류가 있을 수 있습니다." : "AI가 작성한 해설입니다. 정답은 시험 시행기관의 공식 발표 기준입니다."}
               </div>
             </>
           )}

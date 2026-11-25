@@ -91,8 +91,8 @@ export default function AiMockTab({ exam, mode }: { exam: ExamDef; mode: Mode })
     <div className="ai-mock">
       <div className="ai-intro">
         <p>
-          <b>AI가 이 시험의 기출을 분석해 새로 만든 모의고사</b>예요. 실제 시험과 같은 과목·문항 수·배치로 나오고, 칸마다 여러 후보 중에서 골라
-          사람마다 세트가 달라요. 풀고 나서 문항마다 👍👎🚨로 평가해 주세요. 나쁜 평가가 쌓인 문항은 빠지고 새 문항으로 바뀌어요.
+          <b>AI가 이 시험의 기출을 분석해 새로 만든 모의고사</b>예요. 실제 시험과 같은 과목·문항 수·배치로 나와요. 번호마다 후보 문항이 쌓이면 그중에서
+          골라 세트가 달라져요. 풀고 나서 문항마다 👍👎🚨로 평가해 주세요. 나쁜 평가가 쌓인 문항은 빠지고 새 문항으로 바뀌어요.
         </p>
         {ix && (
           <div className="ai-budget" title="새 문항을 만드는 데 쓰는 이번 달 공용 사용량 (매달 1일 초기화)">
@@ -151,7 +151,7 @@ export default function AiMockTab({ exam, mode }: { exam: ExamDef; mode: Mode })
         })
       )}
       <p className="muted ai-note">
-        AI가 만든 문항이라 오류가 있을 수 있어요. 다른 AI가 정답을 모른 채 다시 풀어 답이 같을 때만 실어요.
+        AI가 만든 문항이라 오류가 있을 수 있어요. AI가 정답을 보지 않고 다시 풀어 답이 같을 때만 실어요.
       </p>
     </div>
   );
