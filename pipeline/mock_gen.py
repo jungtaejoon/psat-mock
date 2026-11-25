@@ -471,9 +471,10 @@ def collect() -> None:
     save(STATE, st)
 
 
-def accept(t: dict, slot: int, d: dict, model: str) -> None:
+def accept(t: dict, slot: int, d: dict, model: str, polished: bool = False) -> None:
     paper = ai_paper(t)
-    d = polish(d, paper, t["choices"])
+    if not polished:
+        d = polish(d, paper, t["choices"])
     no = max((q["no"] for q in paper["questions"]), default=0) + 1
     paper["slots"] = t["slots"]
     paper["choices"] = t["choices"]
@@ -494,6 +495,9 @@ def accept(t: dict, slot: int, d: dict, model: str) -> None:
 
 def submit(limit: int | None = None) -> None:
     st, cf = state(), config()
+    if not cf.get("api_gen", True):
+        print("API 출제 꺼짐 (config.json api_gen) — 새 문항은 서브에이전트로 만든다")
+        return
     per_q = per_question(st)
     left = cf["monthly_usd"] - spent(st) - pending_cost(st)
     n_budget = max(int(left // per_q), 0)
@@ -564,6 +568,84 @@ def index() -> None:
     print(f"mock index: 트랙 {len(out)}개, 문항 {total}개, 이번 달 ${spent(st):.2f}/{cf['monthly_usd']}")
 
 
+# ------------------------------------------------------------------ 서브에이전트 출제 (API 대신)
+# 출제: agent-prep → <paper>.md 를 읽고 <paper>.out.json 작성 → agent-draft (검사·정답 자리 맞추기 → <paper>.blind.md)
+# 검증: 다른 에이전트가 blind.md 만 보고 <paper>.verify.json 작성 → agent-accept (답이 같고 valid 인 것만 창고로)
+
+def track_of(pid: str) -> dict:
+    return next(t for t in tracks() if t["paper"] == pid)
+
+
+def missing_slots(t: dict, per_slot: int) -> list[int]:
+    busy = collections.Counter(j["slot"] for j in state()["pending"].values() if j["paper"] == t["paper"])
+    have = active_by_slot(ai_paper(t))
+    return [s for s in range(1, t["slots"] + 1) if len(have.get(s, [])) + busy[s] < per_slot]
+
+
+def agent_prep(pid: str, out: Path, per_slot: int) -> None:
+    t = track_of(pid)
+    slots = missing_slots(t, per_slot)
+    out.mkdir(parents=True, exist_ok=True)
+    n = t["choices"]
+    targets = [i % n + 1 for i in range(len(slots))]
+    random.shuffle(targets)
+    have = active_by_slot(ai_paper(t))
+    lines = [f"# {EXAMS[t['exam']]['name']} / {t['group']} / {t['subject']} — 새로 만들 {len(slots)}문항 (선택지 {n}개)", ""]
+    for s, a in zip(slots, targets):
+        lines += [f"## 자리 {s}번 (정답을 {a}번에 둘 것)", ref_block(t, s)]
+        lines += [f"[이미 있는 후보 — 겹치지 않게] {q['text'][:150]}" for q in have.get(s, [])]
+        lines.append("")
+    f = out / f"{pid}.md"
+    f.write_text("\n".join(lines))
+    print(f"{f}  ({len(slots)}문항, {f.stat().st_size // 1024}KB)")
+
+
+def agent_draft(pid: str, out: Path, per_slot: int) -> None:
+    t = track_of(pid)
+    raw = json.loads((out / f"{pid}.out.json").read_text())
+    keep = dict(load(out / "drafts" / f"{pid}.json", {}))
+    ok, bad, n = set(missing_slots(t, per_slot)), [], t["choices"]
+    tmp = dict(questions=[dict(answer=[d["answer"]]) for d in keep.values()])
+    for k, d in raw.items():
+        miss = [x for x in gen_schema(n)["required"] if x not in d]
+        if not k.isdigit() or int(k) not in ok:
+            bad.append(f"{k}: 만들 자리가 아님")
+        elif miss:
+            bad.append(f"{k}: 항목 빠짐 {miss}")
+        elif len(d["choices"]) != n or len(d["choice_notes"]) != n or not isinstance(d["answer"], int) or not 1 <= d["answer"] <= n:
+            bad.append(f"{k}: 선택지·판단은 {n}개, 정답은 1~{n}")
+        elif len(set(map(str.strip, d["choices"]))) != n or len(d["explanation"]) < 40 or len(d["stem"]) < 8:
+            bad.append(f"{k}: 선택지 중복 또는 너무 짧음")
+        else:
+            tmp["questions"] = [dict(answer=[x["answer"]]) for j, x in keep.items() if j != k]
+            keep[k] = polish(d, tmp, n)
+    save(out / "drafts" / f"{pid}.json", keep)
+    lines = [f"# {EXAMS[t['exam']]['name']} / {t['group']} / {t['subject']} 검수 ({len(keep)}문항, 선택지 {n}개)", ""]
+    for k in sorted(keep, key=int):
+        lines += [f"## {k}", keep[k]["stem"], *[f"{CIRCLED[i]} {c}" for i, c in enumerate(keep[k]["choices"])], ""]
+    (out / f"{pid}.blind.md").write_text("\n".join(lines))
+    print(f"초안 {len(keep)}개, 거절 {len(bad)}개, 남은 자리 {sorted(ok - set(map(int, keep)))}")
+    print("정답 분포", dict(sorted(collections.Counter(d["answer"] for d in keep.values()).items())))
+    for b in bad:
+        print("  !", b)
+
+
+def agent_accept(pid: str, out: Path, per_slot: int) -> None:
+    t = track_of(pid)
+    drafts, ver = load(out / "drafts" / f"{pid}.json", {}), json.loads((out / f"{pid}.verify.json").read_text())
+    ok, done = set(missing_slots(t, per_slot)), 0
+    for k in sorted(drafts, key=int):
+        v, d = ver.get(k), drafts[k]
+        if int(k) not in ok:
+            continue
+        if not v or v.get("valid") is not True or v.get("answer") != d["answer"]:
+            print(f"  탈락 {k}번: {(v or {}).get('issue') or '검토 없음'} (초안 답 {d['answer']}, 검토 답 {(v or {}).get('answer')})"[:400])
+            continue
+        accept(t, int(k), d, "claude-opus-5-5 (agent)", polished=True)
+        done += 1
+    print(f"{pid}: 통과 {done}/{len(drafts)}")
+
+
 def plan() -> None:
     st, cf = state(), config()
     ts = tracks()
@@ -576,10 +658,15 @@ def plan() -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["plan", "run", "retire", "collect", "submit", "index"])
+    ap.add_argument("cmd", choices=["plan", "run", "retire", "collect", "submit", "index", "agent-prep", "agent-draft", "agent-accept"])
+    ap.add_argument("paper", nargs="?")
+    ap.add_argument("dir", nargs="?", type=Path)
+    ap.add_argument("--per-slot", type=int, default=1)
     ap.add_argument("--limit", type=int)
     a = ap.parse_args()
-    if a.cmd == "plan":
+    if a.cmd.startswith("agent-"):
+        {"agent-prep": agent_prep, "agent-draft": agent_draft, "agent-accept": agent_accept}[a.cmd](a.paper, a.dir, a.per_slot)
+    elif a.cmd == "plan":
         plan()
     elif a.cmd == "retire":
         retire()
