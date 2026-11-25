@@ -173,6 +173,20 @@ def can_shuffle(d: dict) -> bool:
     return not re.search(r"(?<!\d)[1-5]\s*번|[①-⑤]\s*[~～∼\-–]\s*[①-⑤]|(첫|두|세|네|다섯)\s*번째 선택지", notes)
 
 
+_PAIRS = {"은": ("은", "는"), "는": ("은", "는"), "이": ("이", "가"), "가": ("이", "가"),
+          "을": ("을", "를"), "를": ("을", "를"), "과": ("과", "와"), "와": ("과", "와")}
+
+
+def fix_particles(x: str) -> str:
+    """번호 뒤 조사를 읽는 소리(일·이·삼·사·오)에 맞춘다: ③은, ④는"""
+    def f(m):
+        c, j = m.group(1), m.group(2)
+        if j in ("으로", "로"):
+            return c + ("으로" if c == "③" else "로")  # ①(일)은 ㄹ 받침이라 '로'
+        return c + _PAIRS[j][0 if c in "①③" else 1]
+    return re.sub(r"([①-⑤])(으로|로|은|는|이|가|을|를|과|와)(?=[\s,.)]|$)", f, x)
+
+
 def move_answer(d: dict, to: int) -> dict:
     """정답이 to 번에 오도록 선택지 순서를 바꾼다. 해설 속 ①~⑤ 와 선택지별 판단도 함께 옮긴다"""
     n = len(d["choices"])
@@ -184,7 +198,7 @@ def move_answer(d: dict, to: int) -> dict:
     new_of = {CIRCLED[old]: CIRCLED[new] for new, old in enumerate(order)}
 
     def fix(x: str) -> str:
-        return re.sub("[①-⑤]", lambda m: new_of.get(m.group(0), m.group(0)), x)
+        return fix_particles(re.sub("[①-⑤]", lambda m: new_of.get(m.group(0), m.group(0)), x))
 
     notes = d["choice_notes"]
     return dict(d, choices=[d["choices"][i] for i in order], answer=to, key_point=fix(d["key_point"]),
