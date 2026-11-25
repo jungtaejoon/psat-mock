@@ -24,6 +24,7 @@ import collections
 import datetime as dt
 import hashlib
 import json
+import random
 import re
 import sys
 from pathlib import Path
@@ -140,6 +141,67 @@ def active_by_slot(paper: dict) -> dict[int, list[dict]]:
     return out
 
 
+# ------------------------------------------------------------------ 다듬기
+
+HEADER = re.compile(r"^((?:\s|<b>|<u>|<br>|<p>)*)(?:\[|［)\s*\d+\s*[～~∼〜\-–—]\s*\d+\s*(?:\]|］)\s*(?:</b>)?")
+
+
+def strip_header(stem: str) -> str:
+    """'[1～5]' 같은 묶음 머리말 제거 (문항을 하나씩 만들어 쓰므로 맞지 않는 표시)"""
+    m = HEADER.match(stem)
+    if not m:
+        return stem
+    opened = m.group(1) if "</b>" not in m.group(0) else m.group(1).replace("<b>", "")
+    return opened + stem[m.end():]
+
+
+def can_shuffle(d: dict) -> bool:
+    """선택지 순서를 바꿔도 되는가: 순서 자체에 뜻이 있거나(㉠㉡·ㄱㄴ·(가)(나)·숫자순·길이순 조합), 번호를 말로 가리키면 안 된다"""
+    ch = [plain(c) for c in d["choices"]]
+    if len(set(ch)) != len(ch) or re.search("[①-⑤]", d["stem"] + "".join(ch)):
+        return False
+    # 기호로 시작하는 선택지(㉠ …, ㄱ·ㄷ, (나)-(가), A·C)가 둘 이상이면 순서에 뜻이 있다고 본다
+    label = r"^(㉠|㉡|㉢|㉣|㉤|[ㄱ-ㅎ](?![가-힣])|[ⓐ-ⓔ]|[\[(]?[가-마][\])]|[A-E]\s*([,·→~－-]|$))"
+    if sum(bool(re.match(label, c)) for c in ch) >= 2:
+        return False
+    # 짧은 수치만 늘어놓은 선택지는 크기순으로 싣는다
+    if sum(bool(re.match(r"^[\s$\\\-−+약]*\d", c)) and len(c) <= 20 for c in ch) >= 2:
+        return False
+    if any(re.search(r"(위|앞)의 (모든|보기|선택지)|정답 ?없음|해당 ?없음|[Nn]one of the above|[Aa]ll of the above", c) for c in ch):
+        return False
+    notes = " ".join([d["key_point"], d["explanation"], d["tip"], *d["choice_notes"]])
+    return not re.search(r"(?<!\d)[1-5]\s*번|[①-⑤]\s*[~～∼\-–]\s*[①-⑤]|(첫|두|세|네|다섯)\s*번째 선택지", notes)
+
+
+def move_answer(d: dict, to: int) -> dict:
+    """정답이 to 번에 오도록 선택지 순서를 바꾼다. 해설 속 ①~⑤ 와 선택지별 판단도 함께 옮긴다"""
+    n = len(d["choices"])
+    rest = [i for i in range(n) if i != d["answer"] - 1]
+    rng = random.Random(hashlib.sha1(d["stem"].encode()).hexdigest())
+    rng.shuffle(rest)
+    order = rest[:]
+    order.insert(to - 1, d["answer"] - 1)  # order[새 자리] = 옛 자리
+    new_of = {CIRCLED[old]: CIRCLED[new] for new, old in enumerate(order)}
+
+    def fix(x: str) -> str:
+        return re.sub("[①-⑤]", lambda m: new_of.get(m.group(0), m.group(0)), x)
+
+    notes = d["choice_notes"]
+    return dict(d, choices=[d["choices"][i] for i in order], answer=to, key_point=fix(d["key_point"]),
+                explanation=fix(d["explanation"]), tip=fix(d["tip"]),
+                choice_notes=[fix(notes[i]) for i in order] if len(notes) == n else [fix(x) for x in notes])
+
+
+def polish(d: dict, paper: dict, n: int) -> dict:
+    """머리말을 떼고, 섞을 수 있으면 이 과목에서 가장 적게 쓴 자리로 정답을 옮긴다"""
+    d = dict(d, stem=strip_header(d["stem"]))
+    if not can_shuffle(d):
+        return d
+    used = collections.Counter(q["answer"][0] for q in paper["questions"] if not q.get("retired"))
+    low = min(used[i] for i in range(1, n + 1))
+    return move_answer(d, random.choice([i for i in range(1, n + 1) if used[i] == low]))
+
+
 # ------------------------------------------------------------------ 요청
 
 GEN_SYSTEM = """당신은 한국 국가시험 출제위원입니다. 실제 시험과 같은 형식의 새 객관식 문항을 한 개 만듭니다.
@@ -149,6 +211,8 @@ GEN_SYSTEM = """당신은 한국 국가시험 출제위원입니다. 실제 시�
 - 선택지 수는 지정한 개수와 같아야 하고, 오답 선택지도 그럴듯해야 합니다. "옳은 것/옳지 않은 것", 「보기」(ㄱㄴㄷㄹ) 조합, 사례형, 계산형 등 기출의 유형을 따르세요.
 - 그림이 꼭 필요한 문항은 만들지 마세요. 표는 <table> HTML 로, 줄바꿈은 <br>, 밑줄은 <u>, 굵게는 <b> 만 씁니다. 수식은 $...$ (LaTeX).
 - 독해·지문형이면 지문을 stem 안에 함께 넣어 한 문항으로 완결되게 하세요.
+- 이 문항만 따로 쓰므로 "[1～5]" 같은 묶음 머리말을 붙이지 마세요.
+- 정답은 지정한 번호에 오게 하세요.
 - explanation 은 정답 근거(개념·법령·계산)를 3~6문장으로, choices 는 선택지마다 맞고 틀린 이유 한 문장씩입니다."""
 
 VERIFY_SYSTEM = """당신은 한국 국가시험 검수위원입니다. 새로 만든 객관식 문항을 정답을 모르는 상태에서 직접 풀고 검토합니다.
@@ -219,7 +283,7 @@ def gen_request(t: dict, slot: int, existing: list[str]) -> dict:
     ex = EXAMS[t["exam"]]["name"]
     others = "\n".join(f"- {s[:120]}" for s in existing) or "(없음)"
     user = (f"시험: {ex} / {t['group']} / 과목: {t['subject']} / {slot}번 (전체 {t['slots']}문항, 선택지 {t['choices']}개)\n\n"
-            f"[같은 번호의 최근 기출]\n{ref_block(t, slot)}\n\n[이 번호에 이미 만든 후보 (겹치지 않게)]\n{others}")
+            f"[같은 번호의 최근 기출]\n{ref_block(t, slot)}\n\n[이 번호에 이미 만든 후보 (겹치지 않게)]\n{others}\n\n[정답 번호] {random.randint(1, t['choices'])}번")
     return dict(model=MODEL, max_tokens=16000, system=GEN_SYSTEM, thinking={"type": "adaptive"},
                 output_config={"effort": "high", "format": {"type": "json_schema", "schema": gen_schema(t["choices"])}},
                 messages=[{"role": "user", "content": user}])
@@ -256,20 +320,32 @@ def spent(st: dict, month: str | None = None) -> float:
     return u.get("in", 0) / 1e6 * PRICE_IN + u.get("out", 0) / 1e6 * PRICE_OUT
 
 
+def stage_cost(st: dict, kind: str) -> float:
+    """요청 하나의 실측 비용 (gen 만들기 / verify 검토)"""
+    x = st.get("stage", {}).get(kind, {})
+    return x["usd"] / x["n"] if x.get("n", 0) >= 30 else DEFAULT_PER_Q * (0.85 if kind == "gen" else 0.15)
+
+
 def per_question(st: dict) -> float:
-    tot_in = sum(u.get("in", 0) for u in st["usage"].values())
-    tot_out = sum(u.get("out", 0) for u in st["usage"].values())
-    made = sum(u.get("made", 0) for u in st["usage"].values())
-    if made >= 30:
-        return max((tot_in / 1e6 * PRICE_IN + tot_out / 1e6 * PRICE_OUT) / made, 0.005)
-    return DEFAULT_PER_Q
+    """만들기 + 검토 한 번씩. 검토를 기다리는 문항이 있어도 값이 부풀지 않도록 단계별로 잰다"""
+    return stage_cost(st, "gen") + stage_cost(st, "verify")
 
 
-def add_usage(st: dict, msg) -> None:
+def pending_cost(st: dict) -> float:
+    """진행 중인 문항에 앞으로 더 들 비용 (초안이 나온 것은 검토비만)"""
+    return sum(stage_cost(st, "verify") if "draft" in j else per_question(st) for j in st["pending"].values())
+
+
+def add_usage(st: dict, msg, kind: str) -> None:
     u = st["usage"].setdefault(month_key(), {"in": 0, "out": 0, "made": 0})
     m = msg.usage
-    u["in"] += (m.input_tokens or 0) + (getattr(m, "cache_creation_input_tokens", 0) or 0) + (getattr(m, "cache_read_input_tokens", 0) or 0)
-    u["out"] += m.output_tokens or 0
+    i = (m.input_tokens or 0) + (getattr(m, "cache_creation_input_tokens", 0) or 0) + (getattr(m, "cache_read_input_tokens", 0) or 0)
+    o = m.output_tokens or 0
+    u["in"] += i
+    u["out"] += o
+    x = st.setdefault("stage", {}).setdefault(kind, {"usd": 0.0, "n": 0})
+    x["usd"] = round(x["usd"] + i / 1e6 * PRICE_IN + o / 1e6 * PRICE_OUT, 6)
+    x["n"] += 1
 
 
 # ------------------------------------------------------------------ 평가 반영
@@ -361,7 +437,7 @@ def collect() -> None:
                     st["pending"].pop(key, None)
                     continue
                 msg = res.result.message
-                add_usage(st, msg)
+                add_usage(st, msg, kind)
                 try:
                     out = json.loads(next(b.text for b in msg.content if b.type == "text"))
                 except Exception:
@@ -397,6 +473,7 @@ def collect() -> None:
 
 def accept(t: dict, slot: int, d: dict, model: str) -> None:
     paper = ai_paper(t)
+    d = polish(d, paper, t["choices"])
     no = max((q["no"] for q in paper["questions"]), default=0) + 1
     paper["slots"] = t["slots"]
     paper["choices"] = t["choices"]
@@ -418,7 +495,7 @@ def accept(t: dict, slot: int, d: dict, model: str) -> None:
 def submit(limit: int | None = None) -> None:
     st, cf = state(), config()
     per_q = per_question(st)
-    left = cf["monthly_usd"] - spent(st) - len(st["pending"]) * per_q
+    left = cf["monthly_usd"] - spent(st) - pending_cost(st)
     n_budget = max(int(left // per_q), 0)
     # 첫 실측 전에는 시험 삼아 조금만
     if sum(u.get("made", 0) for u in st["usage"].values()) < 30:
