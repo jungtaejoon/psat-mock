@@ -241,6 +241,17 @@ def answers_for(r: dict) -> tuple[list[list[int]] | None, bool]:
     return None, False
 
 
+def pdf_booklet(src: Path) -> str | None:
+    """문제지 첫 쪽에 인쇄된 책형(A·B·C·D…)"""
+    import fitz
+
+    try:
+        m = re.search(r"([A-Z])\s*책\s*형", fitz.open(src)[0].get_text())
+    except Exception:  # noqa: BLE001
+        return None
+    return m.group(1) if m else None
+
+
 def _grade(sbjct_nm: str) -> str | None:
     """'국어(한문포함)(지방7급등)' → '7급'"""
     m = re.findall(r"\(([^()]*\d급[^()]*)\)", sbjct_nm)
@@ -303,6 +314,17 @@ def build(exam_id: str, only: str | None = None, rebuild: bool = False, since: i
                     problems.append(f"{year} {subject}: 내려받기 실패")
                     continue
                 src.write_bytes(data)
+            # 목록의 책형과 문제지 PDF 의 책형이 다른 경우가 있다(2017 지방직 식용작물·응용역학개론: B 행에 Ⓓ책형 PDF).
+            # 정답은 PDF 에 인쇄된 책형 것을 쓴다.
+            booklet = r.get("bktpNm")
+            pdf_bk = pdf_booklet(src)
+            if pdf_bk and booklet and pdf_bk != booklet:
+                alt, alt_final = answers_for(dict(r, bktpNm=pdf_bk))
+                if alt:
+                    answers, final, booklet = alt, alt_final, pdf_bk
+                else:
+                    problems.append(f"{year} {subject}: 목록 책형 {booklet} / PDF 책형 {pdf_bk}, {pdf_bk} 정답 없음")
+                    continue
             try:
                 meta, qs = segment.segment(src, len(answers), exam["choices"], 1, [subject])
             except Exception as ex:  # noqa: BLE001
@@ -313,7 +335,7 @@ def build(exam_id: str, only: str | None = None, rebuild: bool = False, since: i
             pdf_id = f"{exam_id}-{hashlib.sha1(src.read_bytes()).hexdigest()[:12]}"
             pdfutil.copy_compressed(src, OUT / "pdf" / f"{pdf_id}.pdf")
             paper = dict(id=pid, exam=exam_id, group=r.get("testNm") and exam.get("groupOf", {}).get(test_cd) or exam["name"], year=year,
-                         subject=subject, exams=[r.get("testNm") or exam["name"]], booklet=r.get("bktpNm"), answersFinal=final,
+                         subject=subject, exams=[r.get("testNm") or exam["name"]], booklet=booklet, answersFinal=final,
                          choices=exam["choices"], pdf=pdf_id, **meta, questions=qs)
             (OUT / "papers" / f"{pid}.json").write_text(json.dumps(paper, ensure_ascii=False))
             made += 1
